@@ -10,7 +10,7 @@ import { telaAvalia, telaProva } from "./listas.js";
 import { telaTreinar } from "./treinar.js";
 import { telaSimulado } from "./simulado.js";
 import { telaPerfil } from "./perfil.js";
-import { telaResultado } from "./resultado.js";
+import { telaResultado, marcarEntregaRecente } from "./resultado.js";
 import { entregarSimulado } from "./entrega.js";
 
 const raiz = document.getElementById("app");
@@ -69,6 +69,7 @@ async function gerarVersaoNova(simId) {
 /** Entrega o simulado: corrige, guarda e abre o resultado. */
 function entregar(sim) {
   entregarSimulado(sim, base);
+  marcarEntregaRecente(sim.id);
   location.hash = `#/resultado/${sim.id}`;
 }
 

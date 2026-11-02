@@ -216,6 +216,8 @@ async function fazerSimulado(pagina, id, certas, { conferirLargura = 0 } = {}) {
   await esperarRota(pagina, `simulado/${id}/revisao`);
   await pagina.click('[data-acao="entregar"]');
   await esperarRota(pagina, `resultado/${id}`);
+  // fecha o aviso de conquista nova, se aparecer
+  if (await pagina.$(".conquista-capa")) await pagina.click(".conquista-capa .botao");
   return sim;
 }
 
@@ -261,6 +263,44 @@ test("simulado de prova: E3-AV2 todo certo dá 10,0, Avançado e Diamante", asyn
   assert.match(texto, /Avançado/);
   assert.match(texto, /Medalha Diamante/);
   assert.match(texto, /Você gabaritou/);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("gamificação: XP, nível e conquistas aparecem e continuam depois de recarregar", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  await ir(pagina, "simulado/S07");
+  // entrega tudo certo: aparece o aviso de conquista (primeira missão, gabaritou, embalado)
+  const sim = JSON.parse(await readFile(join(RAIZ, "data/avalia/S07.json"), "utf-8"));
+  await pagina.click('[data-acao="comecar"]');
+  for (const it of sim.items) {
+    await esperarRota(pagina, `simulado/S07/${it.n}`);
+    await pagina.click(`.opcao[data-letra="${it.key}"]`);
+    await pagina.click("#proxima");
+  }
+  await esperarRota(pagina, "simulado/S07/revisao");
+  await pagina.click('[data-acao="entregar"]');
+  await esperarRota(pagina, "resultado/S07");
+  assert.match(await pagina.textContent(".conquista-capa"), /Primeira missão/);
+  assert.match(await pagina.textContent(".conquista-capa"), /Gabaritou/);
+  await pagina.click(".conquista-capa .botao");
+  assert.equal(await pagina.$(".conquista-capa"), null);
+  assert.equal(await pagina.getAttribute(".xp-ganho .contar", "data-ate"), "280");
+  assert.match(await pagina.textContent(".placar-xp"), /Subiu para o nível 2/);
+  // recarregando: XP e conquistas continuam, o aviso não volta
+  await pagina.reload();
+  await esperarRota(pagina, "resultado/S07");
+  assert.equal(await pagina.$(".conquista-capa"), null);
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".jogador"), /280 XP/);
+  assert.equal(await pagina.textContent(".nivel-selo b"), "2");
+  assert.match(await pagina.textContent(".jogador"), /3 de 13 conquistas/);
+  assert.match(await pagina.textContent(".jogador"), /1 dia seguido/);
+  // refazer igual não dá XP de novo
+  await fazerSimulado(pagina, "S07", "todas");
+  assert.equal(await pagina.getAttribute(".xp-ganho .contar", "data-ate"), "0");
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".jogador"), /280 XP/);
   assert.deepEqual(erros, []);
   await pagina.close();
 });

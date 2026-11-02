@@ -496,3 +496,22 @@ a.chip { text-decoration: none; }
   .anel-progresso, .barra-atual { animation: none; }
   .item-revisao { break-inside: avoid; }
 }
+
+/* ---------- XP, nível, conquistas e confete ---------- */
+.placar-xp { margin-top: 10px; min-width: 220px; }
+.xp-ganho { display: flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--fonte-titulo); font-size: 1.6rem; color: var(--xp-texto); margin: 0; }
+.xp-ganho svg { color: var(--xp); width: 28px; height: 28px; }
+.barra-nivel { height: 12px; border-radius: 999px; background: var(--fundo-2); overflow: hidden; margin: 6px 0 2px; }
+.barra-nivel span { display: block; height: 100%; width: var(--ate); background: var(--xp); border-radius: inherit; animation: barra-nivel 1.4s ease-out; }
+@keyframes barra-nivel { from { width: var(--de); } to { width: var(--ate); } }
+.subiu-nivel { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px !important; padding: 6px 14px; border-radius: 999px; background: var(--xp); color: #3b2a00; font-weight: 800; animation: pulo 0.6s ease-out 1.2s both; }
+@keyframes pulo { 0% { transform: scale(0.6); opacity: 0; } 70% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
+.conquista-capa { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 16px; background: rgba(10, 8, 25, 0.7); cursor: pointer; }
+.conquista-cartao { background: var(--cartao); border-radius: var(--raio); padding: 24px; max-width: 380px; width: 100%; text-align: center; box-shadow: var(--sombra-forte); animation: pulo 0.5s ease-out; }
+.conquista-cartao ul { list-style: none; padding: 0; margin: 10px 0 16px; display: grid; gap: 10px; }
+.conquista-icone { display: inline-grid; place-items: center; width: 70px; height: 70px; border-radius: 50%; background: var(--xp); color: #3b2a00; margin-bottom: 8px; }
+.conquista-icone svg { width: 40px; height: 40px; }
+.confete { position: fixed; inset: 0; pointer-events: none; z-index: 80; overflow: hidden; }
+.confete i { position: absolute; top: -12px; width: 9px; height: 14px; border-radius: 2px; animation-name: cair; animation-timing-function: ease-in; animation-fill-mode: forwards; }
+@keyframes cair { to { top: 105%; transform: translateX(40px) rotate(540deg); } }
+@media print { .conquista-capa, .confete { display: none !important; } }

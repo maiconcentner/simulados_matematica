@@ -10,6 +10,65 @@ import { enunciadoHTML } from "./questao.js";
 import { codigosComModelo, gerarMisto } from "./gerador/index.js";
 import { guardarGerado } from "./armazenamento.js";
 import { melhorTentativa } from "./progresso.js";
+import { nivelDoJogador, nomeDaConquista, listaDeConquistas } from "./gamificacao.js";
+
+// a animação de subir de nível, o confete e o aviso de conquista só aparecem logo depois de entregar
+let entregaRecente = null;
+export const marcarEntregaRecente = (id) => { entregaRecente = id; };
+
+function blocoXp(t, config) {
+  if (typeof t.xp !== "number") return "";
+  const antes = nivelDoJogador(t.xpAntes ?? 0, config);
+  const depois = nivelDoJogador((t.xpAntes ?? 0) + t.xp, config);
+  const d = t.detalheXp || {};
+  const partes = [d.acertos ? `acertos ${d.acertos}` : "", d.concluir ? `concluir ${d.concluir}` : "", d.nota8 ? `nota 8 ou mais ${d.nota8}` : "", d.combo ? `combo ${d.combo}` : ""].filter(Boolean).join(" · ");
+  const motivo = d.motivo === "refazer"
+    ? (t.xp ? "Refazendo, o XP vem do que você melhorou." : "Refazendo, o XP vem só quando a nota passa da sua melhor.")
+    : d.motivo === "gerado" ? "Treino gerado vale metade do XP." : partes;
+  // ao subir de nível, a barra recomeça do zero no nível novo
+  const pctAntes = depois.nivel > antes.nivel ? 0 : Math.round((antes.noNivel / antes.porNivel) * 100);
+  const pctDepois = Math.round((depois.noNivel / depois.porNivel) * 100);
+  return h`<div class="placar-xp">
+    <p class="xp-ganho">${icone.estrela}<b class="contar" data-ate="${t.xp}" data-prefixo="+">+${t.xp}</b> XP</p>
+    <p class="sub pequeno">${motivo}</p>
+    <div class="barra-nivel" role="progressbar" aria-label="XP no nível ${depois.nivel}" aria-valuemin="0" aria-valuemax="${depois.porNivel}" aria-valuenow="${depois.noNivel}">
+      <span style="--de:${pctAntes}%;--ate:${pctDepois}%"></span>
+    </div>
+    <p class="sub pequeno">Nível ${depois.nivel} · ${depois.titulo} · ${depois.noNivel} de ${depois.porNivel} XP</p>
+    ${t.subiuNivel ? h`<p class="subiu-nivel">${icone.raio}Subiu para o nível ${t.subiuNivel.nivel} · ${t.subiuNivel.titulo}</p>` : ""}
+  </div>`;
+}
+
+function avisoConquistas(ids, config) {
+  const lista = listaDeConquistas(config);
+  return h`<div class="conquista-capa" role="dialog" aria-modal="true" aria-labelledby="t-conquista" data-acao="fechar-conquista">
+    <div class="conquista-cartao">
+      <span class="conquista-icone">${icone.trofeu}</span>
+      <h2 id="t-conquista">${ids.length === 1 ? "Conquista nova!" : `${ids.length} conquistas novas!`}</h2>
+      <ul>${ids.map((id) => h`<li><strong>${nomeDaConquista(id, config)}</strong><br><span class="sub pequeno">${lista.find((c) => c.id === id)?.regra || ""}</span></li>`)}</ul>
+      <button type="button" class="botao" data-acao="fechar-conquista">Valeu!</button>
+    </div>
+  </div>`;
+}
+
+export function soltarConfete() {
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+  const cores = ["#5b3fd9", "#ffc233", "#2f9c6e", "#e4572e", "#2f6db5", "#f2a541"];
+  const caixa = document.createElement("div");
+  caixa.className = "confete";
+  caixa.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 70; i++) {
+    const p = document.createElement("i");
+    p.style.left = `${Math.random() * 100}%`;
+    p.style.background = cores[i % cores.length];
+    p.style.animationDelay = `${Math.random() * 0.5}s`;
+    p.style.animationDuration = `${1.6 + Math.random() * 1.2}s`;
+    p.style.transform = `rotate(${Math.random() * 360}deg)`;
+    caixa.appendChild(p);
+  }
+  document.body.appendChild(caixa);
+  setTimeout(() => caixa.remove(), 3200);
+}
 
 const minutos = (ini, fim) => Math.max(1, Math.round((new Date(fim) - new Date(ini)) / 60000));
 
@@ -23,6 +82,8 @@ export async function telaResultado(ctx, id) {
   const prova = sim.pontuacao?.tipo === "valores";
   const comModelo = new Set(codigosComModelo());
   const nomeHab = (c) => habilidades[c]?.nome || c;
+  const recente = entregaRecente === sim.id;
+  entregaRecente = null;
 
   // temas: este simulado e o acumulado de todas as entregas
   const acum = temasAcumulados(ctx.estado.tentativas.filter((x) => x.modo === "simulado"), habilidades);
@@ -57,7 +118,7 @@ export async function telaResultado(ctx, id) {
             ? h`<p class="placar-medalha"><span class="medalha grande ${res.medalha.nome.toLowerCase()}">${icone.medalha}</span>Medalha ${res.medalha.nome}</p>`
             : h`<p class="placar-medalha sub">Sem medalha desta vez: com metade de acerto já vem o Bronze.</p>`}
           <p class="sub pequeno">${icone.relogio} ${plural(minutos(t.inicio, t.fim), "minuto", "minutos")}</p>
-          <div id="placar-xp"></div>
+          ${blocoXp(t, config)}
         </div>
       </section>
 
@@ -135,9 +196,15 @@ export async function telaResultado(ctx, id) {
         <a class="botao secundario" href="#/">${icone.painel}Voltar ao painel</a>
         <button type="button" class="botao fantasma" data-acao="imprimir">${icone.prova}Imprimir ou salvar PDF</button>
       </div>
-    </div>`,
-    depois: () => animarContadores(document.getElementById("app")),
+    </div>
+      ${recente && t.conquistasNovas?.length ? avisoConquistas(t.conquistasNovas, config) : ""}`,
+    depois: () => {
+      animarContadores(document.getElementById("app"));
+      if (recente && (t.subiuNivel || t.subiuFaixa || t.conquistasNovas?.length)) soltarConfete();
+      document.querySelector(".conquista-capa .botao")?.focus();
+    },
     eventos: {
+      "fechar-conquista": () => document.querySelector(".conquista-capa")?.remove(),
       imprimir: () => {
         document.querySelectorAll(".item-revisao").forEach((d) => { d.open = true; });
         window.print();

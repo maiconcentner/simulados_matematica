@@ -1,22 +1,13 @@
 // Painel (#/): cartão do jogador, áreas, continuar, missão e conquistas.
 import { h } from "./util.js";
 import { icone } from "./icones.js";
-import { nivelDoJogador, sequenciaDeDias } from "./gamificacao.js";
+import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js";
 import { simuladosDoCatalogo } from "./dados.js";
 import { melhorTentativa } from "./progresso.js";
 import { plural } from "./util.js";
 
-function totalDeConquistas(config) {
-  // a de tema vira uma por tema
-  return config.conquistas.reduce((s, c) => s + (c.id === "especialista_tema" ? config.temas.length : 1), 0);
-}
+const totalDeConquistas = (config) => listaDeConquistas(config).length;
 
-function nomeDaConquista(id, config) {
-  const [base, tema] = id.split(":");
-  const c = config.conquistas.find((x) => x.id === base);
-  if (!c) return id;
-  return tema ? c.nome.replace("{tema}", tema) : c.nome;
-}
 
 function tituloDoSimulado(id, catalogo, estado) {
   const g = estado.gerados.find((x) => x.id === id);
