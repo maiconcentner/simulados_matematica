@@ -199,6 +199,72 @@ test("as figuras de todas as questões carregam", async () => {
   await pagina.close();
 });
 
+/** Responde o simulado inteiro (acertando as questões da lista) e entrega. */
+async function fazerSimulado(pagina, id, certas, { conferirLargura = 0 } = {}) {
+  const arq = id.startsWith("E") ? `data/prova/${id}.json` : id.startsWith("G-") ? null : `data/avalia/${id}.json`;
+  const sim = arq ? JSON.parse(await readFile(join(RAIZ, arq), "utf-8"))
+    : await pagina.evaluate((x) => JSON.parse(localStorage.getItem("simulados-mat:v1")).gerados.find((g) => g.id === x), id);
+  await ir(pagina, `simulado/${id}`);
+  await pagina.click('[data-acao="comecar"]');
+  for (const it of sim.items) {
+    await esperarRota(pagina, `simulado/${id}/${it.n}`);
+    if (conferirLargura) assert.equal(await larguraDaPagina(pagina), conferirLargura, `rolagem lateral na questão ${it.n}`);
+    const letra = certas === "todas" || certas.includes(it.n) ? it.key : it.options.find((o) => !o.correct).letter;
+    await pagina.click(`.opcao[data-letra="${letra}"]`);
+    await pagina.click("#proxima");
+  }
+  await esperarRota(pagina, `simulado/${id}/revisao`);
+  await pagina.click('[data-acao="entregar"]');
+  await esperarRota(pagina, `resultado/${id}`);
+  return sim;
+}
+
+test("percurso completo no celular: painel, Avalia, S07, entregar e ver o resultado", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  await ir(pagina, "");
+  assert.equal(await larguraDaPagina(pagina), 390);
+  await pagina.click(".area >> text=Simulados Avalia");
+  await esperarRota(pagina, "avalia");
+  assert.equal(await larguraDaPagina(pagina), 390);
+  await pagina.click('.sim[data-sim="S07"] h3 a');
+  await esperarRota(pagina, "simulado/S07");
+  assert.equal(await larguraDaPagina(pagina), 390);
+  await fazerSimulado(pagina, "S07", [1, 2, 3, 4], { conferirLargura: 390 });
+  assert.equal(await larguraDaPagina(pagina), 390);
+  const texto = await pagina.textContent("main");
+  assert.match(await pagina.getAttribute(".anel-texto b", "data-ate"), /^6\.7$/);
+  assert.match(texto, /4 de 6/);
+  assert.match(texto, /Adequado/);
+  assert.match(texto, /Mandando bem/);
+  assert.equal(await pagina.$$eval(".etiqueta.forte", (e) => e.length) > 0, true);
+  assert.equal(await pagina.$$eval(".etiqueta.fraco", (e) => e.length), 2);
+  assert.equal(await pagina.$$eval(".passo", (e) => e.length), 2);
+  assert.match(await pagina.textContent(".falta"), /Acerte mais 2 questões para chegar ao Avançado/);
+  // revisão comentada abre
+  await pagina.click(".item-revisao.errou summary");
+  assert.match(await pagina.textContent(".item-revisao.errou[open]"), /Resolução/);
+  // o plano virou missão no painel e o simulado aparece como feito
+  await ir(pagina, "");
+  assert.equal(await pagina.$$eval(".missao input[type=checkbox]", (e) => e.length), 2);
+  await ir(pagina, "avalia");
+  assert.match(await pagina.textContent('.sim[data-sim="S07"] .estado'), /Nota 6,7/);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("simulado de prova: E3-AV2 todo certo dá 10,0, Avançado e Diamante", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  await fazerSimulado(pagina, "E3-AV2", "todas");
+  const texto = await pagina.textContent("main");
+  assert.equal(await pagina.getAttribute(".anel-texto b", "data-ate"), "10");
+  assert.match(texto, /10 de 10/);
+  assert.match(texto, /Avançado/);
+  assert.match(texto, /Medalha Diamante/);
+  assert.match(texto, /Você gabaritou/);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
 test("o apelido fica guardado e aparece no painel", async () => {
   const { pagina } = await abrir();
   await ir(pagina, "perfil");

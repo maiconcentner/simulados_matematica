@@ -10,6 +10,8 @@ import { telaAvalia, telaProva } from "./listas.js";
 import { telaTreinar } from "./treinar.js";
 import { telaSimulado } from "./simulado.js";
 import { telaPerfil } from "./perfil.js";
+import { telaResultado } from "./resultado.js";
+import { entregarSimulado } from "./entrega.js";
 
 const raiz = document.getElementById("app");
 const menu = document.getElementById("menu");
@@ -29,7 +31,7 @@ const ROTAS = [
   [/^\/treinar\/?$/, "treinar", (ctx) => telaTreinar(ctx)],
   [/^\/perfil\/?$/, "perfil", (ctx) => telaPerfil(ctx)],
   [/^\/simulado\/([^/?]+)(?:\/(\d+|revisao))?\/?$/, null, (ctx, id, parte) => telaSimulado(ctx, decodeURIComponent(id), parte)],
-  [/^\/resultado\/([^/?]+)$/, null, (ctx, id) => telaSimulado(ctx, decodeURIComponent(id))],
+  [/^\/resultado\/([^/?]+)\/?$/, null, (ctx, id) => telaResultado(ctx, decodeURIComponent(id))],
 ];
 
 let base = null;
@@ -64,10 +66,10 @@ async function gerarVersaoNova(simId) {
   }
 }
 
-/** Entrega o simulado. A correção e o resultado entram na fase 3. */
-function entregar() {
-  const msg = document.getElementById("msg-entregar");
-  if (msg) msg.textContent = "O resultado chega na fase 3 do site. Suas respostas continuam salvas.";
+/** Entrega o simulado: corrige, guarda e abre o resultado. */
+function entregar(sim) {
+  entregarSimulado(sim, base);
+  location.hash = `#/resultado/${sim.id}`;
 }
 
 async function desenhar({ manterFoco = null } = {}) {
