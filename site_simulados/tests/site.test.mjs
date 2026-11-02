@@ -305,6 +305,70 @@ test("gamificação: XP, nível e conquistas aparecem e continuam depois de reca
   await pagina.close();
 });
 
+test("modo treino: refaz só as erradas, corrige na hora e soma metade do XP, uma vez por questão", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  const sim = await fazerSimulado(pagina, "S07", [1, 2, 3, 4]); // erra 5 e 6 (N4)
+  const xpAntes = await pagina.evaluate(() => JSON.parse(localStorage.getItem("simulados-mat:v1")).xp);
+  await pagina.click("text=Refazer só as que errei");
+  await esperarRota(pagina, "treino/S07");
+  assert.match(await pagina.textContent("main h1"), /Questão 5/);
+  assert.match(await pagina.textContent("main h1"), /1 de 2/);
+  // acerta a 5: a correção aparece na hora, com metade do XP de uma questão N4 (40 × 0,5)
+  await pagina.click(`.opcao[data-letra="${sim.items[4].key}"]`);
+  await pagina.waitForSelector(".feedback.certo");
+  assert.match(await pagina.textContent(".feedback"), /Acertou/);
+  assert.match(await pagina.textContent(".feedback"), /\+20 XP/);
+  assert.match(await pagina.textContent(".feedback"), /Resolução/);
+  await pagina.click('[data-acao="treino-proxima"]');
+  assert.match(await pagina.textContent("main h1"), /Questão 6/);
+  // erra a 6: mostra o erro provável e a correta, sem XP
+  await pagina.click(`.opcao[data-letra="${sim.items[5].options.find((o) => !o.correct).letter}"]`);
+  await pagina.waitForSelector(".feedback.errado");
+  assert.match(await pagina.textContent(".feedback"), /Erro provável/);
+  await pagina.click('[data-acao="treino-proxima"]');
+  assert.match(await pagina.textContent("main"), /Treino concluído/);
+  assert.match(await pagina.textContent("main"), /1 de 2/);
+  const depois = await pagina.evaluate(() => JSON.parse(localStorage.getItem("simulados-mat:v1")));
+  assert.equal(depois.xp - xpAntes, 20);
+  // a nota oficial não muda
+  assert.equal(depois.tentativas.filter((t) => t.modo === "simulado").at(-1).nota, 6.7);
+  // treinar de novo a mesma questão não dá XP outra vez
+  await ir(pagina, "treino/S07/5");
+  await pagina.click(`.opcao[data-letra="${sim.items[4].key}"]`);
+  await pagina.waitForSelector(".feedback.certo");
+  assert.doesNotMatch(await pagina.textContent(".feedback"), /XP/);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("perfil mostra conquistas, histórico e mapa; Apagar meus dados zera tudo", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  await fazerSimulado(pagina, "S01", [1, 2, 3]);
+  await ir(pagina, "perfil");
+  assert.equal(await larguraDaPagina(pagina), 390);
+  assert.equal(await pagina.$$eval(".conquista", (e) => e.length), 13);
+  assert.equal(await pagina.$$eval(".conquista.ganha", (e) => e.length), 1);
+  assert.equal(await pagina.$$eval(".historico li", (e) => e.length), 1);
+  assert.match(await pagina.textContent(".barras-tema"), /%/);
+  await pagina.click('[data-acao="apagar"]');
+  assert.match(await pagina.textContent("#apagar-area"), /Tem certeza/);
+  await pagina.click('[data-acao="apagar-nao"]');
+  assert.equal(await pagina.$('[data-acao="apagar-sim"]'), null);
+  await pagina.click('[data-acao="apagar"]');
+  await pagina.click('[data-acao="apagar-sim"]');
+  await pagina.waitForSelector("text=foram apagados");
+  const guardado = await pagina.evaluate(() => localStorage.getItem("simulados-mat:v1"));
+  assert.equal(guardado, null);
+  await pagina.reload();
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".jogador"), /0 XP/);
+  assert.match(await pagina.textContent(".jogador"), /0 de 13 conquistas/);
+  await ir(pagina, "avalia");
+  assert.match(await pagina.textContent('.sim[data-sim="S01"] .estado'), /Novo/);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
 test("o apelido fica guardado e aparece no painel", async () => {
   const { pagina } = await abrir();
   await ir(pagina, "perfil");

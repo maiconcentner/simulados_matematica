@@ -12,6 +12,7 @@ import { telaSimulado } from "./simulado.js";
 import { telaPerfil } from "./perfil.js";
 import { telaResultado, marcarEntregaRecente } from "./resultado.js";
 import { entregarSimulado } from "./entrega.js";
+import { telaTreino } from "./treino.js";
 
 const raiz = document.getElementById("app");
 const menu = document.getElementById("menu");
@@ -32,6 +33,7 @@ const ROTAS = [
   [/^\/perfil\/?$/, "perfil", (ctx) => telaPerfil(ctx)],
   [/^\/simulado\/([^/?]+)(?:\/(\d+|revisao))?\/?$/, null, (ctx, id, parte) => telaSimulado(ctx, decodeURIComponent(id), parte)],
   [/^\/resultado\/([^/?]+)\/?$/, null, (ctx, id) => telaResultado(ctx, decodeURIComponent(id))],
+  [/^\/treino\/([^/?]+)(?:\/(\d+))?\/?$/, null, (ctx, id, n) => telaTreino(ctx, decodeURIComponent(id), n)],
 ];
 
 let base = null;
