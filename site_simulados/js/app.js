@@ -28,7 +28,7 @@ const ROTAS = [
   [/^\/prova\/?$/, "prova", (ctx) => telaProva(ctx)],
   [/^\/treinar\/?$/, "treinar", (ctx) => telaTreinar(ctx)],
   [/^\/perfil\/?$/, "perfil", (ctx) => telaPerfil(ctx)],
-  [/^\/simulado\/([^/?]+)$/, null, (ctx, id) => telaSimulado(ctx, decodeURIComponent(id))],
+  [/^\/simulado\/([^/?]+)(?:\/(\d+|revisao))?\/?$/, null, (ctx, id, parte) => telaSimulado(ctx, decodeURIComponent(id), parte)],
   [/^\/resultado\/([^/?]+)$/, null, (ctx, id) => telaSimulado(ctx, decodeURIComponent(id))],
 ];
 
@@ -64,11 +64,17 @@ async function gerarVersaoNova(simId) {
   }
 }
 
+/** Entrega o simulado. A correção e o resultado entram na fase 3. */
+function entregar() {
+  const msg = document.getElementById("msg-entregar");
+  if (msg) msg.textContent = "O resultado chega na fase 3 do site. Suas respostas continuam salvas.";
+}
+
 async function desenhar({ manterFoco = null } = {}) {
   const caminho = (location.hash.replace(/^#/, "") || "/").split("?")[0];
   const rota = ROTAS.find(([re]) => re.test(caminho));
   if (telaAtual?.aoSair && !manterFoco) telaAtual.aoSair();
-  const ctx = { base, estado: ler(), redesenhar: (o) => desenhar(o), gerarVersaoNova };
+  const ctx = { base, estado: ler(), redesenhar: (o) => desenhar(o), gerarVersaoNova, entregar };
   let tela;
   let ativo = null;
   try {
@@ -97,6 +103,8 @@ async function desenhar({ manterFoco = null } = {}) {
     if (h1) { h1.tabIndex = -1; h1.focus({ preventScroll: true }); }
   }
   primeira = false;
+  // marca a rota já desenhada (ajuda os testes a saber quando a tela está pronta)
+  document.body.dataset.rota = caminho;
 }
 
 // Um ouvinte só para as ações de todas as telas (data-acao="...").

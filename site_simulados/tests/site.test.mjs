@@ -44,9 +44,13 @@ async function abrir(largura = 390, altura = 844) {
   pagina.on("console", (m) => { if (m.type() === "error" && !/fonts\.g|net::ERR_FAILED/.test(m.text())) erros.push(m.text()); });
   return { pagina, erros };
 }
+/** Espera a tela da rota (sem o "#") terminar de desenhar. */
+async function esperarRota(pagina, rota) {
+  await pagina.waitForFunction((r) => document.body.dataset.rota === r, "/" + rota.replace(/^#?\//, ""));
+}
 async function ir(pagina, rota) {
   await pagina.goto(URL_BASE + "#/" + rota);
-  await pagina.waitForSelector("main h1");
+  await esperarRota(pagina, rota);
 }
 const larguraDaPagina = (p) => p.evaluate(() => document.documentElement.scrollWidth);
 
@@ -92,8 +96,7 @@ test("versão nova de um simulado: gera, guarda e abre", async () => {
   const { pagina, erros } = await abrir();
   await ir(pagina, "avalia");
   await pagina.click('.sim[data-sim="S07"] [data-acao="versao-nova"]');
-  await pagina.waitForURL(/#\/simulado\/G-/);
-  await pagina.waitForSelector("main h1");
+  await pagina.waitForFunction(() => /^\/simulado\/G-[^/]+$/.test(document.body.dataset.rota || ""));
   assert.match(await pagina.textContent("main h1"), /Semana 7 · versão de treino/);
   assert.equal(await pagina.$$eval(".lista-o-que-cai li", (e) => e.length) >= 6, true);
   const guardado = await pagina.evaluate(() => JSON.parse(localStorage.getItem("simulados-mat:v1")).gerados);
@@ -102,7 +105,7 @@ test("versão nova de um simulado: gera, guarda e abre", async () => {
   assert.equal(guardado[0].gerado.base, "S07");
   // continua lá depois de recarregar
   await pagina.reload();
-  await pagina.waitForSelector("main h1");
+  await pagina.waitForFunction(() => /^\/simulado\/G-[^/]+$/.test(document.body.dataset.rota || ""));
   assert.match(await pagina.textContent("main h1"), /versão de treino/);
   assert.equal(await larguraDaPagina(pagina), 390);
   assert.deepEqual(erros, []);
@@ -118,8 +121,7 @@ test("monte o seu treino: pede habilidade, gera com a quantidade escolhida e dá
   await pagina.click('label.chip:has(input[value="D30"])');
   await pagina.click('label.chip:has(input[name="qtd"][value="8"])');
   await pagina.click('[data-acao="gerar-misto"]');
-  await pagina.waitForURL(/#\/simulado\/G-/);
-  await pagina.waitForSelector("main h1");
+  await pagina.waitForFunction(() => /^\/simulado\/G-[^/]+$/.test(document.body.dataset.rota || ""));
   assert.equal(await pagina.$$eval(".lista-o-que-cai li", (e) => e.length) - 3, 8); // 3 itens de "Como funciona"
   await ir(pagina, "treinar");
   assert.equal(await pagina.$$eval(".gerado", (e) => e.length), 1);
@@ -128,6 +130,72 @@ test("monte o seu treino: pede habilidade, gera com a quantidade escolhida e dá
   await pagina.click('[data-acao="apagar-gerado"]');
   assert.equal(await pagina.$$eval(".gerado", (e) => e.length), 0);
   assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("simulado: uma questão por tela, resposta salva a cada toque e continua depois de recarregar", async () => {
+  const { pagina, erros } = await abrir();
+  await ir(pagina, "simulado/S06");
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/S06/1");
+  await pagina.click('.opcao[data-letra="B"]');
+  assert.equal(await pagina.getAttribute('.opcao[data-letra="B"]', "aria-checked"), "true");
+  await pagina.click("#proxima");
+  await esperarRota(pagina, "simulado/S06/2");
+  await pagina.click('.opcao[data-letra="C"]');
+  await pagina.click("#proxima");
+  await esperarRota(pagina, "simulado/S06/3");
+  await pagina.reload();
+  await pagina.waitForSelector(".questao");
+  assert.match(await pagina.textContent("main h1"), /Questão 3/);
+  // pelo painel também dá para continuar
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".continuar"), /2 questões respondidas/);
+  await pagina.click(".continuar a");
+  await esperarRota(pagina, "simulado/S06");
+  assert.match(await pagina.textContent('[data-acao="comecar"]'), /Continuar da questão 3/);
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/S06/3");
+  // voltar e trocar a resposta
+  await pagina.click(".bolinha >> text=1");
+  await esperarRota(pagina, "simulado/S06/1");
+  assert.equal(await pagina.getAttribute('.opcao[data-letra="B"]', "aria-checked"), "true");
+  await pagina.click('.opcao[data-letra="D"]');
+  const salvo = await pagina.evaluate(() => JSON.parse(localStorage.getItem("simulados-mat:v1")).emAndamento.S06.respostas);
+  assert.deepEqual(salvo, { 1: "D", 2: "C" });
+  // a revisão mostra as em branco
+  await ir(pagina, "simulado/S06/revisao");
+  assert.match(await pagina.textContent("main"), /Ficaram 4 questões em branco/);
+  assert.equal(await larguraDaPagina(pagina), 390);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("figura amplia com um toque e fecha com Esc", async () => {
+  const { pagina } = await abrir();
+  await ir(pagina, "simulado/S07/3");
+  assert.ok(await pagina.getAttribute(".questao figure img", "alt"));
+  await pagina.click(".questao figure");
+  await pagina.waitForSelector(".zoom");
+  await pagina.keyboard.press("Escape");
+  assert.equal(await pagina.$(".zoom"), null);
+  await pagina.close();
+});
+
+test("as figuras de todas as questões carregam", async () => {
+  const { pagina } = await abrir(1280, 900);
+  const falhas = [];
+  pagina.on("response", (r) => { if (r.url().includes("/assets/") && r.status() >= 400) falhas.push(r.url()); });
+  for (const id of ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "E3-AV2"]) {
+    const sim = JSON.parse(await readFile(join(RAIZ, id.startsWith("E") ? `data/prova/${id}.json` : `data/avalia/${id}.json`), "utf-8"));
+    for (const it of sim.items.filter((i) => i.figure)) {
+      await ir(pagina, `simulado/${id}/${it.n}`);
+      const ok = await pagina.$eval(".questao figure img", (img) => img.complete || new Promise((r) => { img.onload = () => r(true); img.onerror = () => r(false); }))
+        .then(() => pagina.$eval(".questao figure img", (img) => img.naturalWidth > 0));
+      if (!ok) falhas.push(`${id} Q${it.n}`);
+    }
+  }
+  assert.deepEqual(falhas, []);
   await pagina.close();
 });
 

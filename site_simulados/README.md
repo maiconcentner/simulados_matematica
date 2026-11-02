@@ -27,6 +27,8 @@ python3 -m http.server 8000
 e abrir `http://localhost:8000`.
 
 ## Testes
+Cobrem o gerador, as telas no celular e no computador (sem rolagem lateral, sem erro no console), o simulado com resposta salva a cada toque e a continuação depois de recarregar.
+
 Precisa de Node 18 ou mais novo.
 ```
 npm install
