@@ -1,0 +1,419 @@
+{
+ "id": "S03",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 3",
+ "semana": 3,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-10-05",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 8 (semelhança e funções do 1º grau) e retomadas de E1, E2 e da Semana 2",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C13": "para frequência relativa, divida o número de ocorrências pelo total de dados e multiplique por 100; não confunda com a frequência acumulada (soma até aquela linha).",
+  "D09": "para fatorar uma diferença de quadrados (a² − b²), escreva o produto (a − b)(a + b); não confunda com o quadrado da diferença, que tem um termo do meio.",
+  "D17": "para justificar que dois triângulos são semelhantes, basta mostrar dois pares de ângulos correspondentes congruentes (caso AA); não é preciso conhecer os lados.",
+  "D02": "para associar uma tabela a uma lei, calcule a taxa de variação entre duas linhas e confira se ela se repete nas outras linhas, antes de montar a lei.",
+  "D12": "para montar f(x) = ax + b a partir de uma tabela, calcule primeiro a (a diferença de y dividida pela diferença de x) e só depois substitua um ponto para achar b.",
+  "D14": "para reconhecer o lado de um quadrado perfeito, tire a raiz quadrada dos termos das pontas e confira se o dobro do produto deles bate com o termo do meio."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C13",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Frequência relativa em tabela",
+   "descriptor": "Identificar a frequência (relativa, absoluta ou acumulada) de determinados elementos dentro de um conjunto de dados.",
+   "stem": [
+    "Uma escola perguntou a 40 alunos do 9º ano qual é o seu gênero de filme favorito. O resultado está na tabela a seguir."
+   ],
+   "table": {
+    "header": [
+     "Gênero de filme",
+     "Número de alunos"
+    ],
+    "rows": [
+     [
+      "Comédia",
+      "16"
+     ],
+     [
+      "Ação",
+      "10"
+     ],
+     [
+      "Terror",
+      "6"
+     ],
+     [
+      "Drama",
+      "8"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual é a frequência relativa dos alunos que escolheram terror como gênero favorito?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6%",
+     "correct": false,
+     "why": "Tratou o número absoluto de alunos que escolheram terror (6) como se já fosse a porcentagem, sem dividir pelo total."
+    },
+    {
+     "letter": "B",
+     "text": "15%",
+     "correct": true,
+     "why": "Acerto. Frequência relativa = 6 ÷ 40 = 0,15 = 15%."
+    },
+    {
+     "letter": "C",
+     "text": "25%",
+     "correct": false,
+     "why": "Calculou a frequência relativa de Ação (10 ÷ 40 = 25%) em vez de terror, trocando a linha da tabela."
+    },
+    {
+     "letter": "D",
+     "text": "80%",
+     "correct": false,
+     "why": "Somou a frequência acumulada até terror (comédia + ação + terror = 16 + 10 + 6 = 32; 32 ÷ 40 = 80%), confundindo relativa com acumulada."
+    },
+    {
+     "letter": "E",
+     "text": "85%",
+     "correct": false,
+     "why": "Calculou o complementar (100% − 15% = 85%), ou seja, a frequência de quem NÃO escolheu terror."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "O total de alunos pesquisados é 40.",
+    "O número de alunos que escolheram terror é 6.",
+    "Frequência relativa = 6 ÷ 40 = 0,15 = 15%."
+   ],
+   "check": "As frequências relativas de todos os gêneros somam 100%: comédia 40% + ação 25% + terror 15% + drama 20% = 100%."
+  },
+  {
+   "n": 2,
+   "code": "D09",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Diferença de quadrados (fatoração)",
+   "descriptor": "Fatorar expressões com diferenças de quadrados.",
+   "stem": [
+    "Um pátio quadrado de uma fábrica tem lado medindo 12 metros e é todo pavimentado com concreto. No centro desse pátio, foi construído um canteiro quadrado de flores, de lado x metros (x menor que 12 metros)."
+   ],
+   "figure": {
+    "alt": "Quadrado maior representando o pátio, de lado 12 m, com um quadrado menor de lado x no centro representando o canteiro de flores.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s03/q2.png"
+   },
+   "table": null,
+   "ask": "Qual expressão fatorada representa, em metros quadrados, a área do pátio que continua pavimentada (ou seja, sem o canteiro)?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(12 − x)(12 + x)",
+     "correct": true,
+     "why": "Acerto. A área restante é a diferença entre os quadrados dos lados: 12² − x² = (12 − x)(12 + x)."
+    },
+    {
+     "letter": "B",
+     "text": "(12 + x)²",
+     "correct": false,
+     "why": "Aplicou o quadrado da soma, (a+b)² = a² + 2ab + b², no lugar da diferença de quadrados. O canteiro é subtraído da área do pátio, não somado a ela."
+    },
+    {
+     "letter": "C",
+     "text": "(12 − x)²",
+     "correct": false,
+     "why": "Confundiu a² − b² com (a − b)². Faltou o fator (a + b): a diferença de quadrados não é o quadrado da diferença."
+    },
+    {
+     "letter": "D",
+     "text": "144 − x",
+     "correct": false,
+     "why": "Subtraiu x da área do pátio sem elevar x ao quadrado. A área do canteiro quadrado de lado x é x², não x."
+    },
+    {
+     "letter": "E",
+     "text": "(x − 12)(x + 12)",
+     "correct": false,
+     "why": "Trocou a ordem dos termos na fatoração. Como x é menor que 12, essa expressão resulta em um valor negativo, o que não pode representar uma área."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "A área do pátio inteiro é 12² = 144 m². A área do canteiro quadrado é x².",
+    "A área restante é a diferença: 144 − x², uma diferença de quadrados.",
+    "Fatorando: 144 − x² = 12² − x² = (12 − x)(12 + x)."
+   ],
+   "check": "Testando x = 5: área restante = 144 − 25 = 119 m². Pela forma fatorada: (12 − 5)(12 + 5) = 7 × 17 = 119. Confere."
+  },
+  {
+   "n": 3,
+   "code": "D17",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Condições de semelhança de triângulos",
+   "descriptor": "Reconhecer as condições para que dois triângulos sejam semelhantes.",
+   "stem": [
+    "Uma gráfica vai recortar em tecido duas bandeirolas triangulares para a decoração de uma festa. A bandeirola A tem ângulos internos de 50° e 70°. A bandeirola B, que será pendurada em um mastro maior, também tem ângulos internos de 50° e 70°, mas com lados de medidas diferentes das de A."
+   ],
+   "figure": {
+    "alt": "Dois triângulos, A menor e B maior, cada um com ângulos internos marcados de 50° e 70°.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s03/q3.png"
+   },
+   "table": null,
+   "ask": "Com base nos ângulos indicados, o que se pode concluir sobre os triângulos A e B?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "São congruentes, pois têm os mesmos ângulos e, por isso, o mesmo tamanho.",
+     "correct": false,
+     "why": "Ter os mesmos ângulos garante a mesma forma, não o mesmo tamanho. Dois triângulos com ângulos iguais e lados diferentes são semelhantes, não congruentes."
+    },
+    {
+     "letter": "B",
+     "text": "Não são semelhantes, pois não se sabe a medida dos lados correspondentes.",
+     "correct": false,
+     "why": "Exige mais informação do que o necessário: o caso Ângulo-Ângulo (AA) garante a semelhança só com os ângulos, sem precisar conhecer os lados."
+    },
+    {
+     "letter": "C",
+     "text": "São semelhantes pelo caso Lado-Lado-Lado (LLL), já que os três ângulos garantem lados proporcionais.",
+     "correct": false,
+     "why": "O caso LLL compara os três lados correspondentes, não os ângulos. Com apenas os ângulos conhecidos, o caso correto é o Ângulo-Ângulo (AA)."
+    },
+    {
+     "letter": "D",
+     "text": "São semelhantes pelo caso Ângulo-Ângulo (AA), pois dois pares de ângulos correspondentes são congruentes.",
+     "correct": true,
+     "why": "Acerto. Dois ângulos correspondentes congruentes (50° e 70°, o que garante também o terceiro, 60°) bastam para garantir a semelhança pelo caso AA."
+    },
+    {
+     "letter": "E",
+     "text": "Não são semelhantes, pois peças de tamanhos diferentes nunca podem ser semelhantes.",
+     "correct": false,
+     "why": "É o contrário: dois triângulos com os mesmos ângulos e tamanhos diferentes são exatamente um exemplo de triângulos semelhantes (mas não congruentes)."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Os dois triângulos têm dois ângulos correspondentes com a mesma medida: 50° e 70°.",
+    "Pela soma dos ângulos internos de um triângulo (180°), o terceiro ângulo de cada um também é igual: 180° − 50° − 70° = 60°.",
+    "Dois pares de ângulos correspondentes congruentes bastam para garantir a semelhança: caso Ângulo-Ângulo (AA)."
+   ],
+   "check": "Não é preciso conhecer nenhuma medida de lado para aplicar o caso AA. Por isso ele é o critério mais direto quando o problema só informa ângulos."
+  },
+  {
+   "n": 4,
+   "code": "D02",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Associar função a tabela",
+   "descriptor": "Associar funções a tabelas ou gráficos que as representam.",
+   "stem": [
+    "Uma locadora de bicicletas cobra um valor que depende do tempo de uso. A tabela mostra o valor total pago, de acordo com o número de horas de uso."
+   ],
+   "table": {
+    "header": [
+     "Tempo de uso (horas)",
+     "Valor pago (R$)"
+    ],
+    "rows": [
+     [
+      "1",
+      "8,00"
+     ],
+     [
+      "2",
+      "14,00"
+     ],
+     [
+      "3",
+      "20,00"
+     ],
+     [
+      "4",
+      "26,00"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual lei de formação relaciona o valor y, em reais, ao tempo x, em horas, de acordo com a tabela?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "y = 8x",
+     "correct": false,
+     "why": "Considerou só o primeiro par de valores da tabela (1 hora, R$ 8,00) e tratou a relação como proporcional direta, como se não houvesse valor fixo."
+    },
+    {
+     "letter": "B",
+     "text": "y = 6x + 2",
+     "correct": true,
+     "why": "Acerto. De uma linha para a próxima, o valor sempre aumenta R$ 6,00 (taxa de variação). Em x = 1, y = 8, então 6×1 + b = 8, logo b = 2: y = 6x + 2."
+    },
+    {
+     "letter": "C",
+     "text": "y = 6x + 8",
+     "correct": false,
+     "why": "Usou a taxa de variação correta (6) mas tomou o primeiro valor da tabela (8) como termo constante, sem descontar a parte já proporcional ao tempo."
+    },
+    {
+     "letter": "D",
+     "text": "y = −6x + 32",
+     "correct": false,
+     "why": "Leu a tabela de trás para frente, como se o valor diminuísse R$ 6,00 por hora a partir de x = 0, em vez de aumentar."
+    },
+    {
+     "letter": "E",
+     "text": "y = 6x",
+     "correct": false,
+     "why": "Usou a taxa de variação correta (6) mas esqueceu o valor fixo (termo constante) da locação."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "De uma linha para a seguinte, x aumenta 1 e y aumenta sempre 6: de 8 para 14, de 14 para 20, de 20 para 26. Essa é a taxa de variação, a = 6.",
+    "Para achar o termo constante b, substitui-se um ponto da tabela: em x = 1, y = 8. Então 6(1) + b = 8, logo b = 2.",
+    "A lei da função é y = 6x + 2."
+   ],
+   "check": "Testando x = 4: y = 6(4) + 2 = 26, que é exatamente o valor da tabela."
+  },
+  {
+   "n": 5,
+   "code": "D12",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Lei da função do 1º grau",
+   "descriptor": "Identificar representações algébricas de funções polinomiais do 1º grau.",
+   "stem": [
+    "Uma oficina mecânica cobra uma taxa fixa pela visita, mais um valor por hora de serviço. A tabela mostra o valor total cobrado, f(x), em reais, de acordo com o número de horas trabalhadas, x."
+   ],
+   "table": {
+    "header": [
+     "Horas trabalhadas (x)",
+     "Valor total (R$) f(x)"
+    ],
+    "rows": [
+     [
+      "1",
+      "70,00"
+     ],
+     [
+      "3",
+      "150,00"
+     ],
+     [
+      "5",
+      "230,00"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual é a lei da função representada pela tabela?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "f(x) = 30x + 40",
+     "correct": false,
+     "why": "Trocou o coeficiente angular pelo linear: usou 30 como taxa por hora e 40 como taxa fixa, invertendo os dois valores."
+    },
+    {
+     "letter": "B",
+     "text": "f(x) = 40x + 70",
+     "correct": false,
+     "why": "Usou a taxa de variação certa (40 por hora) mas tomou o primeiro valor da tabela (70) como taxa fixa, sem descontar a parte já cobrada pela hora trabalhada."
+    },
+    {
+     "letter": "C",
+     "text": "f(x) = 70x",
+     "correct": false,
+     "why": "Assumiu proporcionalidade direta a partir do primeiro par (1 hora, R$ 70,00), como se não houvesse taxa fixa."
+    },
+    {
+     "letter": "D",
+     "text": "f(x) = 40x + 30",
+     "correct": true,
+     "why": "Acerto. De x = 1 para x = 3, o valor sobe 150 − 70 = 80 em 2 horas, ou seja, 40 por hora. Em x = 1: 40(1) + b = 70, logo b = 30: f(x) = 40x + 30."
+    },
+    {
+     "letter": "E",
+     "text": "f(x) = 80x + 30",
+     "correct": false,
+     "why": "Calculou a diferença entre dois valores da tabela (150 − 70 = 80) e usou esse valor direto como taxa por hora, sem dividir pela diferença correspondente de horas (3 − 1 = 2)."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Entre x = 1 e x = 3, o valor sobe de 70 para 150, uma diferença de 80 reais em 2 horas. A taxa por hora (coeficiente angular) é 80 ÷ 2 = 40.",
+    "O coeficiente linear (taxa fixa) é o valor que se somaria em x = 0. Substituindo x = 1 na lei: 40(1) + b = 70, logo b = 30.",
+    "A lei da função é f(x) = 40x + 30."
+   ],
+   "check": "Testando x = 5: f(5) = 40(5) + 30 = 230, que é exatamente o valor da tabela."
+  },
+  {
+   "n": 6,
+   "code": "D14",
+   "role": "Retomada espaçada (6ª questão fixa)",
+   "level": "N4",
+   "short": "Produto notável (fatoração do quadrado perfeito)",
+   "descriptor": "Reconhecer a representação algébrica dos produtos notáveis.",
+   "stem": [
+    "Uma fábrica produz adesivos quadrados para revestir pisos. A área de cada adesivo, em centímetros quadrados, é dada pela expressão 9x² + 30x + 25."
+   ],
+   "figure": {
+    "alt": "Quadrado representando o adesivo, com a área 9x² + 30x + 25 indicada em seu interior.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s03/q6.png"
+   },
+   "table": null,
+   "ask": "Qual expressão representa a medida do lado desse adesivo, em centímetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3x − 5",
+     "correct": false,
+     "why": "Tira a raiz quadrada dos termos das pontas mas erra o sinal, tratando o trinômio como se fosse uma diferença de quadrados."
+    },
+    {
+     "letter": "B",
+     "text": "9x + 25",
+     "correct": false,
+     "why": "\"Divide\" os termos da área sem extrair raiz quadrada nenhuma: 9x² não é o dobro de 9x, e 25 já é o termo que deveria ter sua raiz quadrada calculada (5), não mantido."
+    },
+    {
+     "letter": "C",
+     "text": "3x + 5",
+     "correct": true,
+     "why": "Acerto. 9x² + 30x + 25 é um trinômio quadrado perfeito: 9x² = (3x)², 25 = 5² e 30x = 2 × (3x) × 5. Logo, a expressão é (3x + 5)², e o lado do adesivo é 3x + 5."
+    },
+    {
+     "letter": "D",
+     "text": "Não é possível indicar sem saber o valor de x",
+     "correct": false,
+     "why": "Não reconhece 9x² + 30x + 25 como um quadrado perfeito. Como os três termos conferem com (a + b)², a expressão pode ser fatorada sem precisar de um valor numérico de x."
+    },
+    {
+     "letter": "E",
+     "text": "3x² + 5",
+     "correct": false,
+     "why": "Erra o expoente ao tirar a raiz de 9x²: a raiz quadrada de 9x² é 3x, não 3x² (a raiz do quadrado de x é x, não x²)."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "A expressão 9x² + 30x + 25 é um trinômio quadrado perfeito: 9x² = (3x)², 25 = 5² e o termo do meio, 30x, é igual ao dobro do produto dos dois: 2 × (3x) × 5 = 30x.",
+    "Como os três termos conferem com (a + b)² = a² + 2ab + b², com a = 3x e b = 5, a expressão é o quadrado de (3x + 5).",
+    "O lado do adesivo é, portanto, 3x + 5 centímetros."
+   ],
+   "check": "Testando x = 2: lado = 3(2) + 5 = 11 cm, e a área seria 11² = 121 cm². Pela expressão original: 9(2)² + 30(2) + 25 = 36 + 60 + 25 = 121. Confere."
+  }
+ ]
+}

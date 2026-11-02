@@ -1,0 +1,169 @@
+{
+ "site": {
+  "titulo": "Simulados de Matemática",
+  "autor": "Prof. Maicon Centner Germano",
+  "serie": "9º ano"
+ },
+ "areas": [
+  {
+   "id": "avalia",
+   "titulo": "Simulados Avalia",
+   "descricao": "Um simulado por semana, com 5 ou 6 questões dos descritores da etapa.",
+   "simulados": [
+    {
+     "id": "S01",
+     "titulo": "Simulado Avalia · Semana 1",
+     "subtitulo": "Cap. 7 (estatística e probabilidade) e retomadas de E1 e E2",
+     "etapa": 3,
+     "semana": 1,
+     "data": "2026-09-21",
+     "n_questoes": 5,
+     "habilidades": [
+      "C27",
+      "D31",
+      "D13",
+      "D30",
+      "D20"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S01.json"
+    },
+    {
+     "id": "S02",
+     "titulo": "Simulado Avalia · Semana 2",
+     "subtitulo": "Cap. 7 (contagem, probabilidade e produtos notáveis) e retomadas de E1 e E2",
+     "etapa": 3,
+     "semana": 2,
+     "data": "2026-09-28",
+     "n_questoes": 5,
+     "habilidades": [
+      "C31",
+      "D14",
+      "D33",
+      "D27"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S02.json"
+    },
+    {
+     "id": "S03",
+     "titulo": "Simulado Avalia · Semana 3",
+     "subtitulo": "Cap. 8 (semelhança e funções do 1º grau) e retomadas de E1, E2 e da Semana 2",
+     "etapa": 3,
+     "semana": 3,
+     "data": "2026-10-05",
+     "n_questoes": 6,
+     "habilidades": [
+      "C13",
+      "D09",
+      "D17",
+      "D02",
+      "D12",
+      "D14"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S03.json"
+    },
+    {
+     "id": "S04",
+     "titulo": "Simulado Avalia · Semana 4",
+     "subtitulo": "Cap. 8 (funções), conexão com o 8º ano e retomadas de E1, E2 e da Semana 3",
+     "etapa": 3,
+     "semana": 4,
+     "data": "2026-10-12",
+     "n_questoes": 6,
+     "habilidades": [
+      "C05",
+      "D10",
+      "D22",
+      "D07",
+      "D11",
+      "D09"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S04.json"
+    },
+    {
+     "id": "S05",
+     "titulo": "Simulado Avalia · Semana 5",
+     "subtitulo": "Cap. 8 (funções), conexão com o 8º ano e retomadas de E1, E2 e da Semana 2",
+     "etapa": 3,
+     "semana": 5,
+     "data": "2026-10-19",
+     "n_questoes": 6,
+     "habilidades": [
+      "C01",
+      "D03",
+      "D25",
+      "D35",
+      "D12",
+      "D27"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S05.json"
+    },
+    {
+     "id": "S06",
+     "titulo": "Simulado Avalia · Semana 6",
+     "subtitulo": "Cap. 9 (vistas), conexão com o 8º ano e retomadas de E1, E2 e da Semana 4",
+     "etapa": 3,
+     "semana": 6,
+     "data": "2026-10-26",
+     "n_questoes": 6,
+     "habilidades": [
+      "C28",
+      "D01",
+      "D18",
+      "D37",
+      "D19",
+      "D10"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S06.json"
+    },
+    {
+     "id": "S07",
+     "titulo": "Simulado Avalia · Semana 7",
+     "subtitulo": "Cap. 9 (volumes), conexão com o 8º ano e retomadas de E1, E2 e da Semana 5",
+     "etapa": 3,
+     "semana": 7,
+     "data": "2026-11-02",
+     "n_questoes": 6,
+     "habilidades": [
+      "C24",
+      "D08",
+      "D05",
+      "D30",
+      "D06",
+      "D35"
+     ],
+     "status": "publicado",
+     "arquivo": "data/avalia/S07.json"
+    }
+   ]
+  },
+  {
+   "id": "prova",
+   "titulo": "Simulados de prova",
+   "descricao": "Treino no formato da avaliação da etapa: mesmas habilidades, mesmos níveis, questões novas.",
+   "simulados": [
+    {
+     "id": "E3-AV2",
+     "titulo": "Simulado da Avaliação Somativa · Etapa 3",
+     "subtitulo": "Funções · 10 questões no formato da avaliação: mesmas habilidades, níveis e pesos, com questões novas",
+     "etapa": 3,
+     "semana": null,
+     "data": null,
+     "n_questoes": 10,
+     "habilidades": [
+      "EF.09.MAT.2.87",
+      "EF.09.MAT.2.88",
+      "EF.09.MAT.2.89"
+     ],
+     "status": "publicado",
+     "arquivo": "data/prova/E3-AV2.json"
+    }
+   ]
+  }
+ ]
+}

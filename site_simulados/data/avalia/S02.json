@@ -1,0 +1,292 @@
+{
+ "id": "S02",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 2",
+ "semana": 2,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-09-28",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 7 (contagem, probabilidade e produtos notáveis) e retomadas de E1 e E2",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C31": "para contar combinações formadas por escolhas independentes (um item de cada grupo), multiplique o número de opções de cada grupo; não some.",
+  "D14": "para elevar uma soma ao quadrado, use (a+b)² = a² + 2ab + b² e não esqueça o termo do meio (2ab) nem os quadrados dos coeficientes.",
+  "D33": "para 'ou', some as probabilidades dos casos favoráveis sobre o total. Para o evento complementar ('não'), calcule 100% menos a probabilidade do evento.",
+  "D27": "no triângulo retângulo, cada cateto ao quadrado é igual ao produto da hipotenusa pela projeção desse cateto sobre ela. Antes de calcular, identifique onde está o ângulo reto para saber qual lado é a hipotenusa."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C31",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Princípio multiplicativo",
+   "descriptor": "Resolver problemas de contagem utilizando o princípio multiplicativo (número de combinações formadas por escolhas independentes).",
+   "stem": [
+    "Uma lanchonete monta sanduíches combinando 1 tipo de pão, escolhido entre 4 disponíveis (branco, integral, australiano e brioche), com 1 tipo de recheio, escolhido entre 3 disponíveis (frango, atum e vegetariano). Cada sanduíche tem exatamente um pão e um recheio."
+   ],
+   "table": null,
+   "ask": "Quantos sanduíches diferentes é possível montar dessa forma?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3",
+     "correct": false,
+     "why": "Contou só os recheios (3), sem multiplicar pelos pães."
+    },
+    {
+     "letter": "B",
+     "text": "4",
+     "correct": false,
+     "why": "Contou só os pães (4), sem multiplicar pelos recheios."
+    },
+    {
+     "letter": "C",
+     "text": "7",
+     "correct": false,
+     "why": "Somou as duas quantidades (4 pães + 3 recheios = 7) em vez de multiplicar. A soma não representa todas as combinações possíveis."
+    },
+    {
+     "letter": "D",
+     "text": "12",
+     "correct": true,
+     "why": "Acerto. Para cada um dos 4 pães há 3 recheios possíveis: 4 × 3 = 12 sanduíches diferentes."
+    },
+    {
+     "letter": "E",
+     "text": "24",
+     "correct": false,
+     "why": "Contou cada combinação de pão e recheio duas vezes, como se 'pão e depois recheio' fosse diferente de 'recheio e depois pão'. Em um sanduíche de 1 pão + 1 recheio, a ordem não importa: são 4 × 3 = 12 combinações, não 4 × 3 × 2."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Para montar um sanduíche, é preciso escolher 1 pão entre 4 opções e 1 recheio entre 3 opções.",
+    "Pelo princípio multiplicativo, o total de combinações é o produto do número de opções de cada escolha: 4 × 3.",
+    "4 × 3 = 12 sanduíches diferentes."
+   ],
+   "check": "12 está entre o maior valor isolado (4) e o total de opções somadas (7), e é bem menor que o dobro (24), o que é coerente com uma combinação simples de 1 pão + 1 recheio."
+  },
+  {
+   "n": 2,
+   "code": "D14",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Produto notável (quadrado da soma)",
+   "descriptor": "Resolver e/ou interpretar produtos notáveis (quadrado da soma e da diferença de dois termos) na forma algébrica.",
+   "stem": [
+    "Uma praça terá um canteiro quadrado de lado (2p + 5q) metros, sendo p e q medidas em metros. A prefeitura precisa da expressão algébrica que representa a área desse canteiro, em função de p e q, para calcular a quantidade de grama necessária."
+   ],
+   "figure": {
+    "alt": "Quadrado com todos os quatro lados medindo (2p + 5q) metros.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s02/q2.png"
+   },
+   "table": null,
+   "ask": "Qual expressão representa corretamente a área do canteiro?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4p² + 20pq + 25q²",
+     "correct": true,
+     "why": "Acerto. (a+b)² = a² + 2ab + b², com a = 2p e b = 5q: (2p)² + 2(2p)(5q) + (5q)² = 4p² + 20pq + 25q²."
+    },
+    {
+     "letter": "B",
+     "text": "4p² + 25q²",
+     "correct": false,
+     "why": "Elevou cada termo ao quadrado mas esqueceu o dobro do produto dos termos (2ab). O quadrado da soma tem três termos, não dois."
+    },
+    {
+     "letter": "C",
+     "text": "4p² + 10pq + 25q²",
+     "correct": false,
+     "why": "Usou o produto dos termos, (2p)(5q) = 10pq, sem multiplicar por 2. O termo do meio de (a+b)² é 2ab, não ab."
+    },
+    {
+     "letter": "D",
+     "text": "p² + 20pq + 25q²",
+     "correct": false,
+     "why": "Elevou ao quadrado a variável do primeiro termo mas esqueceu de elevar também o coeficiente: (2p)² é 4p², não p²."
+    },
+    {
+     "letter": "E",
+     "text": "4p² − 20pq + 25q²",
+     "correct": false,
+     "why": "Aplicou a fórmula do quadrado da diferença, (a−b)² = a² − 2ab + b², em vez da soma. O lado do canteiro é (2p + 5q), uma soma, não uma diferença."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "A área do canteiro é o quadrado do lado: (2p + 5q)². Esse é o quadrado de uma soma de dois termos, a = 2p e b = 5q.",
+    "Aplicar (a + b)² = a² + 2ab + b²: a² = (2p)² = 4p²; 2ab = 2 × (2p) × (5q) = 20pq; b² = (5q)² = 25q².",
+    "Somando os três termos: 4p² + 20pq + 25q²."
+   ],
+   "check": "Substituindo p = 2 e q = 3: o lado vale 2(2) + 5(3) = 19 m, e a área deveria ser 19² = 361 m². Na expressão 4p² + 20pq + 25q², com p = 2 e q = 3: 16 + 120 + 225 = 361. Confere."
+  },
+  {
+   "n": 3,
+   "code": "D33",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Probabilidade (evento 'ou')",
+   "descriptor": "Resolver problemas envolvendo o cálculo da probabilidade de um evento em espaços amostrais equiprováveis.",
+   "stem": [
+    "Uma urna contém 5 bolas vermelhas, 3 bolas azuis e 2 bolas verdes, todas do mesmo tamanho e do mesmo material. Uma bola é retirada dessa urna ao acaso."
+   ],
+   "table": null,
+   "ask": "Qual é a probabilidade de a bola retirada ser vermelha ou verde?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10%",
+     "correct": false,
+     "why": "Multiplicou as probabilidades das cores em vez de somar (5/10 × 2/10 = 10%). Como o evento é 'vermelha ou verde', as probabilidades se somam, não se multiplicam."
+    },
+    {
+     "letter": "B",
+     "text": "20%",
+     "correct": false,
+     "why": "Considerou só as bolas verdes (2 em 10), esquecendo as vermelhas."
+    },
+    {
+     "letter": "C",
+     "text": "30%",
+     "correct": false,
+     "why": "Considerou só as bolas azuis (3 em 10), que não fazem parte do evento perguntado."
+    },
+    {
+     "letter": "D",
+     "text": "50%",
+     "correct": false,
+     "why": "Considerou só as bolas vermelhas (5 em 10), esquecendo as verdes."
+    },
+    {
+     "letter": "E",
+     "text": "70%",
+     "correct": true,
+     "why": "Acerto. Vermelha ou verde: 5 + 2 = 7 bolas favoráveis em 10. P = 7/10 = 0,70 = 70%."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "O total de bolas na urna é 5 + 3 + 2 = 10.",
+    "O evento 'vermelha ou verde' é favorecido por 5 + 2 = 7 bolas.",
+    "A probabilidade é o número de casos favoráveis dividido pelo total: 7/10 = 0,70 = 70%."
+   ],
+   "check": "As probabilidades de todas as cores somam 100%: vermelha 50% + azul 30% + verde 20% = 100%. Vermelha ou verde: 50% + 20% = 70%."
+  },
+  {
+   "n": 4,
+   "code": "D27",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Relações métricas no triângulo retângulo",
+   "descriptor": "Resolver problemas envolvendo relações métricas no triângulo retângulo (catetos, hipotenusa, altura e suas projeções).",
+   "stem": [
+    "A imagem a seguir mostra o desenho da frente de uma casa, com o telhado em destaque. O telhado foi projetado de forma que o encontro dos seus dois lados inclinados forma um ângulo de 90°. A base do telhado, no nível do forro, mede 15 m e é dividida em dois trechos pelo pé dessa altura: 5,4 m do lado esquerdo e 9,6 m do lado direito."
+   ],
+   "figure": {
+    "alt": "Triângulo representando o telhado, com ângulo reto no vértice superior (encontro dos dois lados inclinados). A base horizontal mede 15 m, dividida em 5,4 m à esquerda e 9,6 m à direita pelo pé da altura.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s02/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é o comprimento do menor lado inclinado desse telhado?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4,2 m",
+     "correct": false,
+     "why": "Diferença entre os dois segmentos da base (9,6 − 5,4 = 4,2). Essa diferença não corresponde a nenhum lado do telhado."
+    },
+    {
+     "letter": "B",
+     "text": "5,4 m",
+     "correct": false,
+     "why": "Usou diretamente a medida do menor segmento da base (a projeção do lado sobre a base), sem calcular o lado inclinado."
+    },
+    {
+     "letter": "C",
+     "text": "7,2 m",
+     "correct": false,
+     "why": "Calculou a altura do telhado, que é a média geométrica dos dois segmentos da base (√(5,4 × 9,6) = 7,2), no lugar do lado inclinado pedido."
+    },
+    {
+     "letter": "D",
+     "text": "9 m",
+     "correct": true,
+     "why": "Acerto. Cada lado inclinado é a média geométrica entre a base (hipotenusa) e a projeção desse lado sobre ela: lado² = base × projeção. Para o menor lado, a projeção é 5,4 m: lado² = 15 × 5,4 = 81, logo lado = 9 m."
+    },
+    {
+     "letter": "E",
+     "text": "15 m",
+     "correct": false,
+     "why": "Usou diretamente a medida total da base do telhado, sem calcular o lado inclinado."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "O ângulo reto está no encontro dos dois lados inclinados (o vértice superior do telhado). Por isso, a base do telhado (15 m) é a hipotenusa do triângulo, e os dois lados inclinados são os catetos.",
+    "Relação métrica: cada cateto ao quadrado é igual ao produto da hipotenusa pela projeção desse cateto sobre ela. Para o menor lado, a projeção é 5,4 m: lado² = 15 × 5,4 = 81.",
+    "lado = √81 = 9 m."
+   ],
+   "check": "O outro lado inclinado: √(15 × 9,6) = √144 = 12 m. Conferindo com o Teorema de Pitágoras: 9² + 12² = 81 + 144 = 225 = 15². Está correto."
+  },
+  {
+   "n": 5,
+   "code": "D33",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Probabilidade (evento complementar)",
+   "descriptor": "Resolver problemas envolvendo o cálculo da probabilidade de um evento em espaços amostrais equiprováveis.",
+   "stem": [
+    "Em uma caixa há 20 cartões numerados de 1 a 20, sem repetição. Um cartão é retirado dessa caixa ao acaso."
+   ],
+   "table": null,
+   "ask": "Qual é a probabilidade de o número desse cartão não ser múltiplo de 4?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "25%",
+     "correct": false,
+     "why": "Calculou a probabilidade de o número SER múltiplo de 4 (5/20 = 25%), o evento contrário ao que foi perguntado."
+    },
+    {
+     "letter": "B",
+     "text": "30%",
+     "correct": false,
+     "why": "Contou 6 múltiplos de 4 entre 1 e 20, incluindo o 0 (que não está entre os cartões, pois o intervalo começa em 1): 6/20 = 30%. Só há 5 múltiplos de 4 nesse intervalo (4, 8, 12, 16 e 20)."
+    },
+    {
+     "letter": "C",
+     "text": "75%",
+     "correct": true,
+     "why": "Acerto. Múltiplos de 4 entre 1 e 20: 4, 8, 12, 16 e 20 (5 cartões). Não múltiplos de 4: 20 − 5 = 15. P = 15/20 = 0,75 = 75%."
+    },
+    {
+     "letter": "D",
+     "text": "80%",
+     "correct": false,
+     "why": "Contou só 4 múltiplos de 4 (esqueceu um deles, como o 4 ou o 20): 20 − 4 = 16 não múltiplos; 16/20 = 80%."
+    },
+    {
+     "letter": "E",
+     "text": "400%",
+     "correct": false,
+     "why": "Inverteu a fração (dividiu o total pelo número de casos favoráveis: 20/5) em vez de casos favoráveis pelo total. Uma probabilidade nunca passa de 100%."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Múltiplos de 4 entre 1 e 20: 4, 8, 12, 16 e 20. São 5 cartões.",
+    "Cartões que NÃO são múltiplos de 4: 20 − 5 = 15.",
+    "P = casos favoráveis / total = 15/20 = 0,75 = 75%."
+   ],
+   "check": "P(múltiplo de 4) + P(não múltiplo de 4) = 25% + 75% = 100%."
+  }
+ ]
+}

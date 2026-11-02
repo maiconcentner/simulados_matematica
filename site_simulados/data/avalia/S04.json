@@ -1,0 +1,355 @@
+{
+ "id": "S04",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 4",
+ "semana": 4,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-10-12",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 8 (funções), conexão com o 8º ano e retomadas de E1, E2 e da Semana 3",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C05": "divida o número sempre pelo menor primo possível (2, 3, 5, 7...) até o quociente chegar a 1, e confira multiplicando os fatores; lembre que o 1 não é primo e que fatores como 6 ou 9 ainda se decompõem.",
+  "D10": "para completar x² + bx + k como quadrado perfeito, divida b por 2 e eleve o resultado ao quadrado; confira se o termo do meio é o dobro do produto das raízes dos extremos.",
+  "D22": "identifique qual grandeza depende de qual, escreva a lei que liga as duas e, se o dado do problema for a grandeza que depende, desfaça as operações na ordem inversa para achar a outra.",
+  "D07": "antes de calcular, classifique o par de ângulos pela posição: correspondentes e alternos são iguais; colaterais somam 180°.",
+  "D11": "leia cada eixo separadamente: o domínio são os valores de x (eixo horizontal) e a imagem são os valores de y (eixo vertical), com os extremos incluídos quando o gráfico tem bolinha cheia.",
+  "D09": "para fatorar uma diferença de quadrados (a² − b²), extraia a raiz de cada termo e escreva (a − b)(a + b); não confunda com o quadrado da diferença, que tem um termo do meio."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C05",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Decomposição em fatores primos",
+   "descriptor": "Decompor números naturais em fatores primos.",
+   "stem": [
+    "Uma professora organizou 180 cartas de um jogo e decidiu decompor o número 180 em fatores primos para planejar a divisão das cartas em grupos iguais."
+   ],
+   "table": null,
+   "ask": "Qual das alternativas apresenta a decomposição de 180 em fatores primos?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "2 × 2 × 5 × 9",
+     "correct": false,
+     "why": "Parou a decomposição no 9, que ainda é composto (9 = 3 × 3). Em uma decomposição em fatores primos, todos os fatores precisam ser primos."
+    },
+    {
+     "letter": "B",
+     "text": "2² × 3² × 5",
+     "correct": true,
+     "why": "Acerto. Dividindo 180 sempre pelo menor primo possível, obtém-se 2, 2, 3, 3 e 5, todos primos: 180 = 2² × 3² × 5."
+    },
+    {
+     "letter": "C",
+     "text": "2 × 3 × 5 × 6",
+     "correct": false,
+     "why": "Usou o 6 como fator, mas 6 é composto (2 × 3). A decomposição só termina quando todos os fatores são primos."
+    },
+    {
+     "letter": "D",
+     "text": "2² × 3 × 5",
+     "correct": false,
+     "why": "Perdeu um dos fatores 3: 2² × 3 × 5 = 60, e não 180. Conferir o produto mostra o erro."
+    },
+    {
+     "letter": "E",
+     "text": "1 × 2² × 3² × 5",
+     "correct": false,
+     "why": "Incluiu o 1 como fator. O 1 não é primo (e multiplicar por 1 não muda o resultado), então não faz parte da decomposição."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Divide-se 180 sempre pelo menor número primo possível: 180 ÷ 2 = 90, 90 ÷ 2 = 45, 45 ÷ 3 = 15, 15 ÷ 3 = 5 e 5 ÷ 5 = 1.",
+    "Os divisores usados foram 2, 2, 3, 3 e 5, todos primos. A decomposição termina quando o quociente chega a 1.",
+    "Logo, 180 = 2 × 2 × 3 × 3 × 5 = 2² × 3² × 5."
+   ],
+   "check": "Multiplicando os fatores: 4 × 9 × 5 = 180. Além disso, nenhum fator da lista pode ser dividido por outro número além de 1 e dele mesmo."
+  },
+  {
+   "n": 2,
+   "code": "D10",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Termo que completa o trinômio quadrado perfeito",
+   "descriptor": "Fatorar expressões com o trinômio do quadrado perfeito.",
+   "stem": [
+    "Um engenheiro projetou um deck quadrado para uma praça. A área desse deck, em metros quadrados, é dada pela expressão x² + 14x + k, em que k é um número positivo. O lado do deck mede (x + a) metros, para algum número a."
+   ],
+   "table": null,
+   "ask": "Qual é o valor de k, em metros quadrados?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "7",
+     "correct": false,
+     "why": "Calculou o valor de a (a metade de 14), mas esqueceu de elevar ao quadrado. O termo que falta é a², e não a."
+    },
+    {
+     "letter": "B",
+     "text": "14",
+     "correct": false,
+     "why": "Repetiu o coeficiente do termo do meio (14) como se ele fosse o termo independente."
+    },
+    {
+     "letter": "C",
+     "text": "28",
+     "correct": false,
+     "why": "Multiplicou 14 por 2 em vez de dividir por 2. O termo do meio de (x + a)² é 2ax, então a = 14 ÷ 2."
+    },
+    {
+     "letter": "D",
+     "text": "49",
+     "correct": true,
+     "why": "Acerto. 14x = 2 · x · a, logo a = 7, e k = a² = 49. A expressão x² + 14x + 49 é o quadrado de (x + 7)."
+    },
+    {
+     "letter": "E",
+     "text": "196",
+     "correct": false,
+     "why": "Elevou o 14 ao quadrado (14² = 196) em vez de elevar a metade dele. O termo do meio é o dobro de a, então a = 7 e a² = 49."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Um quadrado de lado (x + a) tem área (x + a)² = x² + 2ax + a².",
+    "Comparando com x² + 14x + k, o termo do meio dá 2a = 14, logo a = 7.",
+    "O termo independente é a² = 7² = 49. Então k = 49 e a expressão é x² + 14x + 49 = (x + 7)²."
+   ],
+   "check": "Testando x = 1: o lado seria 1 + 7 = 8 e a área 8² = 64. Pela expressão: 1 + 14 + 49 = 64. Confere."
+  },
+  {
+   "n": 3,
+   "code": "D22",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Dependência entre duas variáveis",
+   "descriptor": "Resolver problemas que envolvam a dependência entre duas variáveis.",
+   "stem": [
+    "Em uma cidade, o aluguel de patinetes elétricos funciona assim: o usuário paga R$ 3,00 para destravar o patinete e mais R$ 1,50 por minuto de uso. O valor total pago depende do tempo de uso.",
+    "Uma usuária pagou R$ 18,00 no total por uma corrida."
+   ],
+   "table": null,
+   "ask": "Por quantos minutos ela usou o patinete?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10",
+     "correct": true,
+     "why": "Acerto. O valor pago V depende do tempo t: V = 3 + 1,50 · t. Com V = 18: 1,50 · t = 15, logo t = 10 minutos."
+    },
+    {
+     "letter": "B",
+     "text": "12",
+     "correct": false,
+     "why": "Dividiu os R$ 18,00 por R$ 1,50 sem descontar antes os R$ 3,00 do desbloqueio, que são cobrados uma vez só e não dependem do tempo."
+    },
+    {
+     "letter": "C",
+     "text": "15",
+     "correct": false,
+     "why": "Descontou os R$ 3,00 e parou em 18 − 3 = 15, sem dividir por R$ 1,50 por minuto. O 15 ainda é um valor em reais, e não um tempo em minutos."
+    },
+    {
+     "letter": "D",
+     "text": "18",
+     "correct": false,
+     "why": "Tratou o valor pago como se fosse o tempo de uso, trocando a variável que depende (o valor) pela que a determina (o tempo)."
+    },
+    {
+     "letter": "E",
+     "text": "22,5",
+     "correct": false,
+     "why": "Multiplicou 15 por 1,50 em vez de dividir. O valor é calculado a partir do tempo, então, para achar o tempo, é preciso fazer a operação inversa."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "O valor total V (variável que depende) é função do tempo t (variável que escolhemos): V = 3 + 1,50 · t.",
+    "Como o valor pago foi 18: 3 + 1,50 · t = 18, então 1,50 · t = 15.",
+    "t = 15 ÷ 1,50 = 10. A usuária usou o patinete por 10 minutos."
+   ],
+   "check": "Substituindo t = 10: V = 3 + 1,50 · 10 = 3 + 15 = 18, que é exatamente o valor pago."
+  },
+  {
+   "n": 4,
+   "code": "D07",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Ângulos colaterais internos entre paralelas",
+   "descriptor": "Determinar a medida de um ângulo desconhecido em um feixe de retas paralelas interceptadas por transversais.",
+   "stem": [
+    "Duas ripas horizontais, r e s, de um portão de madeira são paralelas. Uma terceira ripa, t, cruza as duas e forma os ângulos indicados na figura, medidos em graus."
+   ],
+   "figure": {
+    "alt": "Duas retas horizontais paralelas, r em cima e s embaixo, cortadas por uma transversal t inclinada. Entre as paralelas, do mesmo lado da transversal, estão marcados dois ângulos: (3x + 5) graus, junto à reta r, e (2x + 15) graus, junto à reta s.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.2,
+    "file": "assets/figuras/avalia/s04/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a medida, em graus, do ângulo indicado por (3x + 5)°?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "35",
+     "correct": false,
+     "why": "Supôs os dois ângulos congruentes (3x + 5 = 2x + 15, x = 10), como se fossem alternos internos ou correspondentes. Colaterais internos não são iguais: somam 180°."
+    },
+    {
+     "letter": "B",
+     "text": "79",
+     "correct": false,
+     "why": "Resolveu corretamente (x = 32), mas respondeu a medida do outro ângulo, 2x + 15, e não a do ângulo (3x + 5)° pedido na questão."
+    },
+    {
+     "letter": "C",
+     "text": "101",
+     "correct": true,
+     "why": "Acerto. Colaterais internos entre paralelas somam 180°: (3x + 5) + (2x + 15) = 180, logo x = 32 e 3 · 32 + 5 = 101°."
+    },
+    {
+     "letter": "D",
+     "text": "113",
+     "correct": false,
+     "why": "Somou só 3x + 2x = 180 e ignorou os termos 5 e 15 (x = 36), obtendo 3 · 36 + 5 = 113."
+    },
+    {
+     "letter": "E",
+     "text": "125",
+     "correct": false,
+     "why": "Passou o 20 para o outro lado sem trocar o sinal: 5x = 180 + 20, x = 40 e 3 · 40 + 5 = 125. Ao mudar um termo de lado da igualdade, o sinal muda."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Os dois ângulos estão entre as paralelas r e s e do mesmo lado da transversal t: são colaterais internos.",
+    "Colaterais internos entre paralelas são suplementares, ou seja, somam 180°: (3x + 5) + (2x + 15) = 180, então 5x + 20 = 180 e 5x = 160, logo x = 32.",
+    "O ângulo pedido mede 3 · 32 + 5 = 101°."
+   ],
+   "check": "O outro ângulo mede 2 · 32 + 15 = 79°, e 101° + 79° = 180°. Na figura, o ângulo de (3x + 5)° é obtuso e o de (2x + 15)° é agudo, como esperado."
+  },
+  {
+   "n": 5,
+   "code": "D11",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Imagem de uma função em um gráfico",
+   "descriptor": "Identificar domínio ou imagem de uma função.",
+   "stem": [
+    "Um reservatório com 600 litros de água começou a ser esvaziado por um ralo, com vazão constante. O gráfico mostra o volume V de água no reservatório, em litros, em função do tempo t, em minutos, desde a abertura do ralo até o reservatório ficar vazio."
+   ],
+   "figure": {
+    "alt": "Gráfico de uma reta decrescente: volume V em litros no eixo vertical, de 0 a 600, e tempo t em minutos no eixo horizontal, de 0 a 30. A reta liga o ponto (0; 600) ao ponto (30; 0), ambos marcados com bolinha cheia.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s04/q5.png"
+   },
+   "table": null,
+   "ask": "Qual é o conjunto imagem dessa função?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0 ≤ t ≤ 30",
+     "correct": false,
+     "why": "Indicou o domínio (valores de t, no eixo horizontal) no lugar da imagem (valores de V, no eixo vertical)."
+    },
+    {
+     "letter": "B",
+     "text": "0 ≤ t ≤ 600",
+     "correct": false,
+     "why": "Misturou os eixos: usou a letra t com o maior valor de V. O tempo só vai até 30 minutos."
+    },
+    {
+     "letter": "C",
+     "text": "0 ≤ V ≤ 30",
+     "correct": false,
+     "why": "Misturou os eixos: usou a letra V com o maior valor de t. O volume vai até 600 litros."
+    },
+    {
+     "letter": "D",
+     "text": "0 < V < 600",
+     "correct": false,
+     "why": "Excluiu os extremos. Os pontos (0; 600) e (30; 0) fazem parte do gráfico (bolinhas cheias), então V = 600 e V = 0 também pertencem à imagem."
+    },
+    {
+     "letter": "E",
+     "text": "0 ≤ V ≤ 600",
+     "correct": true,
+     "why": "Acerto. A imagem é o conjunto dos valores de V (eixo vertical) que o gráfico atinge: de 0 (reservatório vazio) até 600 (cheio), incluindo os extremos."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "O domínio reúne os valores do eixo horizontal (t), e a imagem reúne os valores do eixo vertical (V) que o gráfico atinge.",
+    "O gráfico começa em V = 600 (quando t = 0) e termina em V = 0 (quando t = 30), passando por todos os valores intermediários.",
+    "Logo, a imagem é o conjunto dos valores de V entre 0 e 600, incluindo os extremos: 0 ≤ V ≤ 600."
+   ],
+   "check": "No mesmo gráfico, o domínio seria 0 ≤ t ≤ 30 (eixo horizontal). Quem responde com 0 ≤ t ≤ 30 leu o eixo errado."
+  },
+  {
+   "n": 6,
+   "code": "D09",
+   "role": "Retomada espaçada (6ª questão fixa)",
+   "level": "N4",
+   "short": "Diferença de quadrados (área restante da chapa)",
+   "descriptor": "Fatorar expressões com diferenças de quadrados.",
+   "stem": [
+    "Uma chapa metálica quadrada tem lados de 5a centímetros. De um dos cantos da chapa foi cortado um pedaço quadrado de lado 3b centímetros, como mostra a figura (com 3b menor que 5a)."
+   ],
+   "figure": {
+    "alt": "Quadrado de lado 5a com um quadrado menor de lado 3b removido do canto superior direito, desenhado com linha tracejada. A parte que sobrou tem formato de L.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.05,
+    "file": "assets/figuras/avalia/s04/q6.png"
+   },
+   "table": null,
+   "ask": "Qual expressão fatorada representa a área, em centímetros quadrados, da parte que sobrou da chapa?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(5a − 3b)²",
+     "correct": false,
+     "why": "Confundiu a² − b² com (a − b)². Faltou o fator (a + b): a diferença de quadrados não é o quadrado da diferença."
+    },
+    {
+     "letter": "B",
+     "text": "(5a − 3b)(5a + 3b)",
+     "correct": true,
+     "why": "Acerto. A área restante é a diferença entre a chapa inteira e o pedaço cortado: (5a)² − (3b)² = 25a² − 9b² = (5a − 3b)(5a + 3b)."
+    },
+    {
+     "letter": "C",
+     "text": "(5a + 3b)²",
+     "correct": false,
+     "why": "Aplicou o quadrado da soma no lugar da diferença de quadrados. O pedaço cortado é subtraído da chapa, não somado a ela."
+    },
+    {
+     "letter": "D",
+     "text": "(25a − 9b)(25a + 9b)",
+     "correct": false,
+     "why": "Montou o produto da soma pela diferença, mas usou 25a e 9b, que são as áreas, em vez de extrair as raízes: a² − b² pede (a − b)(a + b), com a = 5a e b = 3b."
+    },
+    {
+     "letter": "E",
+     "text": "5a − 3b",
+     "correct": false,
+     "why": "Subtraiu os lados em vez de calcular a diferença das áreas. 5a − 3b é uma medida de comprimento, e a pergunta pede a área da parte que sobrou."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "A área da chapa inteira é (5a)² = 25a². A área do pedaço cortado é (3b)² = 9b².",
+    "A área que sobrou é a diferença: 25a² − 9b², uma diferença de quadrados, pois 25a² = (5a)² e 9b² = (3b)².",
+    "Fatorando: 25a² − 9b² = (5a − 3b)(5a + 3b)."
+   ],
+   "check": "Testando a = 2 e b = 1: área restante = 100 − 9 = 91 cm². Pela forma fatorada: (10 − 3)(10 + 3) = 7 × 13 = 91. Confere."
+  }
+ ]
+}

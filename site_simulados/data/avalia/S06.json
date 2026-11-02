@@ -1,0 +1,361 @@
+{
+ "id": "S06",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 6",
+ "semana": 6,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-10-26",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 9 (vistas), conexão com o 8º ano e retomadas de E1, E2 e da Semana 4",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C28": "descubra pelas diferenças as medidas dos lados que não aparecem na figura e some só os lados de fora; contorno (m) e área (m²) são grandezas diferentes.",
+  "D01": "simplifique cada raiz (√50 = 5√2), use √a · √b = √(a · b) e só some ou subtraia raízes com o mesmo radicando; número inteiro e raiz não se juntam.",
+  "D18": "imagine-se olhando o sólido de frente, do lado e de cima: a vista frontal tem a largura do sólido, a lateral tem a profundidade, e a superior mostra as posições ocupadas no chão, sem alturas.",
+  "D37": "ligue cada trecho de uma transversal ao trecho correspondente da outra (entre as mesmas paralelas), monte a proporção com eles e confira se os trechos encontrados somam o total.",
+  "D19": "conte os cubos coluna por coluna (ou camada por camada), incluindo os escondidos atrás e embaixo, e só depois faça a conta que o problema pede.",
+  "D10": "tire a raiz do primeiro e do último termo, confira se o termo do meio é o dobro do produto dessas raízes e use o sinal do termo do meio no binômio: a² − 2ab + b² = (a − b)²."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C28",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Perímetro de figura composta (jardim em L)",
+   "descriptor": "Resolver problemas que envolvam o cálculo de perímetro ou área de figuras planas.",
+   "stem": [
+    "O jardim de uma escola tem a forma da figura abaixo, em que todos os cantos são ângulos retos. A diretora quer cercar todo o contorno do jardim com uma tela."
+   ],
+   "figure": {
+    "alt": "Planta de um jardim em forma de L, com todos os cantos em ângulo reto. Lado de baixo: 10 m. Lado esquerdo: 8 m. Lado de cima: 6 m. Lado direito, na parte de baixo: 5 m. Os dois lados do degrau, no canto de cima à direita, não têm medida escrita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.95,
+    "file": "assets/figuras/avalia/s06/q1.png"
+   },
+   "table": null,
+   "ask": "Quantos metros de tela serão necessários para cercar todo o contorno do jardim?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "29",
+     "correct": false,
+     "why": "Somou só os quatro lados que têm medida na figura (10 + 8 + 6 + 5 = 29) e esqueceu os dois lados do degrau, que não têm medida escrita."
+    },
+    {
+     "letter": "B",
+     "text": "36",
+     "correct": true,
+     "why": "Acerto. Os lados sem medida valem 10 − 6 = 4 m e 8 − 5 = 3 m. Contorno: 10 + 5 + 4 + 3 + 6 + 8 = 36 m."
+    },
+    {
+     "letter": "C",
+     "text": "46",
+     "correct": false,
+     "why": "Dividiu o jardim em dois retângulos (6 m por 8 m e 4 m por 5 m) e somou os dois perímetros (28 + 18 = 46). Assim contou duas vezes o lado de 5 m que fica dentro do jardim e não leva tela."
+    },
+    {
+     "letter": "D",
+     "text": "68",
+     "correct": false,
+     "why": "Calculou a área do jardim (80 − 12 = 68 m²), e não o contorno. A tela vai só em volta do jardim."
+    },
+    {
+     "letter": "E",
+     "text": "80",
+     "correct": false,
+     "why": "Calculou a área do retângulo de 10 m por 8 m (80 m²), sem descontar o canto que falta e confundindo área com contorno."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Os dois lados do degrau não têm medida, mas dá para descobrir: o de cima vale 10 − 6 = 4 m e o da direita vale 8 − 5 = 3 m.",
+    "O contorno é a soma de todos os lados de fora: 10 + 5 + 4 + 3 + 6 + 8.",
+    "Logo, são necessários 36 m de tela."
+   ],
+   "check": "O contorno do L tem o mesmo comprimento do contorno do retângulo de 10 m por 8 m: 2 × (10 + 8) = 36 m, porque o degrau só muda a posição de dois lados. A área (68 m²) é outra grandeza, medida em metros quadrados."
+  },
+  {
+   "n": 2,
+   "code": "D01",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Expressão numérica com radicais",
+   "descriptor": "Aplicar as propriedades da radiciação para resolver expressões numéricas.",
+   "stem": [
+    "O comprimento, em metros, de uma barra de ferro usada em uma obra é dado pela expressão numérica:",
+    "√50 + √8 · √2 − √18"
+   ],
+   "table": null,
+   "ask": "Qual é o comprimento dessa barra, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4 + 2√2",
+     "correct": true,
+     "why": "Acerto. √50 = 5√2, √8 · √2 = √16 = 4 e √18 = 3√2. Então 5√2 + 4 − 3√2 = 4 + 2√2."
+    },
+    {
+     "letter": "B",
+     "text": "4√3",
+     "correct": false,
+     "why": "Juntou tudo numa raiz só: √(50 + 16 − 18) = √48 = 4√3. A raiz de uma soma não é a soma das raízes, e somar raízes não é somar os radicandos."
+    },
+    {
+     "letter": "C",
+     "text": "6√2",
+     "correct": false,
+     "why": "Fez as contas certas até 4 + 2√2 e depois somou o 4 com o 2√2, como se fossem termos semelhantes. Um número inteiro e uma raiz não se juntam."
+    },
+    {
+     "letter": "D",
+     "text": "4 + 4√2",
+     "correct": false,
+     "why": "Subtraiu os radicandos: √50 − √18 = √32 = 4√2. Raízes só se somam ou subtraem depois de simplificadas e com o mesmo radicando: 5√2 − 3√2 = 2√2."
+    },
+    {
+     "letter": "E",
+     "text": "16 + 2√2",
+     "correct": false,
+     "why": "Fez √8 · √2 = 8 · 2 = 16 e esqueceu de tirar a raiz. O certo é √8 · √2 = √16 = 4."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Simplifique as raízes: √50 = √(25 · 2) = 5√2 e √18 = √(9 · 2) = 3√2.",
+    "Use a propriedade do produto: √8 · √2 = √(8 · 2) = √16 = 4.",
+    "Junte só as raízes semelhantes: 5√2 + 4 − 3√2 = 4 + 2√2."
+   ],
+   "check": "Com valores aproximados: √50 ≈ 7,07; √18 ≈ 4,24; 7,07 + 4 − 4,24 ≈ 6,83. E 4 + 2√2 ≈ 4 + 2,83 = 6,83, confere."
+  },
+  {
+   "n": 3,
+   "code": "D18",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Vistas de um sólido formado por cubos",
+   "descriptor": "Reconhecer as diferentes vistas (lateral, frontal e superior) de sólidos geométricos.",
+   "stem": [
+    "À esquerda, a figura mostra um sólido montado com cubos iguais. A seta indica a frente do sólido. À direita, as figuras I, II e III são vistas desse sólido (a vista lateral é a do lado direito)."
+   ],
+   "figure": {
+    "alt": "À esquerda, sólido formado por cubos iguais, em perspectiva, com uma seta vermelha indicando a frente. Na fileira da frente há colunas de 2, 1 e 1 cubo; na fileira de trás, uma coluna de 3 cubos à esquerda e uma de 1 cubo no meio, e o canto de trás à direita está vazio. À direita, três figuras formadas por quadrados. Figura I: uma fileira de 3 quadrados e, acima dela, 2 quadrados à esquerda. Figura II: uma coluna de 3 quadrados à esquerda e mais 2 quadrados na base, à direita. Figura III: uma coluna de 2 quadrados à esquerda e uma coluna de 3 quadrados à direita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s06/q3.png"
+   },
+   "table": null,
+   "ask": "As figuras I, II e III são, nessa ordem, as vistas:",
+   "options": [
+    {
+     "letter": "A",
+     "text": "frontal, lateral e superior",
+     "correct": false,
+     "why": "Tomou a figura I, que tem duas fileiras de quadrados, como a vista de frente. A figura I mostra o que se vê de cima: 3 cubos na fileira da frente e 2 na de trás."
+    },
+    {
+     "letter": "B",
+     "text": "frontal, superior e lateral",
+     "correct": false,
+     "why": "Reconheceu a vista lateral (III), mas trocou a frontal com a superior. É de frente que aparece a coluna de 3 cubos (figura II)."
+    },
+    {
+     "letter": "C",
+     "text": "superior, frontal e lateral",
+     "correct": true,
+     "why": "Acerto. De cima (I) se veem 3 quadrados na fileira da frente e 2 na de trás. De frente (II), a coluna da esquerda tem 3 cubos e as outras duas, 1. Do lado direito (III), a fileira da frente tem 2 cubos de altura e a de trás, 3."
+    },
+    {
+     "letter": "D",
+     "text": "superior, lateral e frontal",
+     "correct": false,
+     "why": "Trocou a vista frontal com a lateral. De frente aparecem 3 colunas, porque o sólido tem 3 cubos de largura; do lado aparecem só 2, porque ele tem 2 cubos de profundidade."
+    },
+    {
+     "letter": "E",
+     "text": "lateral, frontal e superior",
+     "correct": false,
+     "why": "Reconheceu a vista frontal (II), mas trocou a superior com a lateral. A figura III tem colunas de alturas diferentes, então mostra altura: não pode ser a vista de cima."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Olhando de cima, vemos as posições ocupadas no chão: 3 na fileira da frente e 2 na de trás. É a figura I.",
+    "Olhando de frente, vemos 3 colunas (a largura do sólido): a da esquerda com 3 cubos de altura e as outras com 1. É a figura II.",
+    "Olhando do lado direito, vemos 2 colunas (a profundidade do sólido): a da frente com 2 cubos de altura e a de trás com 3. É a figura III. Resposta: superior, frontal e lateral."
+   ],
+   "check": "A vista frontal tem a largura do sólido (3 cubos) e a lateral tem a profundidade (2 cubos). A vista superior não mostra alturas, só as posições ocupadas no chão (5)."
+  },
+  {
+   "n": 4,
+   "code": "D37",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Teorema de Tales (ruas paralelas e avenidas)",
+   "descriptor": "Resolver problemas utilizando o Teorema de Tales.",
+   "stem": [
+    "Na planta de um bairro, as ruas 1, 2 e 3 são paralelas e cortam as avenidas A e B, como mostra a figura. Pela Avenida A, a distância da Rua 1 à Rua 2 é de 20 m, e da Rua 2 à Rua 3 é de 30 m. Pela Avenida B, a distância da Rua 1 à Rua 3 é de 60 m."
+   ],
+   "figure": {
+    "alt": "Três ruas paralelas e horizontais, Rua 1 em cima, Rua 2 no meio e Rua 3 embaixo, cortadas por duas avenidas: a Avenida A, vertical, à esquerda, e a Avenida B, inclinada, à direita. Na Avenida A, o trecho da Rua 1 à Rua 2 mede 20 m e o trecho da Rua 2 à Rua 3 mede 30 m. Os trechos da Avenida B não têm medida escrita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.95,
+    "file": "assets/figuras/avalia/s06/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a distância, em metros, da Rua 2 à Rua 3 pela Avenida B?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "24",
+     "correct": false,
+     "why": "Calculou o trecho da Rua 1 à Rua 2 pela Avenida B (20/50 = x/60, x = 24), e não o trecho pedido, da Rua 2 à Rua 3."
+    },
+    {
+     "letter": "B",
+     "text": "30",
+     "correct": false,
+     "why": "Copiou a medida do trecho correspondente da Avenida A, como se as duas avenidas tivessem trechos iguais. Pelo Teorema de Tales, os trechos são proporcionais, e não iguais."
+    },
+    {
+     "letter": "C",
+     "text": "35",
+     "correct": false,
+     "why": "Viu que a Avenida B tem 10 m a mais que a A e dividiu essa diferença igualmente entre os dois trechos (30 + 5). A diferença se reparte na proporção dos trechos, e não em partes iguais."
+    },
+    {
+     "letter": "D",
+     "text": "36",
+     "correct": true,
+     "why": "Acerto. Os trechos entre as mesmas ruas são proporcionais: 30/50 = x/60, então x = 36. O outro trecho fica 60 − 36 = 24, e 20/24 = 30/36."
+    },
+    {
+     "letter": "E",
+     "text": "40",
+     "correct": false,
+     "why": "Montou a proporção com trechos que não se correspondem (20/30 = x/60, x = 40), ou pôs os 10 m a mais todos nesse trecho (30 + 10)."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Pelo Teorema de Tales, os trechos que ficam entre as mesmas ruas são proporcionais. Da Rua 2 à Rua 3, a Avenida A tem 30 m de um total de 20 + 30 = 50 m.",
+    "Na Avenida B, o trecho correspondente x é a mesma fração do total de 60 m: 30/50 = x/60.",
+    "x = 60 · 30 ÷ 50 = 36. A distância é de 36 m."
+   ],
+   "check": "O outro trecho da Avenida B mede 60 − 36 = 24 m, e a razão é a mesma nos dois trechos: 24/20 = 36/30 = 1,2."
+  },
+  {
+   "n": 5,
+   "code": "D19",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Cubos que faltam numa pilha (cubos escondidos)",
+   "descriptor": "Resolver problemas a partir da visualização de diferentes tipos de vistas e perspectivas.",
+   "stem": [
+    "Lucas montou a pilha de cubos iguais da figura ocupando uma base quadrada de 3 por 3 cubos. Nenhum cubo está solto: cada cubo está no chão ou em cima de outro cubo."
+   ],
+   "figure": {
+    "alt": "Pilha de cubos iguais, em perspectiva, sobre uma base de 3 por 3. As colunas mais altas ficam atrás e à esquerda, e as mais baixas, na frente e à direita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.85,
+    "file": "assets/figuras/avalia/s06/q5.png"
+   },
+   "table": null,
+   "ask": "Quantos cubos ainda faltam para Lucas transformar essa pilha em um cubo maior, com 3 cubos de comprimento, 3 de largura e 3 de altura?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6",
+     "correct": false,
+     "why": "Contou só o que falta na camada de cima (6 lugares vazios) e esqueceu os 3 lugares vazios da camada do meio."
+    },
+    {
+     "letter": "B",
+     "text": "9",
+     "correct": true,
+     "why": "Acerto. A pilha tem 18 cubos: na fileira de trás, colunas de 3, 3 e 2; na do meio, 3, 2 e 1; na da frente, 2, 1 e 1. O cubo maior tem 3 × 3 × 3 = 27 cubos. Faltam 27 − 18 = 9."
+    },
+    {
+     "letter": "C",
+     "text": "11",
+     "correct": false,
+     "why": "Respondeu quantos cubos aparecem no desenho (11), e não quantos faltam."
+    },
+    {
+     "letter": "D",
+     "text": "16",
+     "correct": false,
+     "why": "Contou só os 11 cubos que aparecem no desenho e fez 27 − 11 = 16. Os cubos escondidos atrás e embaixo dos outros também fazem parte da pilha."
+    },
+    {
+     "letter": "E",
+     "text": "18",
+     "correct": false,
+     "why": "Contou certo os cubos da pilha (18), mas respondeu esse número em vez de calcular quantos faltam."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Conte os cubos coluna por coluna, inclusive os escondidos: fileira de trás 3 + 3 + 2 = 8; fileira do meio 3 + 2 + 1 = 6; fileira da frente 2 + 1 + 1 = 4. A pilha tem 18 cubos.",
+    "O cubo maior tem 3 × 3 × 3 = 27 cubos.",
+    "Faltam 27 − 18 = 9 cubos."
+   ],
+   "check": "Contando por camadas: na de baixo não falta nenhum cubo, na do meio faltam 3 e na de cima faltam 6, total 9."
+  },
+  {
+   "n": 6,
+   "code": "D10",
+   "role": "Retomada espaçada (6ª questão fixa)",
+   "level": "N4",
+   "short": "Trinômio quadrado perfeito: lado do quadrado a partir da área",
+   "descriptor": "Fatorar expressões com o trinômio do quadrado perfeito.",
+   "stem": [
+    "Um tapete quadrado tem área, em metros quadrados, dada pela expressão 9x² − 24x + 16, em que x é um número maior que 2."
+   ],
+   "table": null,
+   "ask": "Qual expressão representa a medida do lado desse tapete, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3x − 12",
+     "correct": false,
+     "why": "Usou a metade do termo do meio (24 ÷ 2 = 12) como segundo termo. O segundo termo é a raiz de 16, que é 4; o termo do meio é 2 · 3x · 4 = 24x."
+    },
+    {
+     "letter": "B",
+     "text": "(3x − 4)²",
+     "correct": false,
+     "why": "Escreveu a área na forma fatorada, e não o lado. A área é (3x − 4)²; o lado é o que está elevado ao quadrado: 3x − 4."
+    },
+    {
+     "letter": "C",
+     "text": "9x − 4",
+     "correct": false,
+     "why": "Tirou a raiz só de 16 e copiou o 9x. A raiz de 9x² é 3x."
+    },
+    {
+     "letter": "D",
+     "text": "3x + 4",
+     "correct": false,
+     "why": "Acertou os termos e errou o sinal. Como o termo do meio é negativo (−24x), o lado é 3x − 4; (3x + 4)² dá 9x² + 24x + 16."
+    },
+    {
+     "letter": "E",
+     "text": "3x − 4",
+     "correct": true,
+     "why": "Acerto. 9x² = (3x)², 16 = 4² e o termo do meio confere: 2 · 3x · 4 = 24x, com sinal de menos. Logo, 9x² − 24x + 16 = (3x − 4)², e o lado mede 3x − 4."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "A área de um quadrado é o lado ao quadrado; então é preciso escrever 9x² − 24x + 16 como o quadrado de um binômio.",
+    "Raízes do primeiro e do último termo: √(9x²) = 3x e √16 = 4. Termo do meio: 2 · 3x · 4 = 24x, que aparece com sinal de menos.",
+    "Logo, 9x² − 24x + 16 = (3x − 4)², e o lado mede 3x − 4."
+   ],
+   "check": "Para x = 3, a área é 81 − 72 + 16 = 25 m² e o lado é 3 · 3 − 4 = 5 m; 5² = 25, confere. Com 3x + 4 o lado daria 13 m e a área, 169 m²."
+  }
+ ]
+}

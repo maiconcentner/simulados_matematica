@@ -1,0 +1,649 @@
+{
+ "id": "E3-AV2",
+ "area": "prova",
+ "status": "publicado",
+ "titulo": "Simulado da Avaliação Somativa · Etapa 3",
+ "subtitulo": "Funções · 10 questões no formato da avaliação: mesmas habilidades, níveis e pesos, com questões novas",
+ "etapa": 3,
+ "semana": null,
+ "data": null,
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Funções: valor e tabela, lei de situações, gráfico, zero, domínio e imagem",
+ "pontuacao": {
+  "tipo": "valores",
+  "max": 10
+ },
+ "dicas": {},
+ "items": [
+  {
+   "n": 1,
+   "code": "EF.09.MAT.2.87",
+   "role": "Avaliação",
+   "level": "N1",
+   "valor": 1.5,
+   "short": "Valor de f(x) para um x negativo",
+   "descriptor": "Calcular o valor de uma função para um x dado.",
+   "stem": [
+    "Considere a função f(x) = 3x − 4."
+   ],
+   "table": null,
+   "ask": "Qual é o valor de f(−2)?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "−18",
+     "value": -18,
+     "correct": false,
+     "why": "Multiplicou o 3 por tudo: 3 · (−2 − 4) = −18. Primeiro troque o x e multiplique: 3 · (−2) = −6; depois subtraia 4."
+    },
+    {
+     "letter": "B",
+     "text": "−10",
+     "value": -10,
+     "correct": true,
+     "why": "Acerto. f(−2) = 3 · (−2) − 4 = −6 − 4 = −10."
+    },
+    {
+     "letter": "C",
+     "text": "−6",
+     "value": -6,
+     "correct": false,
+     "why": "Esqueceu o −4: parou em 3 · (−2) = −6."
+    },
+    {
+     "letter": "D",
+     "text": "−2",
+     "value": -2,
+     "correct": false,
+     "why": "Errou o sinal no fim: −6 − 4 dá −10, não −2. Os dois números são negativos, então se somam e o resultado fica negativo."
+    },
+    {
+     "letter": "E",
+     "text": "2",
+     "value": 2,
+     "correct": false,
+     "why": "Ignorou o sinal do −2: fez 3 · 2 − 4 = 2. O número negativo entra entre parênteses."
+    }
+   ],
+   "resolution": [
+    "Troque o x por −2, entre parênteses: f(−2) = 3 · (−2) − 4.",
+    "Multiplique primeiro: 3 · (−2) = −6.",
+    "Subtraia: −6 − 4 = −10."
+   ],
+   "check": "Com x negativo e a = 3 positivo, 3x é negativo; tirando mais 4, o resultado tem de ser menor que −6.",
+   "key": "B"
+  },
+  {
+   "n": 2,
+   "code": "EF.09.MAT.2.88",
+   "role": "Avaliação",
+   "level": "N1",
+   "valor": 1.5,
+   "short": "Lei de uma situação com valor fixo",
+   "descriptor": "Escrever a lei de uma situação com valor fixo e valor por unidade.",
+   "stem": [
+    "Uma academia cobra R$ 60,00 de matrícula, paga uma vez só, e R$ 85,00 por mês."
+   ],
+   "table": null,
+   "ask": "Qual lei dá o valor V, em reais, pago por quem fica m meses?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "V(m) = 60m + 85",
+     "value": null,
+     "correct": false,
+     "why": "Trocou o valor fixo com o valor por mês. Quem multiplica o m é o que se paga todo mês (85)."
+    },
+    {
+     "letter": "B",
+     "text": "V(m) = 145m",
+     "value": null,
+     "correct": false,
+     "why": "Somou matrícula e mensalidade e multiplicou tudo por m, como se a matrícula fosse paga todo mês."
+    },
+    {
+     "letter": "C",
+     "text": "V(m) = 85m",
+     "value": null,
+     "correct": false,
+     "why": "Esqueceu a matrícula, que é o valor fixo."
+    },
+    {
+     "letter": "D",
+     "text": "V(m) = 85m + 60",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. O que muda com os meses é 85m; a matrícula de 60 entra uma vez só."
+    },
+    {
+     "letter": "E",
+     "text": "V(m) = 85 + 60 + m",
+     "value": null,
+     "correct": false,
+     "why": "Somou o m em vez de multiplicar: cada mês acrescenta 85 reais, não 1."
+    }
+   ],
+   "resolution": [
+    "O valor por mês (85) multiplica o número de meses: 85m.",
+    "A matrícula (60) é paga uma vez: é o valor fixo.",
+    "V(m) = 85m + 60."
+   ],
+   "check": "Para 1 mês, V(1) = 85 + 60 = 145 reais, que é o que a pessoa paga no primeiro mês.",
+   "key": "D"
+  },
+  {
+   "n": 3,
+   "code": "EF.09.MAT.2.89",
+   "role": "Avaliação",
+   "level": "N1",
+   "valor": 1.5,
+   "short": "A reta sobe ou desce? Onde corta o eixo y?",
+   "descriptor": "Reconhecer pela lei se a reta sobe ou desce e onde corta o eixo y.",
+   "stem": [
+    "O gráfico da função f(x) = −2x + 5 é uma reta."
+   ],
+   "table": null,
+   "ask": "Como é essa reta?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Desce e corta o eixo y no ponto (0; 5).",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. O a = −2 é negativo, então a reta desce; o b = 5 é onde ela corta o eixo y."
+    },
+    {
+     "letter": "B",
+     "text": "Sobe e corta o eixo y no ponto (0; 5).",
+     "value": null,
+     "correct": false,
+     "why": "Não olhou o sinal do a. Com a = −2, negativo, a reta desce."
+    },
+    {
+     "letter": "C",
+     "text": "Desce e corta o eixo y no ponto (0; −2).",
+     "value": null,
+     "correct": false,
+     "why": "Trocou o a com o b. O −2 é a inclinação; o corte no eixo y é o b = 5."
+    },
+    {
+     "letter": "D",
+     "text": "Sobe e corta o eixo y no ponto (0; −2).",
+     "value": null,
+     "correct": false,
+     "why": "Trocou o a com o b e também o sentido da reta."
+    },
+    {
+     "letter": "E",
+     "text": "Desce e corta o eixo y no ponto (5; 0).",
+     "value": null,
+     "correct": false,
+     "why": "Trocou as coordenadas. No eixo y, o x vale 0: o ponto é (0; 5)."
+    }
+   ],
+   "resolution": [
+    "Em f(x) = ax + b, aqui a = −2 e b = 5.",
+    "a negativo: a reta desce (decrescente).",
+    "A reta corta o eixo y quando x = 0: f(0) = 5, ponto (0; 5)."
+   ],
+   "check": "f(0) = 5 e f(1) = 3: quando x aumenta, y diminui, então a reta desce.",
+   "key": "A"
+  },
+  {
+   "n": 4,
+   "code": "EF.09.MAT.2.87",
+   "role": "Avaliação",
+   "level": "N2",
+   "valor": 1.0,
+   "short": "Completar a tabela de uma função",
+   "descriptor": "Completar a tabela de uma função.",
+   "stem": [
+    "A tabela mostra alguns valores de x para a função f(x) = 5 − 2x."
+   ],
+   "table": {
+    "header": [
+     "x",
+     "−1",
+     "0",
+     "2",
+     "3"
+    ],
+    "rows": [
+     [
+      "f(x)",
+      "?",
+      "?",
+      "?",
+      "?"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Quais são os valores de f(x), na ordem da tabela?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3; 5; 1; −1",
+     "value": null,
+     "correct": false,
+     "why": "Em x = −1 fez 5 − 2 = 3. Com o parêntese: 5 − 2 · (−1) = 5 + 2 = 7."
+    },
+    {
+     "letter": "B",
+     "text": "7; 3; 1; −1",
+     "value": null,
+     "correct": false,
+     "why": "Em x = 0 fez 5 − 2 = 3, como se 2 · 0 fosse 2. Mas 2 · 0 = 0, então f(0) = 5."
+    },
+    {
+     "letter": "C",
+     "text": "−7; −5; −1; 1",
+     "value": null,
+     "correct": false,
+     "why": "Usou 2x − 5 no lugar de 5 − 2x: todos os sinais ficaram trocados."
+    },
+    {
+     "letter": "D",
+     "text": "7; 5; 1; 1",
+     "value": null,
+     "correct": false,
+     "why": "Em x = 3 fez 6 − 5 = 1, invertendo a subtração. O certo é 5 − 6 = −1."
+    },
+    {
+     "letter": "E",
+     "text": "7; 5; 1; −1",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. f(−1) = 7, f(0) = 5, f(2) = 1 e f(3) = −1."
+    }
+   ],
+   "resolution": [
+    "f(−1) = 5 − 2 · (−1) = 5 + 2 = 7.",
+    "f(0) = 5 − 2 · 0 = 5.",
+    "f(2) = 5 − 4 = 1.",
+    "f(3) = 5 − 6 = −1."
+   ],
+   "check": "A cada 1 que o x aumenta, f(x) diminui 2: de 1 (x = 2) para −1 (x = 3) está certo.",
+   "key": "E"
+  },
+  {
+   "n": 5,
+   "code": "EF.09.MAT.2.89",
+   "role": "Avaliação",
+   "level": "N2",
+   "valor": 1.0,
+   "short": "Zero da função",
+   "descriptor": "Encontrar o zero da função do 1º grau.",
+   "stem": [
+    "Considere a função f(x) = 4x − 12."
+   ],
+   "table": null,
+   "ask": "Qual é o zero dessa função?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "−12",
+     "value": -12,
+     "correct": false,
+     "why": "Respondeu o b. O −12 é onde a reta corta o eixo y; o zero é o x que faz f(x) = 0."
+    },
+    {
+     "letter": "B",
+     "text": "−3",
+     "value": -3,
+     "correct": false,
+     "why": "Errou o sinal ao passar o 12: 4x = 12, então x = 3, positivo."
+    },
+    {
+     "letter": "C",
+     "text": "3",
+     "value": 3,
+     "correct": true,
+     "why": "Acerto. 4x − 12 = 0 → 4x = 12 → x = 3."
+    },
+    {
+     "letter": "D",
+     "text": "8",
+     "value": 8,
+     "correct": false,
+     "why": "Fez 12 − 4 = 8. O 4 multiplica o x; para isolar o x, divida 12 por 4."
+    },
+    {
+     "letter": "E",
+     "text": "48",
+     "value": 48,
+     "correct": false,
+     "why": "Multiplicou 4 · 12 = 48 em vez de dividir."
+    }
+   ],
+   "resolution": [
+    "O zero é o x que faz f(x) = 0.",
+    "4x − 12 = 0 → 4x = 12.",
+    "x = 12 ÷ 4 = 3."
+   ],
+   "check": "f(3) = 4 · 3 − 12 = 0.",
+   "key": "C"
+  },
+  {
+   "n": 6,
+   "code": "EF.09.MAT.2.89",
+   "role": "Avaliação",
+   "level": "N3",
+   "valor": 1.0,
+   "short": "Lei a partir do gráfico",
+   "descriptor": "Escrever a lei de uma função do 1º grau a partir do gráfico.",
+   "stem": [
+    "O gráfico mostra uma função do 1º grau, f(x) = ax + b, que passa pelos pontos marcados."
+   ],
+   "figure": {
+    "file": "assets/figuras/prova/e3-av2/q6.png",
+    "alt": "Plano cartesiano com uma reta crescente que passa pelos pontos (0; −2), no eixo y, e (3; 4).",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.8
+   },
+   "table": null,
+   "ask": "Qual é a lei dessa função?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "f(x) = −2x + 2",
+     "value": null,
+     "correct": false,
+     "why": "Trocou os sinais do a e do b. A reta sobe, então o a é positivo."
+    },
+    {
+     "letter": "B",
+     "text": "f(x) = (4/3)x − 2",
+     "value": null,
+     "correct": false,
+     "why": "Dividiu o y do ponto (4) pelo x (3) sem descontar o ponto de partida. Quanto o y mudou: 4 − (−2) = 6."
+    },
+    {
+     "letter": "C",
+     "text": "f(x) = 3x − 2",
+     "value": null,
+     "correct": false,
+     "why": "Usou o 3, que é quanto o x mudou, como se fosse o a. O a é quanto o y muda para cada 1 de x."
+    },
+    {
+     "letter": "D",
+     "text": "f(x) = 2x + 3",
+     "value": null,
+     "correct": false,
+     "why": "Pôs o 3 no lugar do b. O b é onde a reta corta o eixo y: −2."
+    },
+    {
+     "letter": "E",
+     "text": "f(x) = 2x − 2",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. b = −2 (corte no eixo y) e a = 6 ÷ 3 = 2."
+    }
+   ],
+   "resolution": [
+    "A reta corta o eixo y em (0; −2), então b = −2.",
+    "De x = 0 a x = 3, o y vai de −2 a 4: mudou 6.",
+    "a = 6 ÷ 3 = 2. Lei: f(x) = 2x − 2."
+   ],
+   "check": "f(3) = 2 · 3 − 2 = 4, que é o ponto (3; 4) do gráfico.",
+   "key": "E"
+  },
+  {
+   "n": 7,
+   "code": "EF.09.MAT.2.88",
+   "role": "Avaliação",
+   "level": "N3",
+   "valor": 1.0,
+   "short": "Valor fixo não dobra",
+   "descriptor": "Interpretar valor fixo e taxa e distinguir de uma relação proporcional.",
+   "stem": [
+    "Uma corrida de táxi custa R$ 6,00 de bandeirada mais R$ 3,00 por quilômetro. Uma corrida de 5 km custa R$ 21,00."
+   ],
+   "table": null,
+   "ask": "Quanto custa, em reais, uma corrida de 10 km?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "30",
+     "value": 30,
+     "correct": false,
+     "why": "Esqueceu a bandeirada: fez só 3 · 10 = 30."
+    },
+    {
+     "letter": "B",
+     "text": "36",
+     "value": 36,
+     "correct": true,
+     "why": "Acerto. 6 + 3 · 10 = 6 + 30 = 36. A bandeirada é paga uma vez só."
+    },
+    {
+     "letter": "C",
+     "text": "42",
+     "value": 42,
+     "correct": false,
+     "why": "Dobrou os R$ 21,00 da corrida de 5 km, como se fosse proporcional. A bandeirada não dobra."
+    },
+    {
+     "letter": "D",
+     "text": "51",
+     "value": 51,
+     "correct": false,
+     "why": "Somou o preço da corrida de 5 km com 3 · 10: contou a bandeirada e os primeiros 5 km duas vezes."
+    },
+    {
+     "letter": "E",
+     "text": "60",
+     "value": 60,
+     "correct": false,
+     "why": "Multiplicou a bandeirada pelos quilômetros: 6 · 10. A bandeirada é fixa."
+    }
+   ],
+   "resolution": [
+    "Lei: V(km) = 3 · km + 6.",
+    "V(10) = 3 · 10 + 6 = 36.",
+    "Não é o dobro de 21: só a parte por quilômetro dobra (15 → 30); os 6 fixos continuam 6."
+   ],
+   "check": "Diferença de 5 km para 10 km: 5 km a mais, a R$ 3,00 cada, são R$ 15,00 a mais: 21 + 15 = 36.",
+   "key": "B"
+  },
+  {
+   "n": 8,
+   "code": "EF.09.MAT.2.87",
+   "role": "Avaliação",
+   "level": "N4",
+   "valor": 0.5,
+   "short": "Da tabela para a lei e de volta para o x",
+   "descriptor": "Achar a lei por uma tabela que não começa em 0 e voltar do valor para o x.",
+   "stem": [
+    "Uma caixa-d'água recebe sempre a mesma quantidade de água por dia. A tabela mostra quantos litros ela tinha em alguns dias."
+   ],
+   "table": {
+    "header": [
+     "Dia",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "rows": [
+     [
+      "Litros",
+      "130",
+      "160",
+      "190",
+      "220"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Mantendo esse ritmo, em que dia a caixa chega a 400 litros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6",
+     "value": 6,
+     "correct": false,
+     "why": "Achou quantos dias faltam depois do dia 5: (400 − 220) ÷ 30 = 6. A resposta pede o dia: 5 + 6 = 11."
+    },
+    {
+     "letter": "B",
+     "text": "8",
+     "value": 8,
+     "correct": false,
+     "why": "Partiu do dia 3: (400 − 160) ÷ 30 = 8, mas não somou os 3 dias que já tinham passado."
+    },
+    {
+     "letter": "C",
+     "text": "9",
+     "value": 9,
+     "correct": false,
+     "why": "Usou 130 como valor inicial: (400 − 130) ÷ 30 = 9. O 130 é do dia 2, não do dia 0."
+    },
+    {
+     "letter": "D",
+     "text": "11",
+     "value": 11,
+     "correct": true,
+     "why": "Acerto. A cada dia entram 30 L; no dia 0 havia 130 − 2 · 30 = 70 L. Lei: L = 30d + 70. 30d + 70 = 400 → d = 11."
+    },
+    {
+     "letter": "E",
+     "text": "13",
+     "value": 13,
+     "correct": false,
+     "why": "Dividiu 400 por 30 (dá 13,3) sem descontar os 70 litros iniciais."
+    }
+   ],
+   "resolution": [
+    "Por dia entram 160 − 130 = 30 litros: a = 30.",
+    "Voltando do dia 2 até o dia 0: 130 − 2 · 30 = 70, então b = 70.",
+    "Lei: L(d) = 30d + 70. Para 400 L: 30d + 70 = 400 → 30d = 330 → d = 11."
+   ],
+   "check": "L(11) = 30 · 11 + 70 = 400.",
+   "key": "D"
+  },
+  {
+   "n": 9,
+   "code": "EF.09.MAT.2.88",
+   "role": "Avaliação",
+   "level": "N4",
+   "valor": 0.5,
+   "short": "Quando duas situações custam o mesmo",
+   "descriptor": "Comparar duas situações e achar quando custam o mesmo.",
+   "stem": [
+    "Para imprimir fotos, a loja A cobra R$ 24,00 de taxa de cadastro mais R$ 0,40 por foto. A loja B cobra R$ 1,20 por foto, sem taxa."
+   ],
+   "table": null,
+   "ask": "Para quantas fotos as duas lojas cobram o mesmo valor?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "15",
+     "value": 15,
+     "correct": false,
+     "why": "Somou as duas taxas: 24 ÷ (1,20 + 0,40) = 15. É a diferença entre os preços por foto que paga a taxa: 1,20 − 0,40 = 0,80."
+    },
+    {
+     "letter": "B",
+     "text": "20",
+     "value": 20,
+     "correct": false,
+     "why": "Fez 24 ÷ 1,20 = 20, esquecendo os R$ 0,40 por foto da loja A."
+    },
+    {
+     "letter": "C",
+     "text": "30",
+     "value": 30,
+     "correct": true,
+     "why": "Acerto. 24 + 0,40x = 1,20x → 24 = 0,80x → x = 30 fotos (as duas cobram R$ 36,00)."
+    },
+    {
+     "letter": "D",
+     "text": "36",
+     "value": 36,
+     "correct": false,
+     "why": "Esse é o valor em reais (R$ 36,00), não o número de fotos."
+    },
+    {
+     "letter": "E",
+     "text": "60",
+     "value": 60,
+     "correct": false,
+     "why": "Fez 24 ÷ 0,40 = 60, esquecendo o preço da loja B."
+    }
+   ],
+   "resolution": [
+    "Loja A: A(x) = 0,40x + 24. Loja B: B(x) = 1,20x.",
+    "Iguale: 0,40x + 24 = 1,20x → 24 = 0,80x.",
+    "x = 24 ÷ 0,80 = 30 fotos."
+   ],
+   "check": "A(30) = 12 + 24 = 36 e B(30) = 36. Com menos de 30 fotos a loja B sai mais barata; com mais, a loja A.",
+   "key": "C"
+  },
+  {
+   "n": 10,
+   "code": "EF.09.MAT.2.89",
+   "role": "Avaliação",
+   "level": "N4",
+   "valor": 0.5,
+   "short": "Domínio e imagem no gráfico",
+   "descriptor": "Ler o domínio e o conjunto imagem de uma função no gráfico.",
+   "stem": [
+    "O gráfico mostra uma função completa, do primeiro ao último ponto marcado."
+   ],
+   "figure": {
+    "file": "assets/figuras/prova/e3-av2/q10.png",
+    "alt": "Plano cartesiano com uma linha em zigue-zague que começa no ponto (−2; 1), sobe até (1; 3), desce até (3; −1) e sobe até terminar em (4; 1).",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.85
+   },
+   "table": null,
+   "ask": "Quais são o domínio e o conjunto imagem dessa função?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Domínio: −2 ≤ x ≤ 4; imagem: −1 ≤ y ≤ 3",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. No eixo x o gráfico vai de −2 a 4; no eixo y, do ponto mais baixo (−1) ao mais alto (3)."
+    },
+    {
+     "letter": "B",
+     "text": "Domínio: −1 ≤ x ≤ 3; imagem: −2 ≤ y ≤ 4",
+     "value": null,
+     "correct": false,
+     "why": "Trocou os eixos: o domínio se lê no eixo x e a imagem no eixo y."
+    },
+    {
+     "letter": "C",
+     "text": "Domínio: −2 ≤ x ≤ 4; imagem: −2 ≤ y ≤ 4",
+     "value": null,
+     "correct": false,
+     "why": "Leu a imagem também no eixo x. A imagem vai do y mais baixo ao mais alto."
+    },
+    {
+     "letter": "D",
+     "text": "Domínio: 0 ≤ x ≤ 4; imagem: −1 ≤ y ≤ 3",
+     "value": null,
+     "correct": false,
+     "why": "Começou o domínio no 0, mas o gráfico começa em x = −2."
+    },
+    {
+     "letter": "E",
+     "text": "Domínio: −2 ≤ x ≤ 4; imagem: 1 ≤ y ≤ 3",
+     "value": null,
+     "correct": false,
+     "why": "Começou a imagem no y da primeira ponta (1) e esqueceu o ponto mais baixo, em y = −1."
+    }
+   ],
+   "resolution": [
+    "Domínio: olhe o eixo x, do primeiro ao último ponto: de −2 a 4.",
+    "Imagem: olhe o eixo y, do ponto mais baixo ao mais alto: de −1 a 3.",
+    "As pontas do gráfico não são, necessariamente, o mais alto e o mais baixo."
+   ],
+   "check": "O ponto (3; −1) está abaixo das duas pontas, por isso a imagem começa em −1.",
+   "key": "A"
+  }
+ ]
+}

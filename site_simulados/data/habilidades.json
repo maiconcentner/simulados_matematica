@@ -1,0 +1,247 @@
+{
+ "C27": {
+  "nome": "Média aritmética e ponderada",
+  "descricao": "Resolver problemas que envolvam o cálculo de média aritmética e ponderada em situações contextualizadas.",
+  "tema": "Estatística e probabilidade",
+  "dica": "multiplique cada nota pelo seu peso, some tudo e divida pela soma dos pesos (não pelo número de notas). A média sempre fica entre a menor e a maior nota.",
+  "conexao_8ano": true
+ },
+ "D31": {
+  "nome": "Porcentagens e taxas",
+  "descricao": "Resolver problemas que envolvam o cálculo de porcentagens, taxas e percentuais sucessivos em contextos.",
+  "tema": "Números",
+  "dica": "use fatores em vez de somar percentuais. Aumento de 20% é × 1,20 e desconto de 20% é × 0,80. Os percentuais não se somam porque incidem sobre valores diferentes.",
+  "conexao_8ano": false
+ },
+ "D13": {
+  "nome": "Leitura de gráficos e infográficos",
+  "descricao": "Interpretar dados apresentados em gráficos, infográficos, pesquisas estatísticas ou textos jornalísticos.",
+  "tema": "Estatística e probabilidade",
+  "dica": "leia o que a pergunta pede (até, mais de, entre) e marque quais barras entram. Confira se a soma das barras bate com o total da pesquisa.",
+  "conexao_8ano": false
+ },
+ "D30": {
+  "nome": "Teorema de Pitágoras",
+  "descricao": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+  "tema": "Geometria",
+  "dica": "identifique a hipotenusa (oposta ao ângulo reto). Para achar um cateto, subtraia os quadrados e tire a raiz no final.",
+  "conexao_8ano": false
+ },
+ "D20": {
+  "nome": "Problemas com tabelas e gráficos",
+  "descricao": "Resolver problemas com dados apresentados em tabelas ou gráficos.",
+  "tema": "Estatística e probabilidade",
+  "dica": "circule as linhas e colunas pedidas antes de somar. Depois confira se o total faz sentido com o de cada turma.",
+  "conexao_8ano": false
+ },
+ "C31": {
+  "nome": "Contagem (princípio multiplicativo)",
+  "descricao": "Resolver problemas de contagem utilizando o princípio multiplicativo (número de combinações formadas por escolhas independentes).",
+  "tema": "Estatística e probabilidade",
+  "dica": "para contar combinações formadas por escolhas independentes (um item de cada grupo), multiplique o número de opções de cada grupo; não some.",
+  "conexao_8ano": true
+ },
+ "D14": {
+  "nome": "Produtos notáveis",
+  "descricao": "Resolver e/ou interpretar produtos notáveis (quadrado da soma e da diferença de dois termos) na forma algébrica.",
+  "tema": "Álgebra e funções",
+  "dica": "para elevar uma soma ao quadrado, use (a+b)² = a² + 2ab + b² e não esqueça o termo do meio (2ab) nem os quadrados dos coeficientes.",
+  "conexao_8ano": false
+ },
+ "D33": {
+  "nome": "Probabilidade",
+  "descricao": "Resolver problemas envolvendo o cálculo da probabilidade de um evento em espaços amostrais equiprováveis.",
+  "tema": "Estatística e probabilidade",
+  "dica": "para 'ou', some as probabilidades dos casos favoráveis sobre o total. Para o evento complementar ('não'), calcule 100% menos a probabilidade do evento.",
+  "conexao_8ano": false
+ },
+ "D27": {
+  "nome": "Relações métricas no triângulo retângulo",
+  "descricao": "Resolver problemas envolvendo relações métricas no triângulo retângulo (catetos, hipotenusa, altura e suas projeções).",
+  "tema": "Geometria",
+  "dica": "no triângulo retângulo, cada cateto ao quadrado é igual ao produto da hipotenusa pela projeção desse cateto sobre ela. Antes de calcular, identifique onde está o ângulo reto para saber qual lado é a hipotenusa.",
+  "conexao_8ano": false
+ },
+ "C13": {
+  "nome": "Frequência absoluta e relativa",
+  "descricao": "Identificar a frequência (relativa, absoluta ou acumulada) de determinados elementos dentro de um conjunto de dados.",
+  "tema": "Estatística e probabilidade",
+  "dica": "para frequência relativa, divida o número de ocorrências pelo total de dados e multiplique por 100; não confunda com a frequência acumulada (soma até aquela linha).",
+  "conexao_8ano": true
+ },
+ "D09": {
+  "nome": "Fatoração: diferença de quadrados",
+  "descricao": "Fatorar expressões com diferenças de quadrados.",
+  "tema": "Álgebra e funções",
+  "dica": "para fatorar uma diferença de quadrados (a² − b²), escreva o produto (a − b)(a + b); não confunda com o quadrado da diferença, que tem um termo do meio.",
+  "conexao_8ano": false
+ },
+ "D17": {
+  "nome": "Semelhança de triângulos: quando acontece",
+  "descricao": "Reconhecer as condições para que dois triângulos sejam semelhantes.",
+  "tema": "Geometria",
+  "dica": "para justificar que dois triângulos são semelhantes, basta mostrar dois pares de ângulos correspondentes congruentes (caso AA); não é preciso conhecer os lados.",
+  "conexao_8ano": false
+ },
+ "D02": {
+  "nome": "Função em tabela e em gráfico",
+  "descricao": "Associar funções a tabelas ou gráficos que as representam.",
+  "tema": "Álgebra e funções",
+  "dica": "para associar uma tabela a uma lei, calcule a taxa de variação entre duas linhas e confira se ela se repete nas outras linhas, antes de montar a lei.",
+  "conexao_8ano": false
+ },
+ "D12": {
+  "nome": "Lei da função do 1º grau",
+  "descricao": "Identificar representações algébricas de funções polinomiais do 1º grau.",
+  "tema": "Álgebra e funções",
+  "dica": "para montar f(x) = ax + b a partir de uma tabela, calcule primeiro a (a diferença de y dividida pela diferença de x) e só depois substitua um ponto para achar b.",
+  "conexao_8ano": false
+ },
+ "C05": {
+  "nome": "Fatoração em primos",
+  "descricao": "Decompor números naturais em fatores primos.",
+  "tema": "Números",
+  "dica": "divida o número sempre pelo menor primo possível (2, 3, 5, 7...) até o quociente chegar a 1, e confira multiplicando os fatores; lembre que o 1 não é primo e que fatores como 6 ou 9 ainda se decompõem.",
+  "conexao_8ano": true
+ },
+ "D10": {
+  "nome": "Trinômio quadrado perfeito",
+  "descricao": "Fatorar expressões com o trinômio do quadrado perfeito.",
+  "tema": "Álgebra e funções",
+  "dica": "para completar x² + bx + k como quadrado perfeito, divida b por 2 e eleve o resultado ao quadrado; confira se o termo do meio é o dobro do produto das raízes dos extremos.",
+  "conexao_8ano": false
+ },
+ "D22": {
+  "nome": "Dependência entre duas grandezas",
+  "descricao": "Resolver problemas que envolvam a dependência entre duas variáveis.",
+  "tema": "Álgebra e funções",
+  "dica": "identifique qual grandeza depende de qual, escreva a lei que liga as duas e, se o dado do problema for a grandeza que depende, desfaça as operações na ordem inversa para achar a outra.",
+  "conexao_8ano": false
+ },
+ "D07": {
+  "nome": "Ângulos em retas paralelas",
+  "descricao": "Determinar a medida de um ângulo desconhecido em um feixe de retas paralelas interceptadas por transversais.",
+  "tema": "Geometria",
+  "dica": "antes de calcular, classifique o par de ângulos pela posição: correspondentes e alternos são iguais; colaterais somam 180°.",
+  "conexao_8ano": false
+ },
+ "D11": {
+  "nome": "Domínio e imagem de uma função",
+  "descricao": "Identificar domínio ou imagem de uma função.",
+  "tema": "Álgebra e funções",
+  "dica": "leia cada eixo separadamente: o domínio são os valores de x (eixo horizontal) e a imagem são os valores de y (eixo vertical), com os extremos incluídos quando o gráfico tem bolinha cheia.",
+  "conexao_8ano": false
+ },
+ "C01": {
+  "nome": "Juros compostos",
+  "descricao": "Calcular juros compostos em situações contextualizadas.",
+  "tema": "Números",
+  "dica": "aplique a taxa sobre o valor já atualizado a cada período (multiplique por 1 + taxa uma vez por mês) e lembre que, em juros simples, a taxa incide sempre sobre o valor inicial e o resultado fica menor.",
+  "conexao_8ano": true
+ },
+ "D03": {
+  "nome": "Percentuais sucessivos",
+  "descricao": "Calcular aplicação de percentuais sucessivos em situações contextualizadas.",
+  "tema": "Números",
+  "dica": "transforme cada porcentagem em fator (aumento de 20% é × 1,20; desconto de 20% é × 0,80) e multiplique os fatores na ordem em que acontecem; somar os percentuais não funciona.",
+  "conexao_8ano": false
+ },
+ "D25": {
+  "nome": "Gráfico da função do 1º grau",
+  "descricao": "Resolver problemas que envolvam a representação gráfica de funções polinomiais de 1º grau.",
+  "tema": "Álgebra e funções",
+  "dica": "leia no gráfico o valor inicial (onde a reta corta o eixo vertical) e quanto o valor sobe por unidade, escreva a lei e só então calcule valores fora do trecho desenhado, sem tratar a função como proporcional.",
+  "conexao_8ano": false
+ },
+ "D35": {
+  "nome": "Triângulos semelhantes em problemas",
+  "descricao": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+  "tema": "Geometria",
+  "dica": "separe os dois triângulos semelhantes, ligue os lados que se correspondem (altura com altura, base com base) e só então monte a proporção; confira se a base de cada triângulo vai até o mesmo ponto.",
+  "conexao_8ano": false
+ },
+ "C28": {
+  "nome": "Perímetro e área",
+  "descricao": "Resolver problemas que envolvam o cálculo de perímetro ou área de figuras planas.",
+  "tema": "Grandezas e medidas",
+  "dica": "descubra pelas diferenças as medidas dos lados que não aparecem na figura e some só os lados de fora; contorno (m) e área (m²) são grandezas diferentes.",
+  "conexao_8ano": true
+ },
+ "D01": {
+  "nome": "Radiciação",
+  "descricao": "Aplicar as propriedades da radiciação para resolver expressões numéricas.",
+  "tema": "Números",
+  "dica": "simplifique cada raiz (√50 = 5√2), use √a · √b = √(a · b) e só some ou subtraia raízes com o mesmo radicando; número inteiro e raiz não se juntam.",
+  "conexao_8ano": false
+ },
+ "D18": {
+  "nome": "Vistas de sólidos",
+  "descricao": "Reconhecer as diferentes vistas (lateral, frontal e superior) de sólidos geométricos.",
+  "tema": "Geometria",
+  "dica": "imagine-se olhando o sólido de frente, do lado e de cima: a vista frontal tem a largura do sólido, a lateral tem a profundidade, e a superior mostra as posições ocupadas no chão, sem alturas.",
+  "conexao_8ano": false
+ },
+ "D37": {
+  "nome": "Teorema de Tales",
+  "descricao": "Resolver problemas utilizando o Teorema de Tales.",
+  "tema": "Geometria",
+  "dica": "ligue cada trecho de uma transversal ao trecho correspondente da outra (entre as mesmas paralelas), monte a proporção com eles e confira se os trechos encontrados somam o total.",
+  "conexao_8ano": false
+ },
+ "D19": {
+  "nome": "Vistas e perspectivas em problemas",
+  "descricao": "Resolver problemas a partir da visualização de diferentes tipos de vistas e perspectivas.",
+  "tema": "Geometria",
+  "dica": "conte os cubos coluna por coluna (ou camada por camada), incluindo os escondidos atrás e embaixo, e só depois faça a conta que o problema pede.",
+  "conexao_8ano": false
+ },
+ "C24": {
+  "nome": "Equação do 2º grau",
+  "descricao": "Resolver problemas que envolvam equações do 2º grau.",
+  "tema": "Álgebra e funções",
+  "dica": "chame a medida desconhecida de x, escreva a área como produto dos lados, x · (x + 3) = 28, resolva a equação do 2º grau e descarte a raiz negativa, que não pode ser uma medida.",
+  "conexao_8ano": true
+ },
+ "D08": {
+  "nome": "Fatoração e equação do 2º grau",
+  "descricao": "Fatorar expressões algébricas relacionando-as aos respectivos produtos notáveis e equações do 2º grau.",
+  "tema": "Álgebra e funções",
+  "dica": "confira se o trinômio é quadrado perfeito, a² − 2ab + b² = (a − b)², e lembre que (x − 5)² = 0 só acontece quando x − 5 = 0.",
+  "conexao_8ano": false
+ },
+ "D05": {
+  "nome": "Volume do cilindro",
+  "descricao": "Calcular o volume de cilindros em situações contextualizadas.",
+  "tema": "Grandezas e medidas",
+  "dica": "divida o diâmetro por 2 para achar o raio, eleve o raio ao quadrado e multiplique por π e pela altura: V = π · r² · h.",
+  "conexao_8ano": false
+ },
+ "D06": {
+  "nome": "Volume do prisma",
+  "descricao": "Calcular o volume de prismas em diferentes contextos.",
+  "tema": "Grandezas e medidas",
+  "dica": "identifique a base do prisma (aqui, o trapézio da lateral), calcule a área dela e multiplique pela distância entre as duas bases (a largura).",
+  "conexao_8ano": false
+ },
+ "EF.09.MAT.2.87": {
+  "nome": "Valor e tabela de uma função",
+  "descricao": "Calcular valores de uma função, completar tabelas e voltar do valor de y para o x.",
+  "tema": "Álgebra e funções",
+  "dica": "troque o x pelo número entre parênteses, faça a multiplicação antes da soma e confira o sinal; para voltar do y para o x, iguale a lei ao valor e resolva a equação.",
+  "conexao_8ano": false
+ },
+ "EF.09.MAT.2.88": {
+  "nome": "Lei de uma situação: fixo e por unidade",
+  "descricao": "Escrever e interpretar a lei de situações com valor fixo e valor por unidade e comparar duas situações.",
+  "tema": "Álgebra e funções",
+  "dica": "o valor fixo é o b (não depende de x) e o valor por unidade é o a, que multiplica o x; com valor fixo, dobrar o x não dobra o total.",
+  "conexao_8ano": false
+ },
+ "EF.09.MAT.2.89": {
+  "nome": "Gráfico da função do 1º grau",
+  "descricao": "Reconhecer pela lei e pelo gráfico se a reta sobe ou desce, onde corta os eixos, o zero, a lei, o domínio e a imagem.",
+  "tema": "Álgebra e funções",
+  "dica": "em f(x) = ax + b, a negativo faz a reta descer e o b é onde ela corta o eixo y; o zero é o x que faz f(x) = 0; domínio se lê no eixo x e imagem no eixo y.",
+  "conexao_8ano": false
+ }
+}

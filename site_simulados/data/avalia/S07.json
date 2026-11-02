@@ -1,0 +1,360 @@
+{
+ "id": "S07",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 7",
+ "semana": 7,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-11-02",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 9 (volumes), conexão com o 8º ano e retomadas de E1, E2 e da Semana 5",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C24": "chame a medida desconhecida de x, escreva a área como produto dos lados, x · (x + 3) = 28, resolva a equação do 2º grau e descarte a raiz negativa, que não pode ser uma medida.",
+  "D08": "confira se o trinômio é quadrado perfeito, a² − 2ab + b² = (a − b)², e lembre que (x − 5)² = 0 só acontece quando x − 5 = 0.",
+  "D05": "divida o diâmetro por 2 para achar o raio, eleve o raio ao quadrado e multiplique por π e pela altura: V = π · r² · h.",
+  "D30": "use o Teorema de Pitágoras uma vez para cada posição da escada (o comprimento dela não muda) e só no fim faça a diferença entre as alturas.",
+  "D06": "identifique a base do prisma (aqui, o trapézio da lateral), calcule a área dela e multiplique pela distância entre as duas bases (a largura).",
+  "D35": "desenhe os dois triângulos com o vértice na lanterna e use como base do triângulo grande a distância toda, da lanterna até a parede (50 + 100), e não só a do boneco até a parede."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C24",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Problema que leva a uma equação do 2º grau (tapete)",
+   "descriptor": "Resolver problemas que envolvam equações do 2º grau.",
+   "stem": [
+    "Um tapete retangular tem 28 m² de área. O comprimento do tapete é 3 m maior que a largura."
+   ],
+   "table": null,
+   "ask": "Qual é a largura desse tapete, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4",
+     "correct": true,
+     "why": "Acerto. Com largura x, o comprimento é x + 3 e a área é x(x + 3) = 28, ou seja, x² + 3x − 28 = 0. Δ = 9 + 112 = 121, x = (−3 ± 11) ÷ 2, então x = 4 ou x = −7. Como é uma medida, x = 4 m."
+    },
+    {
+     "letter": "B",
+     "text": "5,5",
+     "correct": false,
+     "why": "Usou 28 como perímetro, e não como área: 2x + 2(x + 3) = 28, então 4x = 22 e x = 5,5. A área é o produto dos lados."
+    },
+    {
+     "letter": "C",
+     "text": "7",
+     "correct": false,
+     "why": "Errou o sinal na fórmula: fez (3 + 11) ÷ 2 = 7, em vez de (−3 + 11) ÷ 2 = 4. O 7 é o comprimento, não a largura."
+    },
+    {
+     "letter": "D",
+     "text": "8",
+     "correct": false,
+     "why": "Esqueceu de dividir por 2a: fez −3 + 11 = 8. Na fórmula, (−b ± √Δ) é dividido por 2a = 2."
+    },
+    {
+     "letter": "E",
+     "text": "12,5",
+     "correct": false,
+     "why": "Somou os lados em vez de multiplicar: x + (x + 3) = 28, então 2x = 25 e x = 12,5. A área do retângulo é comprimento vezes largura."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Chame a largura de x. O comprimento é x + 3, e a área é x · (x + 3) = 28.",
+    "Arrume a equação: x² + 3x − 28 = 0. Δ = 3² − 4 · 1 · (−28) = 9 + 112 = 121, e √121 = 11.",
+    "x = (−3 ± 11) ÷ 2, então x = 4 ou x = −7. Uma medida não pode ser negativa: a largura é 4 m."
+   ],
+   "check": "Largura 4 m e comprimento 4 + 3 = 7 m: 4 · 7 = 28 m², confere."
+  },
+  {
+   "n": 2,
+   "code": "D08",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Fatorar o trinômio e achar as raízes da equação",
+   "descriptor": "Fatorar expressões algébricas relacionando-as aos respectivos produtos notáveis e equações do 2º grau.",
+   "stem": [
+    "Para resolver a equação x² − 10x + 25 = 0, uma estudante fatorou o primeiro membro usando um produto notável."
+   ],
+   "table": null,
+   "ask": "Qual alternativa mostra a fatoração correta e a solução da equação?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(x + 5)² = 0, então x = −5.",
+     "correct": false,
+     "why": "Errou o sinal do binômio. Como o termo do meio é −10x, o trinômio é (x − 5)²; (x + 5)² dá x² + 10x + 25."
+    },
+    {
+     "letter": "B",
+     "text": "(x − 5)(x + 5) = 0, então x = 5 ou x = −5.",
+     "correct": false,
+     "why": "Confundiu o trinômio quadrado perfeito com a diferença de quadrados. (x − 5)(x + 5) dá x² − 25, sem o termo −10x."
+    },
+    {
+     "letter": "C",
+     "text": "x(x − 10) + 25 = 0, então x = 0 ou x = 10.",
+     "correct": false,
+     "why": "Pôs x em evidência só nos dois primeiros termos e ignorou o 25. A forma x(x − 10) + 25 não é um produto igual a zero, então não dá para tirar as raízes dela."
+    },
+    {
+     "letter": "D",
+     "text": "(x − 5)² = 0, então x = 5.",
+     "correct": true,
+     "why": "Acerto. x² − 10x + 25 = (x − 5)², porque x² = (x)², 25 = 5² e 2 · x · 5 = 10x, com sinal de menos. (x − 5)² = 0 só quando x − 5 = 0, então x = 5."
+    },
+    {
+     "letter": "E",
+     "text": "(x − 5)² = 0, então x = 5 ou x = −5.",
+     "correct": false,
+     "why": "Fatorou certo, mas achou duas raízes. (x − 5)² = 0 só acontece quando x − 5 = 0; o ± aparece em x² = 25, não aqui. Para x = −5: 25 + 50 + 25 = 100, não dá zero."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "x² − 10x + 25 tem dois quadrados, x² = (x)² e 25 = 5², e o termo do meio é 2 · x · 5 = 10x, com sinal de menos.",
+    "Então é um trinômio quadrado perfeito: x² − 10x + 25 = (x − 5)².",
+    "(x − 5)² = 0 só quando x − 5 = 0. A solução é x = 5."
+   ],
+   "check": "Para x = 5: 25 − 50 + 25 = 0, confere. Para x = −5: 25 + 50 + 25 = 100, não serve."
+  },
+  {
+   "n": 3,
+   "code": "D05",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Volume de uma lata cilíndrica (diâmetro dado)",
+   "descriptor": "Calcular o volume de cilindros em situações contextualizadas.",
+   "stem": [
+    "Uma fábrica embala molho de tomate em latas cilíndricas com 8 cm de diâmetro e 12 cm de altura, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Lata em forma de cilindro, em pé. Na tampa, um segmento passa pelo centro, de um lado ao outro, com a medida 8 cm (o diâmetro). Ao lado, uma seta vertical marca a altura de 12 cm.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.8,
+    "file": "assets/figuras/avalia/s07/q3.png"
+   },
+   "table": null,
+   "ask": "Qual é o volume de uma lata, em cm³? Use π = 3.",
+   "options": [
+    {
+     "letter": "A",
+     "text": "144",
+     "correct": false,
+     "why": "Não elevou o raio ao quadrado: fez 3 · 4 · 12 = 144. A área da base é π · r² = 3 · 4² = 48 cm²."
+    },
+    {
+     "letter": "B",
+     "text": "576",
+     "correct": true,
+     "why": "Acerto. O raio é a metade do diâmetro: 8 ÷ 2 = 4 cm. Área da base: 3 · 4² = 48 cm². Volume: 48 · 12 = 576 cm³."
+    },
+    {
+     "letter": "C",
+     "text": "768",
+     "correct": false,
+     "why": "Usou o diâmetro ao quadrado e esqueceu o π: 8² · 12 = 768."
+    },
+    {
+     "letter": "D",
+     "text": "1 152",
+     "correct": false,
+     "why": "Elevou o diâmetro ao quadrado e só depois dividiu por 2 (64 ÷ 2 = 32, em vez de 4² = 16): 3 · 32 · 12 = 1 152. Primeiro se acha o raio, depois se eleva ao quadrado."
+    },
+    {
+     "letter": "E",
+     "text": "2 304",
+     "correct": false,
+     "why": "Usou o diâmetro como se fosse o raio: 3 · 8² · 12 = 2 304. O raio é a metade do diâmetro."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "O raio é a metade do diâmetro: r = 8 ÷ 2 = 4 cm.",
+    "Área da base: π · r² = 3 · 4² = 3 · 16 = 48 cm².",
+    "Volume: área da base · altura = 48 · 12 = 576 cm³."
+   ],
+   "check": "Uma caixa de 8 cm por 8 cm por 12 cm, que envolve a lata, tem 768 cm³; a lata tem de ter menos que isso, e 576 cm³ é 3/4 desse valor, como π ÷ 4 ≈ 3/4."
+  },
+  {
+   "n": 4,
+   "code": "D30",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Pitágoras em dois passos (escada que escorrega)",
+   "descriptor": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+   "stem": [
+    "Uma escada de 2,5 m de comprimento está apoiada em uma parede vertical, com o pé a 0,7 m da parede. O pé da escada escorregou e ficou a 1,5 m da parede, com o topo ainda encostado nela, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Parede vertical à esquerda e chão horizontal, com ângulo reto entre eles. Uma escada tracejada, marcada antes, vai do chão, a 0,7 m da parede, até um ponto alto da parede. Uma escada contínua, marcada depois, vai do chão, a 1,5 m da parede, até um ponto mais baixo da parede. A escada tem 2,5 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.9,
+    "file": "assets/figuras/avalia/s07/q4.png"
+   },
+   "table": null,
+   "ask": "Quantos metros o topo da escada desceu?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,4",
+     "correct": true,
+     "why": "Acerto. Antes: altura² = 2,5² − 0,7² = 6,25 − 0,49 = 5,76, altura = 2,4 m. Depois: altura² = 2,5² − 1,5² = 6,25 − 2,25 = 4, altura = 2,0 m. O topo desceu 2,4 − 2,0 = 0,4 m."
+    },
+    {
+     "letter": "B",
+     "text": "0,8",
+     "correct": false,
+     "why": "Achou que o topo desce o mesmo tanto que o pé se afasta (1,5 − 0,7 = 0,8). Não é assim: cada posição da escada forma um triângulo retângulo diferente."
+    },
+    {
+     "letter": "C",
+     "text": "1,76",
+     "correct": false,
+     "why": "Fez as contas sem tirar a raiz: 5,76 − 4 = 1,76. Esses são os quadrados das alturas; as alturas são √5,76 = 2,4 e √4 = 2."
+    },
+    {
+     "letter": "D",
+     "text": "2,0",
+     "correct": false,
+     "why": "Calculou a altura depois do escorregão (2,0 m), mas não fez a diferença com a altura de antes."
+    },
+    {
+     "letter": "E",
+     "text": "2,4",
+     "correct": false,
+     "why": "Calculou só a altura de antes (2,4 m) e parou no primeiro passo."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Antes: a escada é a hipotenusa. altura² + 0,7² = 2,5², então altura² = 6,25 − 0,49 = 5,76 e a altura é √5,76 = 2,4 m.",
+    "Depois: altura² + 1,5² = 2,5², então altura² = 6,25 − 2,25 = 4 e a altura é √4 = 2,0 m.",
+    "O topo desceu 2,4 − 2,0 = 0,4 m."
+   ],
+   "check": "0,7² + 2,4² = 0,49 + 5,76 = 6,25 = 2,5² e 1,5² + 2,0² = 2,25 + 4 = 6,25 = 2,5²: nas duas posições a escada tem 2,5 m."
+  },
+  {
+   "n": 5,
+   "code": "D06",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Volume de prisma de base trapezoidal (piscina)",
+   "descriptor": "Calcular o volume de prismas em diferentes contextos.",
+   "stem": [
+    "Uma piscina tem 10 m de comprimento e 4 m de largura. O fundo é inclinado: a profundidade vai de 1 m, na parte rasa, até 2 m, na parte funda, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Piscina em forma de prisma, desenhada em perspectiva. A face da frente é um trapézio: a borda de cima mede 10 m, o lado esquerdo tem 1 m de profundidade e o direito, 2 m; o fundo é inclinado. A largura da piscina, para trás, é de 4 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.85,
+    "file": "assets/figuras/avalia/s07/q5.png"
+   },
+   "table": null,
+   "ask": "Quantos metros cúbicos de água cabem na piscina cheia?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "15",
+     "correct": false,
+     "why": "Calculou só a área do trapézio da lateral (15 m²) e não multiplicou pela largura da piscina. Área é medida em m², volume em m³."
+    },
+    {
+     "letter": "B",
+     "text": "40",
+     "correct": false,
+     "why": "Usou só a profundidade da parte rasa, como se a piscina inteira tivesse 1 m: 1 · 10 · 4 = 40."
+    },
+    {
+     "letter": "C",
+     "text": "60",
+     "correct": true,
+     "why": "Acerto. A piscina é um prisma cuja base é o trapézio da lateral: (1 + 2) · 10 ÷ 2 = 15 m². Volume = área da base · largura = 15 · 4 = 60 m³."
+    },
+    {
+     "letter": "D",
+     "text": "80",
+     "correct": false,
+     "why": "Usou só a profundidade da parte funda, como se a piscina inteira tivesse 2 m: 2 · 10 · 4 = 80."
+    },
+    {
+     "letter": "E",
+     "text": "120",
+     "correct": false,
+     "why": "Somou as duas profundidades e esqueceu de dividir por 2 na área do trapézio: (1 + 2) · 10 · 4 = 120."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "A piscina é um prisma. As duas faces iguais e paralelas são os trapézios das laterais; elas são a base.",
+    "Área do trapézio: (1 + 2) · 10 ÷ 2 = 15 m².",
+    "Volume: área da base · distância entre as bases = 15 · 4 = 60 m³."
+   ],
+   "check": "O volume tem de ficar entre o de uma piscina toda com 1 m de fundo (40 m³) e o de uma toda com 2 m (80 m³). 60 m³ é exatamente o meio, porque a profundidade média é 1,5 m: 1,5 · 10 · 4 = 60."
+  },
+  {
+   "n": 6,
+   "code": "D35",
+   "role": "Retomada espaçada (6ª questão fixa)",
+   "level": "N4",
+   "short": "Semelhança de triângulos: sombra na parede",
+   "descriptor": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+   "stem": [
+    "Em uma brincadeira de sombras, uma lanterna foi colocada no chão, a 50 cm de um boneco de 30 cm de altura. A parede fica 100 cm atrás do boneco. A luz da lanterna projeta na parede a sombra do boneco, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Vista de lado. No chão, à esquerda, uma lanterna. A 50 cm dela, um boneco em pé de 30 cm de altura. 100 cm depois do boneco, uma parede vertical. Uma linha tracejada sai da lanterna, passa pelo topo do boneco e chega à parede; o trecho da parede abaixo dessa linha é a sombra.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.8,
+    "file": "assets/figuras/avalia/s07/q6.png"
+   },
+   "table": null,
+   "ask": "Qual é a altura da sombra do boneco na parede, em centímetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10",
+     "correct": false,
+     "why": "Inverteu a razão: fez 30 · 50 ÷ 150 = 10. A sombra fica mais longe da lanterna que o boneco, então tem de ser maior que 30 cm."
+    },
+    {
+     "letter": "B",
+     "text": "15",
+     "correct": false,
+     "why": "Inverteu a razão e não somou as distâncias: 30 · 50 ÷ 100 = 15. A sombra tem de ser maior que o boneco."
+    },
+    {
+     "letter": "C",
+     "text": "45",
+     "correct": false,
+     "why": "Pôs a distância do boneco até a parede (100 cm) no triângulo pequeno: 30 · 150 ÷ 100 = 45. O triângulo pequeno vai da lanterna até o boneco (50 cm)."
+    },
+    {
+     "letter": "D",
+     "text": "60",
+     "correct": false,
+     "why": "Usou só a distância do boneco até a parede como base do triângulo grande: 30 · 100 ÷ 50 = 60. A base do triângulo grande vai da lanterna até a parede: 50 + 100 = 150 cm."
+    },
+    {
+     "letter": "E",
+     "text": "90",
+     "correct": true,
+     "why": "Acerto. Os dois triângulos têm vértice na lanterna. Pequeno: base 50 cm e altura 30 cm. Grande: base 50 + 100 = 150 cm e altura x. Então x ÷ 30 = 150 ÷ 50 = 3, e x = 90 cm."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Os dois triângulos têm um vértice na lanterna. O pequeno vai da lanterna até o boneco: base 50 cm e altura 30 cm.",
+    "O grande vai da lanterna até a parede: base 50 + 100 = 150 cm e altura igual à da sombra.",
+    "Os triângulos são semelhantes: sombra ÷ 30 = 150 ÷ 50 = 3. A sombra tem 30 · 3 = 90 cm."
+   ],
+   "check": "A parede está 3 vezes mais longe da lanterna (150 cm) que o boneco (50 cm), então a sombra é 3 vezes mais alta que o boneco: 3 · 30 = 90 cm. A razão vale para as duas medidas: 90 ÷ 150 = 30 ÷ 50 = 0,6."
+  }
+ ]
+}

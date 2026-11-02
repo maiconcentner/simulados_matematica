@@ -1,0 +1,350 @@
+{
+ "id": "S01",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 1",
+ "semana": 1,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-09-21",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 7 (estatística e probabilidade) e retomadas de E1 e E2",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C27": "multiplique cada nota pelo seu peso, some tudo e divida pela soma dos pesos (não pelo número de notas). A média sempre fica entre a menor e a maior nota.",
+  "D31": "use fatores em vez de somar percentuais. Aumento de 20% é × 1,20 e desconto de 20% é × 0,80. Os percentuais não se somam porque incidem sobre valores diferentes.",
+  "D13": "leia o que a pergunta pede (até, mais de, entre) e marque quais barras entram. Confira se a soma das barras bate com o total da pesquisa.",
+  "D30": "identifique a hipotenusa (oposta ao ângulo reto). Para achar um cateto, subtraia os quadrados e tire a raiz no final.",
+  "D20": "circule as linhas e colunas pedidas antes de somar. Depois confira se o total faz sentido com o de cada turma."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C27",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Média ponderada",
+   "descriptor": "Resolver problemas que envolvam o cálculo de média aritmética e ponderada em situações contextualizadas.",
+   "stem": [
+    "Em uma escola, a nota final de Matemática de cada estudante é a média ponderada das notas de três avaliações, com os pesos indicados na tabela a seguir. A tabela mostra as notas de Bruno."
+   ],
+   "table": {
+    "header": [
+     "Avaliação",
+     "Nota de Bruno",
+     "Peso"
+    ],
+    "rows": [
+     [
+      "Atividades em sala",
+      "9,0",
+      "2"
+     ],
+     [
+      "Projeto",
+      "5,0",
+      "3"
+     ],
+     [
+      "Prova",
+      "7,0",
+      "5"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual foi a nota final de Bruno em Matemática?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6,8",
+     "correct": true,
+     "why": "Acerto. Soma dos produtos nota × peso (18 + 15 + 35 = 68) dividida pela soma dos pesos (2 + 3 + 5 = 10): 68 ÷ 10 = 6,8."
+    },
+    {
+     "letter": "B",
+     "text": "7,0",
+     "correct": false,
+     "why": "Média aritmética simples: (9 + 5 + 7) ÷ 3 = 7,0. Ignora os pesos, que dão mais valor à prova."
+    },
+    {
+     "letter": "C",
+     "text": "7,4",
+     "correct": false,
+     "why": "Pesos aplicados na ordem invertida (5, 3 e 2): (45 + 15 + 14) ÷ 10 = 7,4. Erro de leitura da coluna dos pesos."
+    },
+    {
+     "letter": "D",
+     "text": "22,7",
+     "correct": false,
+     "why": "Soma dos produtos (68) dividida por 3, o número de avaliações, e não pela soma dos pesos. Uma nota final de 22,7 passa do máximo possível, 10."
+    },
+    {
+     "letter": "E",
+     "text": "68",
+     "correct": false,
+     "why": "Soma dos produtos nota × peso sem dividir por nada. Falta o passo final da média ponderada."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Multiplicar cada nota pelo respectivo peso: 9,0 × 2 = 18; 5,0 × 3 = 15; 7,0 × 5 = 35.",
+    "Somar os produtos: 18 + 15 + 35 = 68.",
+    "Dividir pela soma dos pesos: 2 + 3 + 5 = 10. Então 68 ÷ 10 = 6,8."
+   ],
+   "check": "Toda média fica entre a menor e a maior nota (5,0 e 9,0). Por isso 22,7 e 68 não servem."
+  },
+  {
+   "n": 2,
+   "code": "D31",
+   "role": "Retomada",
+   "level": "N2",
+   "short": "Porcentagens sucessivas",
+   "descriptor": "Resolver problemas que envolvam o cálculo de porcentagens, taxas e percentuais sucessivos em contextos.",
+   "stem": [
+    "Uma plataforma de streaming aumentou em 20% o valor da assinatura mensal, que era de R$ 40,00. Depois de reclamações dos clientes, a empresa concedeu um desconto de 20% sobre o novo valor."
+   ],
+   "table": null,
+   "ask": "Qual é o valor da assinatura depois do desconto?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 30,40",
+     "correct": false,
+     "why": "Desconto calculado sobre o novo valor (20% de 48,00 = 9,60), mas subtraído do valor original: 40 − 9,60 = 30,40. O desconto deve ser subtraído do valor já aumentado, R$ 48,00."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 32,00",
+     "correct": false,
+     "why": "Desconto de 20% aplicado ao valor original (40 × 0,80 = 32,00), sem considerar o aumento."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 38,40",
+     "correct": true,
+     "why": "Acerto. Após o aumento: 40 × 1,20 = 48,00. Após o desconto: 48 × 0,80 = 38,40."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 40,00",
+     "correct": false,
+     "why": "Soma dos percentuais (+20% − 20% = 0%), o que deixa o valor igual ao original. O desconto incide sobre o valor já aumentado, então não cancela o aumento."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 48,00",
+     "correct": false,
+     "why": "Só o aumento foi considerado (40 × 1,20 = 48,00). Faltou aplicar o desconto."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Aumento de 20%: o valor passa a ser 100% + 20% = 120% do original, isto é, 40 × 1,20 = R$ 48,00.",
+    "Desconto de 20% sobre R$ 48,00: o valor passa a ser 80% de 48, isto é, 48 × 0,80 = R$ 38,40.",
+    "Os percentuais não se somam, porque cada um incide sobre um valor diferente. O fator final é 1,20 × 0,80 = 0,96, uma queda de 4% em relação ao original."
+   ],
+   "check": "40 × 0,96 = 38,40."
+  },
+  {
+   "n": 3,
+   "code": "D13",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Interpretação de gráficos",
+   "descriptor": "Interpretar dados apresentados em gráficos, infográficos, pesquisas estatísticas ou textos jornalísticos.",
+   "stem": [
+    "Uma pesquisa com 300 adolescentes de uma cidade investigou quanto tempo eles passam por dia em frente a telas (celular, computador, televisão ou videogame). O resultado foi organizado no gráfico a seguir."
+   ],
+   "figure": {
+    "alt": "Gráfico de barras com o número de adolescentes por tempo diário de tela: até 2 horas, 60; mais de 2 até 4 horas, 105; mais de 4 até 6 horas, 90; mais de 6 horas, 45.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s01/q3.png"
+   },
+   "table": null,
+   "ask": "Quantos desses adolescentes passam até 4 horas por dia em frente a telas?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "60",
+     "correct": false,
+     "why": "Só a primeira barra (até 2 h). Faltou somar a faixa seguinte, que também está dentro de “até 4 horas”."
+    },
+    {
+     "letter": "B",
+     "text": "105",
+     "correct": false,
+     "why": "Só a barra de mais de 2 h até 4 h. Faltou somar a barra de até 2 h."
+    },
+    {
+     "letter": "C",
+     "text": "135",
+     "correct": false,
+     "why": "Leitura da condição contrária: 90 + 45 = 135 passam mais de 4 horas. A pergunta é sobre até 4 horas."
+    },
+    {
+     "letter": "D",
+     "text": "165",
+     "correct": true,
+     "why": "Acerto. “Até 4 horas” reúne as duas primeiras barras: 60 + 105 = 165."
+    },
+    {
+     "letter": "E",
+     "text": "300",
+     "correct": false,
+     "why": "Total de entrevistados. Ignora a condição da pergunta."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "“Até 4 horas” inclui as faixas “Até 2 h” e “Mais de 2 h até 4 h”.",
+    "Somar as duas barras: 60 + 105 = 165."
+   ],
+   "check": "As quatro barras somam 60 + 105 + 90 + 45 = 300, o total da pesquisa. 300 − 135 = 165."
+  },
+  {
+   "n": 4,
+   "code": "D30",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Teorema de Pitágoras",
+   "descriptor": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+   "stem": [
+    "Um técnico, em pé no solo, usa um sensor a laser para acompanhar um drone que sobe na vertical. O sensor indica que a distância em linha reta entre o técnico e o drone é de 20 m. Nesse instante, a distância horizontal entre o técnico e o ponto do solo abaixo do drone é de 12 m, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Triângulo retângulo: o técnico no vértice esquerdo da base, o ponto do solo abaixo do drone no vértice direito (ângulo reto) e o drone no topo. Base de 12 m, hipotenusa de 20 m e altura h desconhecida.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s01/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a altura h em que o drone se encontra?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "8 m",
+     "correct": false,
+     "why": "Diferença das medidas dadas (20 − 12 = 8). Subtrai comprimentos, mas o Teorema de Pitágoras relaciona os quadrados dos lados."
+    },
+    {
+     "letter": "B",
+     "text": "16 m",
+     "correct": true,
+     "why": "Acerto. h² + 12² = 20², logo h² = 400 − 144 = 256 e h = 16."
+    },
+    {
+     "letter": "C",
+     "text": "23,3 m",
+     "correct": false,
+     "why": "√(20² + 12²) ≈ 23,3. Trata 20 m e 12 m como catetos e calcula uma hipotenusa. Mas 20 m já é a hipotenusa, o lado oposto ao ângulo reto."
+    },
+    {
+     "letter": "D",
+     "text": "32 m",
+     "correct": false,
+     "why": "Soma das medidas dadas (20 + 12 = 32). Não há relação aditiva entre os lados de um triângulo retângulo."
+    },
+    {
+     "letter": "E",
+     "text": "256 m",
+     "correct": false,
+     "why": "Parou em h² = 256 e não extraiu a raiz quadrada. h² é uma área, não o comprimento pedido."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "O ângulo reto está no ponto do solo abaixo do drone. Então 20 m é a hipotenusa, e 12 m e h são os catetos.",
+    "Teorema de Pitágoras: 20² = 12² + h², isto é, 400 = 144 + h².",
+    "h² = 400 − 144 = 256. Portanto h = √256 = 16 m."
+   ],
+   "check": "12, 16 e 20 formam a terna pitagórica 3-4-5 multiplicada por 4."
+  },
+  {
+   "n": 5,
+   "code": "D20",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Dados em tabelas",
+   "descriptor": "Resolver problemas com dados apresentados em tabelas ou gráficos.",
+   "stem": [
+    "Três turmas do 9º ano de uma escola, com 40 estudantes cada uma, escolheram a modalidade esportiva que vão disputar na gincana. Cada estudante escolheu uma única modalidade. O resultado está na tabela a seguir."
+   ],
+   "table": {
+    "header": [
+     "Modalidade",
+     "9º A",
+     "9º B",
+     "9º C"
+    ],
+    "rows": [
+     [
+      "Futsal",
+      "16",
+      "12",
+      "10"
+     ],
+     [
+      "Vôlei",
+      "5",
+      "9",
+      "10"
+     ],
+     [
+      "Basquete",
+      "11",
+      "9",
+      "12"
+     ],
+     [
+      "Handebol",
+      "8",
+      "10",
+      "8"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Quantos estudantes do 9º A e do 9º C, juntos, escolheram basquete ou handebol?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "19",
+     "correct": false,
+     "why": "Só o 9º A (11 + 8 = 19). Faltou a turma C."
+    },
+    {
+     "letter": "B",
+     "text": "20",
+     "correct": false,
+     "why": "Só o 9º C (12 + 8 = 20). Faltou a turma A."
+    },
+    {
+     "letter": "C",
+     "text": "39",
+     "correct": true,
+     "why": "Acerto. 9º A: 11 + 8 = 19. 9º C: 12 + 8 = 20. Juntos: 19 + 20 = 39."
+    },
+    {
+     "letter": "D",
+     "text": "41",
+     "correct": false,
+     "why": "Estudantes que escolheram futsal ou vôlei nas turmas A e C (21 + 20 = 41). Leu as linhas erradas da tabela."
+    },
+    {
+     "letter": "E",
+     "text": "58",
+     "correct": false,
+     "why": "Basquete ou handebol nas três turmas (32 + 26 = 58). Incluiu o 9º B, que não foi pedido."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Selecionar as colunas pedidas (9º A e 9º C) e as linhas pedidas (Basquete e Handebol).",
+    "9º A: 11 + 8 = 19. 9º C: 12 + 8 = 20.",
+    "Juntos: 19 + 20 = 39."
+   ],
+   "check": "Cada turma tem 40 estudantes, então 80 no total: 39 em basquete ou handebol e 41 nas outras duas modalidades."
+  }
+ ]
+}

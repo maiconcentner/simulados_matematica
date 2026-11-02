@@ -1,0 +1,354 @@
+{
+ "id": "S05",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 5",
+ "semana": 5,
+ "etapa": 3,
+ "serie": "9º ano",
+ "data": "2026-10-19",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 8 (funções), conexão com o 8º ano e retomadas de E1, E2 e da Semana 2",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C01": "aplique a taxa sobre o valor já atualizado a cada período (multiplique por 1 + taxa uma vez por mês) e lembre que, em juros simples, a taxa incide sempre sobre o valor inicial e o resultado fica menor.",
+  "D03": "transforme cada porcentagem em fator (aumento de 20% é × 1,20; desconto de 20% é × 0,80) e multiplique os fatores na ordem em que acontecem; somar os percentuais não funciona.",
+  "D25": "leia no gráfico o valor inicial (onde a reta corta o eixo vertical) e quanto o valor sobe por unidade, escreva a lei e só então calcule valores fora do trecho desenhado, sem tratar a função como proporcional.",
+  "D35": "separe os dois triângulos semelhantes, ligue os lados que se correspondem (altura com altura, base com base) e só então monte a proporção; confira se a base de cada triângulo vai até o mesmo ponto.",
+  "D12": "identifique o valor inicial (termo independente) e quanto a grandeza muda por unidade (coeficiente de x, negativo se ela diminui) e escreva f(x) = ax + b; confira com um valor conhecido.",
+  "D27": "com a altura relativa à hipotenusa, use cateto² = hipotenusa × projeção desse cateto e não confunda a altura (o segmento que cai no ângulo reto da base) com os lados do triângulo."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C01",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Juros compostos",
+   "descriptor": "Calcular juros compostos em situações contextualizadas.",
+   "stem": [
+    "Para comprar um notebook, uma estudante aplicou R$ 5 000,00 em um investimento que rende juros compostos de 2% ao mês. Ela não fez novos depósitos nem retiradas."
+   ],
+   "table": null,
+   "ask": "Qual será o valor acumulado nesse investimento ao final de 3 meses?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 306,04",
+     "correct": false,
+     "why": "Calculou só os juros acumulados nos 3 meses (R$ 306,04). A pergunta pede o valor acumulado, que inclui os R$ 5 000,00 aplicados."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 5 100,00",
+     "correct": false,
+     "why": "Aplicou a taxa de 2% uma vez só, como se tivesse passado apenas 1 mês."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 5 300,00",
+     "correct": false,
+     "why": "Usou juros simples: 2% de R$ 5 000,00 é R$ 100,00 por mês, sempre sobre o valor inicial. Em juros compostos, a taxa de cada mês incide sobre o valor já atualizado."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 5 306,04",
+     "correct": true,
+     "why": "Acerto. Mês a mês: 5 000 × 1,02 = 5 100; 5 100 × 1,02 = 5 202; 5 202 × 1,02 = 5 306,04. Ou, direto, 5 000 × 1,02³ = 5 306,04."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 8 640,00",
+     "correct": false,
+     "why": "Escreveu 2% como 0,2 (que é 20%) e calculou 5 000 × 1,2³. Como 2% = 0,02, o fator de cada mês é 1,02."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Em juros compostos, a cada mês os 2% incidem sobre o valor já atualizado, ou seja, o valor é multiplicado por 1,02.",
+    "1º mês: 5 000 × 1,02 = 5 100. 2º mês: 5 100 × 1,02 = 5 202. 3º mês: 5 202 × 1,02 = 5 306,04.",
+    "O valor acumulado é R$ 5 306,04 (o mesmo que 5 000 × 1,02³)."
+   ],
+   "check": "Em juros simples o valor seria R$ 5 300,00 (R$ 100,00 por mês). Em juros compostos o resultado tem de ser um pouco maior, por causa dos juros sobre os juros: R$ 6,04 a mais."
+  },
+  {
+   "n": 2,
+   "code": "D03",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Percentuais sucessivos (aumento e desconto)",
+   "descriptor": "Calcular aplicação de percentuais sucessivos em situações contextualizadas.",
+   "stem": [
+    "Em novembro, uma loja aumentou em 20% o preço de um par de tênis que custava R$ 250,00. Em janeiro, na liquidação, a loja deu 20% de desconto sobre o preço de novembro."
+   ],
+   "table": null,
+   "ask": "Qual é o preço desse par de tênis em janeiro?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 60,00",
+     "correct": false,
+     "why": "Calculou o valor do desconto de janeiro (20% de R$ 300,00 = R$ 60,00) e respondeu com ele. A pergunta pede o preço do tênis depois do desconto, e não quanto foi descontado."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 200,00",
+     "correct": false,
+     "why": "Aplicou o desconto de 20% direto sobre os R$ 250,00 e ignorou o aumento de novembro."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 240,00",
+     "correct": true,
+     "why": "Acerto. Em novembro: 250 × 1,20 = 300. Em janeiro: 300 × 0,80 = 240."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 250,00",
+     "correct": false,
+     "why": "Somou os percentuais (+20% − 20% = 0) e concluiu que o preço voltou ao original. Os 20% de desconto incidem sobre R$ 300,00, um valor maior, então o desconto (R$ 60,00) é maior que o aumento (R$ 50,00)."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 300,00",
+     "correct": false,
+     "why": "Aplicou só o aumento de novembro e esqueceu o desconto de janeiro."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Aumento de 20%: o preço é multiplicado por 1,20. Em novembro: 250 × 1,20 = 300.",
+    "Desconto de 20%: o preço de novembro é multiplicado por 0,80. Em janeiro: 300 × 0,80 = 240.",
+    "O preço em janeiro é R$ 240,00."
+   ],
+   "check": "O fator total é 1,20 × 0,80 = 0,96: o preço final é 96% do original, 4% menor. O aumento foi de R$ 50,00 e o desconto, calculado sobre um valor maior, foi de R$ 60,00."
+  },
+  {
+   "n": 3,
+   "code": "D25",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Gráfico de uma função afim",
+   "descriptor": "Resolver problemas que envolvam a representação gráfica de funções polinomiais de 1º grau.",
+   "stem": [
+    "Uma empresa de entregas cobra uma taxa fixa por entrega mais um valor por quilômetro percorrido. O gráfico mostra o valor cobrado, em reais, em função da distância, de 0 a 10 quilômetros."
+   ],
+   "figure": {
+    "alt": "Gráfico de uma reta crescente: valor em reais no eixo vertical e distância em quilômetros no eixo horizontal, de 0 a 10. A reta começa no ponto (0; 8) e termina no ponto (10; 38), ambos marcados.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s05/q3.png"
+   },
+   "table": null,
+   "ask": "Mantida a mesma forma de cobrança, qual é o valor, em reais, de uma entrega de 15 quilômetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "45,00",
+     "correct": false,
+     "why": "Multiplicou 15 km por 3 reais, mas esqueceu a taxa fixa de 8 reais, que o gráfico mostra no ponto em que a reta corta o eixo vertical."
+    },
+    {
+     "letter": "B",
+     "text": "53,00",
+     "correct": true,
+     "why": "Acerto. Pelo gráfico, a taxa fixa é 8 (valor em 0 km) e o valor sobe 38 − 8 = 30 em 10 km, ou seja, 3 por km: f(x) = 8 + 3x. Para 15 km, f(15) = 8 + 45 = 53."
+    },
+    {
+     "letter": "C",
+     "text": "57,00",
+     "correct": false,
+     "why": "Tratou a função como proporcional: se 10 km custam 38, então 15 km custariam 38 × 1,5 = 57. Isso só vale quando a reta passa pela origem; aqui existe uma taxa fixa."
+    },
+    {
+     "letter": "D",
+     "text": "61,00",
+     "correct": false,
+     "why": "Somou o valor de 10 km (38) ao valor de 5 km (23), como se 15 km fossem duas entregas. Assim a taxa fixa de 8 reais entra duas vezes."
+    },
+    {
+     "letter": "E",
+     "text": "65,00",
+     "correct": false,
+     "why": "Calculou o valor por quilômetro como 38 ÷ 10 = 3,8, sem descontar a taxa fixa, e fez 8 + 3,8 × 15 = 65. O valor por km é a variação: (38 − 8) ÷ 10 = 3."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "No gráfico, a reta corta o eixo vertical em 8: essa é a taxa fixa, cobrada mesmo com 0 km.",
+    "De 0 a 10 km, o valor sobe de 8 para 38, ou seja, 30 reais em 10 km: 3 reais por quilômetro. A lei é f(x) = 8 + 3x.",
+    "Para 15 km: f(15) = 8 + 3 · 15 = 8 + 45 = 53 reais."
+   ],
+   "check": "Conferindo com o gráfico: f(10) = 8 + 30 = 38, o ponto marcado. E 15 km custa 15 reais a mais que 10 km (5 km × 3 reais): 38 + 15 = 53."
+  },
+  {
+   "n": 4,
+   "code": "D35",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Semelhança de triângulos com fonte de luz",
+   "descriptor": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+   "stem": [
+    "Um poste de 4,8 m de altura ilumina uma calçada plana. Uma pessoa de 1,6 m de altura está em pé a 3 m da base do poste. A luz da lâmpada, no topo do poste, projeta a sombra dessa pessoa na calçada, do lado oposto ao poste, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Na calçada, à esquerda, um poste vertical de 4,8 m com a lâmpada no topo; a 3 m dele, uma pessoa em pé, de 1,6 m. Um raio de luz tracejado sai da lâmpada, passa pelo alto da cabeça da pessoa e chega ao chão, à direita da pessoa, na ponta da sombra, que está destacada no chão.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.9,
+    "file": "assets/figuras/avalia/s05/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a distância, em metros, da base do poste até a ponta da sombra da pessoa?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1,5",
+     "correct": false,
+     "why": "Calculou corretamente o comprimento da sombra (1,5 m), mas a pergunta pede a distância desde a base do poste, que soma também os 3 m até a pessoa."
+    },
+    {
+     "letter": "B",
+     "text": "3,2",
+     "correct": false,
+     "why": "Calculou a diferença entre as alturas (4,8 − 1,6 = 3,2) e parou. Essa diferença aparece num caminho de resolução, mas não é uma distância no chão."
+    },
+    {
+     "letter": "C",
+     "text": "4,0",
+     "correct": false,
+     "why": "Usou os 3 m como base do triângulo do poste. Esse triângulo vai da base do poste até a ponta da sombra, então a base dele é 3 m mais a sombra."
+    },
+    {
+     "letter": "D",
+     "text": "4,5",
+     "correct": true,
+     "why": "Acerto. O poste e a pessoa formam, com a ponta da sombra, dois triângulos semelhantes: (3 + s) ÷ 4,8 = s ÷ 1,6. Daí 4,8 + 1,6s = 4,8s, s = 1,5 m, e a distância pedida é 3 + 1,5 = 4,5 m."
+    },
+    {
+     "letter": "E",
+     "text": "4,8",
+     "correct": false,
+     "why": "Supôs que a distância até a ponta da sombra é igual à altura do poste, como se o raio de luz fizesse 45° com o chão. A inclinação do raio depende das medidas do problema."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "O raio de luz forma dois triângulos retângulos com o chão: o do poste (altura 4,8 m, base da base do poste até a ponta da sombra, 3 + s) e o da pessoa (altura 1,6 m, base s, a sombra). Eles são semelhantes, porque têm o mesmo ângulo na ponta da sombra.",
+    "Lados correspondentes são proporcionais: (3 + s) ÷ 4,8 = s ÷ 1,6. Multiplicando em cruz: 1,6 · (3 + s) = 4,8s, então 4,8 + 1,6s = 4,8s e 3,2s = 4,8, logo s = 1,5 m.",
+    "A distância da base do poste até a ponta da sombra é 3 + 1,5 = 4,5 m."
+   ],
+   "check": "A pessoa tem 1/3 da altura do poste (1,6 ÷ 4,8), então a sombra deve ser 1/3 da distância total: 4,5 ÷ 3 = 1,5 m, que é exatamente a sombra encontrada."
+  },
+  {
+   "n": 5,
+   "code": "D12",
+   "role": "Novo (segunda versão)",
+   "level": "N3",
+   "short": "Lei de uma função do 1º grau a partir de um texto",
+   "descriptor": "Identificar representações algébricas de funções polinomiais do 1º grau.",
+   "stem": [
+    "Um ciclista está a 60 km do fim de uma trilha e pedala sempre em direção ao fim, a uma velocidade constante de 15 km por hora."
+   ],
+   "table": null,
+   "ask": "Qual lei representa a distância d, em quilômetros, que falta para ele chegar ao fim da trilha, depois de t horas de pedalada?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "d(t) = 60 − 15t",
+     "correct": true,
+     "why": "Acerto. No início (t = 0) faltam 60 km, e a cada hora a distância que falta diminui 15 km: d(t) = 60 − 15t. Ele chega ao fim em t = 4 h, quando d = 0."
+    },
+    {
+     "letter": "B",
+     "text": "d(t) = 60t − 15",
+     "correct": false,
+     "why": "Trocou os papéis dos números: multiplicou 60 por t e subtraiu 15. O valor inicial (60) é o termo independente, e a variação por hora (15) é que multiplica t."
+    },
+    {
+     "letter": "C",
+     "text": "d(t) = 15t",
+     "correct": false,
+     "why": "Escreveu a distância percorrida (15t), e não a distância que falta. A pergunta pede quanto falta para o fim da trilha."
+    },
+    {
+     "letter": "D",
+     "text": "d(t) = 15t + 60",
+     "correct": false,
+     "why": "Somou a distância percorrida à que faltava. Assim, a distância que falta aumentaria com o tempo, quando na verdade ela diminui."
+    },
+    {
+     "letter": "E",
+     "text": "d(t) = 15t − 60",
+     "correct": false,
+     "why": "Trocou a ordem da subtração (percorrido menos total). No início (t = 0), isso daria −60 km, e a distância que falta não pode ser negativa."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "No início (t = 0), faltam 60 km: esse é o valor inicial, o termo independente da lei.",
+    "A cada hora, a distância que falta diminui 15 km: o coeficiente de t é −15.",
+    "Logo, d(t) = 60 − 15t."
+   ],
+   "check": "Com t = 2: d = 60 − 30 = 30 km, metade do caminho, coerente com 2 horas a 15 km por hora. Com t = 4: d = 0, ele chegou."
+  },
+  {
+   "n": 6,
+   "code": "D27",
+   "role": "Retomada espaçada (6ª questão fixa)",
+   "level": "N4",
+   "short": "Relações métricas no triângulo retângulo (lado da barraca)",
+   "descriptor": "Resolver problemas que envolvam as relações métricas dos triângulos retângulos.",
+   "stem": [
+    "A frente de uma barraca de acampamento tem a forma de um triângulo retângulo, com o ângulo reto no topo. Um mastro vertical liga o topo ao chão e divide a base da barraca em dois trechos, de 0,9 m e 1,6 m, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Triângulo com a base apoiada no chão e o ângulo reto no vértice de cima. Um segmento vertical tracejado, o mastro, vai do vértice de cima até a base, formando ângulo reto com ela e dividindo-a em dois trechos: 0,9 m à esquerda e 1,6 m à direita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s05/q6.png"
+   },
+   "table": null,
+   "ask": "Qual é o comprimento, em metros, do lado inclinado maior dessa barraca?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,9",
+     "correct": false,
+     "why": "Respondeu o trecho menor da base (0,9 m), que é a projeção do lado inclinado menor sobre o chão, e não um lado da barraca."
+    },
+    {
+     "letter": "B",
+     "text": "1,2",
+     "correct": false,
+     "why": "Calculou a altura do mastro (h² = 0,9 × 1,6 = 1,44, h = 1,2 m) e parou. O mastro é a altura do triângulo, e não um lado inclinado."
+    },
+    {
+     "letter": "C",
+     "text": "1,5",
+     "correct": false,
+     "why": "Calculou o lado inclinado menor (2,5 × 0,9 = 2,25, e √2,25 = 1,5). A pergunta pede o maior, que fica do lado do trecho de 1,6 m."
+    },
+    {
+     "letter": "D",
+     "text": "1,6",
+     "correct": false,
+     "why": "Respondeu a projeção do lado maior sobre o chão (1,6 m), que é só um trecho da base, e não o lado inclinado."
+    },
+    {
+     "letter": "E",
+     "text": "2,0",
+     "correct": true,
+     "why": "Acerto. A base toda mede 0,9 + 1,6 = 2,5 m e é a hipotenusa. O lado maior é o cateto cuja projeção mede 1,6 m: c² = 2,5 × 1,6 = 4, logo c = 2,0 m."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "A base da barraca é a hipotenusa do triângulo retângulo: 0,9 + 1,6 = 2,5 m. Os trechos 0,9 m e 1,6 m são as projeções dos lados inclinados sobre a base.",
+    "Cada cateto ao quadrado é igual à hipotenusa vezes a sua projeção. O lado maior fica do lado do trecho de 1,6 m: c² = 2,5 × 1,6 = 4.",
+    "Logo, c = 2,0 m."
+   ],
+   "check": "O outro lado mede √(2,5 × 0,9) = √2,25 = 1,5 m, e 1,5² + 2,0² = 2,25 + 4 = 6,25 = 2,5², como manda o Teorema de Pitágoras. O mastro mede √(0,9 × 1,6) = 1,2 m, menor que os dois lados, como na figura."
+  }
+ ]
+}
