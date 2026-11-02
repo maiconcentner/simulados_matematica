@@ -1,0 +1,141 @@
+// Inicialização e rotas do site (navegação por hash, que funciona no GitHub Pages).
+import { h, esc } from "./util.js";
+import { icone } from "./icones.js";
+import { carregarBase, carregarSimulado } from "./dados.js";
+import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js";
+import { aplicarTema } from "./tema.js";
+import { gerarVersao } from "./gerador/index.js";
+import { telaPainel } from "./painel.js";
+import { telaAvalia, telaProva } from "./listas.js";
+import { telaTreinar } from "./treinar.js";
+import { telaSimulado } from "./simulado.js";
+import { telaPerfil } from "./perfil.js";
+
+const raiz = document.getElementById("app");
+const menu = document.getElementById("menu");
+
+const ITENS = [
+  ["painel", "#/", icone.painel, "Painel"],
+  ["avalia", "#/avalia", icone.avalia, "Avalia"],
+  ["prova", "#/prova", icone.prova, "Prova"],
+  ["treinar", "#/treinar", icone.dado, "Treinar"],
+  ["perfil", "#/perfil", icone.perfil, "Perfil"],
+];
+
+const ROTAS = [
+  [/^\/?$/, "painel", (ctx) => telaPainel(ctx)],
+  [/^\/avalia\/?$/, "avalia", (ctx) => telaAvalia(ctx)],
+  [/^\/prova\/?$/, "prova", (ctx) => telaProva(ctx)],
+  [/^\/treinar\/?$/, "treinar", (ctx) => telaTreinar(ctx)],
+  [/^\/perfil\/?$/, "perfil", (ctx) => telaPerfil(ctx)],
+  [/^\/simulado\/([^/?]+)$/, null, (ctx, id) => telaSimulado(ctx, decodeURIComponent(id))],
+  [/^\/resultado\/([^/?]+)$/, null, (ctx, id) => telaSimulado(ctx, decodeURIComponent(id))],
+];
+
+let base = null;
+let telaAtual = null;
+let primeira = true;
+
+function desenharMenu(ativo) {
+  menu.innerHTML = ITENS.map(([id, href, ic, rot]) =>
+    `<a href="${href}"${id === ativo ? ' aria-current="page"' : ""}>${ic}<span>${esc(rot)}</span></a>`).join("");
+}
+
+/** Item do menu que fica marcado numa página de simulado. */
+function areaDoSimulado(id) {
+  if (id.startsWith("G-")) return "treinar";
+  for (const a of base.catalogo.areas) if (a.simulados.some((s) => s.id === id)) return a.id;
+  return null;
+}
+
+function erroHTML(msg) {
+  return h`<div class="cartao vazio"><h1>Ops!</h1><p>${msg}</p><p><a class="botao" href="#/">Voltar ao painel</a></p></div>`.html;
+}
+
+async function gerarVersaoNova(simId) {
+  try {
+    const original = await carregarSimulado(base.catalogo, simId);
+    const sim = gerarVersao(original);
+    guardarGerado(sim);
+    location.hash = `#/simulado/${sim.id}`;
+  } catch (e) {
+    console.warn(e);
+    raiz.insertAdjacentHTML("afterbegin", erroHTML("Não deu para gerar a versão nova agora. Tente de novo."));
+  }
+}
+
+async function desenhar({ manterFoco = null } = {}) {
+  const caminho = (location.hash.replace(/^#/, "") || "/").split("?")[0];
+  const rota = ROTAS.find(([re]) => re.test(caminho));
+  if (telaAtual?.aoSair && !manterFoco) telaAtual.aoSair();
+  const ctx = { base, estado: ler(), redesenhar: (o) => desenhar(o), gerarVersaoNova };
+  let tela;
+  let ativo = null;
+  try {
+    if (!rota) {
+      tela = { titulo: "Página não encontrada", html: erroHTML("Essa página não existe.") };
+    } else {
+      const [re, area, fn] = rota;
+      const params = caminho.match(re).slice(1);
+      ativo = area || areaDoSimulado(decodeURIComponent(params[0] || ""));
+      tela = await fn(ctx, ...params);
+    }
+  } catch (e) {
+    console.warn(e);
+    tela = { titulo: "Ops", html: erroHTML(e.message || "Algo deu errado ao abrir esta página.") };
+  }
+  telaAtual = tela;
+  desenharMenu(ativo);
+  raiz.innerHTML = String(tela.html);
+  document.title = `${tela.titulo} · Simulados de Matemática`;
+  tela.depois?.();
+  if (manterFoco) {
+    raiz.querySelector(manterFoco)?.focus();
+  } else if (!primeira) {
+    window.scrollTo(0, 0);
+    const h1 = raiz.querySelector("h1");
+    if (h1) { h1.tabIndex = -1; h1.focus({ preventScroll: true }); }
+  }
+  primeira = false;
+}
+
+// Um ouvinte só para as ações de todas as telas (data-acao="...").
+function acao(ev) {
+  const el = ev.target.closest("[data-acao]");
+  if (!el || !raiz.contains(el)) return;
+  // caixas e opções agem no "change"; botões no "click"
+  const ehCampo = el.tagName === "INPUT";
+  if ((ev.type === "change") !== ehCampo) return;
+  const nome = el.dataset.acao;
+  if (telaAtual?.eventos?.[nome]) {
+    if (el.tagName === "BUTTON") ev.preventDefault();
+    telaAtual.eventos[nome](el, ev);
+  } else if (nome === "versao-nova") {
+    el.disabled = true;
+    gerarVersaoNova(el.dataset.id);
+  } else if (nome === "missao") {
+    atualizar((e) => { if (e.missao?.passos?.[el.dataset.i]) e.missao.passos[el.dataset.i].feito = el.checked; });
+  }
+}
+
+async function iniciar() {
+  aplicarTema(ler().perfil.tema);
+  if (!armazenamentoDisponivel()) {
+    const aviso = document.getElementById("aviso-armazenamento");
+    aviso.textContent = "Este navegador não deixa guardar dados. Dá para usar o site normalmente, mas o seu progresso não vai ficar salvo.";
+    aviso.hidden = false;
+  }
+  try {
+    base = await carregarBase();
+  } catch (e) {
+    console.warn(e);
+    raiz.innerHTML = erroHTML("Não consegui carregar os simulados. Confira a internet e recarregue a página.");
+    return;
+  }
+  raiz.addEventListener("click", acao);
+  raiz.addEventListener("change", acao);
+  window.addEventListener("hashchange", () => desenhar());
+  await desenhar();
+}
+
+iniciar();

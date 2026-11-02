@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prévia do gerador · para o professor</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../css/estilo.css">
+<style>
+  .conteudo { max-width: 900px; }
+  .modelo { margin-top: 18px; }
+  .modelo header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .por-que { font-size: 0.9rem; color: var(--texto-2); margin: 4px 0 0 46px; }
+  .resolucao { margin-top: 12px; padding: 12px; border-radius: 12px; background: var(--fundo-2); }
+  .resolucao ol { margin: 4px 0 8px; padding-left: 1.3em; }
+  .controles { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+</style>
+</head>
+<body>
+<main class="conteudo">
+  <h1>Prévia do gerador de simulados</h1>
+  <p class="sub">Página para o professor conferir as questões que o gerador sorteia. Cada simulado do site tem um modelo por questão; aqui aparece uma versão de cada, com o gabarito, o erro provável de cada alternativa e a resolução. Esta página não aparece no menu dos alunos.</p>
+  <div class="cartao controles">
+    <label class="campo"><span>Simulado</span><select class="select" id="sim"></select></label>
+    <label class="campo"><span>Semente</span><input class="select" id="semente" inputmode="numeric" style="max-width:10em"></label>
+    <button class="botao" id="sortear" type="button">Sortear outra</button>
+  </div>
+  <div id="saida"></div>
+</main>
+<script type="module">
+import { MODELOS, gerarQuestao } from "../js/gerador/index.js";
+import { criarSorteio, novaSemente } from "../js/gerador/base.js";
+import { questaoLeitura } from "../js/questao.js";
+import { h } from "../js/util.js";
+
+const hab = await (await fetch("../data/habilidades.json")).json();
+const grupos = [...new Set(MODELOS.map((m) => m.id.replace(/-\d+$/, "")))];
+const sel = document.getElementById("sim"), sem = document.getElementById("semente");
+sel.innerHTML = ["todos", ...grupos].map((g) => `<option value="${g}">${g === "todos" ? "Todos os modelos" : g}</option>`).join("");
+const p = new URLSearchParams(location.search);
+sel.value = p.get("sim") || "S07";
+sem.value = p.get("semente") || String(novaSemente() % 100000);
+
+function desenhar() {
+  const semente = Number(sem.value) || 1;
+  const lista = MODELOS.filter((m) => sel.value === "todos" || m.id.startsWith(sel.value + "-") && /^\d+$/.test(m.id.slice(sel.value.length + 1)));
+  document.getElementById("saida").innerHTML = lista.map((m, i) => {
+    const q = gerarQuestao(m, criarSorteio(semente * 1000 + i));
+    return String(h`<section class="cartao modelo">
+      <header><strong>${m.id}</strong><span class="etiqueta">${hab[m.code]?.nome || m.code}</span><span class="etiqueta">${m.level}</span>${m.valor ? h`<span class="etiqueta">vale ${String(m.valor).replace(".", ",")}</span>` : ""}<span class="etiqueta">gabarito ${q.key}</span></header>
+      ${questaoLeitura(q, { mostrarCorreta: true })}
+      ${q.options.map((o) => h`<p class="por-que"><strong>${o.letter}:</strong> ${o.why}</p>`)}
+      <div class="resolucao"><strong>Resolução</strong><ol>${q.resolution.map((r) => h`<li>${r}</li>`)}</ol><strong>Conferência:</strong> ${q.check}</div>
+    </section>`);
+  }).join("");
+  history.replaceState(null, "", `?sim=${sel.value}&semente=${semente}`);
+}
+sel.addEventListener("change", desenhar);
+sem.addEventListener("change", desenhar);
+document.getElementById("sortear").addEventListener("click", () => { sem.value = String(novaSemente() % 100000); desenhar(); });
+desenhar();
+</script>
+</body>
+</html>
