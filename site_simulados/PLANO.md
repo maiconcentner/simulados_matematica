@@ -44,6 +44,7 @@ js/correcao.js          nota, faixa, forças, fraquezas e plano (funções puras
 js/gamificacao.js       XP, nível do jogador, medalhas, conquistas, sequência de dias
 js/resultado.js         tela de resultado
 js/graficos.js          anel e barras em SVG
+js/gerador/             gerador de simulados de treino (modelos de questão e figuras em SVG)
 data/                   (já pronto) catálogo, config, habilidades e simulados
 assets/figuras/         (já pronto) figuras das questões
 assets/icones/          ícones do site (SVG próprios)
@@ -94,6 +95,13 @@ Especificação completa em `planejamento/resultado_gamificado.md`. Resumo, de c
 - Aqui a correção é imediata: depois de escolher, mostra se acertou, o erro provável da alternativa marcada (`why`) e a resolução (`resolution`).
 - Dá metade do XP. Não muda a nota oficial do simulado, mas conta para a conquista "Volta por cima" quando o aluno refaz o simulado inteiro.
 
+### 4.6b Treinar com números novos (`#/treinar`)
+Pedido do professor: o aluno pode gerar simulados novos para treinar, com valores diferentes.
+- **Versão nova de um simulado**: mesmas habilidades, níveis, pesos e ordem do original, com números e contextos sorteados. Também há um botão "Versão nova" em cada cartão das listas e na abertura do simulado.
+- **Monte o seu treino**: o aluno escolhe habilidades (agrupadas por tema) e a quantidade de questões (5, 6, 8 ou 10); as questões vêm da mais fácil para a mais difícil.
+- Os treinos gerados ficam guardados no aparelho (os 12 últimos), em "Seus treinos gerados", e abrem como qualquer simulado (`#/simulado/G-...`).
+- O gerador fica em `js/gerador/`: um modelo por questão dos simulados, que calcula a resposta, os distratores (com o erro provável de cada um), a resolução, a conferência e a figura em SVG. `tools/ver_gerador.html` mostra as questões geradas, com gabarito, para o professor conferir.
+
 ### 4.7 Perfil (`#/perfil`)
 - Apelido (editável), nível, XP, conquistas (as bloqueadas aparecem em cinza, com a regra).
 - Histórico de tentativas e a evolução da nota.
@@ -131,6 +139,7 @@ O formato está em `planejamento/esquema_dados.md`. Os códigos de descritor e d
 | Fase | Entrega | Pronto quando |
 |---|---|---|
 | 1 | `index.html`, estilo, rotas, painel e listas lendo o catálogo | as duas áreas mostram os 7 Avalia e o simulado da Etapa 3 |
+| 1b | gerador de simulados de treino (`js/gerador/`, `#/treinar`, prévia em `tools/`) | cada modelo gera questões válidas e variadas (testes em `tests/gerador.test.mjs`) |
 | 2 | tela do simulado com salvamento a cada clique | dá para fazer o S07 inteiro no celular, fechar no meio e continuar |
 | 3 | correção e resultado (funções puras em `correcao.js`) | a nota e a faixa batem com os casos de teste do `CLAUDE.md` |
 | 4 | gamificação: XP, nível, medalhas, conquistas, sequência de dias, missão | as regras de `config.json` funcionam e sobrevivem a recarregar a página |

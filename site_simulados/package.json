@@ -1,0 +1,12 @@
+{
+  "name": "simulados-matematica",
+  "private": true,
+  "description": "Só para os testes. O site não precisa de build nem de dependências.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
