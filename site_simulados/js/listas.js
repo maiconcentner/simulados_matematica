@@ -47,7 +47,7 @@ export function telaProva(ctx) {
     ${etapas.length ? etapas.map((et) => h`
       <section aria-labelledby="etapa-${et}">
         <h2 class="etapa-titulo" id="etapa-${et}">Etapa ${et}</h2>
-        <div class="lista-sim">${todos.filter((s) => s.etapa === et).map((s) => cartaoSimulado(s, { estado: ctx.estado, config, habilidades }))}</div>
+        <div class="lista-sim">${todos.filter((s) => s.etapa === et).map((s) => cartaoSimulado(s, { estado: ctx.estado, config, habilidades, nivelTitulo: 3 }))}</div>
       </section>`)
     : h`<div class="cartao vazio"><p>Nenhum simulado de prova publicado ainda.</p></div>`}`,
   };

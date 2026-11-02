@@ -57,7 +57,7 @@ const larguraDaPagina = (p) => p.evaluate(() => document.documentElement.scrollW
 test("todas as telas abrem sem rolagem lateral e sem erro no console (celular e computador)", async () => {
   for (const [w, hgt] of [[360, 740], [390, 844], [1280, 900]]) {
     const { pagina, erros } = await abrir(w, hgt);
-    for (const rota of ["", "avalia", "prova", "treinar", "perfil", "simulado/S07", "simulado/E3-AV2", "nao-existe"]) {
+    for (const rota of ["", "avalia", "prova", "treinar", "perfil", "simulado/S07", "simulado/S07/3", "simulado/E3-AV2", "simulado/E3-AV2/10", "simulado/S07/revisao", "nao-existe"]) {
       await ir(pagina, rota);
       assert.equal(await larguraDaPagina(pagina), w, `rolagem lateral em #/${rota} com ${w}px`);
     }
@@ -69,7 +69,7 @@ test("todas as telas abrem sem rolagem lateral e sem erro no console (celular e 
 test("as duas áreas mostram os 7 Avalia e o simulado da Etapa 3", async () => {
   const { pagina, erros } = await abrir();
   await ir(pagina, "avalia");
-  const semanas = await pagina.$$eval(".sim h3", (els) => els.map((e) => e.textContent.trim()));
+  const semanas = await pagina.$$eval(".sim .sim-titulo", (els) => els.map((e) => e.textContent.trim()));
   assert.deepEqual(semanas, ["Semana 7", "Semana 6", "Semana 5", "Semana 4", "Semana 3", "Semana 2", "Semana 1"]);
   await ir(pagina, "prova");
   assert.equal(await pagina.textContent(".etapa-titulo"), "Etapa 3");
@@ -228,7 +228,7 @@ test("percurso completo no celular: painel, Avalia, S07, entregar e ver o result
   await pagina.click(".area >> text=Simulados Avalia");
   await esperarRota(pagina, "avalia");
   assert.equal(await larguraDaPagina(pagina), 390);
-  await pagina.click('.sim[data-sim="S07"] h3 a');
+  await pagina.click('.sim[data-sim="S07"] .sim-titulo a');
   await esperarRota(pagina, "simulado/S07");
   assert.equal(await larguraDaPagina(pagina), 390);
   await fazerSimulado(pagina, "S07", [1, 2, 3, 4], { conferirLargura: 390 });
@@ -366,6 +366,46 @@ test("perfil mostra conquistas, histórico e mapa; Apagar meus dados zera tudo",
   await ir(pagina, "avalia");
   assert.match(await pagina.textContent('.sim[data-sim="S01"] .estado'), /Novo/);
   assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("treino gerado: gerar uma versão nova do E3-AV2, fazer e ver o resultado com metade do XP", async () => {
+  const { pagina, erros } = await abrir(390, 844);
+  await ir(pagina, "simulado/E3-AV2");
+  await pagina.click('[data-acao="versao-nova"]');
+  await pagina.waitForFunction(() => /^\/simulado\/G-[^/]+$/.test(document.body.dataset.rota || ""));
+  const id = (await pagina.evaluate(() => document.body.dataset.rota)).split("/").pop();
+  await fazerSimulado(pagina, id, "todas", { conferirLargura: 390 });
+  const texto = await pagina.textContent("main");
+  assert.match(texto, /10 de 10/);
+  assert.match(texto, /Medalha Diamante/);
+  assert.match(texto, /metade do XP/);
+  // a figura gerada aparece em SVG, com texto alternativo
+  await pagina.click(".item-revisao:nth-child(6) summary");
+  assert.ok(await pagina.$(".item-revisao:nth-child(6) [role=img][aria-label] svg"));
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("alvos de toque com pelo menos 44 px no celular", async () => {
+  const { pagina } = await abrir(390, 844);
+  const pequenos = [];
+  for (const rota of ["", "avalia", "treinar", "perfil", "simulado/S07", "simulado/S07/1", "simulado/S07/revisao"]) {
+    await ir(pagina, rota);
+    const r = await pagina.$$eval(".botao, .chip, .opcao, .bolinha, .abas a, summary, .historico a", (els) =>
+      els.filter((e) => e.offsetParent !== null).map((e) => ({ t: (e.textContent || e.className).trim().slice(0, 30), h: e.getBoundingClientRect().height })).filter((x) => x.h < 44));
+    pequenos.push(...r.map((x) => `#/${rota}: ${x.t} (${Math.round(x.h)} px)`));
+  }
+  assert.deepEqual(pequenos, []);
+  await pagina.close();
+});
+
+test("com movimento reduzido: sem confete e a nota já aparece pronta", async () => {
+  const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  await fazerSimulado(pagina, "S07", "todas");
+  assert.equal(await pagina.$(".confete"), null);
+  assert.equal((await pagina.textContent(".anel-texto b")).trim(), "10,0");
   await pagina.close();
 });
 

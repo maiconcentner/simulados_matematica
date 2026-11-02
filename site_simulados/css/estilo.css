@@ -15,9 +15,9 @@
   --xp: #ffc233;
   --xp-texto: #6b4a00;
   --chama: #f26b1d;
-  --ok: #1f8a5c;
+  --ok: #167a50;
   --ok-suave: #e1f5ec;
-  --alerta: #b45309;
+  --alerta: #a64b07;
   --alerta-suave: #fff1dc;
   --perigo: #c2410c;
   --bronze: #b0703a;
@@ -55,7 +55,7 @@
     --texto: #f1effa;
     --texto-2: #b9b4d4;
     --linha: #3a3456;
-    --primaria: #8b74ff;
+    --primaria: #a08cff;
     --primaria-forte: #a593ff;
     --primaria-suave: #2e2754;
     --sobre-primaria: #14102b;
@@ -89,7 +89,7 @@
   --texto: #f1effa;
   --texto-2: #b9b4d4;
   --linha: #3a3456;
-  --primaria: #8b74ff;
+  --primaria: #a08cff;
   --primaria-forte: #a593ff;
   --primaria-suave: #2e2754;
   --sobre-primaria: #14102b;
@@ -314,10 +314,10 @@ h1[tabindex="-1"]:focus { outline: none; }
 @media (min-width: 760px) { .lista-sim { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .sim { display: flex; flex-direction: column; gap: 10px; }
 .sim-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-.sim h3 { margin: 0; font-size: 1.3rem; }
-.sim h3 a { color: var(--texto); text-decoration: none; }
-.sim h3 a:hover { color: var(--primaria); }
-.sim h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--raio); }
+.sim h3, .sim .sim-titulo { margin: 0; font-size: 1.3rem; }
+.sim h3 a, .sim .sim-titulo a { color: var(--texto); text-decoration: none; }
+.sim h3 a:hover, .sim .sim-titulo a:hover { color: var(--primaria); }
+.sim h3 a::after, .sim .sim-titulo a::after { content: ""; position: absolute; inset: 0; border-radius: var(--raio); }
 .sim { position: relative; }
 .sim .acoes { position: relative; z-index: 1; margin-top: auto; }
 .sim-info { color: var(--texto-2); font-size: 0.9rem; margin: 0; }
@@ -548,3 +548,11 @@ a.chip { text-decoration: none; }
 .botao.perigo { color: var(--perigo); border-color: var(--perigo); }
 .botao.perigo:not(.secundario) { background: var(--perigo); color: #fff; }
 .zona-perigo { border-color: var(--perigo); }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root { color-scheme: light; }
+  .resultado { max-width: none; }
+  .confete, .conquista-capa, .acoes-resultado, .aviso-armazenamento { display: none !important; }
+  .item-revisao summary { min-height: 0; }
+  a { color: inherit; text-decoration: none; }
+}

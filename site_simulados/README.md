@@ -26,6 +26,14 @@ python3 -m http.server 8000
 ```
 e abrir `http://localhost:8000`.
 
+## O que o site faz
+- **Painel**: nível, XP, sequência de dias, conquistas, "continue de onde parou", a missão (o plano do último resultado) e as áreas.
+- **Simulado**: uma questão por tela, resposta salva a cada toque (fechou a página, continua de onde parou), figura que amplia com um toque e revisão das questões em branco antes de entregar.
+- **Resultado**: nota no anel, acertos, medalha, XP, faixa com quanto falta para a próxima, pontos fortes e a melhorar, plano em até 3 passos, acertos por tema e revisão comentada de cada questão. Dá para imprimir ou salvar em PDF.
+- **Modo treino**: refaz só as erradas, com a correção na hora e metade do XP.
+- **Treinar com números novos**: o gerador (abaixo).
+- **Perfil**: apelido, conquistas, evolução da nota, mapa das habilidades, histórico, tema claro ou escuro e "Apagar meus dados deste aparelho".
+
 ## Testes
 Cobrem o gerador, as telas no celular e no computador (sem rolagem lateral, sem erro no console), o simulado com resposta salva a cada toque e a continuação depois de recarregar.
 

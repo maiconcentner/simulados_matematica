@@ -1,5 +1,5 @@
 // Peças de tela usadas em mais de uma página: cartão do simulado, estado, etiquetas.
-import { h } from "./util.js";
+import { h, cru } from "./util.js";
 import { icone } from "./icones.js";
 import { nota1, plural, dataCurta } from "./util.js";
 import { situacao } from "./progresso.js";
@@ -23,11 +23,12 @@ export function seloEstado(sit) {
 }
 
 /** Cartão de um simulado do catálogo (listas Avalia e prova). */
-export function cartaoSimulado(s, { estado, config, habilidades }) {
+export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2 }) {
+  const H = nivelTitulo === 3 ? ["<h3>", "</h3>"] : ["<h2 class=\"sim-titulo\">", "</h2>"];
   const titulo = s.semana ? `Semana ${s.semana}` : s.titulo;
   if (s.status === "em_breve") {
     return h`<article class="cartao sim em-breve">
-      <div class="sim-topo"><h3>${titulo}</h3><span class="estado breve">Em breve</span></div>
+      <div class="sim-topo">${cru(H[0])}${titulo}${cru(H[1])}<span class="estado breve">Em breve</span></div>
       ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
     </article>`;
   }
@@ -36,7 +37,7 @@ export function cartaoSimulado(s, { estado, config, habilidades }) {
   const podeGerar = temVersaoNova(s.id, s.n_questoes);
   return h`<article class="cartao sim" data-sim="${s.id}">
     <div class="sim-topo">
-      <h3><a href="#/simulado/${s.id}">${titulo}</a></h3>
+      ${cru(H[0])}<a href="#/simulado/${s.id}">${titulo}</a>${cru(H[1])}
       ${seloEstado(sit)}
     </div>
     ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
