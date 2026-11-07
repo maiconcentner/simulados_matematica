@@ -56,6 +56,7 @@ Gabarito: **B D A E C E B D C A**. Cada letra aparece duas vezes.
 1. O professor resolve as 10 questões no site, como aluno, e confere o resultado.
 2. Se quiser mudar uma questão, edite `planejamento/fonte/e3_av2.py` e rode `python3 planejamento/fonte/e3_av2.py`, que regrava o JSON e as figuras. Precisa de Python com matplotlib. Depois rode `python3 tools/atualizar_catalogo.py` e `python3 tools/validar_dados.py`.
 3. Para esconder o simulado até a data certa, troque `"status": "publicado"` por `"em_breve"` em `data/prova/E3-AV2.json` e rode o catálogo de novo.
+4. Para deixar o simulado aberto só até um horário, acrescente em `data/prova/E3-AV2.json` o campo `"disponivel_ate": "AAAA-MM-DDTHH:MM:SS-03:00"` (horário de Brasília) e rode o catálogo. Depois desse horário o site mostra "Encerrado" e não abre mais o simulado, as versões novas dele nem o treino; o resultado de quem entregou continua visível. Para reabrir, apague o campo, deixe `"status": "publicado"` e rode o catálogo e a validação.
 
 ## 6. Próximas etapas
 Cada avaliação somativa nova ganha um arquivo `data/prova/E<etapa>-<sigla>.json` no mesmo formato, com a matriz da prova (habilidades, níveis, valores) e questões paralelas. O catálogo agrupa por `etapa` sozinho.

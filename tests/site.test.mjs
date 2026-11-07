@@ -35,10 +35,23 @@ before(async () => {
 });
 after(async () => { await navegador?.close(); servidor?.close(); });
 
-/** Página nova, sem as fontes externas (o teste não depende da internet), anotando erros. */
-async function abrir(largura = 390, altura = 844) {
+/**
+ * Página nova, sem as fontes externas (o teste não depende da internet), anotando erros.
+ * Por padrão os simulados aparecem todos abertos (sem prazo e publicados), para os testes
+ * não dependerem do dia de hoje nem do que o professor liberou; prazo: true usa os dados reais.
+ */
+async function abrir(largura = 390, altura = 844, { prazo = false } = {}) {
   const pagina = await navegador.newPage({ viewport: { width: largura, height: altura } });
   await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  if (!prazo) {
+    const abrirTudo = (s) => { delete s.disponivel_ate; s.status = "publicado"; return s; };
+    await pagina.route(/\/data\/(catalogo|prova\/[^/]+)\.json/, async (rota) => {
+      const resp = await rota.fetch();
+      const d = await resp.json();
+      if (d.areas) d.areas.forEach((a) => a.simulados.forEach(abrirTudo)); else abrirTudo(d);
+      await rota.fulfill({ response: resp, json: d });
+    });
+  }
   const erros = [];
   pagina.on("pageerror", (e) => erros.push(e.message));
   pagina.on("console", (m) => { if (m.type() === "error" && !/fonts\.g|net::ERR_FAILED/.test(m.text())) erros.push(m.text()); });
@@ -406,6 +419,84 @@ test("com movimento reduzido: sem confete e a nota já aparece pronta", async ()
   await fazerSimulado(pagina, "S07", "todas");
   assert.equal(await pagina.$(".confete"), null);
   assert.equal((await pagina.textContent(".anel-texto b")).trim(), "10,0");
+  await pagina.close();
+});
+
+/* ---------- prazo do simulado (disponivel_ate) ---------- */
+const PRAZO = "2026-11-07T23:59:59-03:00";
+async function abrirComPrazo(quando) {
+  const r = await abrir(390, 844, { prazo: true });
+  // o prazo de teste é fixo, para o teste valer em qualquer dia
+  await r.pagina.route(/\/data\/(catalogo|prova\/E3-AV2)\.json/, async (rota) => {
+    const resp = await rota.fetch();
+    const d = await resp.json();
+    const marcar = (s) => { if (s.id === "E3-AV2") { s.disponivel_ate = PRAZO; s.status = "publicado"; } };
+    if (d.areas) d.areas.forEach((a) => a.simulados.forEach(marcar)); else marcar(d);
+    await rota.fulfill({ response: resp, json: d });
+  });
+  await r.pagina.clock.setFixedTime(new Date(quando));
+  return r;
+}
+
+test("prazo: antes das 23h59 o simulado de prova abre normalmente", async () => {
+  const { pagina, erros } = await abrirComPrazo("2026-11-07T23:58:00-03:00");
+  await ir(pagina, "prova");
+  assert.doesNotMatch(await pagina.textContent('.sim[data-sim="E3-AV2"]'), /Encerrado/);
+  await ir(pagina, "simulado/E3-AV2");
+  assert.match(await pagina.textContent("main h1"), /Etapa 3/);
+  assert.ok(await pagina.$('[data-acao="comecar"]'));
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("prazo: depois das 23h59 o simulado, as versões novas e o treino ficam fechados; o resultado continua", async () => {
+  const { pagina, erros } = await abrirComPrazo("2026-11-07T22:00:00-03:00");
+  // antes do prazo: entrega o simulado, gera uma versão nova e começa outra tentativa
+  await fazerSimulado(pagina, "E3-AV2", [1, 2, 3]);
+  await ir(pagina, "simulado/E3-AV2");
+  await pagina.click('[data-acao="versao-nova"]');
+  await pagina.waitForFunction(() => /^\/simulado\/G-[^/]+$/.test(document.body.dataset.rota || ""));
+  const idGerado = (await pagina.evaluate(() => document.body.dataset.rota)).split("/").pop();
+  await ir(pagina, "simulado/E3-AV2");
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/E3-AV2/1");
+  await pagina.click(".opcao >> nth=0");
+  for (let n = 1; n <= 10; n++) {
+    await pagina.click("#proxima");
+    await esperarRota(pagina, n < 10 ? `simulado/E3-AV2/${n + 1}` : "simulado/E3-AV2/revisao");
+  }
+  // passa da meia-noite com a revisão aberta: entregar não vale mais
+  await pagina.clock.setFixedTime(new Date("2026-11-08T00:00:30-03:00"));
+  await pagina.click('[data-acao="entregar"]');
+  if (await pagina.$('[data-acao="entregar"]')) await pagina.click('[data-acao="entregar"]');
+  await pagina.waitForSelector("text=Simulado encerrado");
+  const tentativas = await pagina.evaluate(() => JSON.parse(localStorage.getItem("simulados-mat:v1")).tentativas.length);
+  assert.equal(tentativas, 1, "a entrega depois do prazo não pode contar");
+  // cartão, abertura, questão, revisão, treino e versão gerada fechados
+  await ir(pagina, "prova");
+  assert.match(await pagina.textContent('.sim[data-sim="E3-AV2"]'), /Encerrado/);
+  assert.equal(await pagina.$('.sim[data-sim="E3-AV2"] a, .sim[data-sim="E3-AV2"] button'), null);
+  for (const rota of ["simulado/E3-AV2", "simulado/E3-AV2/3", "simulado/E3-AV2/revisao", "treino/E3-AV2", "treino/E3-AV2/2", `simulado/${idGerado}`]) {
+    await ir(pagina, rota);
+    assert.match(await pagina.textContent("main h1"), /Simulado encerrado/, `#/${rota} deveria estar fechado`);
+  }
+  // o painel não oferece continuar, e o gerador não usa os modelos da prova
+  await ir(pagina, "");
+  assert.equal(await pagina.$(".continuar"), null);
+  await ir(pagina, "treinar");
+  assert.equal(await pagina.$('#sel-base option[value="E3-AV2"]'), null);
+  assert.equal(await pagina.$('input[data-acao="hab"][value^="EF.09"]'), null);
+  assert.match(await pagina.textContent(".gerados"), /Encerrado/);
+  // o resultado continua visível, sem refazer nem treinar
+  await ir(pagina, "resultado/E3-AV2");
+  assert.match(await pagina.textContent("main"), /3 de 10/);
+  assert.match(await pagina.textContent("main"), /está encerrado/);
+  assert.equal(await pagina.$('a[href^="#/treino/"]'), null);
+  assert.equal(await pagina.$('[data-acao="treinar-hab"]'), null);
+  // os Simulados Avalia continuam abertos
+  await ir(pagina, "simulado/S07");
+  assert.ok(await pagina.$('[data-acao="comecar"]'));
+  assert.deepEqual(erros, []);
   await pagina.close();
 });
 

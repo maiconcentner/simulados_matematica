@@ -2,7 +2,7 @@
 // ou montar um treino escolhendo as habilidades.
 import { h } from "./util.js";
 import { icone } from "./icones.js";
-import { simuladosDoCatalogo } from "./dados.js";
+import { simuladosDoCatalogo, disponivelAgora, idsIndisponiveis, bloqueio } from "./dados.js";
 import { codigosComModelo, gerarMisto, temVersaoNova } from "./gerador/index.js";
 import { guardarGerado, removerGerado } from "./armazenamento.js";
 import { plural, dataCurta } from "./util.js";
@@ -13,8 +13,11 @@ let confirmarApagar = null;
 
 export function telaTreinar(ctx) {
   const { catalogo, config, habilidades } = ctx.base;
-  const comModelo = new Set(codigosComModelo());
-  const sims = simuladosDoCatalogo(catalogo).filter((s) => s.status === "publicado" && temVersaoNova(s.id, s.n_questoes));
+  const fechados = idsIndisponiveis(catalogo);
+  const comModelo = new Set(codigosComModelo(fechados));
+  const sims = simuladosDoCatalogo(catalogo).filter((s) => disponivelAgora(s) && temVersaoNova(s.id, s.n_questoes));
+  if (escolha.base && !sims.some((s) => s.id === escolha.base)) escolha.base = "";
+  for (const c of [...escolha.codigos]) if (!comModelo.has(c)) escolha.codigos.delete(c);
   if (!escolha.base && sims.length) {
     const avalia = sims.filter((s) => s.area === "avalia").sort((a, b) => (b.semana || 0) - (a.semana || 0));
     escolha.base = (avalia[0] || sims[0]).id;
@@ -69,7 +72,7 @@ export function telaTreinar(ctx) {
         <li class="cartao gerado">
           <p><strong>${g.titulo}</strong><br><span class="sub pequeno">${g.subtitulo} · ${plural(g.items.length, "questão", "questões")} · ${dataCurta(g.gerado?.criadoEm)}</span></p>
           <div class="botoes">
-            <a class="botao pequeno" href="#/simulado/${g.id}">Abrir${icone.seta}</a>
+            ${bloqueio(catalogo, ctx.estado, g.id) ? h`<span class="estado breve">Encerrado</span>` : h`<a class="botao pequeno" href="#/simulado/${g.id}">Abrir${icone.seta}</a>`}
             <button type="button" class="botao fantasma pequeno" data-acao="apagar-gerado" data-id="${g.id}">${icone.lixo}${confirmarApagar === g.id ? "Toque de novo para apagar" : "Apagar"}</button>
           </div>
         </li>`)}</ul>
@@ -101,7 +104,7 @@ export function telaTreinar(ctx) {
           return;
         }
         try {
-          const sim = gerarMisto({ codigos: [...escolha.codigos], quantidade: escolha.quantidade, habilidades });
+          const sim = gerarMisto({ codigos: [...escolha.codigos], quantidade: escolha.quantidade, habilidades, excluirSims: idsIndisponiveis(catalogo) });
           guardarGerado(sim);
           location.hash = `#/simulado/${sim.id}`;
         } catch (e) {

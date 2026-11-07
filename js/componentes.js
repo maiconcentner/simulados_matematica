@@ -3,6 +3,7 @@ import { h, cru } from "./util.js";
 import { icone } from "./icones.js";
 import { nota1, plural, dataCurta } from "./util.js";
 import { situacao } from "./progresso.js";
+import { encerrado } from "./dados.js";
 import { temVersaoNova } from "./gerador/index.js";
 
 export function etiquetasHabilidades(codigos, habilidades) {
@@ -26,10 +27,12 @@ export function seloEstado(sit) {
 export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2 }) {
   const H = nivelTitulo === 3 ? ["<h3>", "</h3>"] : ["<h2 class=\"sim-titulo\">", "</h2>"];
   const titulo = s.semana ? `Semana ${s.semana}` : s.titulo;
-  if (s.status === "em_breve") {
-    return h`<article class="cartao sim em-breve">
-      <div class="sim-topo">${cru(H[0])}${titulo}${cru(H[1])}<span class="estado breve">Em breve</span></div>
+  const fechado = encerrado(s);
+  if (fechado || s.status === "em_breve") {
+    return h`<article class="cartao sim em-breve" data-sim="${s.id}">
+      <div class="sim-topo">${cru(H[0])}${titulo}${cru(H[1])}<span class="estado breve">${fechado ? "Encerrado" : "Em breve"}</span></div>
       ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
+      <p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado."}</p>
     </article>`;
   }
   const sit = situacao(estado, s.id, config);

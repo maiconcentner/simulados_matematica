@@ -2,7 +2,7 @@
 // revisão comentada e ações. Mostra a última entrega do simulado.
 import { h, cru, nota1, plural } from "./util.js";
 import { icone } from "./icones.js";
-import { carregarSimulado, simuladosDoCatalogo } from "./dados.js";
+import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora } from "./dados.js";
 import { corrigir, temasAcumulados } from "./correcao.js";
 import { contextoCorrecao } from "./entrega.js";
 import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js";
@@ -80,7 +80,8 @@ export async function telaResultado(ctx, id) {
   if (!t) throw new Error("Você ainda não entregou este simulado.");
   const res = corrigir(sim, t.respostas, contextoCorrecao(ctx.base, ctx.estado));
   const prova = sim.pontuacao?.tipo === "valores";
-  const comModelo = new Set(codigosComModelo());
+  const fechado = bloqueio(catalogo, ctx.estado, sim.id);
+  const comModelo = new Set(codigosComModelo(idsIndisponiveis(catalogo)));
   const nomeHab = (c) => habilidades[c]?.nome || c;
   const recente = entregaRecente === sim.id;
   entregaRecente = null;
@@ -94,7 +95,7 @@ export async function telaResultado(ctx, id) {
   // desafio para quem gabaritou
   let desafio = null;
   if (!res.plano.length) {
-    const prox = simuladosDoCatalogo(catalogo).find((s) => s.id !== sim.id && s.status === "publicado" && (melhorTentativa(ctx.estado, s.id)?.nota ?? 0) < 10);
+    const prox = simuladosDoCatalogo(catalogo).find((s) => s.id !== sim.id && disponivelAgora(s) && (melhorTentativa(ctx.estado, s.id)?.nota ?? 0) < 10);
     desafio = prox
       ? h`<p>Você gabaritou! Desafio: tente o simulado <a href="#/simulado/${prox.id}">${prox.semana ? `Semana ${prox.semana}` : prox.titulo}</a> sem errar nenhuma.</p>`
       : h`<p>Você gabaritou! Desafio: ajude um colega a revisar as questões em que ele errou.</p>`;
@@ -148,7 +149,7 @@ export async function telaResultado(ctx, id) {
             <p><strong>Erro provável:</strong> ${p.erro}</p>
             ${p.dica ? h`<p><strong>Dica:</strong> ${p.dica}</p>` : ""}
             <div class="botoes">
-              <a class="botao pequeno secundario" href="#/treino/${sim.id}/${p.questao}">Refazer esta questão</a>
+              ${fechado ? "" : h`<a class="botao pequeno secundario" href="#/treino/${sim.id}/${p.questao}">Refazer esta questão</a>`}
               ${p.outro ? h`<a class="botao pequeno secundario" href="#/simulado/${p.outro.id}">Treinar em outro simulado (${p.outro.titulo})</a>` : ""}
               ${comModelo.has(p.code) ? h`<button type="button" class="botao pequeno secundario" data-acao="treinar-hab" data-code="${p.code}">${icone.dado}Treinar com números novos</button>` : ""}
             </div>
@@ -192,7 +193,8 @@ export async function telaResultado(ctx, id) {
       </section>
 
       <div class="botoes secao acoes-resultado">
-        ${res.acertos < res.total ? h`<a class="botao" href="#/treino/${sim.id}">${icone.raio}Refazer só as que errei</a>` : ""}
+        ${fechado ? h`<p class="sub pequeno">Este simulado está encerrado. O resultado continua aqui para você revisar.</p>` : ""}
+        ${res.acertos < res.total && !fechado ? h`<a class="botao" href="#/treino/${sim.id}">${icone.raio}Refazer só as que errei</a>` : ""}
         <a class="botao secundario" href="#/">${icone.painel}Voltar ao painel</a>
         <button type="button" class="botao fantasma" data-acao="imprimir">${icone.prova}Imprimir ou salvar PDF</button>
       </div>
@@ -210,7 +212,7 @@ export async function telaResultado(ctx, id) {
         window.print();
       },
       "treinar-hab": (el) => {
-        const novo = gerarMisto({ codigos: [el.dataset.code], quantidade: 5, habilidades });
+        const novo = gerarMisto({ codigos: [el.dataset.code], quantidade: 5, habilidades, excluirSims: idsIndisponiveis(catalogo) });
         guardarGerado(novo);
         location.hash = `#/simulado/${novo.id}`;
       },

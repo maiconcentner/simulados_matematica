@@ -12,13 +12,16 @@ def resumo(p):
     for it in d["items"]:
         if it["code"] not in codes:
             codes.append(it["code"])
-    return {
+    r = {
         "id": d["id"], "titulo": d["titulo"], "subtitulo": d.get("subtitulo", d.get("temas", "")),
         "etapa": d.get("etapa"), "semana": d.get("semana"), "data": d.get("data"),
         "n_questoes": len(d["items"]), "habilidades": codes,
         "status": d.get("status", "publicado"),
         "arquivo": os.path.relpath(p, RAIZ).replace(os.sep, "/"),
     }
+    if d.get("disponivel_ate"):  # prazo opcional: depois dele o site não abre o simulado
+        r["disponivel_ate"] = d["disponivel_ate"]
+    return r
 
 
 def main():

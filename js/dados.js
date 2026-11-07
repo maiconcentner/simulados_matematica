@@ -53,3 +53,39 @@ export async function carregarSimulado(catalogo, id) {
   if (!info) throw new Error("Simulado não encontrado.");
   return json(info.arquivo);
 }
+
+/* ---------- prazo e disponibilidade ---------- */
+
+/** true quando o simulado tem prazo (disponivel_ate) e ele já passou. */
+export function encerrado(s, agora = Date.now()) {
+  return !!s?.disponivel_ate && agora > Date.parse(s.disponivel_ate);
+}
+
+/** Dá para fazer agora: publicado e dentro do prazo, se houver. */
+export function disponivelAgora(s, agora = Date.now()) {
+  return !!s && (s.status || "publicado") === "publicado" && !encerrado(s, agora);
+}
+
+/** Ids dos simulados do catálogo que não estão abertos agora (em breve ou encerrados). */
+export function idsIndisponiveis(catalogo, agora = Date.now()) {
+  return new Set(catalogo.areas.flatMap((a) => a.simulados).filter((s) => !disponivelAgora(s, agora)).map((s) => s.id));
+}
+
+/** Simulados do catálogo de onde vem um treino gerado (a base, ou os modelos das questões). */
+export function origensDoGerado(g) {
+  if (g?.gerado?.base) return [g.gerado.base];
+  return [...new Set((g?.items || []).map((it) => String(it.modelo || "").replace(/-\d+$/, "")).filter(Boolean))];
+}
+
+/**
+ * Se o simulado (ou o treino gerado) está fechado agora, devolve o simulado do catálogo
+ * que o fecha; senão, null.
+ */
+export function bloqueio(catalogo, estado, id, agora = Date.now()) {
+  const fechados = idsIndisponiveis(catalogo, agora);
+  const todos = catalogo.areas.flatMap((a) => a.simulados);
+  if (!id.startsWith("G-")) return fechados.has(id) ? todos.find((s) => s.id === id) : null;
+  const g = estado.gerados.find((x) => x.id === id);
+  const origem = origensDoGerado(g).find((o) => fechados.has(o));
+  return origem ? todos.find((s) => s.id === origem) : null;
+}

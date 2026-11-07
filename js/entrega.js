@@ -2,7 +2,7 @@
 // monta a missão e registra o dia de uso.
 import { ler, atualizar } from "./armazenamento.js";
 import { corrigir, faixaDaNota } from "./correcao.js";
-import { simuladosDoCatalogo } from "./dados.js";
+import { simuladosDoCatalogo, disponivelAgora } from "./dados.js";
 import { xpDoSimulado, xpGanho, nivelDoJogador, registrarDia, conquistasNovas, maiorSequencia, hojeISO } from "./gamificacao.js";
 
 /** Tudo o que a correção precisa saber do catálogo e do histórico do aluno. */
@@ -10,7 +10,7 @@ export function contextoCorrecao(base, estado) {
   return {
     config: base.config,
     habilidades: base.habilidades,
-    catalogoSims: simuladosDoCatalogo(base.catalogo),
+    catalogoSims: simuladosDoCatalogo(base.catalogo).filter((s) => disponivelAgora(s)),
     jaAcertou: (simId, code) =>
       estado.tentativas.some((t) => t.simId === simId && t.porHabilidade?.[code] && t.porHabilidade[code].acertos === t.porHabilidade[code].total),
   };

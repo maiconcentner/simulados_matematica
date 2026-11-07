@@ -2,7 +2,7 @@
 import { h } from "./util.js";
 import { icone } from "./icones.js";
 import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js";
-import { simuladosDoCatalogo } from "./dados.js";
+import { simuladosDoCatalogo, bloqueio } from "./dados.js";
 import { melhorTentativa } from "./progresso.js";
 import { plural } from "./util.js";
 
@@ -30,6 +30,7 @@ export function telaPainel({ base, estado }) {
   const av = contar("avalia"), pr = contar("prova");
 
   const andamento = Object.entries(estado.emAndamento)
+    .filter(([id]) => !bloqueio(catalogo, estado, id))
     .sort((a, b) => String(b[1].inicio || "").localeCompare(String(a[1].inicio || "")))[0];
 
   const missao = estado.missao && estado.missao.passos?.length ? estado.missao : null;

@@ -121,7 +121,7 @@ export function montarPlano(sim, questoes, fracos, { habilidades, catalogoSims, 
     const it = sim.items.find((i) => i.n === f.primeiraErrada);
     const q = questoes.find((x) => x.n === f.primeiraErrada);
     const opcao = q.marcada ? it.options.find((o) => o.letter === q.marcada) : null;
-    const outro = catalogoSims.find((s) => s.id !== sim.id && (sim.gerado?.base ? s.id !== sim.gerado.base : true) && s.status === "publicado" && s.habilidades.includes(f.code) && !jaAcertou(s.id, f.code));
+    const outro = catalogoSims.find((s) => s.id !== sim.id && (sim.gerado?.base ? s.id !== sim.gerado.base : true) && (s.status || "publicado") === "publicado" && s.habilidades.includes(f.code) && !jaAcertou(s.id, f.code));
     return {
       code: f.code,
       nome: habilidades[f.code]?.nome || it.short,

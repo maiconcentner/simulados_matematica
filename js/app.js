@@ -1,7 +1,7 @@
 // Inicialização e rotas do site (navegação por hash, que funciona no GitHub Pages).
 import { h, esc } from "./util.js";
 import { icone } from "./icones.js";
-import { carregarBase, carregarSimulado } from "./dados.js";
+import { carregarBase, carregarSimulado, bloqueio } from "./dados.js";
 import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js";
 import { aplicarTema } from "./tema.js";
 import { gerarVersao } from "./gerador/index.js";
@@ -56,7 +56,26 @@ function erroHTML(msg) {
   return h`<div class="cartao vazio"><h1>Ops!</h1><p>${msg}</p><p><a class="botao" href="#/">Voltar ao painel</a></p></div>`.html;
 }
 
+/** Tela de simulado fechado (prazo acabou ou ainda não liberado). */
+function telaFechado(s) {
+  const titulo = s.semana ? `Semana ${s.semana}` : s.titulo;
+  const acabou = !!s.disponivel_ate && Date.now() > Date.parse(s.disponivel_ate);
+  return {
+    titulo: acabou ? "Simulado encerrado" : "Simulado fechado",
+    html: h`<div class="cartao vazio abertura">${icone.relogio}
+      <h1>${acabou ? "Simulado encerrado" : "Ainda não liberado"}</h1>
+      <p><strong>${titulo}</strong></p>
+      <p>${acabou ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Este simulado ainda não foi liberado pelo professor."}</p>
+      <p><a class="botao" href="#/">Voltar ao painel</a></p>
+    </div>`.html,
+  };
+}
+
 async function gerarVersaoNova(simId) {
+  if (bloqueio(base.catalogo, ler(), simId)) {
+    location.hash = `#/simulado/${simId}`;
+    return;
+  }
   try {
     const original = await carregarSimulado(base.catalogo, simId);
     const sim = gerarVersao(original);
@@ -70,6 +89,10 @@ async function gerarVersaoNova(simId) {
 
 /** Entrega o simulado: corrige, guarda e abre o resultado. */
 function entregar(sim) {
+  if (bloqueio(base.catalogo, ler(), sim.id)) {
+    desenhar();
+    return;
+  }
   entregarSimulado(sim, base);
   marcarEntregaRecente(sim.id);
   location.hash = `#/resultado/${sim.id}`;
@@ -89,7 +112,9 @@ async function desenhar({ manterFoco = null } = {}) {
       const [re, area, fn] = rota;
       const params = caminho.match(re).slice(1);
       ativo = area || areaDoSimulado(decodeURIComponent(params[0] || ""));
-      tela = await fn(ctx, ...params);
+      // simulado fechado: não abre, não continua, não treina (o resultado continua visível)
+      const fechado = /^\/(simulado|treino)\//.test(caminho) ? bloqueio(base.catalogo, ctx.estado, decodeURIComponent(params[0])) : null;
+      tela = fechado ? telaFechado(fechado) : await fn(ctx, ...params);
     }
   } catch (e) {
     console.warn(e);

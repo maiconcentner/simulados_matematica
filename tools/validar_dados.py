@@ -22,6 +22,17 @@ def checar_simulado(path, hab):
             err(f"{nome}: falta o campo '{k}'")
     if d.get("area") not in ("avalia", "prova"):
         err(f"{nome}: area deve ser 'avalia' ou 'prova'")
+    if d.get("status", "publicado") not in ("publicado", "em_breve", "oculto"):
+        err(f"{nome}: status deve ser publicado, em_breve ou oculto")
+    ate = d.get("disponivel_ate")
+    if ate is not None:
+        import datetime
+        try:
+            dt = datetime.datetime.fromisoformat(ate)
+            if dt.tzinfo is None:
+                err(f"{nome}: disponivel_ate precisa do fuso, como 2026-11-07T23:59:59-03:00")
+        except ValueError:
+            err(f"{nome}: disponivel_ate inválido ({ate}); use AAAA-MM-DDTHH:MM:SS-03:00")
     soma = 0
     for i, it in enumerate(d.get("items", []), 1):
         q = f"{nome} Q{it.get('n')}"

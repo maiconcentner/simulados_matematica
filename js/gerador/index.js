@@ -11,8 +11,12 @@ const NIVEL = { N1: 1, N2: 2, N3: 3, N4: 4 };
 
 export const modeloPorId = (id) => PORID.get(id);
 
-/** Códigos de habilidade que o gerador sabe treinar. */
-export const codigosComModelo = () => [...new Set(MODELOS.map((m) => m.code))];
+/** Simulado do catálogo de onde vem um modelo ("E3-AV2-6" → "E3-AV2"). */
+export const origemDoModelo = (m) => m.id.replace(/-\d+$/, "");
+
+/** Códigos de habilidade que o gerador sabe treinar (sem os modelos de simulados fechados). */
+export const codigosComModelo = (excluirSims = new Set()) =>
+  [...new Set(MODELOS.filter((m) => !excluirSims.has(origemDoModelo(m))).map((m) => m.code))];
 
 /** Um simulado do catálogo pode ganhar versão nova se todas as questões têm modelo. */
 export function temVersaoNova(simId, nQuestoes) {
@@ -89,9 +93,9 @@ export function gerarVersao(base, semente = novaSemente()) {
  * Simulado montado pelo aluno: escolhe as habilidades (códigos) e o número de questões.
  * As questões ficam do nível mais fácil para o mais difícil.
  */
-export function gerarMisto({ codigos, quantidade = 6, habilidades = {}, semente = novaSemente() }) {
+export function gerarMisto({ codigos, quantidade = 6, habilidades = {}, semente = novaSemente(), excluirSims = new Set() }) {
   const r = criarSorteio(semente);
-  const disponiveis = MODELOS.filter((m) => codigos.includes(m.code));
+  const disponiveis = MODELOS.filter((m) => codigos.includes(m.code) && !excluirSims.has(origemDoModelo(m)));
   if (!disponiveis.length) throw new Error("Nenhuma habilidade escolhida tem gerador.");
   const porCodigo = new Map();
   for (const m of disponiveis) {

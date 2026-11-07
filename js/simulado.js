@@ -3,7 +3,7 @@
 // As respostas são salvas a cada toque em emAndamento, para continuar depois.
 import { h, cru, plural, nota1 } from "./util.js";
 import { icone } from "./icones.js";
-import { carregarSimulado } from "./dados.js";
+import { carregarSimulado, idsIndisponiveis } from "./dados.js";
 import { gerarMisto } from "./gerador/index.js";
 import { guardarGerado, atualizar, ler } from "./armazenamento.js";
 import { enunciadoHTML } from "./questao.js";
@@ -122,7 +122,7 @@ function telaAbertura(ctx, sim) {
         location.hash = `#/simulado/${sim.id}/${q}`;
       },
       "gerar-de-novo": () => {
-        const novo = gerarMisto({ codigos: sim.gerado.codigos, quantidade: sim.items.length, habilidades: ctx.base.habilidades });
+        const novo = gerarMisto({ codigos: sim.gerado.codigos, quantidade: sim.items.length, habilidades: ctx.base.habilidades, excluirSims: idsIndisponiveis(ctx.base.catalogo) });
         guardarGerado(novo);
         location.hash = `#/simulado/${novo.id}`;
       },

@@ -15,6 +15,7 @@ Todos os arquivos são JSON em UTF-8. Os simulados Avalia e os de prova usam o m
 | `data` | `"AAAA-MM-DD"` ou `null` | semana de aplicação em sala |
 | `serie`, `professor`, `temas` | texto | `temas` resume os conteúdos (aparece no cartão) |
 | `status` | `"publicado"` (padrão), `"em_breve"` ou `"oculto"` | `em_breve` mostra o cartão sem abrir; `oculto` não mostra |
+| `disponivel_ate` | data e hora com fuso, opcional | `"2026-11-07T23:59:59-03:00"`: depois desse momento o cartão aparece como "Encerrado" e o simulado, as versões novas dele e o treino não abrem. O resultado de quem já entregou continua visível. Para liberar de novo, apague o campo (ou ponha outra data) e rode o catálogo |
 | `pontuacao` | objeto | `{"tipo": "acertos"}` no Avalia; `{"tipo": "valores", "max": 10}` na prova |
 | `dicas` | objeto código → texto | dica por habilidade; se faltar, usar `habilidades.json` |
 | `items` | lista de questões | na ordem de aplicação |
