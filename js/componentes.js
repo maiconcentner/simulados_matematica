@@ -4,6 +4,7 @@ import { icone } from "./icones.js";
 import { nota1, plural, dataCurta } from "./util.js";
 import { situacao } from "./progresso.js";
 import { encerrado } from "./dados.js";
+import { reloginho } from "./prazo.js";
 import { temVersaoNova } from "./gerador/index.js";
 
 export function etiquetasHabilidades(codigos, habilidades) {
@@ -45,6 +46,7 @@ export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2
     </div>
     ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
     <p class="sim-info">${info}</p>
+    ${reloginho(s.disponivel_ate)}
     ${etiquetasHabilidades(s.habilidades, habilidades)}
     <div class="botoes acoes">
       <a class="botao pequeno" href="#/simulado/${s.id}">${sit.andamento ? "Continuar" : sit.tipo === "novo" ? "Fazer" : "Refazer"}${icone.seta}</a>

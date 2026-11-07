@@ -2,7 +2,8 @@
 import { h } from "./util.js";
 import { icone } from "./icones.js";
 import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js";
-import { simuladosDoCatalogo, bloqueio } from "./dados.js";
+import { simuladosDoCatalogo, bloqueio, disponivelAgora } from "./dados.js";
+import { reloginho } from "./prazo.js";
 import { melhorTentativa } from "./progresso.js";
 import { plural } from "./util.js";
 
@@ -68,6 +69,14 @@ export function telaPainel({ base, estado }) {
         <span class="contador">${icone.trofeu}${nConq} de ${totalDeConquistas(config)} conquistas</span>
       </div>
     </section>
+
+    ${simuladosDoCatalogo(catalogo).filter((s) => s.disponivel_ate && disponivelAgora(s)).map((s) => h`
+    <section class="secao" aria-label="Prazo">
+      <div class="cartao continuar prazo-aviso">
+        <div><p><strong>${s.semana ? `Semana ${s.semana}` : s.titulo}</strong></p>${reloginho(s.disponivel_ate)}</div>
+        <a class="botao" href="#/simulado/${s.id}">${estado.emAndamento[s.id] ? "Continuar" : "Fazer"}${icone.seta}</a>
+      </div>
+    </section>`)}
 
     ${andamento ? h`
     <section class="secao" aria-labelledby="t-continuar">

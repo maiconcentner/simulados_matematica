@@ -3,7 +3,8 @@
 // Dá refazer_fator do XP da questão, uma vez por questão; não muda a nota do simulado.
 import { h, plural } from "./util.js";
 import { icone } from "./icones.js";
-import { carregarSimulado } from "./dados.js";
+import { carregarSimulado, prazoDe } from "./dados.js";
+import { reloginho } from "./prazo.js";
 import { atualizar } from "./armazenamento.js";
 import { enunciadoHTML } from "./questao.js";
 import { xpDaQuestao, registrarDia, conquistasNovas, hojeISO, nomeDaConquista } from "./gamificacao.js";
@@ -60,6 +61,7 @@ export async function telaTreino(ctx, id, nParam) {
         <p class="pequeno sub"><a href="#/resultado/${sim.id}">${icone.voltar} Voltar ao resultado</a></p>
         <span class="estado novo">${icone.raio}Modo treino</span>
         <h1 class="questao-num">Questão ${n} <span class="sub">· ${sessao.i + 1} de ${sessao.fila.length} no treino</span></h1>
+        ${reloginho(prazoDe(ctx.base.catalogo, ctx.estado, sim.id), { compacto: true })}
       </div>
       <article class="cartao questao">
         ${prova ? h`<div class="etiquetas"><span class="etiqueta valor">vale ${String(it.valor).replace(".", ",")}</span></div>` : ""}

@@ -3,7 +3,8 @@
 // As respostas são salvas a cada toque em emAndamento, para continuar depois.
 import { h, cru, plural, nota1 } from "./util.js";
 import { icone } from "./icones.js";
-import { carregarSimulado, idsIndisponiveis } from "./dados.js";
+import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js";
+import { reloginho } from "./prazo.js";
 import { gerarMisto } from "./gerador/index.js";
 import { guardarGerado, atualizar, ler } from "./armazenamento.js";
 import { enunciadoHTML } from "./questao.js";
@@ -75,6 +76,7 @@ function telaAbertura(ctx, sim) {
       ${gerado ? h`<span class="estado novo">${icone.dado}Treino gerado</span>` : ""}
       <h1>${sim.titulo}</h1>
       ${sim.subtitulo || sim.temas ? h`<p class="sub">${sim.subtitulo || sim.temas}</p>` : ""}
+      ${reloginho(prazoDe(ctx.base.catalogo, ctx.estado, sim.id))}
 
       <div class="resumo">
         <div><b>${n}</b>${plural(n, "questão", "questões").replace(/^\d+ /, "")}</div>
@@ -155,6 +157,7 @@ function telaQuestao(ctx, sim, n) {
       <div class="questao-topo">
         <p class="pequeno sub"><a href="#/simulado/${sim.id}">${sim.titulo}</a></p>
         <h1 class="questao-num">Questão ${n} <span class="sub">de ${total}</span></h1>
+        ${reloginho(prazoDe(ctx.base.catalogo, ctx.estado, sim.id), { compacto: true })}
         ${bolinhas(sim, respostas, n)}
       </div>
       <article class="cartao questao">
@@ -233,6 +236,7 @@ function telaRevisao(ctx, sim) {
     <div class="abertura">
       <p class="pequeno sub"><a href="#/simulado/${sim.id}/${sim.items.length}">${icone.voltar} Voltar à última questão</a></p>
       <h1>Revisar e entregar</h1>
+      ${reloginho(prazoDe(ctx.base.catalogo, ctx.estado, sim.id))}
       ${bolinhas(sim, respostas, 0)}
       <div class="cartao secao">
         ${brancas.length

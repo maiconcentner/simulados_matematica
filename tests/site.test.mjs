@@ -41,7 +41,7 @@ after(async () => { await navegador?.close(); servidor?.close(); });
  * não dependerem do dia de hoje nem do que o professor liberou; prazo: true usa os dados reais.
  */
 async function abrir(largura = 390, altura = 844, { prazo = false } = {}) {
-  const pagina = await navegador.newPage({ viewport: { width: largura, height: altura } });
+  const pagina = await navegador.newPage({ viewport: { width: largura, height: altura }, timezoneId: "America/Sao_Paulo" });
   await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   if (!prazo) {
     const abrirTudo = (s) => { delete s.disponivel_ate; s.status = "publicado"; return s; };
@@ -442,9 +442,37 @@ test("prazo: antes das 23h59 o simulado de prova abre normalmente", async () => 
   const { pagina, erros } = await abrirComPrazo("2026-11-07T23:58:00-03:00");
   await ir(pagina, "prova");
   assert.doesNotMatch(await pagina.textContent('.sim[data-sim="E3-AV2"]'), /Encerrado/);
+  // o reloginho mostra quando fecha e quanto falta
+  const relogio = await pagina.textContent('.sim[data-sim="E3-AV2"] .reloginho');
+  assert.match(relogio, /Fecha hoje às 23h59/);
+  assert.match(relogio, /faltam 00:01:59/);
+  assert.match(await pagina.getAttribute('.sim[data-sim="E3-AV2"] .reloginho', "class"), /urgente/);
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".prazo-aviso"), /Fecha hoje às 23h59/);
   await ir(pagina, "simulado/E3-AV2");
   assert.match(await pagina.textContent("main h1"), /Etapa 3/);
-  assert.ok(await pagina.$('[data-acao="comecar"]'));
+  assert.match(await pagina.textContent(".abertura .reloginho"), /faltam/);
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/E3-AV2/1");
+  assert.match(await pagina.textContent(".questao-topo .reloginho"), /faltam/);
+  // os Avalia não têm prazo, então não têm reloginho
+  await ir(pagina, "simulado/S07");
+  assert.equal(await pagina.$(".reloginho"), null);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("prazo: o reloginho conta e, quando zera, a questão aberta vira 'Simulado encerrado'", async () => {
+  const { pagina, erros } = await abrirComPrazo("2026-11-07T20:00:00-03:00");
+  await ir(pagina, "simulado/E3-AV2");
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/E3-AV2/1");
+  assert.match(await pagina.textContent(".reloginho"), /faltam 03:59:59/);
+  await pagina.clock.setFixedTime(new Date("2026-11-07T23:59:50-03:00"));
+  await pagina.waitForFunction(() => /faltam 00:00:09/.test(document.querySelector(".reloginho")?.textContent || ""));
+  assert.match(await pagina.getAttribute(".reloginho", "class"), /muito-urgente/);
+  await pagina.clock.setFixedTime(new Date("2026-11-08T00:00:01-03:00"));
+  await pagina.waitForSelector("text=Simulado encerrado");
   assert.deepEqual(erros, []);
   await pagina.close();
 });

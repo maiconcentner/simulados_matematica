@@ -4,6 +4,7 @@ import { icone } from "./icones.js";
 import { carregarBase, carregarSimulado, bloqueio } from "./dados.js";
 import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js";
 import { aplicarTema } from "./tema.js";
+import { iniciarRelogios } from "./prazo.js";
 import { gerarVersao } from "./gerador/index.js";
 import { telaPainel } from "./painel.js";
 import { telaAvalia, telaProva } from "./listas.js";
@@ -173,6 +174,8 @@ async function iniciar() {
   raiz.addEventListener("click", acao);
   raiz.addEventListener("change", acao);
   window.addEventListener("hashchange", () => desenhar());
+  // quando um prazo acaba com a página aberta, redesenha (o simulado aparece encerrado)
+  iniciarRelogios(() => desenhar());
   await desenhar();
 }
 

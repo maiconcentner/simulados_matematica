@@ -89,3 +89,12 @@ export function bloqueio(catalogo, estado, id, agora = Date.now()) {
   const origem = origensDoGerado(g).find((o) => fechados.has(o));
   return origem ? todos.find((s) => s.id === origem) : null;
 }
+
+/** Prazo (disponivel_ate) que vale para um simulado ou treino gerado; o mais cedo, se houver mais de um. */
+export function prazoDe(catalogo, estado, id) {
+  const todos = catalogo.areas.flatMap((a) => a.simulados);
+  const origens = id.startsWith("G-") ? origensDoGerado(estado.gerados.find((g) => g.id === id)) : [id];
+  const prazos = origens.map((o) => todos.find((s) => s.id === o)?.disponivel_ate).filter(Boolean);
+  if (!prazos.length) return null;
+  return prazos.reduce((a, b) => (Date.parse(b) < Date.parse(a) ? b : a));
+}
