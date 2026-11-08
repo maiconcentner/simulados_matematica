@@ -19,6 +19,7 @@ Você vai implementar o site descrito em `PLANO.md`. Os dados, as figuras e as f
 - **Sem nome institucional.** Não escreva o nome da rede de ensino, da escola ou da cidade em lugar nenhum. A palavra "Avalia" é permitida. `python3 tools/validar_dados.py` confere isso.
 - **Não edite à mão** `data/avalia/*.json` nem `data/catalogo.json`. Eles saem de `tools/`. Mudança de conteúdo é com o professor.
 - **Caminhos relativos** (sem `/` no começo), porque o site roda em `https://<usuario>.github.io/<repositorio>/`.
+- **Versão:** antes de cada commit que mexe em `js/`, `css/` ou nas páginas `.html`, rode `python3 tools/carimbar_versao.py` (carimba `?v=` nos endereços e grava `versao.json`, para o site se atualizar sozinho no aparelho do aluno).
 - Português do Brasil; linguagem para 14 e 15 anos; **sem travessão** nos textos do site; sem `alert()`, `confirm()` ou `prompt()`.
 - Celular primeiro: 360 px sem rolagem lateral, toque de pelo menos 44 px, tema claro e escuro, `prefers-reduced-motion` respeitado, imagens com `alt`.
 - Regras numéricas (faixas, XP, medalhas, conquistas) vêm de `data/config.json`, nunca fixas no código.

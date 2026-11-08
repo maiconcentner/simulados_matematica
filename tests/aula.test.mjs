@@ -58,7 +58,7 @@ async function computador(planilha, { largura = 390, altura = 844, quando = "202
   ctx.on("weberror", (e) => erros.push(e.error().message));
   await ctx.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   // a página fala com a planilha falsa
-  await ctx.route(/\/js\/aula\/config\.js$/, async (rota) => {
+  await ctx.route(/\/js\/aula\/config\.js(\?.*)?$/, async (rota) => {
     const resp = await rota.fetch();
     const corpo = (await resp.text()).replace(/URL_DA_PLANILHA = "[^"]*"/, `URL_DA_PLANILHA = "${URL_FALSA}"`);
     await rota.fulfill({ response: resp, body: corpo });

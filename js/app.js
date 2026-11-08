@@ -1,19 +1,20 @@
 // Inicialização e rotas do site (navegação por hash, que funciona no GitHub Pages).
-import { h, esc } from "./util.js";
-import { icone } from "./icones.js";
-import { carregarBase, carregarSimulado, bloqueio } from "./dados.js";
-import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js";
-import { aplicarTema, temaEfetivo } from "./tema.js";
-import { iniciarRelogios } from "./prazo.js";
-import { gerarVersao } from "./gerador/index.js";
-import { telaPainel } from "./painel.js";
-import { telaAvalia, telaProva } from "./listas.js";
-import { telaTreinar } from "./treinar.js";
-import { telaSimulado } from "./simulado.js";
-import { telaPerfil } from "./perfil.js";
-import { telaResultado, marcarEntregaRecente } from "./resultado.js";
-import { entregarSimulado } from "./entrega.js";
-import { telaTreino } from "./treino.js";
+import { h, esc } from "./util.js?v=42dba01b94";
+import { icone } from "./icones.js?v=42dba01b94";
+import { carregarBase, carregarSimulado, bloqueio } from "./dados.js?v=42dba01b94";
+import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js?v=42dba01b94";
+import { aplicarTema, temaEfetivo } from "./tema.js?v=42dba01b94";
+import { iniciarRelogios } from "./prazo.js?v=42dba01b94";
+import { conferirVersao } from "./atualizacao.js?v=42dba01b94";
+import { gerarVersao } from "./gerador/index.js?v=42dba01b94";
+import { telaPainel } from "./painel.js?v=42dba01b94";
+import { telaAvalia, telaProva } from "./listas.js?v=42dba01b94";
+import { telaTreinar } from "./treinar.js?v=42dba01b94";
+import { telaSimulado } from "./simulado.js?v=42dba01b94";
+import { telaPerfil } from "./perfil.js?v=42dba01b94";
+import { telaResultado, marcarEntregaRecente } from "./resultado.js?v=42dba01b94";
+import { entregarSimulado } from "./entrega.js?v=42dba01b94";
+import { telaTreino } from "./treino.js?v=42dba01b94";
 
 const raiz = document.getElementById("app");
 const menu = document.getElementById("menu");
@@ -175,6 +176,7 @@ function ligarBotaoTema() {
 }
 
 async function iniciar() {
+  if (await conferirVersao()) return; // recarregando com a versão nova
   aplicarTema(ler().perfil.tema);
   ligarBotaoTema();
   if (!armazenamentoDisponivel()) {

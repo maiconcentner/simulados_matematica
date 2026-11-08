@@ -76,6 +76,11 @@ As outras abas (**Respostas**, **Resumo**, **Por questão** e **Códigos**) a pl
 
 **Gabarito:** o JSON de cada simulado é público. Publique o simulado só perto da aula.
 
+## O site se atualiza sozinho
+O navegador guarda os arquivos do site por um tempo. Para ninguém precisar limpar nada:
+- cada publicação tem uma **versão**, carimbada nos endereços dos arquivos (`?v=...`) por `python3 tools/carimbar_versao.py`. **Rode esse comando antes de cada commit que mexe em `js/`, `css/` ou nas páginas `.html`** (os testes conferem). Mudar só os dados (`data/*.json`) não precisa: eles são lidos sempre sem cache;
+- ao abrir, o site confere `versao.json`; se tiver versão nova, recarrega sozinho, uma vez. Com a página já aberta, aparece o aviso "Atualizar".
+
 ## Publicar no GitHub Pages
 1. Subir esta pasta inteira como raiz do repositório.
 2. Em **Settings > Pages**, escolher "Deploy from a branch", branch `main`, pasta `/ (root)`.

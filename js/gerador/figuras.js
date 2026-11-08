@@ -1,6 +1,6 @@
 // Figuras das questões geradas, desenhadas em SVG.
 // As cores vêm das variáveis --fig-* do CSS, então funcionam no tema claro e no escuro.
-import { n, M } from "./base.js";
+import { n, M } from "./base.js?v=42dba01b94";
 
 const T = "var(--fig-tinta)"; // traço principal
 const D = "var(--fig-destaque)"; // destaque (medida pedida, raio de luz)

@@ -1,7 +1,7 @@
 // Conversa com a planilha do professor (Apps Script).
 // GET: alunos, status e resultado. POST: resposta de uma parte (mode "no-cors", text/plain).
 // Envio que falha fica numa fila no localStorage e é tentado de novo ao abrir a página.
-import { URL_DA_PLANILHA } from "./config.js";
+import { URL_DA_PLANILHA } from "./config.js?v=42dba01b94";
 
 const FILA = "simulados-aula:v1:pendentes";
 

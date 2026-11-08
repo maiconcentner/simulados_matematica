@@ -1,9 +1,9 @@
 // Entrega de um simulado: corrige, calcula XP e conquistas, guarda a tentativa,
 // monta a missão e registra o dia de uso.
-import { ler, atualizar } from "./armazenamento.js";
-import { corrigir, faixaDaNota } from "./correcao.js";
-import { simuladosDoCatalogo, disponivelAgora } from "./dados.js";
-import { xpDoSimulado, xpGanho, nivelDoJogador, registrarDia, conquistasNovas, maiorSequencia, hojeISO } from "./gamificacao.js";
+import { ler, atualizar } from "./armazenamento.js?v=42dba01b94";
+import { corrigir, faixaDaNota } from "./correcao.js?v=42dba01b94";
+import { simuladosDoCatalogo, disponivelAgora } from "./dados.js?v=42dba01b94";
+import { xpDoSimulado, xpGanho, nivelDoJogador, registrarDia, conquistasNovas, maiorSequencia, hojeISO } from "./gamificacao.js?v=42dba01b94";
 
 /** Tudo o que a correção precisa saber do catálogo e do histórico do aluno. */
 export function contextoCorrecao(base, estado) {

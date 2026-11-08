@@ -1,8 +1,8 @@
 // Reloginho do prazo: "Fecha hoje às 23h59 · faltam 07:52:10".
 // O texto é atualizado a cada segundo por iniciarRelogios(); quando o prazo passa, a tela é redesenhada
 // (e o simulado aparece como encerrado).
-import { h } from "./util.js";
-import { icone } from "./icones.js";
+import { h } from "./util.js?v=42dba01b94";
+import { icone } from "./icones.js?v=42dba01b94";
 
 const dois = (n) => String(n).padStart(2, "0");
 

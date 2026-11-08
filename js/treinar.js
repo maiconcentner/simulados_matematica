@@ -1,12 +1,12 @@
 // Treinos (#/treinar): os treinos do professor com correção na hora (T1, T2...) e o
 // gerador de números novos (versão nova de um simulado ou treino montado pelo aluno).
-import { h } from "./util.js";
-import { icone } from "./icones.js";
-import { simuladosDoCatalogo, disponivelAgora, idsIndisponiveis, bloqueio, tipoDoSimulado } from "./dados.js";
-import { cartaoSimulado } from "./componentes.js";
-import { codigosComModelo, gerarMisto, temVersaoNova } from "./gerador/index.js";
-import { guardarGerado, removerGerado } from "./armazenamento.js";
-import { plural, dataCurta } from "./util.js";
+import { h } from "./util.js?v=42dba01b94";
+import { icone } from "./icones.js?v=42dba01b94";
+import { simuladosDoCatalogo, disponivelAgora, idsIndisponiveis, bloqueio, tipoDoSimulado } from "./dados.js?v=42dba01b94";
+import { cartaoSimulado } from "./componentes.js?v=42dba01b94";
+import { codigosComModelo, gerarMisto, temVersaoNova } from "./gerador/index.js?v=42dba01b94";
+import { guardarGerado, removerGerado } from "./armazenamento.js?v=42dba01b94";
+import { plural, dataCurta } from "./util.js?v=42dba01b94";
 
 const QUANTIDADES = [5, 6, 8, 10];
 const escolha = { codigos: new Set(), quantidade: 6, base: "" };

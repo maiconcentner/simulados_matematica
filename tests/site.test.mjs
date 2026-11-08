@@ -5,6 +5,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -598,6 +599,36 @@ test("tema claro é o padrão, mesmo com o aparelho no escuro; o aluno escolhe o
   await pagina.waitForFunction(() => document.body.dataset.tela);
   assert.equal(await fundo(), claro);
   await pagina.close();
+});
+
+test("versão publicada mais nova: o site recarrega sozinho uma vez; com a página aberta, mostra o aviso", async () => {
+  const { pagina, erros } = await abrir();
+  let publicada = null; // null: responde a versão de verdade
+  await pagina.route(/\/versao\.json/, async (rota) => {
+    if (!publicada) return rota.continue();
+    await rota.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ versao: publicada }) });
+  });
+  let carregamentos = 0;
+  pagina.on("load", () => carregamentos++);
+  // versão em dia: carrega uma vez só
+  await ir(pagina, "");
+  assert.equal(carregamentos, 1);
+  // saiu versão nova antes de abrir: recarrega sozinho uma vez e não fica em laço
+  publicada = "versao-nova-de-teste";
+  carregamentos = 0;
+  await pagina.reload();
+  await pagina.waitForSelector("#aviso-versao");
+  assert.equal(carregamentos, 2, "devia recarregar uma vez, sozinho");
+  // como o arquivo continuou velho (no teste), mostra o aviso com o botão Atualizar
+  assert.match(await pagina.textContent("#aviso-versao"), /versão nova/);
+  assert.equal(await larguraDaPagina(pagina), 390);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("carimbos de versão em dia (python3 tools/carimbar_versao.py --conferir)", () => {
+  const saida = execFileSync("python3", [join(RAIZ, "tools/carimbar_versao.py"), "--conferir"], { encoding: "utf-8" });
+  assert.match(saida, /carimbos em dia/);
 });
 
 test("o apelido fica guardado e aparece no painel", async () => {
