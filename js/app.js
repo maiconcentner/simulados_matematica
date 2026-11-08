@@ -3,7 +3,7 @@ import { h, esc } from "./util.js";
 import { icone } from "./icones.js";
 import { carregarBase, carregarSimulado, bloqueio } from "./dados.js";
 import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js";
-import { aplicarTema } from "./tema.js";
+import { aplicarTema, temaEfetivo } from "./tema.js";
 import { iniciarRelogios } from "./prazo.js";
 import { gerarVersao } from "./gerador/index.js";
 import { telaPainel } from "./painel.js";
@@ -22,7 +22,7 @@ const ITENS = [
   ["painel", "#/", icone.painel, "Painel"],
   ["avalia", "#/avalia", icone.avalia, "Avalia"],
   ["prova", "#/prova", icone.prova, "Prova"],
-  ["treinar", "#/treinar", icone.dado, "Treinar"],
+  ["treinar", "#/treinar", icone.dado, "Treinos"],
   ["perfil", "#/perfil", icone.perfil, "Perfil"],
 ];
 
@@ -157,8 +157,26 @@ function acao(ev) {
   }
 }
 
+function ligarBotaoTema() {
+  const botao = document.getElementById("botao-tema");
+  if (!botao) return;
+  const desenharBotao = () => { botao.innerHTML = String(temaEfetivo(ler().perfil.tema) === "dark" ? icone.sol : icone.lua); };
+  botao.addEventListener("click", () => {
+    const novo = temaEfetivo(ler().perfil.tema) === "dark" ? "light" : "dark";
+    atualizar((e) => { e.perfil.tema = novo; });
+    aplicarTema(novo);
+    desenharBotao();
+    // se o Perfil estiver aberto, a escolha lá acompanha
+    const radio = document.querySelector(`input[name="tema"][value="${novo}"]`);
+    if (radio) radio.checked = true;
+  });
+  desenharBotao();
+  window.addEventListener("tema-mudou", desenharBotao);
+}
+
 async function iniciar() {
   aplicarTema(ler().perfil.tema);
+  ligarBotaoTema();
   if (!armazenamentoDisponivel()) {
     const aviso = document.getElementById("aviso-armazenamento");
     aviso.textContent = "Este navegador não deixa guardar dados. Dá para usar o site normalmente, mas o seu progresso não vai ficar salvo.";

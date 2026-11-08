@@ -31,8 +31,9 @@ e abrir `http://localhost:8000`.
 - **Simulado**: uma questão por tela, resposta salva a cada toque (fechou a página, continua de onde parou), figura que amplia com um toque e revisão das questões em branco antes de entregar.
 - **Resultado**: nota no anel, acertos, medalha, XP, faixa com quanto falta para a próxima, pontos fortes e a melhorar, plano em até 3 passos, acertos por tema e revisão comentada de cada questão. Dá para imprimir ou salvar em PDF.
 - **Modo treino**: refaz só as erradas, com a correção na hora e metade do XP.
-- **Treinar com números novos**: o gerador (abaixo).
-- **Perfil**: apelido, conquistas, evolução da nota, mapa das habilidades, histórico, tema claro ou escuro e "Apagar meus dados deste aparelho".
+- **Treinos**: os treinos do professor (T1, T2...), com correção a cada questão, e o gerador de números novos (abaixo).
+- **Perfil**: apelido, conquistas, evolução da nota, mapa das habilidades, histórico, tema e "Apagar meus dados deste aparelho". O tema claro é o padrão; o aluno troca para o escuro pelo botão do topo (lua/sol) ou no Perfil.
+- **Organização**: o Avalia mostra o simulado completo em destaque (`"destaque": true`) e as semanas (com número de semana); simulados sem semana e sem destaque (os treinos, `"modo": "treino"`) ficam em Treinos. Não precisa mexer no código: basta o JSON do simulado e rodar o catálogo.
 
 ## Testes
 `tests/aula.test.mjs` e `tests/apps_script.test.mjs` cobrem as páginas de aula, com o Apps Script simulado (dois alunos no mesmo computador, recarregar no meio da parte, ordem por aluno, JSON enviado, questões em branco, código errado, planilha fora do ar, revisão só depois de 11/11 e modo treino).

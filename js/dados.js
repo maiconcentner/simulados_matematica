@@ -98,3 +98,15 @@ export function prazoDe(catalogo, estado, id) {
   if (!prazos.length) return null;
   return prazos.reduce((a, b) => (Date.parse(b) < Date.parse(a) ? b : a));
 }
+
+/**
+ * Que tipo de simulado é, para organizar o site:
+ * "prova" (área de prova), "completo" (destaque: true), "semana" (tem número de semana)
+ * ou "treino" (sem semana: os treinos T1, T2... com correção na hora).
+ */
+export function tipoDoSimulado(s) {
+  if (s.area === "prova") return "prova";
+  if (s.destaque) return "completo";
+  if (s.semana) return "semana";
+  return "treino";
+}

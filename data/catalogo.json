@@ -52,6 +52,7 @@
      "destaque": true,
      "tempo_sugerido_min": 90,
      "data_prova": "2026-11-18",
+     "modo": "prova",
      "arquivo": "data/avalia/E3-COMPLETO.json"
     },
     {
@@ -74,6 +75,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "treino",
      "arquivo": "data/avalia/T1.json"
     },
     {
@@ -96,6 +98,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "treino",
      "arquivo": "data/avalia/T2.json"
     },
     {
@@ -120,6 +123,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "treino",
      "arquivo": "data/avalia/T3.json"
     },
     {
@@ -141,6 +145,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S01.json"
     },
     {
@@ -161,6 +166,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S02.json"
     },
     {
@@ -183,6 +189,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S03.json"
     },
     {
@@ -205,6 +212,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S04.json"
     },
     {
@@ -227,6 +235,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S05.json"
     },
     {
@@ -249,6 +258,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S06.json"
     },
     {
@@ -271,6 +281,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/avalia/S07.json"
     },
     {
@@ -297,6 +308,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "treino",
      "arquivo": "data/avalia/S08.json"
     }
    ]
@@ -323,6 +335,7 @@
      "destaque": false,
      "tempo_sugerido_min": null,
      "data_prova": null,
+     "modo": "prova",
      "arquivo": "data/prova/E3-AV2.json",
      "disponivel_ate": "2026-11-08T23:59:59-03:00"
     }

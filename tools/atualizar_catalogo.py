@@ -20,6 +20,7 @@ def resumo(p):
         "destaque": bool(d.get("destaque", False)),
         "tempo_sugerido_min": d.get("tempo_sugerido_min"),
         "data_prova": d.get("data_prova"),
+        "modo": d.get("modo", "prova"),
         "arquivo": os.path.relpath(p, RAIZ).replace(os.sep, "/"),
     }
     if d.get("disponivel_ate"):  # prazo opcional: depois dele o site não abre o simulado

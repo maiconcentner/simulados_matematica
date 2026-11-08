@@ -8,7 +8,7 @@ import { nivelDoJogador, listaDeConquistas, sequenciaDeDias } from "./gamificaca
 import { simuladosDoCatalogo } from "./dados.js";
 import { faixaDaNota, medalhaDoPercentual } from "./correcao.js";
 
-const TEMAS = [["auto", "Automático"], ["light", "Claro"], ["dark", "Escuro"]];
+const TEMAS = [["light", "Claro"], ["dark", "Escuro"], ["auto", "Automático (segue o aparelho)"]];
 
 function tituloDe(simId, catalogo, estado) {
   const g = estado.gerados.find((x) => x.id === simId);
@@ -114,7 +114,7 @@ export function telaPerfil(ctx) {
     <section class="cartao secao">
       <fieldset>
         <legend>Tema</legend>
-        <div class="chips">${TEMAS.map(([v, rot]) => h`<label class="chip"><input type="radio" name="tema" data-acao="tema-cor" value="${v}" ${(p.tema || "auto") === v ? "checked" : ""}>${rot}</label>`)}</div>
+        <div class="chips">${TEMAS.map(([v, rot]) => h`<label class="chip"><input type="radio" name="tema" data-acao="tema-cor" value="${v}" ${(p.tema || "light") === v ? "checked" : ""}>${rot}</label>`)}</div>
       </fieldset>
     </section>
 
@@ -135,6 +135,7 @@ export function telaPerfil(ctx) {
       "tema-cor": (el) => {
         atualizar((x) => { x.perfil.tema = el.value; });
         aplicarTema(el.value);
+        window.dispatchEvent(new Event("tema-mudou"));
       },
       apagar: () => {
         confirmar = true;
@@ -150,7 +151,8 @@ export function telaPerfil(ctx) {
       "apagar-sim": async () => {
         if (!confirmar) return;
         apagarTudo();
-        aplicarTema("auto");
+        aplicarTema("light");
+        window.dispatchEvent(new Event("tema-mudou"));
         await ctx.redesenhar();
         const msg = document.createElement("p");
         msg.className = "msg";

@@ -47,41 +47,7 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --fundo: #13111f;
-    --fundo-2: #1c1930;
-    --cartao: #211d36;
-    --texto: #f1effa;
-    --texto-2: #b9b4d4;
-    --linha: #3a3456;
-    --primaria: #a08cff;
-    --primaria-forte: #a593ff;
-    --primaria-suave: #2e2754;
-    --sobre-primaria: #14102b;
-    --xp-texto: #ffd66b;
-    --ok: #4cc38a;
-    --ok-suave: #173a2b;
-    --alerta: #f2a541;
-    --alerta-suave: #3a2a12;
-    --perigo: #ff8a5c;
-    --sombra: 0 6px 18px rgba(0, 0, 0, 0.35);
-    --sombra-forte: 0 10px 28px rgba(0, 0, 0, 0.5);
-    --fig-tinta: #ece9fb;
-    --fig-destaque: #a593ff;
-    --fig-ponto: #ff9f6b;
-    --fig-preenche: #2e2754;
-    --fig-preenche-2: #3d3470;
-    --fig-grade: #3a3456;
-    --fig-fundo: #211d36;
-    --fig-pessoa: #6ea8f0;
-    --fig-sombra: #8c88a8;
-    --fig-cubo-frente: #5a49b8;
-    --fig-cubo-topo: #7d6ad8;
-    --fig-cubo-lado: #3f3290;
-    color-scheme: dark;
-  }
-}
+/* Tema escuro: só quando o aluno escolhe (ou escolhe "Automático" e o aparelho está no escuro). */
 :root[data-theme="dark"] {
   --fundo: #13111f;
   --fundo-2: #1c1930;
@@ -258,7 +224,6 @@ h1[tabindex="-1"]:focus { outline: none; }
   color: #fff; border: 0;
 }
 :root[data-theme="dark"] .jogador { background: linear-gradient(135deg, #3c2a9e 0%, #5b3fd9 100%); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .jogador { background: linear-gradient(135deg, #3c2a9e 0%, #5b3fd9 100%); } }
 .nivel-selo {
   width: 74px; height: 74px; border-radius: 22px; display: grid; place-items: center;
   background: rgba(255, 255, 255, 0.16); border: 2px solid rgba(255, 255, 255, 0.35);
@@ -579,3 +544,20 @@ a.chip { text-decoration: none; }
 .prazo-aviso p { margin: 0; }
 .sim .reloginho { align-self: flex-start; }
 @media print { .reloginho { display: none !important; } }
+
+/* ---------- organização: destaque, treinos e botão de tema ---------- */
+.lista-destaque { display: grid; gap: 14px; margin-top: 14px; }
+.sim.destaque { border: 2px solid var(--primaria); background: linear-gradient(180deg, var(--primaria-suave) 0%, var(--cartao) 70%); }
+.sim.destaque .sim-titulo { font-size: 1.5rem; }
+.sim.destaque.em-breve { border-style: dashed; }
+.etiqueta.treino { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; background: var(--ok-suave); color: var(--ok); }
+.bloco-gerar h3 { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+.etapa-titulo svg { width: 24px; height: 24px; color: var(--primaria); }
+.botao-tema {
+  flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+  border: 1px solid var(--linha); background: var(--cartao); color: var(--texto); cursor: pointer;
+}
+.botao-tema:hover { background: var(--fundo-2); }
+.botao-tema svg { width: 22px; height: 22px; }
+@media (max-width: 760px) { .topo { justify-content: space-between; } }
+@media print { .botao-tema { display: none !important; } }

@@ -25,27 +25,39 @@ export function seloEstado(sit) {
 }
 
 /** Cartão de um simulado do catálogo (listas Avalia e prova). */
-export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2 }) {
-  const H = nivelTitulo === 3 ? ["<h3>", "</h3>"] : ["<h2 class=\"sim-titulo\">", "</h2>"];
+/** "cerca de 1 h 30", "cerca de 40 min" */
+function tempoSugerido(min) {
+  if (!min) return null;
+  const h = Math.floor(min / 60), m = min % 60;
+  return `cerca de ${h ? `${h} h${m ? ` ${String(m).padStart(2, "0")}` : ""}` : `${m} min`}`;
+}
+
+/** Cartão de um simulado do catálogo (listas Avalia, prova e treinos). destaque: cartão maior. */
+export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2, destaque = false }) {
+  const H = nivelTitulo === 3 ? ["<h3 class=\"sim-titulo\">", "</h3>"] : ["<h2 class=\"sim-titulo\">", "</h2>"];
   const titulo = s.semana ? `Semana ${s.semana}` : s.titulo;
   const fechado = encerrado(s);
+  const treino = s.modo === "treino";
+  const info = [plural(s.n_questoes, "questão", "questões"), tempoSugerido(s.tempo_sugerido_min), s.area === "prova" ? "vale 10" : null, s.semana && s.data ? `semana de ${dataCurta(s.data)}` : null].filter(Boolean).join(" · ");
+  const selos = h`${treino ? h`<span class="etiqueta treino">${icone.check}Correção na hora</span>` : ""}`;
   if (fechado || s.status === "em_breve") {
-    return h`<article class="cartao sim em-breve" data-sim="${s.id}">
+    return h`<article class="cartao sim em-breve ${destaque ? "destaque" : ""}" data-sim="${s.id}">
       <div class="sim-topo">${cru(H[0])}${titulo}${cru(H[1])}<span class="estado breve">${fechado ? "Encerrado" : "Em breve"}</span></div>
       ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
-      <p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado."}</p>
+      <p class="sim-info">${info}</p>
+      <p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado. Avisamos quando abrir."}</p>
     </article>`;
   }
   const sit = situacao(estado, s.id, config);
-  const info = [plural(s.n_questoes, "questão", "questões"), s.area === "prova" ? "vale 10" : null, s.data ? `semana de ${dataCurta(s.data)}` : null].filter(Boolean).join(" · ");
   const podeGerar = temVersaoNova(s.id, s.n_questoes);
-  return h`<article class="cartao sim" data-sim="${s.id}">
+  return h`<article class="cartao sim ${destaque ? "destaque" : ""}" data-sim="${s.id}">
     <div class="sim-topo">
       ${cru(H[0])}<a href="#/simulado/${s.id}">${titulo}</a>${cru(H[1])}
       ${seloEstado(sit)}
     </div>
     ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
     <p class="sim-info">${info}</p>
+    ${selos}
     ${reloginho(s.disponivel_ate)}
     ${etiquetasHabilidades(s.habilidades, habilidades)}
     <div class="botoes acoes">

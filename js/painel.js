@@ -2,7 +2,7 @@
 import { h } from "./util.js";
 import { icone } from "./icones.js";
 import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js";
-import { simuladosDoCatalogo, bloqueio, disponivelAgora } from "./dados.js";
+import { simuladosDoCatalogo, bloqueio, disponivelAgora, tipoDoSimulado } from "./dados.js";
 import { reloginho } from "./prazo.js";
 import { melhorTentativa } from "./progresso.js";
 import { plural } from "./util.js";
@@ -24,11 +24,11 @@ export function telaPainel({ base, estado }) {
   const nConq = Object.keys(estado.conquistas).length;
   const pct = Math.round((jog.noNivel / jog.porNivel) * 100);
 
-  const contar = (area) => {
-    const lista = simuladosDoCatalogo(catalogo, area).filter((s) => s.status === "publicado");
+  const contar = (tipos) => {
+    const lista = simuladosDoCatalogo(catalogo).filter((s) => tipos.includes(tipoDoSimulado(s)) && s.status === "publicado");
     return { total: lista.length, feitos: lista.filter((s) => melhorTentativa(estado, s.id)).length };
   };
-  const av = contar("avalia"), pr = contar("prova");
+  const av = contar(["semana", "completo"]), pr = contar(["prova"]), tr = contar(["treino"]);
 
   const andamento = Object.entries(estado.emAndamento)
     .filter(([id]) => !bloqueio(catalogo, estado, id))
@@ -90,9 +90,9 @@ export function telaPainel({ base, estado }) {
 
     <section class="secao" aria-label="Áreas">
       <div class="grade grade-3 areas">
-        ${cartaoArea("", "#/avalia", icone.avalia, "Simulados Avalia", "Um simulado por semana, com as habilidades da etapa.", av.total ? Math.round((av.feitos / av.total) * 100) : 0, `${av.feitos} de ${plural(av.total, "simulado feito", "simulados feitos")}`)}
+        ${cartaoArea("", "#/avalia", icone.avalia, "Simulados Avalia", "O simulado completo e um simulado por semana, com as habilidades da etapa.", av.total ? Math.round((av.feitos / av.total) * 100) : 0, `${av.feitos} de ${plural(av.total, "simulado feito", "simulados feitos")}`)}
         ${cartaoArea("prova", "#/prova", icone.prova, "Simulados de prova", "Treino no formato da avaliação da etapa, valendo 10.", pr.total ? Math.round((pr.feitos / pr.total) * 100) : 0, `${pr.feitos} de ${plural(pr.total, "simulado feito", "simulados feitos")}`)}
-        ${cartaoArea("treinar", "#/treinar", icone.dado, "Treinar com números novos", "Gere simulados novos, no mesmo estilo, quantas vezes quiser.", null, estado.gerados.length ? plural(estado.gerados.length, "treino guardado", "treinos guardados") : "Gere seu primeiro treino")}
+        ${cartaoArea("treinar", "#/treinar", icone.dado, "Treinos", "Correção na hora, com a explicação. E treinos com números novos, quantos quiser.", tr.total ? Math.round((tr.feitos / tr.total) * 100) : null, tr.total ? `${tr.feitos} de ${plural(tr.total, "treino feito", "treinos feitos")}` : "Gere seu primeiro treino")}
       </div>
     </section>
 

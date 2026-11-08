@@ -1,30 +1,40 @@
-// Listas de simulados: Avalia (#/avalia) e de prova (#/prova).
-import { h } from "./util.js";
+// Listas de simulados: Avalia (#/avalia: simulado completo e semanas) e de prova (#/prova).
+import { h, plural } from "./util.js";
+import { icone } from "./icones.js";
 import { cartaoSimulado } from "./componentes.js";
-import { simuladosDoCatalogo } from "./dados.js";
+import { simuladosDoCatalogo, tipoDoSimulado } from "./dados.js";
 
 let temaEscolhido = "Todos";
 
 export function telaAvalia(ctx) {
   const { catalogo, config, habilidades } = ctx.base;
-  const area = catalogo.areas.find((a) => a.id === "avalia");
-  const todos = simuladosDoCatalogo(catalogo, "avalia").sort((a, b) => (b.semana || 0) - (a.semana || 0));
+  const doAvalia = simuladosDoCatalogo(catalogo, "avalia");
+  const completos = doAvalia.filter((s) => tipoDoSimulado(s) === "completo");
+  const semanas = doAvalia.filter((s) => tipoDoSimulado(s) === "semana").sort((a, b) => (b.semana || 0) - (a.semana || 0));
   const temas = ["Todos", ...config.temas];
   if (!temas.includes(temaEscolhido)) temaEscolhido = "Todos";
-  const lista = temaEscolhido === "Todos" ? todos : todos.filter((s) => s.habilidades.some((c) => habilidades[c]?.tema === temaEscolhido));
+  const lista = temaEscolhido === "Todos" ? semanas : semanas.filter((s) => s.habilidades.some((c) => habilidades[c]?.tema === temaEscolhido));
+  const cartao = (s, extra = {}) => cartaoSimulado(s, { estado: ctx.estado, config, habilidades, nivelTitulo: 3, ...extra });
   return {
     titulo: "Simulados Avalia",
     html: h`
-    <div class="cabecalho-lista">
-      <div><h1>Simulados Avalia</h1><p class="sub">${area?.descricao || ""}</p></div>
-    </div>
-    <div class="filtros" role="group" aria-label="Filtrar por tema">
-      <div class="chips">${temas.map((t) => h`<button type="button" class="chip" data-acao="tema" data-tema="${t}" aria-pressed="${t === temaEscolhido}">${t}</button>`)}</div>
-    </div>
-    <p class="sub pequeno" aria-live="polite">${lista.length === todos.length ? `${todos.length} simulados` : `${lista.length} de ${todos.length} simulados com ${temaEscolhido}`}</p>
-    ${lista.length
-      ? h`<div class="lista-sim">${lista.map((s) => cartaoSimulado(s, { estado: ctx.estado, config, habilidades }))}</div>`
-      : h`<div class="cartao vazio"><p>Nenhum simulado com esse tema por enquanto.</p></div>`}`,
+    <h1>Simulados Avalia</h1>
+    <p class="sub">O simulado completo, no formato do Avalia+, e um simulado por semana, com as habilidades da etapa.</p>
+    ${completos.length ? h`
+    <section class="secao" aria-labelledby="t-completo">
+      <h2 class="etapa-titulo" id="t-completo">${icone.trofeu}Simulado completo</h2>
+      <div class="lista-destaque">${completos.map((s) => cartao(s, { destaque: true }))}</div>
+    </section>` : ""}
+    <section class="secao" aria-labelledby="t-semanas">
+      <h2 class="etapa-titulo" id="t-semanas">${icone.avalia}Semanas</h2>
+      <div class="filtros" role="group" aria-label="Filtrar as semanas por tema">
+        <div class="chips">${temas.map((t) => h`<button type="button" class="chip" data-acao="tema" data-tema="${t}" aria-pressed="${t === temaEscolhido}">${t}</button>`)}</div>
+      </div>
+      <p class="sub pequeno" aria-live="polite">${lista.length === semanas.length ? plural(semanas.length, "semana", "semanas") : `${lista.length} de ${semanas.length} semanas com ${temaEscolhido}`}</p>
+      ${lista.length
+        ? h`<div class="lista-sim" id="lista-semanas">${lista.map((s) => cartao(s))}</div>`
+        : h`<div class="cartao vazio"><p>Nenhuma semana com esse tema por enquanto.</p></div>`}
+    </section>`,
     eventos: {
       tema: (el) => {
         temaEscolhido = el.dataset.tema;

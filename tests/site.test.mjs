@@ -19,6 +19,10 @@ const CATALOGO = JSON.parse(await readFile(join(RAIZ, "data/catalogo.json"), "ut
 const CONFIG = JSON.parse(await readFile(join(RAIZ, "data/config.json"), "utf-8"));
 const HABILIDADES = JSON.parse(await readFile(join(RAIZ, "data/habilidades.json"), "utf-8"));
 const AVALIA = CATALOGO.areas.find((a) => a.id === "avalia").simulados.filter((s) => s.status !== "oculto");
+// como o site organiza o catálogo: semanas e simulado completo no Avalia, treinos em Treinos
+const SEMANAS = AVALIA.filter((s) => s.semana && !s.destaque);
+const COMPLETOS = AVALIA.filter((s) => s.destaque);
+const TREINOS = AVALIA.filter((s) => !s.semana && !s.destaque);
 const N_CONQUISTAS = CONFIG.conquistas.reduce((n, c) => n + (c.id === "especialista_tema" ? CONFIG.temas.length : 1), 0);
 const TIPOS = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png" };
 let servidor, URL_BASE, navegador;
@@ -85,15 +89,22 @@ test("todas as telas abrem sem rolagem lateral e sem erro no console (celular e 
   }
 });
 
-test("as duas áreas mostram os 7 Avalia e o simulado da Etapa 3", async () => {
+test("Avalia mostra o simulado completo em destaque e as semanas; treinos ficam em Treinos; prova mostra a Etapa 3", async () => {
   const { pagina, erros } = await abrir();
   await ir(pagina, "avalia");
-  const semanas = await pagina.$$eval(".sim .sim-titulo", (els) => els.map((e) => e.textContent.trim()));
-  // as 7 semanas aparecem, da mais recente para a mais antiga, e os outros simulados do catálogo também
-  const so = semanas.filter((t) => /^Semana \d+$/.test(t));
+  // simulado completo em destaque, antes das semanas
+  assert.equal(await pagina.$$eval(".lista-destaque .sim.destaque", (e) => e.length), COMPLETOS.length);
+  assert.ok(COMPLETOS.length >= 1);
+  // as 7 semanas (e as novas), da mais recente para a mais antiga
+  const so = await pagina.$$eval("#lista-semanas .sim-titulo", (els) => els.map((e) => e.textContent.trim()));
   for (let k = 1; k <= 7; k++) assert.ok(so.includes(`Semana ${k}`), `faltou a Semana ${k}`);
   assert.deepEqual(so, [...so].sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1])));
-  assert.equal(semanas.length, AVALIA.length);
+  assert.equal(so.length, SEMANAS.length);
+  // os treinos não aparecem no Avalia
+  for (const t of TREINOS) assert.equal(await pagina.$(`.sim[data-sim="${t.id}"]`), null, `${t.id} não devia estar no Avalia`);
+  await ir(pagina, "treinar");
+  assert.equal(await pagina.$$eval("#lista-treinos .sim", (e) => e.length), TREINOS.length);
+  assert.match(await pagina.textContent("#lista-treinos"), /Correção na hora/);
   await ir(pagina, "prova");
   assert.equal(await pagina.textContent(".etapa-titulo"), "Etapa 3");
   assert.match(await pagina.textContent(".sim h3"), /Etapa 3/);
@@ -106,12 +117,12 @@ test("o painel leva às áreas e o filtro por tema funciona", async () => {
   await ir(pagina, "");
   assert.match(await pagina.textContent(".jogador"), /Iniciante/);
   await pagina.click(".area >> text=Simulados Avalia");
-  await pagina.waitForSelector(".sim");
-  assert.equal(await pagina.$$eval(".sim", (e) => e.length), AVALIA.length);
+  await pagina.waitForSelector("#lista-semanas .sim");
+  assert.equal(await pagina.$$eval("#lista-semanas .sim", (e) => e.length), SEMANAS.length);
   await pagina.click('button.chip[data-tema="Grandezas e medidas"]');
-  const n = await pagina.$$eval(".sim", (e) => e.length);
-  const esperado = AVALIA.filter((x) => x.habilidades.some((c) => HABILIDADES[c]?.tema === "Grandezas e medidas")).length;
-  assert.ok(esperado > 0 && esperado < AVALIA.length);
+  const n = await pagina.$$eval("#lista-semanas .sim", (e) => e.length);
+  const esperado = SEMANAS.filter((x) => x.habilidades.some((c) => HABILIDADES[c]?.tema === "Grandezas e medidas")).length;
+  assert.ok(esperado > 0 && esperado < SEMANAS.length);
   assert.equal(n, esperado, `filtro Grandezas e medidas mostrou ${n}`);
   assert.equal(await pagina.getAttribute('button.chip[data-tema="Grandezas e medidas"]', "aria-pressed"), "true");
   await pagina.close();
@@ -540,6 +551,55 @@ test("prazo: depois das 23h59 o simulado, as versões novas e o treino ficam fec
   await pagina.close();
 });
 
+test("treino do professor (T1) no site principal: correção na hora e resposta travada", async () => {
+  const { pagina, erros } = await abrir();
+  const T1 = JSON.parse(await readFile(join(RAIZ, "data/avalia/T1.json"), "utf-8"));
+  await ir(pagina, "simulado/T1");
+  assert.match(await pagina.textContent("main"), /você já vê se acertou/);
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/T1/1");
+  const errada = T1.items[0].options.find((o) => !o.correct).letter;
+  await pagina.click(`.opcao[data-letra="${errada}"]`);
+  await pagina.waitForSelector(".feedback.errado");
+  assert.match(await pagina.textContent(".feedback"), /Erro provável/);
+  assert.ok(await pagina.$(".opcao.correta"));
+  assert.ok(await pagina.$(".opcao[disabled]"));
+  // continua salvo depois de recarregar
+  await pagina.reload();
+  await esperarRota(pagina, "simulado/T1/1");
+  assert.ok(await pagina.$(".feedback.errado"));
+  assert.equal(await larguraDaPagina(pagina), 390);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("tema claro é o padrão, mesmo com o aparelho no escuro; o aluno escolhe o escuro e ele fica", async () => {
+  const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, colorScheme: "dark" });
+  await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  const fundo = () => pagina.evaluate(() => getComputedStyle(document.body).backgroundColor);
+  await ir(pagina, "");
+  assert.equal(await pagina.getAttribute("html", "data-theme"), "light");
+  const claro = await fundo();
+  // botão do topo
+  await pagina.click("#botao-tema");
+  assert.equal(await pagina.getAttribute("html", "data-theme"), "dark");
+  assert.notEqual(await fundo(), claro);
+  assert.equal(await pagina.getAttribute("#botao-tema", "aria-pressed"), "true");
+  await pagina.reload();
+  await esperarRota(pagina, "");
+  assert.equal(await pagina.getAttribute("html", "data-theme"), "dark");
+  // no Perfil, Claro volta
+  await ir(pagina, "perfil");
+  assert.equal(await pagina.isChecked('input[name="tema"][value="dark"]'), true);
+  await pagina.click('label.chip:has(input[name="tema"][value="light"])');
+  assert.equal(await pagina.getAttribute("html", "data-theme"), "light");
+  // as páginas de aula ficam no claro
+  await pagina.goto(URL_BASE + "simulado.html?id=T1");
+  await pagina.waitForFunction(() => document.body.dataset.tela);
+  assert.equal(await fundo(), claro);
+  await pagina.close();
+});
+
 test("o apelido fica guardado e aparece no painel", async () => {
   const { pagina } = await abrir();
   await ir(pagina, "perfil");
@@ -559,7 +619,7 @@ test("sem localStorage o site funciona e avisa", async () => {
   await ir(pagina, "");
   assert.equal(await pagina.isVisible("#aviso-armazenamento"), true);
   await ir(pagina, "avalia");
-  assert.equal(await pagina.$$eval(".sim", (e) => e.length), AVALIA.length);
+  assert.equal(await pagina.$$eval(".sim", (e) => e.length), SEMANAS.length + COMPLETOS.length);
   assert.deepEqual(erros, []);
   await pagina.close();
 });

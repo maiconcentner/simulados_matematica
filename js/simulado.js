@@ -94,9 +94,9 @@ function telaAbertura(ctx, sim) {
       <section class="cartao secao">
         <h2>Como funciona</h2>
         <ul class="lista-o-que-cai">
-          <li>Uma questão por tela. Dá para voltar e trocar a resposta.</li>
+          <li>${sim.modo === "treino" ? "Uma questão por tela. Pense antes de tocar: depois de responder, a resposta não muda." : "Uma questão por tela. Dá para voltar e trocar a resposta."}</li>
           <li>Suas respostas ficam salvas a cada toque: se a página fechar, você continua de onde parou.</li>
-          <li>${prova ? `As questões valem ${valores.map((v) => nota1(v)).join(", ")} pontos, de acordo com o nível.` : `Cada acerto vale ${nota1(10 / n)} na nota.`} O resultado aparece só no fim, como no papel.</li>
+          <li>${prova ? `As questões valem ${valores.map((v) => nota1(v)).join(", ")} pontos, de acordo com o nível.` : `Cada acerto vale ${nota1(10 / n)} na nota.`} ${sim.modo === "treino" ? "Depois de cada resposta você já vê se acertou, com a explicação." : "O resultado aparece só no fim, como no papel."}</li>
         </ul>
         <h2 class="secao">O que cai</h2>
         <ol class="lista-o-que-cai">${sim.items.map((it) => h`<li>${habilidades[it.code]?.nome || it.short}${papelParaAluno(it.role) ? h` <span class="etiqueta ${it.role.startsWith("Conexão") ? "conexao" : ""}">${papelParaAluno(it.role)}</span>` : ""}${prova ? h` <span class="etiqueta">vale ${nota1(it.valor)}</span>` : ""}</li>`)}</ol>
@@ -133,6 +133,19 @@ function telaAbertura(ctx, sim) {
 }
 
 /* ---------- uma questão por tela ---------- */
+/** Correção na hora (simulados com modo "treino"): acertou ou não, o erro provável e a resolução. */
+function correcaoNaHora(it, letra) {
+  const op = it.options.find((o) => o.letter === letra);
+  const certo = letra === it.key;
+  return h`<div class="feedback ${certo ? "certo" : "errado"}" role="status" tabindex="-1">
+    <p class="feedback-titulo">${certo ? h`${icone.check}Acertou!` : h`${icone.alvo}Ainda não.`}</p>
+    <p>${certo ? op.why : h`<strong>Erro provável:</strong> ${op.why}`}</p>
+    <p><strong>Resolução</strong></p>
+    <ol class="resolucao">${it.resolution.map((x) => h`<li>${x}</li>`)}</ol>
+    ${it.check ? h`<p><strong>Como conferir:</strong> ${it.check}</p>` : ""}
+  </div>`;
+}
+
 function bolinhas(sim, respostas, atual) {
   return h`<nav class="bolinhas" aria-label="Questões">${sim.items.map((it) => {
     const r = respostas[String(it.n)];
@@ -148,6 +161,9 @@ function telaQuestao(ctx, sim, n) {
   const marcada = respostas[String(n)] || null;
   const total = sim.items.length;
   const papel = papelParaAluno(it.role);
+  // modo treino: depois de responder, a correção aparece na hora e a resposta fica travada
+  const treino = sim.modo === "treino";
+  const travada = treino && !!marcada;
   marcarQuestaoAtual(sim.id, n);
 
   return {
@@ -167,9 +183,13 @@ function telaQuestao(ctx, sim, n) {
         </div>
         ${enunciadoHTML(it)}
         <div class="alternativas" role="radiogroup" aria-label="Alternativas da questão ${n}">
-          ${it.options.map((o) => h`<button type="button" role="radio" class="alternativa opcao ${marcada === o.letter ? "marcada" : ""}" aria-checked="${String(marcada === o.letter)}" data-acao="responder" data-letra="${o.letter}"><span class="letra">${o.letter}</span><span>${o.text}</span></button>`)}
+          ${it.options.map((o) => {
+            const cls = travada ? (o.correct ? "correta" : o.letter === marcada ? "errada" : "") : marcada === o.letter ? "marcada" : "";
+            return h`<button type="button" role="radio" class="alternativa opcao ${cls}" aria-checked="${String(marcada === o.letter)}" data-acao="responder" data-letra="${o.letter}" ${travada ? "disabled" : ""}><span class="letra">${o.letter}</span><span>${o.text}</span></button>`;
+          })}
         </div>
-        <p class="salvo sub pequeno" id="salvo" role="status" aria-live="polite">${marcada ? "Resposta salva." : ""}</p>
+        ${travada ? correcaoNaHora(it, marcada) : ""}
+        <p class="salvo sub pequeno" id="salvo" role="status" aria-live="polite">${marcada && !treino ? "Resposta salva." : ""}</p>
       </article>
       <div class="navegacao-questao">
         ${n > 1 ? h`<a class="botao secundario" href="#/simulado/${sim.id}/${n - 1}">${icone.voltar}Anterior</a>` : h`<span></span>`}
@@ -182,7 +202,9 @@ function telaQuestao(ctx, sim, n) {
     eventos: {
       responder: (el) => {
         const letra = el.dataset.letra;
+        if (travada) return;
         salvarResposta(sim.id, n, letra);
+        if (treino) return ctx.redesenhar({ manterFoco: ".feedback" });
         document.querySelectorAll(".opcao").forEach((b) => {
           const sel = b === el;
           b.classList.toggle("marcada", sel);
