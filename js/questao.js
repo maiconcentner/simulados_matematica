@@ -1,6 +1,6 @@
 // Desenho de uma questão (enunciado, tabela, figura, pergunta e alternativas).
 // Serve para a prévia do gerador e, na fase 2, para a tela do simulado.
-import { h, cru } from "./util.js?v=0bc7986d38";
+import { h, cru } from "./util.js?v=e27fa3b239";
 
 export function tabelaHTML(t) {
   if (!t) return "";

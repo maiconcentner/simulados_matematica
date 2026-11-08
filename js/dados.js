@@ -1,6 +1,6 @@
 // Leitura dos dados do site: catálogo, configuração, habilidades e cada simulado.
 // Caminhos relativos, para funcionar dentro da subpasta do GitHub Pages.
-import { buscarGerado } from "./armazenamento.js?v=0bc7986d38";
+import { buscarGerado } from "./armazenamento.js?v=e27fa3b239";
 
 const cache = new Map();
 

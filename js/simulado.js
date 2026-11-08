@@ -1,15 +1,15 @@
 // Simulado: abertura (#/simulado/<id>), uma questão por tela (#/simulado/<id>/<n>)
 // e revisão antes de entregar (#/simulado/<id>/revisao).
 // As respostas são salvas a cada toque em emAndamento, para continuar depois.
-import { h, cru, plural, nota1 } from "./util.js?v=0bc7986d38";
-import { icone } from "./icones.js?v=0bc7986d38";
-import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=0bc7986d38";
-import { reloginho } from "./prazo.js?v=0bc7986d38";
-import { gerarMisto } from "./gerador/index.js?v=0bc7986d38";
-import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=0bc7986d38";
-import { enunciadoHTML } from "./questao.js?v=0bc7986d38";
-import { tempoSugerido } from "./componentes.js?v=0bc7986d38";
-import { cronometroHTML, pausaHTML, ligarCronometro, pausar, continuar } from "./cronometro.js?v=0bc7986d38";
+import { h, cru, plural, nota1 } from "./util.js?v=e27fa3b239";
+import { icone } from "./icones.js?v=e27fa3b239";
+import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=e27fa3b239";
+import { reloginho } from "./prazo.js?v=e27fa3b239";
+import { gerarMisto } from "./gerador/index.js?v=e27fa3b239";
+import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=e27fa3b239";
+import { enunciadoHTML } from "./questao.js?v=e27fa3b239";
+import { tempoSugerido } from "./componentes.js?v=e27fa3b239";
+import { cronometroHTML, pausaHTML, ligarCronometro, pausar, continuar } from "./cronometro.js?v=e27fa3b239";
 
 export const papelParaAluno = (role) => {
   if (!role) return "";

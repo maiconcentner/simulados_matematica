@@ -1,11 +1,11 @@
 // Peças de tela usadas em mais de uma página: cartão do simulado, estado, etiquetas.
-import { h, cru } from "./util.js?v=0bc7986d38";
-import { icone } from "./icones.js?v=0bc7986d38";
-import { nota1, plural, dataCurta } from "./util.js?v=0bc7986d38";
-import { situacao } from "./progresso.js?v=0bc7986d38";
-import { encerrado, aindaVaiAbrir } from "./dados.js?v=0bc7986d38";
-import { reloginho } from "./prazo.js?v=0bc7986d38";
-import { temVersaoNova } from "./gerador/index.js?v=0bc7986d38";
+import { h, cru } from "./util.js?v=e27fa3b239";
+import { icone } from "./icones.js?v=e27fa3b239";
+import { nota1, plural, dataCurta } from "./util.js?v=e27fa3b239";
+import { situacao } from "./progresso.js?v=e27fa3b239";
+import { encerrado, aindaVaiAbrir } from "./dados.js?v=e27fa3b239";
+import { reloginho } from "./prazo.js?v=e27fa3b239";
+import { temVersaoNova } from "./gerador/index.js?v=e27fa3b239";
 
 export function etiquetasHabilidades(codigos, habilidades) {
   const vistos = [...new Set(codigos)];

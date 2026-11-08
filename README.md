@@ -48,13 +48,13 @@ npm test
 ```
 
 ## Gerador de simulados
-Cada questão dos simulados tem um **modelo** em `js/gerador/` (`modelos_avalia_1.js`, `modelos_avalia_2.js`, `modelos_prova.js`). O modelo sorteia números e contextos, calcula a resposta, monta os distratores com os mesmos erros típicos da questão original (com o "erro provável" de cada um), a resolução e a conferência. As figuras das questões geradas são desenhadas em SVG pelo próprio site.
+Cada questão dos simulados tem um **modelo** em `js/gerador/` (`modelos_avalia_1.js`, `modelos_avalia_2.js`, `modelos_avalia_3.js`, `modelos_prova.js`). O modelo sorteia números e contextos, calcula a resposta, monta os distratores com os mesmos erros típicos da questão original (com o "erro provável" de cada um), a resolução e a conferência. As figuras das questões geradas são desenhadas em SVG pelo próprio site.
 
 Para conferir o que o gerador produz, abra `tools/ver_gerador.html` (com o site rodando: `http://localhost:8000/tools/ver_gerador.html`). Ela mostra uma versão de cada modelo, com gabarito, erro provável de cada alternativa e resolução; o botão "Sortear outra" troca os números. A página não aparece no menu dos alunos.
 
 Os treinos gerados ficam guardados só no aparelho do aluno (os 12 últimos).
 
-**Semana nova sem modelo:** o site funciona normalmente; só não mostra o botão "Versão nova" para ela. Para incluir a semana no gerador, crie um modelo por questão com o id `S08-1`, `S08-2`... (mesmo código e nível da questão), seguindo os que já existem, e rode `npm test`.
+**Semana nova sem modelo:** o site funciona normalmente; só não mostra o botão "Versão nova" para ela. Para incluir a semana no gerador, crie um modelo por questão com o id `S09-1`, `S09-2`... (mesmo código e nível da questão), seguindo os que já existem, e rode `npm test`.
 
 ## Páginas de aula: planilha do professor
 Para as aulas nos notebooks da escola há duas páginas que **enviam as respostas para a planilha do professor** (é a única parte do site que envia dados):

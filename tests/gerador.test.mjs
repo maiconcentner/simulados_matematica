@@ -36,7 +36,7 @@ test("os modelos batem com as questões originais (código e nível)", () => {
   for (const m of MODELOS) assert.ok(habilidades[m.code], `${m.code} fora de habilidades.json`);
   // semana nova sem modelos não quebra nada: o site só não mostra "Versão nova" para ela
   if (semModelo.length) console.log(`Simulados ainda sem modelos no gerador: ${semModelo.join(", ")}`);
-  for (const id of ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "E3-AV2"]) assert.ok(!semModelo.includes(id), `${id} perdeu modelos`);
+  for (const id of ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "E3-AV2"]) assert.ok(!semModelo.includes(id), `${id} perdeu modelos`);
 });
 
 test("cada modelo gera 300 questões válidas e variadas", () => {

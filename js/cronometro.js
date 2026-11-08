@@ -1,9 +1,9 @@
 // Cronômetro do simulado longo (os que têm tempo_sugerido_min, como o Simulado Completo).
 // Conta só o tempo com a questão aberta: fechou a página, o tempo para; a pausa esconde a questão.
 // O tempo fica em emAndamento[simId].tempo_ms (e pausado), salvo a cada 5 s, ao pausar e ao sair.
-import { h } from "./util.js?v=0bc7986d38";
-import { icone } from "./icones.js?v=0bc7986d38";
-import { atualizar, ler } from "./armazenamento.js?v=0bc7986d38";
+import { h } from "./util.js?v=e27fa3b239";
+import { icone } from "./icones.js?v=e27fa3b239";
+import { atualizar, ler } from "./armazenamento.js?v=e27fa3b239";
 
 const dois = (n) => String(n).padStart(2, "0");
 /** 0:12:05 */

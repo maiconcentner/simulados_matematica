@@ -1,15 +1,15 @@
 // Modo treino (#/treino/<id> e #/treino/<id>/<n>): refazer as questões erradas da
 // última entrega (ou uma questão do plano), com correção na hora.
 // Dá refazer_fator do XP da questão, uma vez por questão; não muda a nota do simulado.
-import { h, plural } from "./util.js?v=0bc7986d38";
-import { icone } from "./icones.js?v=0bc7986d38";
-import { carregarSimulado, prazoDe } from "./dados.js?v=0bc7986d38";
-import { reloginho } from "./prazo.js?v=0bc7986d38";
-import { atualizar } from "./armazenamento.js?v=0bc7986d38";
-import { enunciadoHTML } from "./questao.js?v=0bc7986d38";
-import { xpDaQuestao, registrarDia, conquistasNovas, hojeISO, nomeDaConquista } from "./gamificacao.js?v=0bc7986d38";
-import { contextoConquistas } from "./entrega.js?v=0bc7986d38";
-import { soltarConfete } from "./resultado.js?v=0bc7986d38";
+import { h, plural } from "./util.js?v=e27fa3b239";
+import { icone } from "./icones.js?v=e27fa3b239";
+import { carregarSimulado, prazoDe } from "./dados.js?v=e27fa3b239";
+import { reloginho } from "./prazo.js?v=e27fa3b239";
+import { atualizar } from "./armazenamento.js?v=e27fa3b239";
+import { enunciadoHTML } from "./questao.js?v=e27fa3b239";
+import { xpDaQuestao, registrarDia, conquistasNovas, hojeISO, nomeDaConquista } from "./gamificacao.js?v=e27fa3b239";
+import { contextoConquistas } from "./entrega.js?v=e27fa3b239";
+import { soltarConfete } from "./resultado.js?v=e27fa3b239";
 
 // sessão de treino em andamento (só na memória: recarregar recomeça o treino)
 let sessao = null;

@@ -753,7 +753,9 @@ test("a prévia do gerador para o professor abre todos os modelos sem erro", asy
   const { pagina, erros } = await abrir(1280, 900);
   await pagina.goto(URL_BASE + "tools/ver_gerador.html?sim=todos&semente=7");
   await pagina.waitForSelector(".modelo");
-  assert.equal(await pagina.$$eval(".modelo", (e) => e.length), 50); // 40 do Avalia + 10 da prova
+  const { MODELOS } = await import("../js/gerador/index.js");
+  assert.equal(await pagina.$$eval(".modelo", (e) => e.length), MODELOS.length); // um por questão com modelo (Avalia e prova)
+  assert.ok(MODELOS.length >= 60);
   assert.deepEqual(erros, []);
   await pagina.close();
 });

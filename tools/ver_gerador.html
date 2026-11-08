@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prévia do gerador · para o professor</title>
 <meta name="robots" content="noindex">
-<link rel="stylesheet" href="../css/estilo.css?v=0bc7986d38">
+<link rel="stylesheet" href="../css/estilo.css?v=e27fa3b239">
 <style>
   .conteudo { max-width: 900px; }
   .modelo { margin-top: 18px; }
@@ -28,10 +28,10 @@
   <div id="saida"></div>
 </main>
 <script type="module">
-import { MODELOS, gerarQuestao } from "../js/gerador/index.js?v=0bc7986d38";
-import { criarSorteio, novaSemente } from "../js/gerador/base.js?v=0bc7986d38";
-import { questaoLeitura } from "../js/questao.js?v=0bc7986d38";
-import { h } from "../js/util.js?v=0bc7986d38";
+import { MODELOS, gerarQuestao } from "../js/gerador/index.js?v=e27fa3b239";
+import { criarSorteio, novaSemente } from "../js/gerador/base.js?v=e27fa3b239";
+import { questaoLeitura } from "../js/questao.js?v=e27fa3b239";
+import { h } from "../js/util.js?v=e27fa3b239";
 
 const hab = await (await fetch("../data/habilidades.json")).json();
 const grupos = [...new Set(MODELOS.map((m) => m.id.replace(/-\d+$/, "")))];
