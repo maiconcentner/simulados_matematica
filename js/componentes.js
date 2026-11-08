@@ -1,11 +1,11 @@
 // Peças de tela usadas em mais de uma página: cartão do simulado, estado, etiquetas.
-import { h, cru } from "./util.js?v=57517fb455";
-import { icone } from "./icones.js?v=57517fb455";
-import { nota1, plural, dataCurta } from "./util.js?v=57517fb455";
-import { situacao } from "./progresso.js?v=57517fb455";
-import { encerrado, aindaVaiAbrir } from "./dados.js?v=57517fb455";
-import { reloginho } from "./prazo.js?v=57517fb455";
-import { temVersaoNova } from "./gerador/index.js?v=57517fb455";
+import { h, cru } from "./util.js?v=0bc7986d38";
+import { icone } from "./icones.js?v=0bc7986d38";
+import { nota1, plural, dataCurta } from "./util.js?v=0bc7986d38";
+import { situacao } from "./progresso.js?v=0bc7986d38";
+import { encerrado, aindaVaiAbrir } from "./dados.js?v=0bc7986d38";
+import { reloginho } from "./prazo.js?v=0bc7986d38";
+import { temVersaoNova } from "./gerador/index.js?v=0bc7986d38";
 
 export function etiquetasHabilidades(codigos, habilidades) {
   const vistos = [...new Set(codigos)];
@@ -26,7 +26,7 @@ export function seloEstado(sit) {
 
 /** Cartão de um simulado do catálogo (listas Avalia e prova). */
 /** "cerca de 1 h 30", "cerca de 40 min" */
-function tempoSugerido(min) {
+export function tempoSugerido(min) {
   if (!min) return null;
   const h = Math.floor(min / 60), m = min % 60;
   return `cerca de ${h ? `${h} h${m ? ` ${String(m).padStart(2, "0")}` : ""}` : `${m} min`}`;

@@ -70,7 +70,7 @@ test("conquistas: primeira, gabaritou, embalado, volta por cima, maratona, persi
   estado.conquistas.primeira_missao = "2026-11-01";
   assert.ok(!conquistasNovas(estado, { ...ctx, tentativa: estado.tentativas[3] }).includes("primeira_missao"));
 });
-test("conquistas do simulado completo: terminar as 28 e 70% ou mais", { todo: "em construção" }, () => {
+test("conquistas do simulado completo: terminar as 28 e 70% ou mais", () => {
   const ctx = { config, habilidades, ehCompleto: (id) => id === "E3-COMPLETO", hoje: "2026-11-15" };
   const resp = (n, branco = 0) => Object.fromEntries(Array.from({ length: n }, (_, i) => [i + 1, i < n - branco ? "A" : ""]));
   const t = (percentual, branco) => ({ simId: "E3-COMPLETO", modo: "simulado", nota: percentual / 10, percentual, acertos: Math.round(percentual * 0.28), total: 28, respostas: resp(28, branco), fim: "2026-11-15T10:00:00Z", porHabilidade: {} });

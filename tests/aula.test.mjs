@@ -597,7 +597,7 @@ test("planilha fora do ar: o que este computador enviou continua como enviado", 
   await pc.ctx.close();
 });
 
-test("planilha fora do ar na entrada e código digitado errado: a página avisa e reenvia com o código certo", { todo: "em construção" }, async () => {
+test("planilha fora do ar na entrada e código digitado errado: a página avisa e reenvia com o código certo", async () => {
   const planilha = novaPlanilha();
   planilha.foraGet = true; // fora do ar só na identificação
   const pc = await computador(planilha);

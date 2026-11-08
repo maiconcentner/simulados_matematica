@@ -1,7 +1,7 @@
 // Modelos das questões das Semanas 1 a 4 do Avalia, com números e contextos sorteados.
 // Cada modelo devolve a questão no mesmo formato dos JSON (stem, ask, options, resolution, check).
-import { n, nAte, rs, pct, par, M, NB, exigir, numericas, textuais, ehInteiro, arred, mdc, expr } from "./base.js?v=57517fb455";
-import * as F from "./figuras.js?v=57517fb455";
+import { n, nAte, rs, pct, par, M, NB, exigir, numericas, textuais, ehInteiro, arred, mdc, expr } from "./base.js?v=0bc7986d38";
+import * as F from "./figuras.js?v=0bc7986d38";
 
 const CAP = "Figura gerada para treino.";
 const fig = (svg, alt) => ({ svg, alt, caption: CAP });

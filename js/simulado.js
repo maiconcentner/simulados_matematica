@@ -1,13 +1,15 @@
 // Simulado: abertura (#/simulado/<id>), uma questão por tela (#/simulado/<id>/<n>)
 // e revisão antes de entregar (#/simulado/<id>/revisao).
 // As respostas são salvas a cada toque em emAndamento, para continuar depois.
-import { h, cru, plural, nota1 } from "./util.js?v=57517fb455";
-import { icone } from "./icones.js?v=57517fb455";
-import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=57517fb455";
-import { reloginho } from "./prazo.js?v=57517fb455";
-import { gerarMisto } from "./gerador/index.js?v=57517fb455";
-import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=57517fb455";
-import { enunciadoHTML } from "./questao.js?v=57517fb455";
+import { h, cru, plural, nota1 } from "./util.js?v=0bc7986d38";
+import { icone } from "./icones.js?v=0bc7986d38";
+import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=0bc7986d38";
+import { reloginho } from "./prazo.js?v=0bc7986d38";
+import { gerarMisto } from "./gerador/index.js?v=0bc7986d38";
+import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=0bc7986d38";
+import { enunciadoHTML } from "./questao.js?v=0bc7986d38";
+import { tempoSugerido } from "./componentes.js?v=0bc7986d38";
+import { cronometroHTML, pausaHTML, ligarCronometro, pausar, continuar } from "./cronometro.js?v=0bc7986d38";
 
 export const papelParaAluno = (role) => {
   if (!role) return "";
@@ -81,7 +83,9 @@ function telaAbertura(ctx, sim) {
       <div class="resumo">
         <div><b>${n}</b>${plural(n, "questão", "questões").replace(/^\d+ /, "")}</div>
         <div><b>0 a 10</b>${prova ? "soma do valor das questões certas" : "nota pelos acertos"}</div>
-        <div><b>Sem pressa</b>sem limite de tempo</div>
+        ${sim.tempo_sugerido_min
+          ? h`<div><b>${tempoSugerido(sim.tempo_sugerido_min).replace("cerca de ", "")}</b>tempo de prova, com cronômetro e pausa</div>`
+          : h`<div><b>Sem pressa</b>sem limite de tempo</div>`}
       </div>
 
       ${andamento ? h`<div class="cartao continuar"><p><strong>Você já começou este simulado.</strong><br><span class="sub">${plural(respondidas, "questão respondida", "questões respondidas")} de ${n}.</span></p></div>` : ""}
@@ -157,8 +161,10 @@ function bolinhas(sim, respostas, atual) {
 function telaQuestao(ctx, sim, n) {
   const it = sim.items[n - 1];
   const prova = sim.pontuacao?.tipo === "valores";
-  const respostas = ctx.estado.emAndamento[sim.id]?.respostas || {};
+  const andamento = ctx.estado.emAndamento[sim.id];
+  const respostas = andamento?.respostas || {};
   const marcada = respostas[String(n)] || null;
+  const pausado = !!sim.tempo_sugerido_min && !!andamento?.pausado;
   const total = sim.items.length;
   const papel = papelParaAluno(it.role);
   // modo treino: depois de responder, a correção aparece na hora e a resposta fica travada
@@ -174,9 +180,11 @@ function telaQuestao(ctx, sim, n) {
         <p class="pequeno sub"><a href="#/simulado/${sim.id}">${sim.titulo}</a></p>
         <h1 class="questao-num">Questão ${n} <span class="sub">de ${total}</span></h1>
         ${reloginho(prazoDe(ctx.base.catalogo, ctx.estado, sim.id), { compacto: true })}
+        ${cronometroHTML(sim, andamento)}
         ${bolinhas(sim, respostas, n)}
       </div>
-      <article class="cartao questao">
+      ${pausaHTML(sim, andamento)}
+      ${pausado ? "" : h`<article class="cartao questao">
         <div class="etiquetas">
           ${papel ? h`<span class="etiqueta ${papel.startsWith("Conexão") ? "conexao" : ""}">${papel}</span>` : ""}
           ${prova ? h`<span class="etiqueta valor">vale ${nota1(it.valor)}</span><span class="etiqueta">Nível ${it.level.slice(1)}</span>` : ""}
@@ -196,10 +204,12 @@ function telaQuestao(ctx, sim, n) {
         ${n < total
           ? h`<a class="botao" href="#/simulado/${sim.id}/${n + 1}" id="proxima">Próxima${icone.seta}</a>`
           : h`<a class="botao" href="#/simulado/${sim.id}/revisao" id="proxima">Revisar e entregar${icone.seta}</a>`}
-      </div>
+      </div>`}
     </div>`,
-    depois: () => ligarZoom(),
+    depois: () => { ligarZoom(); ligarCronometro(sim); },
     eventos: {
+      pausar: () => { pausar(sim); ctx.redesenhar(); },
+      "continuar-cronometro": () => { continuar(sim); ctx.redesenhar(); },
       responder: (el) => {
         const letra = el.dataset.letra;
         if (travada) return;

@@ -574,3 +574,24 @@ a.chip { text-decoration: none; }
 .reloginho.abre { background: var(--ok-suave); }
 .reloginho.abre svg, .reloginho.abre .prazo-falta { color: var(--ok); }
 .prazo-aviso.vai-abrir { border-left-color: var(--ok); }
+
+/* cronômetro do simulado longo, com pausa */
+.cronometro {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;
+  margin: 0 0 8px; padding: 4px 4px 4px 12px; border-radius: var(--raio-p);
+  background: var(--fundo-2); font-weight: 700; font-size: 0.92rem;
+}
+.cronometro svg { width: 20px; height: 20px; color: var(--primaria); }
+.cronometro .crono-usado { font-family: var(--fonte-titulo); font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.cronometro .botao { margin-left: auto; }
+.cronometro.passou .crono-usado { color: var(--alerta); }
+.pausa-aviso { text-align: center; }
+.pausa-aviso .botao { margin-top: 8px; }
+
+/* notas da etapa e da conexão (simulado completo) */
+.notas-parte { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 8px 0; }
+.notas-parte p { margin: 0; display: flex; flex-direction: column; align-items: center; padding: 6px 12px; border-radius: var(--raio-p); background: var(--fundo-2); min-width: 120px; }
+.notas-parte b { font-family: var(--fonte-titulo); font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+/* plano até a prova */
+.plano-dia { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.plano-dia .botao { margin-top: 6px; }

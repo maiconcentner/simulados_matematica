@@ -1,16 +1,17 @@
 // Resultado (#/resultado/<id>): placar, faixa, fortes e a melhorar, plano, temas,
 // revisão comentada e ações. Mostra a última entrega do simulado.
-import { h, cru, nota1, plural } from "./util.js?v=57517fb455";
-import { icone } from "./icones.js?v=57517fb455";
-import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora } from "./dados.js?v=57517fb455";
-import { corrigir, temasAcumulados } from "./correcao.js?v=57517fb455";
-import { contextoCorrecao } from "./entrega.js?v=57517fb455";
-import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=57517fb455";
-import { enunciadoHTML } from "./questao.js?v=57517fb455";
-import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=57517fb455";
-import { guardarGerado } from "./armazenamento.js?v=57517fb455";
-import { melhorTentativa } from "./progresso.js?v=57517fb455";
-import { nivelDoJogador, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=57517fb455";
+import { h, cru, nota1, plural } from "./util.js?v=0bc7986d38";
+import { icone } from "./icones.js?v=0bc7986d38";
+import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora, tipoDoSimulado } from "./dados.js?v=0bc7986d38";
+import { corrigir, temasAcumulados, fortesEFracos } from "./correcao.js?v=0bc7986d38";
+import { planoAteAProva } from "./plano_prova.js?v=0bc7986d38";
+import { contextoCorrecao } from "./entrega.js?v=0bc7986d38";
+import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=0bc7986d38";
+import { enunciadoHTML } from "./questao.js?v=0bc7986d38";
+import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=0bc7986d38";
+import { guardarGerado } from "./armazenamento.js?v=0bc7986d38";
+import { melhorTentativa } from "./progresso.js?v=0bc7986d38";
+import { nivelDoJogador, nomeDaConquista, listaDeConquistas, hojeISO } from "./gamificacao.js?v=0bc7986d38";
 
 // a animação de subir de nível, o confete e o aviso de conquista só aparecem logo depois de entregar
 let entregaRecente = null;
@@ -70,6 +71,55 @@ export function soltarConfete() {
   setTimeout(() => caixa.remove(), 3200);
 }
 
+/** Notas separadas da etapa (códigos D) e da conexão com o 8º ano (códigos C), quando o simulado tem as duas. */
+function notasPorParte(questoes) {
+  const nota = (pref) => {
+    const qs = questoes.filter((q) => q.code?.startsWith(pref));
+    return qs.length ? { acertos: qs.filter((q) => q.acertou).length, total: qs.length } : null;
+  };
+  const etapa = nota("D"), conexao = nota("C");
+  if (!etapa || !conexao) return "";
+  const n = (x) => nota1((x.acertos / x.total) * 10);
+  return h`<div class="notas-parte">
+    <p><span class="sub pequeno">Etapa (${etapa.acertos} de ${etapa.total})</span><b class="nota-etapa">${n(etapa)}</b></p>
+    <p><span class="sub pequeno">Conexão com o 8º ano (${conexao.acertos} de ${conexao.total})</span><b class="nota-conexao">${n(conexao)}</b></p>
+  </div>`;
+}
+
+/**
+ * Plano até a prova (simulados com data_prova): as habilidades a melhorar, a mais fraca primeiro,
+ * distribuídas pelos dias que faltam. Treinar: a semana do Avalia com o mesmo código, se houver,
+ * senão a questão no modo treino.
+ */
+function planoProva(sim, res, { catalogo, habilidades, fechado }) {
+  if (!sim.data_prova) return "";
+  const semanas = simuladosDoCatalogo(catalogo).filter((s) => tipoDoSimulado(s) === "semana" && disponivelAgora(s));
+  const fracos = fortesEFracos(sim, res.questoes, Infinity).fracos.map((f) => {
+    const semana = semanas.find((s) => s.habilidades?.includes(f.code));
+    return {
+      code: f.code,
+      nome: habilidades[f.code]?.nome || f.code,
+      dica: sim.dicas?.[f.code] || habilidades[f.code]?.dica || "",
+      treinar: semana ? { href: `#/simulado/${semana.id}`, rotulo: `Treinar na Semana ${semana.semana}` }
+        : fechado ? null : { href: `#/treino/${sim.id}/${f.primeiraErrada}`, rotulo: "Treinar esta questão" },
+    };
+  });
+  const dias = planoAteAProva({ dataProva: sim.data_prova, hoje: hojeISO(), fracos });
+  if (!dias.length) return "";
+  const [a, m, d] = sim.data_prova.split("-");
+  return h`<section class="secao" aria-labelledby="t-plano-prova">
+    <h2 id="t-plano-prova">${icone.relogio}Plano até a prova (${d}/${m})</h2>
+    <p class="sub pequeno">Um pouco por dia, começando pelo que está mais fraco.</p>
+    <ol class="plano plano-prova">${dias.map((dia) => h`
+      <li class="cartao passo">
+        <h3><span class="passo-num">${dia.dia}</span>${dia.rotulo} <span class="sub pequeno">${dia.data}</span></h3>
+        ${dia.revisao ? h`<p>Revisão geral: refaça as questões que você errou e descanse para a prova.</p>` : h`<ul class="plano-dia">${dia.habilidades.map((x) => h`
+          <li><strong>${x.nome}</strong>${x.dica ? h`<br><span class="sub pequeno">${x.dica[0].toUpperCase()}${x.dica.slice(1)}</span>` : ""}
+            ${x.treinar ? h`<br><a class="botao pequeno secundario" href="${x.treinar.href}">${icone.raio}${x.treinar.rotulo}</a>` : ""}</li>`)}</ul>`}
+      </li>`)}</ol>
+  </section>`;
+}
+
 const minutos = (ini, fim) => Math.max(1, Math.round((new Date(fim) - new Date(ini)) / 60000));
 
 export async function telaResultado(ctx, id) {
@@ -115,6 +165,7 @@ export async function telaResultado(ctx, id) {
         ${anelNota(res.nota, res.faixa.cor)}
         <div class="placar-info">
           <p class="placar-acertos"><strong>${res.acertos} de ${res.total}</strong> ${res.total === 1 ? "acerto" : "acertos"}</p>
+          ${notasPorParte(res.questoes)}
           ${res.medalha
             ? h`<p class="placar-medalha"><span class="medalha grande ${res.medalha.nome.toLowerCase()}">${icone.medalha}</span>Medalha ${res.medalha.nome}</p>`
             : h`<p class="placar-medalha sub">Sem medalha desta vez: com metade de acerto já vem o Bronze.</p>`}
@@ -159,9 +210,11 @@ export async function telaResultado(ctx, id) {
         : h`<div class="cartao">${desafio}</div>`}
       </section>
 
+      ${planoProva(sim, res, { catalogo, habilidades, fechado })}
+
       ${linhasTema.length ? h`
       <section class="cartao secao" aria-labelledby="t-temas">
-        <h2 id="t-temas">Por tema</h2>
+        <h2 id="t-temas">${sim.destaque ? "Por eixo" : "Por tema"}</h2>
         <p class="sub pequeno"><span class="legenda-atual"></span> este simulado <span class="legenda-acum"></span> tudo o que você já fez</p>
         ${barrasTema(linhasTema)}
       </section>` : ""}

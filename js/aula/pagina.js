@@ -2,15 +2,15 @@
 // Identificação pela planilha do professor, ordem embaralhada por aluno, progresso no
 // computador a cada resposta, envio por parte e resultado depois de todas as partes.
 // Especificação: planejamento/pagina_simulado_completo.md.
-import { h, plural, nota1, maiuscula } from "../util.js?v=57517fb455";
-import { icone } from "../icones.js?v=57517fb455";
-import { enunciadoHTML } from "../questao.js?v=57517fb455";
-import { faixaDaNota } from "../correcao.js?v=57517fb455";
-import { anelNota, reguaFaixas, barrasTema } from "../graficos.js?v=57517fb455";
-import { TURMAS, LIBERAR_REVISAO_EM } from "./config.js?v=57517fb455";
-import { consultar, enviar, reenviarPendentes, pendentes, PlanilhaForaDoAr } from "./planilha.js?v=57517fb455";
-import { ordemDaParte, lerParte, gravarParte, alunoAtual, guardarAluno, esquecerAluno } from "./progresso.js?v=57517fb455";
-import { conferirVersao } from "../atualizacao.js?v=57517fb455";
+import { h, plural, nota1, maiuscula } from "../util.js?v=0bc7986d38";
+import { icone } from "../icones.js?v=0bc7986d38";
+import { enunciadoHTML } from "../questao.js?v=0bc7986d38";
+import { faixaDaNota } from "../correcao.js?v=0bc7986d38";
+import { anelNota, reguaFaixas, barrasTema } from "../graficos.js?v=0bc7986d38";
+import { TURMAS, LIBERAR_REVISAO_EM } from "./config.js?v=0bc7986d38";
+import { consultar, enviar, reenviarPendentes, pendentes, PlanilhaForaDoAr } from "./planilha.js?v=0bc7986d38";
+import { ordemDaParte, lerParte, gravarParte, alunoAtual, guardarAluno, esquecerAluno } from "./progresso.js?v=0bc7986d38";
+import { conferirVersao } from "../atualizacao.js?v=0bc7986d38";
 
 const raiz = document.getElementById("app");
 const params = new URLSearchParams(location.search);
@@ -19,6 +19,7 @@ const PAGINA_COMPLETO = !!document.body.dataset.sim;
 
 let sim = null, habilidades = {}, config = null;
 let aviso = null; // {tipo: "ok" | "erro", texto}
+let codigoErrado = false; // a planilha disse que o código da aula deste aluno está errado
 let statusRemoto = new Set();
 let parteAberta = null; // número da parte com as questões abertas
 
@@ -96,6 +97,9 @@ const faltam = (aluno) => partes().filter((p) => situacaoDaParte(aluno, p.n) !==
  * Pergunta à planilha quais partes ela já recebeu deste aluno. Quando ela responde, ela manda:
  * uma parte que este computador marcou como enviada, mas que não está mais na planilha
  * (o professor apagou a linha), volta a ficar disponível, do zero.
+ * Exceção: a parte que saiu com um código digitado sem conferir (planilha fora do ar na entrada)
+ * e diferente do código certo de agora foi recusada pela planilha; ela é reenviada com o código certo.
+ * Se a planilha disser que o código está errado, a página avisa (codigoErrado).
  * Se a planilha não responder, vale o que este computador sabe.
  * Devolve true se alguma coisa mudou na situação das partes.
  */
@@ -106,15 +110,28 @@ async function atualizarStatusRemoto(aluno) {
   } catch {
     return false; // planilha fora do ar
   }
+  if (r?.erro === "codigo") {
+    const antes = codigoErrado;
+    codigoErrado = true;
+    return !antes;
+  }
   if (!r?.ok || !Array.isArray(r.partes)) return false;
+  codigoErrado = false;
   const novo = new Set(r.partes.map(Number));
   let mudou = novo.size !== statusRemoto.size || [...novo].some((x) => !statusRemoto.has(x));
   statusRemoto = novo;
   for (const p of partes()) {
     const local = lerParte(aluno, sim.id, p.n);
-    if (local?.enviada && !novo.has(p.n)) {
+    if (!local?.enviada || novo.has(p.n)) continue;
+    mudou = true;
+    const recusada = local.envio && !local.codigoConferido && !aluno.nome_digitado && local.envio.codigo !== aluno.codigo;
+    if (recusada) {
+      const envio = { ...local.envio, codigo: aluno.codigo, nome: aluno.nome, nome_digitado: false };
+      const ok = await enviar(envio);
+      gravarParte(aluno, sim.id, p.n, { ...local, envio, codigoConferido: true, enviada: ok, pendente: !ok });
+      if (ok) statusRemoto.add(p.n);
+    } else {
       gravarParte(aluno, sim.id, p.n, { respostas: {}, atual: 0, tempo_ms: 0, inicio: agoraISO(), liberadaDeNovoEm: agoraISO() });
-      mudou = true;
     }
   }
   return mudou;
@@ -138,11 +155,13 @@ function barraAluno(aluno) {
   return h`<div class="barra-aluno">
     <p><span class="sub pequeno">Turma ${aluno.turma}</span><br><strong>${aluno.nome}</strong></p>
     <button type="button" class="botao fantasma pequeno" data-acao="trocar">${icone.perfil}Não sou eu / trocar de aluno</button>
-  </div>`;
+  </div>
+  ${codigoErrado ? h`<div class="aviso-aula erro aviso-codigo" role="alert"><p><strong>O código da aula que você digitou está errado</strong>, e a planilha do professor não recebeu suas respostas. Elas estão guardadas neste computador.</p><p>Toque em "Não sou eu / trocar de aluno" e entre de novo com o código da lousa: as partes que você já fez vão sozinhas para a planilha.</p></div>` : ""}`;
 }
 
 function trocarAluno() {
   esquecerAluno();
+  codigoErrado = false;
   statusRemoto = new Set();
   aviso = null;
   parteAberta = null;
@@ -439,7 +458,8 @@ async function enviarParte(n, botao) {
     codigos: Object.fromEntries(sim.items.map((i) => [i.n, i.code])),
   };
   const ok = await enviar(dados);
-  gravarParte(aluno, sim.id, n, { ...local, enviada: ok, pendente: !ok, enviadaEm: ok ? agoraISO() : null });
+  // guarda o envio: se o código foi digitado sem conferir (planilha fora do ar), dá para reenviar com o certo
+  gravarParte(aluno, sim.id, n, { ...local, envio: dados, codigoConferido: !aluno.nome_digitado, enviada: ok, pendente: !ok, enviadaEm: ok ? agoraISO() : null });
   if (ok) statusRemoto.add(n);
   parteAberta = null;
   const resto = faltam(aluno);

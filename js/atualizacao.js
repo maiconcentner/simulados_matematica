@@ -1,7 +1,7 @@
 // Atualização sozinha: o site confere a versão publicada (versao.json, sempre sem cache).
 // Ao abrir com uma versão velha guardada no navegador, recarrega uma vez, sozinho.
 // Com a página já aberta, mostra um aviso "Atualizar" (as respostas ficam salvas).
-import { VERSAO } from "./versao.js?v=57517fb455";
+import { VERSAO } from "./versao.js?v=0bc7986d38";
 
 const TENTOU = "simulados:recarregou-para";
 

@@ -1,11 +1,11 @@
 // Painel (#/): cartão do jogador, áreas, continuar, missão e conquistas.
-import { h } from "./util.js?v=57517fb455";
-import { icone } from "./icones.js?v=57517fb455";
-import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=57517fb455";
-import { simuladosDoCatalogo, bloqueio, disponivelAgora, tipoDoSimulado, aindaVaiAbrir } from "./dados.js?v=57517fb455";
-import { reloginho } from "./prazo.js?v=57517fb455";
-import { melhorTentativa } from "./progresso.js?v=57517fb455";
-import { plural } from "./util.js?v=57517fb455";
+import { h } from "./util.js?v=0bc7986d38";
+import { icone } from "./icones.js?v=0bc7986d38";
+import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=0bc7986d38";
+import { simuladosDoCatalogo, bloqueio, disponivelAgora, tipoDoSimulado, aindaVaiAbrir } from "./dados.js?v=0bc7986d38";
+import { reloginho } from "./prazo.js?v=0bc7986d38";
+import { melhorTentativa } from "./progresso.js?v=0bc7986d38";
+import { plural } from "./util.js?v=0bc7986d38";
 
 const totalDeConquistas = (config) => listaDeConquistas(config).length;
 

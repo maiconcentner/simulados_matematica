@@ -1,9 +1,9 @@
 // Entrega de um simulado: corrige, calcula XP e conquistas, guarda a tentativa,
 // monta a missão e registra o dia de uso.
-import { ler, atualizar } from "./armazenamento.js?v=57517fb455";
-import { corrigir, faixaDaNota } from "./correcao.js?v=57517fb455";
-import { simuladosDoCatalogo, disponivelAgora } from "./dados.js?v=57517fb455";
-import { xpDoSimulado, xpGanho, nivelDoJogador, registrarDia, conquistasNovas, maiorSequencia, hojeISO } from "./gamificacao.js?v=57517fb455";
+import { ler, atualizar } from "./armazenamento.js?v=0bc7986d38";
+import { corrigir, faixaDaNota } from "./correcao.js?v=0bc7986d38";
+import { simuladosDoCatalogo, disponivelAgora, tipoDoSimulado } from "./dados.js?v=0bc7986d38";
+import { xpDoSimulado, xpGanho, nivelDoJogador, registrarDia, conquistasNovas, maiorSequencia, hojeISO } from "./gamificacao.js?v=0bc7986d38";
 
 /** Tudo o que a correção precisa saber do catálogo e do histórico do aluno. */
 export function contextoCorrecao(base, estado) {
@@ -20,11 +20,13 @@ export function contextoCorrecao(base, estado) {
 export function contextoConquistas(base, estado) {
   const sims = simuladosDoCatalogo(base.catalogo);
   const prova = new Set(sims.filter((s) => s.area === "prova").map((s) => s.id));
+  const completos = new Set(sims.filter((s) => tipoDoSimulado(s) === "completo").map((s) => s.id));
   return {
     config: base.config,
     habilidades: base.habilidades,
     avaliaPublicados: sims.filter((s) => s.area === "avalia" && s.status === "publicado").map((s) => s.id),
     ehProva: (id) => prova.has(id) || estado.gerados.some((g) => g.id === id && g.pontuacao?.tipo === "valores"),
+    ehCompleto: (id) => completos.has(id),
     hoje: hojeISO(),
   };
 }

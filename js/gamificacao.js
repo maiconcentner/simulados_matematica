@@ -101,10 +101,10 @@ export function nomeDaConquista(id, config) {
 /**
  * Conquistas que passam a valer depois de uma entrega (ou de um treino).
  * estado: o estado já com a tentativa nova guardada.
- * ctx: { config, habilidades, avaliaPublicados: [ids], ehProva(simId), tentativa, anterior, maiorSeq, hoje }
+ * ctx: { config, habilidades, avaliaPublicados: [ids], ehProva(simId), ehCompleto(simId), tentativa, anterior, maiorSeq, hoje }
  */
 export function conquistasNovas(estado, ctx) {
-  const { config, habilidades, avaliaPublicados = [], ehProva = () => false, tentativa, anterior, maiorSeq = 0, hoje = hojeISO() } = ctx;
+  const { config, habilidades, avaliaPublicados = [], ehProva = () => false, ehCompleto = () => false, tentativa, anterior, maiorSeq = 0, hoje = hojeISO() } = ctx;
   const tem = (id) => !!estado.conquistas[id];
   const novas = [];
   const add = (id, cond) => { if (cond && !tem(id) && !novas.includes(id)) novas.push(id); };
@@ -116,6 +116,13 @@ export function conquistasNovas(estado, ctx) {
     add("sequencia_5", maiorSeq >= 5);
     add("volta_por_cima", anterior && tentativa.nota - anterior.nota >= 2 - 1e-9);
     add("prova_pronta", ehProva(tentativa.simId) && tentativa.nota >= 7 - 1e-9);
+    // simulado completo: terminar todas (nenhuma em branco) e o percentual mínimo de config.json
+    if (ehCompleto(tentativa.simId)) {
+      const respondidas = Object.values(tentativa.respostas || {}).filter(Boolean).length;
+      add("simulado_completo", respondidas >= tentativa.total);
+      const min = config.conquistas.find((c) => c.id === "pronto_para_prova")?.min_percentual ?? 70;
+      add("pronto_para_prova", tentativa.percentual >= min - 1e-9);
+    }
   }
   // 3 simulados diferentes concluídos em até 7 dias
   const limite = paraData(hoje) - 6 * DIA;

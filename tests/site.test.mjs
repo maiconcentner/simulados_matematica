@@ -668,7 +668,7 @@ test("liberação marcada (libera_em): antes das 7h o Simulado Completo mostra q
   await pagina.close();
 });
 
-test("Simulado Completo no site: 20 da etapa certas e 8 de conexão erradas dão 7,1, etapa 10,0 e conexão 0,0; plano de 3 dias em 15/11; conquistas", { todo: "em construção" }, async () => {
+test("Simulado Completo no site: 20 da etapa certas e 8 de conexão erradas dão 7,1, etapa 10,0 e conexão 0,0; plano de 3 dias em 15/11; conquistas", async () => {
   const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, timezoneId: "America/Sao_Paulo" });
   await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   await pagina.route(/\/data\/(catalogo|avalia\/E3-COMPLETO)\.json/, async (rota) => {

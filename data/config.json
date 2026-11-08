@@ -149,7 +149,7 @@
   {
    "id": "pronto_para_prova",
    "nome": "Pronto para o Avalia+",
-   "regra": "70% ou mais no simulado completo"
+   "regra": "70% ou mais no simulado completo", "min_percentual": 70
   }
  ]
 }

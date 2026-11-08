@@ -1,20 +1,20 @@
 // Inicialização e rotas do site (navegação por hash, que funciona no GitHub Pages).
-import { h, esc } from "./util.js?v=57517fb455";
-import { icone } from "./icones.js?v=57517fb455";
-import { carregarBase, carregarSimulado, bloqueio } from "./dados.js?v=57517fb455";
-import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js?v=57517fb455";
-import { aplicarTema, temaEfetivo } from "./tema.js?v=57517fb455";
-import { iniciarRelogios, quandoAbre } from "./prazo.js?v=57517fb455";
-import { conferirVersao } from "./atualizacao.js?v=57517fb455";
-import { gerarVersao } from "./gerador/index.js?v=57517fb455";
-import { telaPainel } from "./painel.js?v=57517fb455";
-import { telaAvalia, telaProva } from "./listas.js?v=57517fb455";
-import { telaTreinar } from "./treinar.js?v=57517fb455";
-import { telaSimulado } from "./simulado.js?v=57517fb455";
-import { telaPerfil } from "./perfil.js?v=57517fb455";
-import { telaResultado, marcarEntregaRecente } from "./resultado.js?v=57517fb455";
-import { entregarSimulado } from "./entrega.js?v=57517fb455";
-import { telaTreino } from "./treino.js?v=57517fb455";
+import { h, esc } from "./util.js?v=0bc7986d38";
+import { icone } from "./icones.js?v=0bc7986d38";
+import { carregarBase, carregarSimulado, bloqueio } from "./dados.js?v=0bc7986d38";
+import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js?v=0bc7986d38";
+import { aplicarTema, temaEfetivo } from "./tema.js?v=0bc7986d38";
+import { iniciarRelogios, quandoAbre } from "./prazo.js?v=0bc7986d38";
+import { conferirVersao } from "./atualizacao.js?v=0bc7986d38";
+import { gerarVersao } from "./gerador/index.js?v=0bc7986d38";
+import { telaPainel } from "./painel.js?v=0bc7986d38";
+import { telaAvalia, telaProva } from "./listas.js?v=0bc7986d38";
+import { telaTreinar } from "./treinar.js?v=0bc7986d38";
+import { telaSimulado } from "./simulado.js?v=0bc7986d38";
+import { telaPerfil } from "./perfil.js?v=0bc7986d38";
+import { telaResultado, marcarEntregaRecente } from "./resultado.js?v=0bc7986d38";
+import { entregarSimulado } from "./entrega.js?v=0bc7986d38";
+import { telaTreino } from "./treino.js?v=0bc7986d38";
 
 const raiz = document.getElementById("app");
 const menu = document.getElementById("menu");

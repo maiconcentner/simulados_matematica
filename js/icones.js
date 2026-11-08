@@ -1,5 +1,5 @@
 // Ícones próprios do site, em SVG (traço de 2 px, herdam a cor do texto).
-import { cru } from "./util.js?v=57517fb455";
+import { cru } from "./util.js?v=0bc7986d38";
 
 const base = (corpo, extra = "") =>
   cru(`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"${extra}>${corpo}</svg>`);
@@ -17,6 +17,7 @@ export const icone = {
   seta: base('<path d="M5 12h14M13 6l6 6-6 6"/>'),
   voltar: base('<path d="M19 12H5M11 6l-6 6 6 6"/>'),
   play: base('<path d="M8 5.5v13l10-6.5z" fill="currentColor"/>'),
+  pausa: base('<path d="M8 5.5v13M16 5.5v13" stroke-width="3"/>'),
   lixo: base('<path d="M4 7h16M9 7V4.5h6V7M6.5 7l1 13h9l1-13"/>'),
   raio: base('<path d="M13 2 5 13.5h6L10 22l9-12h-6z" fill="currentColor" stroke="none"/>'),
   alvo: base('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>'),
