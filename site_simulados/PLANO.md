@@ -11,6 +11,7 @@ Duas áreas:
 | Área | O que tem | Arquivos |
 |---|---|---|
 | **Simulados Avalia** | os simulados semanais por descritor (Semanas 1 a 7 prontas; as próximas entram com uma ferramenta) | `data/avalia/S01.json` a `S07.json` |
+| **Simulado Completo** | 28 questões como o Avalia+ (20 da etapa e 8 de conexão), para casa entre 13 e 17/11; cartão em destaque dentro de Simulados Avalia | `data/avalia/E3-COMPLETO.json` (o professor publica até 12/11; ver `planejamento/simulado_completo_etapa3.md`) |
 | **Simulados de prova** | treino no formato da avaliação somativa de cada etapa, organizado por etapa | `data/prova/E3-AV2.json` (Etapa 3, funções) |
 
 ## 2. Regras que não mudam
@@ -44,7 +45,6 @@ js/correcao.js          nota, faixa, forças, fraquezas e plano (funções puras
 js/gamificacao.js       XP, nível do jogador, medalhas, conquistas, sequência de dias
 js/resultado.js         tela de resultado
 js/graficos.js          anel e barras em SVG
-js/gerador/             gerador de simulados de treino (modelos de questão e figuras em SVG)
 data/                   (já pronto) catálogo, config, habilidades e simulados
 assets/figuras/         (já pronto) figuras das questões
 assets/icones/          ícones do site (SVG próprios)
@@ -67,6 +67,8 @@ tests/                  testes de ponta a ponta
 - Lista em cartões, da semana mais recente para a mais antiga: "Semana 7", temas (de `temas`), número de questões, as habilidades em etiquetas com o nome curto de `habilidades.json`.
 - Em cada cartão, o estado do aluno: novo, feito (com a melhor nota e a medalha) ou "dá para melhorar" (nota abaixo de 7).
 - Filtro por tema (Números, Álgebra e funções, Geometria, Grandezas e medidas, Estatística e probabilidade).
+
+- No topo, o **Simulado Completo** em destaque (`"destaque": true` no catálogo), com o tempo sugerido e, enquanto estiver `em_breve`, o selo "Libera em 12/11". As regras extras dele (cronômetro com pausa, grade 1 a 28, notas da etapa e de conexão, plano até a prova) estão em `planejamento/simulado_completo_etapa3.md`.
 
 ### 4.3 Simulados de prova (`#/prova`)
 - Agrupados por etapa, com um cabeçalho por etapa ("Etapa 3"). Hoje há um: **Simulado da Avaliação Somativa · Etapa 3** (funções, 10 questões, valendo 10).
@@ -94,13 +96,6 @@ Especificação completa em `planejamento/resultado_gamificado.md`. Resumo, de c
 - Abre a partir do resultado com as questões erradas (ou uma questão do plano).
 - Aqui a correção é imediata: depois de escolher, mostra se acertou, o erro provável da alternativa marcada (`why`) e a resolução (`resolution`).
 - Dá metade do XP. Não muda a nota oficial do simulado, mas conta para a conquista "Volta por cima" quando o aluno refaz o simulado inteiro.
-
-### 4.6b Treinar com números novos (`#/treinar`)
-Pedido do professor: o aluno pode gerar simulados novos para treinar, com valores diferentes.
-- **Versão nova de um simulado**: mesmas habilidades, níveis, pesos e ordem do original, com números e contextos sorteados. Também há um botão "Versão nova" em cada cartão das listas e na abertura do simulado.
-- **Monte o seu treino**: o aluno escolhe habilidades (agrupadas por tema) e a quantidade de questões (5, 6, 8 ou 10); as questões vêm da mais fácil para a mais difícil.
-- Os treinos gerados ficam guardados no aparelho (os 12 últimos), em "Seus treinos gerados", e abrem como qualquer simulado (`#/simulado/G-...`).
-- O gerador fica em `js/gerador/`: um modelo por questão dos simulados, que calcula a resposta, os distratores (com o erro provável de cada um), a resolução, a conferência e a figura em SVG. `tools/ver_gerador.html` mostra as questões geradas, com gabarito, para o professor conferir.
 
 ### 4.7 Perfil (`#/perfil`)
 - Apelido (editável), nível, XP, conquistas (as bloqueadas aparecem em cinza, com a regra).
@@ -139,7 +134,6 @@ O formato está em `planejamento/esquema_dados.md`. Os códigos de descritor e d
 | Fase | Entrega | Pronto quando |
 |---|---|---|
 | 1 | `index.html`, estilo, rotas, painel e listas lendo o catálogo | as duas áreas mostram os 7 Avalia e o simulado da Etapa 3 |
-| 1b | gerador de simulados de treino (`js/gerador/`, `#/treinar`, prévia em `tools/`) | cada modelo gera questões válidas e variadas (testes em `tests/gerador.test.mjs`) |
 | 2 | tela do simulado com salvamento a cada clique | dá para fazer o S07 inteiro no celular, fechar no meio e continuar |
 | 3 | correção e resultado (funções puras em `correcao.js`) | a nota e a faixa batem com os casos de teste do `CLAUDE.md` |
 | 4 | gamificação: XP, nível, medalhas, conquistas, sequência de dias, missão | as regras de `config.json` funcionam e sobrevivem a recarregar a página |

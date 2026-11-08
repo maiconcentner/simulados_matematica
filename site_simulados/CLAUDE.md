@@ -6,6 +6,7 @@ Você vai implementar o site descrito em `PLANO.md`. Os dados, as figuras e as f
 1. `PLANO.md`: o que é o site, telas, tecnologia e fases.
 2. `planejamento/resultado_gamificado.md`: cálculo da nota, faixas, plano, XP, conquistas e a tela de resultado. É a parte mais importante.
 3. `planejamento/esquema_dados.md`: formato dos JSON.
+3b. `planejamento/simulado_completo_etapa3.md`: o simulado de 28 questões, com as telas e os testes próprios dele.
 4. `data/config.json`, `data/catalogo.json`, `data/habilidades.json` e um simulado (`data/avalia/S07.json`, `data/prova/E3-AV2.json`).
 5. `planejamento/referencia/template_simulado_antigo.html`: o simulado digital que os alunos já usaram, arquivo único com o painel de resultado antigo. Serve só de referência do que eles conhecem. Não copie o visual; o novo é mais jogo e mais claro.
 

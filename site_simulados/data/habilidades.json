@@ -243,5 +243,173 @@
   "tema": "Álgebra e funções",
   "dica": "em f(x) = ax + b, a negativo faz a reta descer e o b é onde ela corta o eixo y; o zero é o x que faz f(x) = 0; domínio se lê no eixo x e imagem no eixo y.",
   "conexao_8ano": false
+ },
+ "D28": {
+  "nome": "Porcentagem",
+  "descricao": "Resolver problemas que envolvam cálculo de porcentagens.",
+  "tema": "Números",
+  "dica": "transforme a porcentagem em número decimal (35% = 0,35) e multiplique pelo total; o resultado tem de ser menor que o total.",
+  "conexao_8ano": false
+ },
+ "C20": {
+  "nome": "Operações com números racionais",
+  "descricao": "Resolver problemas com números racionais que envolvam diferentes operações (adição, subtração, multiplicação, divisão, potenciação, radiciação).",
+  "tema": "Números",
+  "dica": "faça primeiro a multiplicação (quanto a receita toda pede) e só depois a subtração; para multiplicar frações, multiplique numerador por numerador e denominador por denominador.",
+  "conexao_8ano": true
+ },
+ "D32": {
+  "nome": "Adição e subtração de expressões",
+  "descricao": "Resolver problemas que envolvam operações de adição ou subtração de expressões algébricas.",
+  "tema": "Álgebra e funções",
+  "dica": "ponha a segunda expressão entre parênteses e troque o sinal de todos os termos dela antes de juntar os termos semelhantes.",
+  "conexao_8ano": false
+ },
+ "C17": {
+  "nome": "Moda e mediana",
+  "descricao": "Identificar os valores da moda e da mediana de um conjunto de dados.",
+  "tema": "Estatística e probabilidade",
+  "dica": "ponha os dados em ordem antes de tudo; com uma quantidade par de dados, a mediana é a média dos dois do meio, e a moda é o valor que mais se repete.",
+  "conexao_8ano": true
+ },
+ "C09": {
+  "nome": "Termos de uma sequência",
+  "descricao": "Determinar termos de uma sequência a partir de sua lei de formação ou padrão.",
+  "tema": "Álgebra e funções",
+  "dica": "conte quantos passos há da primeira figura até a pedida (da 1 à 20 são 19) e some a razão esse número de vezes.",
+  "conexao_8ano": true
+ },
+ "C33": {
+  "nome": "Comprimento da circunferência",
+  "descricao": "Utilizar o π (pi) no cálculo do comprimento da circunferência.",
+  "tema": "Geometria",
+  "dica": "calcule o comprimento de uma volta com C = π · d (ou 2 · π · r) e deixe todas as medidas na mesma unidade antes de dividir.",
+  "conexao_8ano": true
+ },
+ "D15": {
+  "nome": "Produtos notáveis na figura",
+  "descricao": "Reconhecer a representação geométrica dos produtos notáveis.",
+  "tema": "Álgebra e funções",
+  "dica": "some as áreas de todas as partes da figura: o quadrado de lado (a + b) tem a², b² e dois retângulos de área a · b.",
+  "conexao_8ano": false
+ },
+ "D24": {
+  "nome": "Razão entre grandezas diferentes",
+  "descricao": "Resolver problemas que envolvam a razão entre grandezas de espécies diferentes.",
+  "tema": "Álgebra e funções",
+  "dica": "passe o tempo para horas (30 min = 0,5 h) e divida a distância pelo tempo.",
+  "conexao_8ano": false
+ },
+ "D04": {
+  "nome": "Ângulo central e ângulo inscrito",
+  "descricao": "Calcular medidas de ângulos centrais e inscritos a partir das medidas dos arcos correspondentes, e vice-versa.",
+  "tema": "Geometria",
+  "dica": "o ângulo com vértice na circunferência (inscrito) vale a metade do ângulo central que olha para o mesmo arco.",
+  "conexao_8ano": false
+ },
+ "C21": {
+  "nome": "Notação científica",
+  "descricao": "Resolver problemas com números reais que sejam expressos no formato de notação científica.",
+  "tema": "Números",
+  "dica": "deixe um só algarismo antes da vírgula e conte quantas casas a vírgula andou: para a esquerda, o expoente é positivo.",
+  "conexao_8ano": true
+ },
+ "D23": {
+  "nome": "Potência de expressão algébrica",
+  "descricao": "Resolver problemas que envolvam a potenciação de expressões algébricas.",
+  "tema": "Álgebra e funções",
+  "dica": "eleve cada fator ao expoente: o número também é elevado, e na potência de potência os expoentes se multiplicam.",
+  "conexao_8ano": false
+ },
+ "C29": {
+  "nome": "Porcentagem: valor antes da mudança",
+  "descricao": "Resolver problemas que envolvam porcentagem.",
+  "tema": "Números",
+  "dica": "lembre que o preço com desconto de 15% é 85% do preço antigo; divida o preço atual por 0,85.",
+  "conexao_8ano": true
+ },
+ "D21": {
+  "nome": "Contas em notação científica",
+  "descricao": "Resolver problemas com números reais que sejam expressos no formato de notação científica.",
+  "tema": "Números",
+  "dica": "multiplique as partes da frente e some os expoentes das potências de 10; no fim, deixe um só algarismo antes da vírgula.",
+  "conexao_8ano": false
+ },
+ "C32": {
+  "nome": "Bissetriz e mediatriz",
+  "descricao": "Utilizar o conceito de bissetriz e mediatriz para resolver problemas em diferentes contextos.",
+  "tema": "Geometria",
+  "dica": "lembre que os pontos à mesma distância de dois pontos A e B formam a mediatriz de AB, a perpendicular que passa pelo ponto médio.",
+  "conexao_8ano": true
+ },
+ "D26": {
+  "nome": "Simplificar com fatoração",
+  "descricao": "Resolver problemas que envolvam a simplificação de expressões algébricas que envolvam produtos notáveis e fatoração.",
+  "tema": "Álgebra e funções",
+  "dica": "fatore o numerador e o denominador antes de cancelar; só se cancelam fatores, nunca termos de uma soma.",
+  "conexao_8ano": false
+ },
+ "D38": {
+  "nome": "Produtos notáveis em problemas",
+  "descricao": "Resolver problemas utilizando produtos notáveis em situações contextualizadas.",
+  "tema": "Álgebra e funções",
+  "dica": "escreva as medidas novas com x, multiplique e compare com a área antiga: (x + a)(x − a) = x² − a².",
+  "conexao_8ano": false
+ },
+ "C10": {
+  "nome": "Graus e radianos",
+  "descricao": "Estabelecer relações entre graus e radianos, convertendo essas medidas entre si.",
+  "tema": "Geometria",
+  "dica": "use 180° = π rad e faça a regra de três: graus ÷ 180 · π.",
+  "conexao_8ano": true
+ },
+ "C12": {
+  "nome": "Expressão de uma sequência",
+  "descricao": "Identificar a expressão algébrica que expressa a regularidade em sequências numéricas ou de figuras.",
+  "tema": "Álgebra e funções",
+  "dica": "veja quanto a sequência aumenta de um termo para o outro (esse número multiplica o n) e ajuste o começo com o primeiro termo; teste a expressão em duas colunas.",
+  "conexao_8ano": true
+ },
+ "D29": {
+  "nome": "Volume de prismas e cilindros",
+  "descricao": "Resolver problemas que envolvam noção de volume de cilindros ou prismas.",
+  "tema": "Grandezas e medidas",
+  "dica": "use a altura da água, não a do recipiente, multiplique comprimento, largura e altura e só no fim passe para litros (1 L = 1 000 cm³).",
+  "conexao_8ano": false
+ },
+ "D34": {
+  "nome": "Proporcionalidade e partes proporcionais",
+  "descricao": "Resolver problemas que envolvam relações de proporcionalidade direta e inversa e divisão em partes proporcionais.",
+  "tema": "Números",
+  "dica": "some as partes (as idades), divida o total por essa soma para achar o valor de cada parte e multiplique pela parte de quem a pergunta pede.",
+  "conexao_8ano": false
+ },
+ "D36": {
+  "nome": "Metro cúbico, litro e mililitro",
+  "descricao": "Resolver problemas que utilizem a relação entre cm³, dm³ (L) e m³.",
+  "tema": "Grandezas e medidas",
+  "dica": "lembre que 1 m³ = 1 000 L e 1 L = 1 000 mL; passe tudo para a mesma unidade antes de dividir.",
+  "conexao_8ano": false
+ },
+ "C08": {
+  "nome": "Inequação do 1º grau",
+  "descricao": "Determinar o conjunto solução de uma inequação do 1º grau em situações contextualizadas.",
+  "tema": "Álgebra e funções",
+  "dica": "escreva o gasto com x, monte a inequação com ≤ (no máximo) e resolva como equação; o \"igual\" também vale.",
+  "conexao_8ano": true
+ },
+ "C15": {
+  "nome": "Sistema de equações",
+  "descricao": "Identificar o sistema de equações polinomiais do 1º grau que expressa uma situação problema.",
+  "tema": "Álgebra e funções",
+  "dica": "transforme cada compra numa equação: quantidade vezes preço de cada item, somados, igual ao total daquela compra.",
+  "conexao_8ano": true
+ },
+ "D16": {
+  "nome": "Semelhança de triângulos",
+  "descricao": "Reconhecer a semelhança entre triângulos, a partir da congruência das medidas angulares e da proporcionalidade entre as medidas lineares correspondentes.",
+  "tema": "Geometria",
+  "dica": "divida cada lado de um triângulo pelo lado correspondente do outro, do menor para o maior; se as três razões forem iguais, são semelhantes.",
+  "conexao_8ano": false
  }
 }

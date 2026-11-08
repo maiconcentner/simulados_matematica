@@ -1,17 +1,52 @@
 {
  "escala": [
-  {"ate": 4.5, "nivel": "Abaixo do básico", "apelido": "Aquecendo", "cor": "#E4572E", "frase": "Base em construção: comece pelas dicas do seu plano."},
-  {"ate": 6.5, "nivel": "Básico", "apelido": "No caminho", "cor": "#F2A541", "frase": "Você já tem a base. Agora é treinar os pontos do plano."},
-  {"ate": 8.5, "nivel": "Adequado", "apelido": "Mandando bem", "cor": "#2F9C6E", "frase": "Bom resultado. Poucos ajustes para chegar ao topo."},
-  {"ate": 10, "nivel": "Avançado", "apelido": "Fera", "cor": "#2F6DB5", "frase": "Resultado de topo. Mantenha o ritmo e ajude um colega."}
+  {
+   "ate": 4.5,
+   "nivel": "Abaixo do básico",
+   "apelido": "Aquecendo",
+   "cor": "#E4572E",
+   "frase": "Base em construção: comece pelas dicas do seu plano."
+  },
+  {
+   "ate": 6.5,
+   "nivel": "Básico",
+   "apelido": "No caminho",
+   "cor": "#F2A541",
+   "frase": "Você já tem a base. Agora é treinar os pontos do plano."
+  },
+  {
+   "ate": 8.5,
+   "nivel": "Adequado",
+   "apelido": "Mandando bem",
+   "cor": "#2F9C6E",
+   "frase": "Bom resultado. Poucos ajustes para chegar ao topo."
+  },
+  {
+   "ate": 10,
+   "nivel": "Avançado",
+   "apelido": "Fera",
+   "cor": "#2F6DB5",
+   "frase": "Resultado de topo. Mantenha o ritmo e ajude um colega."
+  }
  ],
  "nota": {
   "avalia": "acertos ÷ total de questões × 10, com uma casa decimal",
   "prova": "soma do 'valor' das questões certas (máximo 10)"
  },
- "temas": ["Números", "Álgebra e funções", "Geometria", "Grandezas e medidas", "Estatística e probabilidade"],
+ "temas": [
+  "Números",
+  "Álgebra e funções",
+  "Geometria",
+  "Grandezas e medidas",
+  "Estatística e probabilidade"
+ ],
  "xp": {
-  "acerto_por_nivel": {"N1": 10, "N2": 20, "N3": 30, "N4": 40},
+  "acerto_por_nivel": {
+   "N1": 10,
+   "N2": 20,
+   "N3": 30,
+   "N4": 40
+  },
   "prova_por_ponto": 20,
   "concluir_simulado": 20,
   "nota_8_ou_mais": 30,
@@ -21,27 +56,100 @@
   "xp_por_nivel_do_jogador": 150
  },
  "titulos_do_jogador": [
-  {"a_partir_do_nivel": 1, "titulo": "Iniciante"},
-  {"a_partir_do_nivel": 3, "titulo": "Explorador"},
-  {"a_partir_do_nivel": 5, "titulo": "Estrategista"},
-  {"a_partir_do_nivel": 7, "titulo": "Mestre"},
-  {"a_partir_do_nivel": 9, "titulo": "Lenda"}
+  {
+   "a_partir_do_nivel": 1,
+   "titulo": "Iniciante"
+  },
+  {
+   "a_partir_do_nivel": 3,
+   "titulo": "Explorador"
+  },
+  {
+   "a_partir_do_nivel": 5,
+   "titulo": "Estrategista"
+  },
+  {
+   "a_partir_do_nivel": 7,
+   "titulo": "Mestre"
+  },
+  {
+   "a_partir_do_nivel": 9,
+   "titulo": "Lenda"
+  }
  ],
  "medalhas": [
-  {"min_percentual": 50, "nome": "Bronze"},
-  {"min_percentual": 70, "nome": "Prata"},
-  {"min_percentual": 90, "nome": "Ouro"},
-  {"min_percentual": 100, "nome": "Diamante"}
+  {
+   "min_percentual": 50,
+   "nome": "Bronze"
+  },
+  {
+   "min_percentual": 70,
+   "nome": "Prata"
+  },
+  {
+   "min_percentual": 90,
+   "nome": "Ouro"
+  },
+  {
+   "min_percentual": 100,
+   "nome": "Diamante"
+  }
  ],
  "conquistas": [
-  {"id": "primeira_missao", "nome": "Primeira missão", "regra": "concluir o primeiro simulado"},
-  {"id": "gabaritou", "nome": "Gabaritou", "regra": "acertar todas as questões de um simulado"},
-  {"id": "sequencia_5", "nome": "Embalado", "regra": "5 acertos seguidos no mesmo simulado"},
-  {"id": "volta_por_cima", "nome": "Volta por cima", "regra": "refazer um simulado e subir pelo menos 2 pontos na nota"},
-  {"id": "maratona", "nome": "Maratona", "regra": "concluir 3 simulados diferentes em até 7 dias"},
-  {"id": "persistente", "nome": "Persistente", "regra": "usar o site em 3 dias seguidos"},
-  {"id": "todas_as_semanas", "nome": "Temporada completa", "regra": "concluir todos os Simulados Avalia publicados"},
-  {"id": "prova_pronta", "nome": "Pronto para a prova", "regra": "nota 7 ou mais num simulado de prova"},
-  {"id": "especialista_tema", "nome": "Especialista em {tema}", "regra": "80% ou mais de acerto em pelo menos 5 questões de um tema (uma conquista por tema)"}
+  {
+   "id": "primeira_missao",
+   "nome": "Primeira missão",
+   "regra": "concluir o primeiro simulado"
+  },
+  {
+   "id": "gabaritou",
+   "nome": "Gabaritou",
+   "regra": "acertar todas as questões de um simulado"
+  },
+  {
+   "id": "sequencia_5",
+   "nome": "Embalado",
+   "regra": "5 acertos seguidos no mesmo simulado"
+  },
+  {
+   "id": "volta_por_cima",
+   "nome": "Volta por cima",
+   "regra": "refazer um simulado e subir pelo menos 2 pontos na nota"
+  },
+  {
+   "id": "maratona",
+   "nome": "Maratona",
+   "regra": "concluir 3 simulados diferentes em até 7 dias"
+  },
+  {
+   "id": "persistente",
+   "nome": "Persistente",
+   "regra": "usar o site em 3 dias seguidos"
+  },
+  {
+   "id": "todas_as_semanas",
+   "nome": "Temporada completa",
+   "regra": "concluir todos os Simulados Avalia publicados"
+  },
+  {
+   "id": "prova_pronta",
+   "nome": "Pronto para a prova",
+   "regra": "nota 7 ou mais num simulado de prova"
+  },
+  {
+   "id": "especialista_tema",
+   "nome": "Especialista em {tema}",
+   "regra": "80% ou mais de acerto em pelo menos 5 questões de um tema (uma conquista por tema)"
+  },
+  {
+   "id": "simulado_completo",
+   "nome": "Simulado completo",
+   "regra": "terminar as 28 questões do simulado completo"
+  },
+  {
+   "id": "pronto_para_prova",
+   "nome": "Pronto para o Avalia+",
+   "regra": "70% ou mais no simulado completo"
+  }
  ]
 }

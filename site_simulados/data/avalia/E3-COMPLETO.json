@@ -1,0 +1,1793 @@
+{
+ "id": "E3-COMPLETO",
+ "area": "avalia",
+ "titulo": "Simulado Completo · Etapa 3",
+ "subtitulo": "28 questões no formato do Avalia+: 20 da etapa e 8 de conexão com o 8º ano",
+ "semana": null,
+ "etapa": 3,
+ "data": "2026-11-10",
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Todos os descritores da Etapa 3 que ainda não tinham questão, os mais cobrados no pré-teste e 8 conexões com o 8º ano",
+ "status": "em_breve",
+ "destaque": true,
+ "tempo_sugerido_min": 90,
+ "data_prova": "2026-11-18",
+ "modo": "prova",
+ "partes": [
+  {
+   "n": 1,
+   "titulo": "Parte 1",
+   "questoes": [
+    1,
+    8,
+    9,
+    12,
+    13,
+    21,
+    22
+   ]
+  },
+  {
+   "n": 2,
+   "titulo": "Parte 2",
+   "questoes": [
+    2,
+    3,
+    6,
+    16,
+    17,
+    19,
+    28
+   ]
+  },
+  {
+   "n": 3,
+   "titulo": "Parte 3",
+   "questoes": [
+    4,
+    11,
+    14,
+    15,
+    20,
+    26,
+    27
+   ]
+  },
+  {
+   "n": 4,
+   "titulo": "Parte 4",
+   "questoes": [
+    5,
+    7,
+    10,
+    18,
+    23,
+    24,
+    25
+   ]
+  }
+ ],
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "D28": "transforme a porcentagem em número decimal (35% = 0,35) e multiplique pelo total; o resultado tem de ser menor que o total.",
+  "C20": "faça primeiro a multiplicação (quanto a receita toda pede) e só depois a subtração; para multiplicar frações, multiplique numerador por numerador e denominador por denominador.",
+  "D30": "identifique a hipotenusa (oposta ao ângulo reto). Para achar um cateto, subtraia os quadrados e tire a raiz no final.",
+  "D32": "ponha a segunda expressão entre parênteses e troque o sinal de todos os termos dela antes de juntar os termos semelhantes.",
+  "C17": "ponha os dados em ordem antes de tudo; com uma quantidade par de dados, a mediana é a média dos dois do meio, e a moda é o valor que mais se repete.",
+  "D07": "veja se os ângulos são alternos (iguais) ou colaterais (somam 180°) antes de montar a equação.",
+  "D14": "use (a − b)² = a² − 2ab + b² e não esqueça o termo do meio, o dobro do produto dos dois termos.",
+  "D05": "divida o diâmetro por 2 para achar o raio, eleve o raio ao quadrado e multiplique por π e pela altura: V = π · r² · h.",
+  "C09": "conte quantos passos há da primeira figura até a pedida (da 1 à 20 são 19) e some a razão esse número de vezes.",
+  "D31": "transforme cada mudança em fator (aumento de 20% = 1,2; desconto de 20% = 0,8) e multiplique os fatores, um depois do outro.",
+  "D17": "calcule o terceiro ângulo de cada triângulo (a soma é 180°); se dois ângulos de um forem iguais a dois do outro, eles são semelhantes.",
+  "C33": "calcule o comprimento de uma volta com C = π · d (ou 2 · π · r) e deixe todas as medidas na mesma unidade antes de dividir.",
+  "D15": "some as áreas de todas as partes da figura: o quadrado de lado (a + b) tem a², b² e dois retângulos de área a · b.",
+  "D24": "passe o tempo para horas (30 min = 0,5 h) e divida a distância pelo tempo.",
+  "D04": "o ângulo com vértice na circunferência (inscrito) vale a metade do ângulo central que olha para o mesmo arco.",
+  "C21": "deixe um só algarismo antes da vírgula e conte quantas casas a vírgula andou: para a esquerda, o expoente é positivo.",
+  "D23": "eleve cada fator ao expoente: o número também é elevado, e na potência de potência os expoentes se multiplicam.",
+  "D35": "separe os dois triângulos semelhantes, ligue os lados que se correspondem (altura com altura, base com base) e só então monte a proporção; confira se a base de cada triângulo vai até o mesmo ponto.",
+  "D09": "reconheça os dois quadrados (49x² = (7x)², 25 = 5²) e use a² − b² = (a − b)(a + b).",
+  "C29": "lembre que o preço com desconto de 15% é 85% do preço antigo; divida o preço atual por 0,85.",
+  "D21": "multiplique as partes da frente e some os expoentes das potências de 10; no fim, deixe um só algarismo antes da vírgula.",
+  "D27": "identifique as projeções dos catetos sobre a hipotenusa (m e n) e use h² = m · n para a altura.",
+  "C32": "lembre que os pontos à mesma distância de dois pontos A e B formam a mediatriz de AB, a perpendicular que passa pelo ponto médio.",
+  "D26": "fatore o numerador e o denominador antes de cancelar; só se cancelam fatores, nunca termos de uma soma.",
+  "D25": "ache a parte fixa onde a reta corta o eixo vertical e a taxa pela variação entre dois pontos; depois escreva a lei e calcule.",
+  "D38": "escreva as medidas novas com x, multiplique e compare com a área antiga: (x + a)(x − a) = x² − a².",
+  "C10": "use 180° = π rad e faça a regra de três: graus ÷ 180 · π.",
+  "D08": "veja se o trinômio é quadrado perfeito, a² + 2ab + b² = (a + b)², e lembre que (x + 4)² = 0 só acontece quando x + 4 = 0."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "D28",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Porcentagem de um total",
+   "descriptor": "Resolver problemas que envolvam cálculo de porcentagens.",
+   "stem": [
+    "Uma escola tem 640 alunos. Uma pesquisa mostrou que 35% deles usam o transporte escolar para chegar à escola."
+   ],
+   "table": null,
+   "ask": "Quantos alunos usam o transporte escolar?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "224",
+     "value": 224,
+     "correct": true,
+     "why": "Acerto. 35% de 640 = 640 · 35 ÷ 100 = 224."
+    },
+    {
+     "letter": "B",
+     "text": "416",
+     "value": 416,
+     "correct": false,
+     "why": "Calculou os 65% que não usam o transporte: 640 − 224 = 416."
+    },
+    {
+     "letter": "C",
+     "text": "605",
+     "value": 605,
+     "correct": false,
+     "why": "Subtraiu 35 de 640. O 35% não é a quantidade de alunos: é 35 de cada 100."
+    },
+    {
+     "letter": "D",
+     "text": "675",
+     "value": 675,
+     "correct": false,
+     "why": "Somou 35 a 640. A parte que usa o transporte tem de ser menor que o total."
+    },
+    {
+     "letter": "E",
+     "text": "22 400",
+     "value": 22400,
+     "correct": false,
+     "why": "Multiplicou 640 por 35 e esqueceu de dividir por 100. O resultado passa do total de alunos."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "35% quer dizer 35 de cada 100: 35 ÷ 100 = 0,35.",
+    "0,35 · 640 = 224."
+   ],
+   "check": "10% de 640 é 64, então 30% é 192 e 5% é 32: 192 + 32 = 224."
+  },
+  {
+   "n": 2,
+   "code": "C20",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Frações e decimais numa receita",
+   "descriptor": "Resolver problemas com números racionais que envolvam diferentes operações (adição, subtração, multiplicação, divisão, potenciação, radiciação).",
+   "stem": [
+    "Uma receita de refresco leva 2/3 de litro de suco concentrado. Marina vai fazer 1,5 receita e já tem 1/2 litro desse suco em casa."
+   ],
+   "table": null,
+   "ask": "Quantos litros de suco concentrado Marina ainda precisa comprar?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1/6",
+     "value": 0.16666666666666666,
+     "correct": false,
+     "why": "Não multiplicou por 1,5: fez 2/3 − 1/2 = 1/6. Para 1,5 receita, o suco é 1,5 · 2/3 = 1 litro."
+    },
+    {
+     "letter": "B",
+     "text": "1/4",
+     "value": 0.25,
+     "correct": false,
+     "why": "Fez as contas na ordem errada: (2/3 − 1/2) · 1,5 = 1/4. Primeiro calcule quanto a receita toda pede, depois desconte o que ela já tem."
+    },
+    {
+     "letter": "C",
+     "text": "1/2",
+     "value": 0.5,
+     "correct": true,
+     "why": "Acerto. 1,5 · 2/3 = 3/2 · 2/3 = 1 litro; como já tem 1/2 litro, falta 1 − 1/2 = 1/2 litro."
+    },
+    {
+     "letter": "D",
+     "text": "1",
+     "value": 1,
+     "correct": false,
+     "why": "Calculou o suco da receita (1 litro), mas esqueceu de descontar o 1/2 litro que ela já tem."
+    },
+    {
+     "letter": "E",
+     "text": "7/6",
+     "value": 1.1666666666666667,
+     "correct": false,
+     "why": "Somou 2/3 com 1/2. Ela já tem 1/2 litro, então esse valor deve ser descontado, não somado."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Suco para 1,5 receita: 1,5 · 2/3 = 3/2 · 2/3 = 6/6 = 1 litro.",
+    "Ela já tem 1/2 litro: 1 − 1/2 = 1/2 litro."
+   ],
+   "check": "Com 1/2 litro comprado, ela fica com 1/2 + 1/2 = 1 litro, exatamente o que 1,5 receita pede."
+  },
+  {
+   "n": 3,
+   "code": "D30",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Pitágoras: base de uma rampa",
+   "descriptor": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+   "stem": [
+    "A parte inclinada de uma rampa de skate tem 6,5 m de comprimento, e o ponto mais alto da rampa fica a 2,5 m do chão, como mostra a figura."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q3.png",
+    "alt": "Rampa vista de lado: um triângulo retângulo com o ângulo reto embaixo, à direita. O lado inclinado mede 6,5 m, o lado vertical mede 2,5 m e a base, no chão, está marcada com ponto de interrogação.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.7
+   },
+   "ask": "Qual é a medida da base da rampa, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4",
+     "value": 4,
+     "correct": false,
+     "why": "Subtraiu as medidas: 6,5 − 2,5 = 4. O Teorema de Pitágoras trabalha com os quadrados dos lados."
+    },
+    {
+     "letter": "B",
+     "text": "6",
+     "value": 6,
+     "correct": true,
+     "why": "Acerto. 6,5² = 2,5² + b², então b² = 42,25 − 6,25 = 36 e b = 6."
+    },
+    {
+     "letter": "C",
+     "text": "9",
+     "value": 9,
+     "correct": false,
+     "why": "Somou as medidas: 6,5 + 2,5 = 9. A base é um cateto e tem de ser menor que a parte inclinada (6,5 m)."
+    },
+    {
+     "letter": "D",
+     "text": "36",
+     "value": 36,
+     "correct": false,
+     "why": "Achou b² = 36 e esqueceu de tirar a raiz quadrada."
+    },
+    {
+     "letter": "E",
+     "text": "48,5",
+     "value": 48.5,
+     "correct": false,
+     "why": "Somou os quadrados (42,25 + 6,25) e não tirou a raiz. A parte inclinada é a hipotenusa: para achar um cateto, subtraia os quadrados."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "A parte inclinada (6,5 m) é a hipotenusa, porque fica oposta ao ângulo reto.",
+    "6,5² = 2,5² + b²: 42,25 = 6,25 + b², então b² = 42,25 − 6,25 = 36.",
+    "b = √36 = 6 m."
+   ],
+   "check": "2,5² + 6² = 6,25 + 36 = 42,25 = 6,5². A base (6 m) é menor que a hipotenusa (6,5 m), como tem de ser."
+  },
+  {
+   "n": 4,
+   "code": "D32",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Diferença entre duas expressões",
+   "descriptor": "Resolver problemas que envolvam operações de adição ou subtração de expressões algébricas.",
+   "stem": [
+    "Em um jogo, depois de x rodadas, Ana tem 5x² − 3x + 1 pontos e Bia tem 2x² + 3x − 4 pontos."
+   ],
+   "table": null,
+   "ask": "Qual expressão representa quantos pontos Ana tem a mais que Bia?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3x² − 3",
+     "value": null,
+     "correct": false,
+     "why": "Trocou só o sinal do primeiro termo de Bia. O sinal de menos vale para a expressão toda: −(2x² + 3x − 4) = −2x² − 3x + 4."
+    },
+    {
+     "letter": "B",
+     "text": "3x² − 6x − 3",
+     "value": null,
+     "correct": false,
+     "why": "Trocou o sinal do 3x, mas não o do −4: −(−4) = +4, e 1 + 4 = 5."
+    },
+    {
+     "letter": "C",
+     "text": "3x² + 5",
+     "value": null,
+     "correct": false,
+     "why": "Trocou o sinal do −4, mas não o do 3x: −(+3x) = −3x, e −3x − 3x = −6x."
+    },
+    {
+     "letter": "D",
+     "text": "7x² − 3",
+     "value": null,
+     "correct": false,
+     "why": "Somou as expressões. Para saber quanto Ana tem a mais, subtraia os pontos de Bia dos pontos de Ana."
+    },
+    {
+     "letter": "E",
+     "text": "3x² − 6x + 5",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. (5x² − 3x + 1) − (2x² + 3x − 4) = 5x² − 3x + 1 − 2x² − 3x + 4 = 3x² − 6x + 5."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Monte a subtração com parênteses: (5x² − 3x + 1) − (2x² + 3x − 4).",
+    "O sinal de menos troca todos os sinais do segundo parêntese: 5x² − 3x + 1 − 2x² − 3x + 4.",
+    "Junte os termos semelhantes: (5 − 2)x² + (−3 − 3)x + (1 + 4) = 3x² − 6x + 5."
+   ],
+   "check": "Com x = 3: Ana tem 45 − 9 + 1 = 37 pontos e Bia tem 18 + 9 − 4 = 23; a diferença é 14, e 3 · 9 − 18 + 5 = 14."
+  },
+  {
+   "n": 5,
+   "code": "C17",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Moda e mediana",
+   "descriptor": "Identificar os valores da moda e da mediana de um conjunto de dados.",
+   "stem": [
+    "A tabela mostra quanto tempo, em minutos, oito alunos levam para ir de casa até a escola."
+   ],
+   "table": {
+    "header": [
+     "Aluno",
+     "Tempo (min)"
+    ],
+    "rows": [
+     [
+      "Ana",
+      "15"
+     ],
+     [
+      "Beto",
+      "12"
+     ],
+     [
+      "Caio",
+      "18"
+     ],
+     [
+      "Duda",
+      "14"
+     ],
+     [
+      "Edu",
+      "11"
+     ],
+     [
+      "Fabi",
+      "15"
+     ],
+     [
+      "Gil",
+      "16"
+     ],
+     [
+      "Hana",
+      "13"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Quais são a moda e a mediana desses tempos?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Moda 15 min e mediana 14,5 min",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. O 15 aparece duas vezes (moda). Em ordem: 11, 12, 13, 14, 15, 15, 16, 18; os dois do meio são 14 e 15, e a mediana é (14 + 15) ÷ 2 = 14,5."
+    },
+    {
+     "letter": "B",
+     "text": "Moda 15 min e mediana 14,25 min",
+     "value": null,
+     "correct": false,
+     "why": "Calculou a média (114 ÷ 8 = 14,25) no lugar da mediana. A mediana é o valor do meio da lista em ordem."
+    },
+    {
+     "letter": "C",
+     "text": "Moda 15 min e mediana 12,5 min",
+     "value": null,
+     "correct": false,
+     "why": "Pegou os dois valores do meio sem ordenar a lista (14 e 11). Antes de achar a mediana, ponha os dados em ordem."
+    },
+    {
+     "letter": "D",
+     "text": "Moda 18 min e mediana 14,5 min",
+     "value": null,
+     "correct": false,
+     "why": "Tomou o maior valor como moda. A moda é o valor que mais se repete: 15, que aparece duas vezes."
+    },
+    {
+     "letter": "E",
+     "text": "Moda 15 min e mediana 15 min",
+     "value": null,
+     "correct": false,
+     "why": "Pegou só um dos valores do meio. Com 8 dados há dois valores no meio (o 4º e o 5º), e a mediana é a média deles."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Moda: o valor que mais aparece. O 15 aparece duas vezes; os outros, uma vez.",
+    "Ponha em ordem: 11, 12, 13, 14, 15, 15, 16, 18.",
+    "Com 8 valores, a mediana é a média do 4º e do 5º: (14 + 15) ÷ 2 = 14,5 min."
+   ],
+   "check": "Na lista ordenada, há 4 valores até 14 e 4 valores a partir de 15: a mediana fica no meio, entre 14 e 15."
+  },
+  {
+   "n": 6,
+   "code": "D07",
+   "role": "Retomada",
+   "level": "N2",
+   "short": "Ângulos alternos internos",
+   "descriptor": "Determinar a medida de um ângulo desconhecido em um feixe de retas paralelas interceptadas por transversais.",
+   "stem": [
+    "As ruas r e s são paralelas e são cortadas pela avenida t. Os dois ângulos marcados na figura são alternos internos."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q6.png",
+    "alt": "Duas retas horizontais paralelas, r em cima e s embaixo, cortadas por uma reta inclinada t. Na reta r, abaixo dela e à direita de t, está marcado o ângulo (3x + 10)°. Na reta s, acima dela e à esquerda de t, está marcado o ângulo (2x + 40)°.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.7
+   },
+   "ask": "Qual é o valor de x?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10",
+     "value": 10,
+     "correct": false,
+     "why": "Ignorou o 2x: fez 3x + 10 = 40. Os dois lados da equação têm x: 3x + 10 = 2x + 40."
+    },
+    {
+     "letter": "B",
+     "text": "26",
+     "value": 26,
+     "correct": false,
+     "why": "Somou os ângulos e igualou a 180°, como se fossem colaterais. Alternos internos têm a mesma medida."
+    },
+    {
+     "letter": "C",
+     "text": "30",
+     "value": 30,
+     "correct": true,
+     "why": "Acerto. Alternos internos são iguais: 3x + 10 = 2x + 40, então x = 30 (e cada ângulo mede 100°)."
+    },
+    {
+     "letter": "D",
+     "text": "50",
+     "value": 50,
+     "correct": false,
+     "why": "Errou o sinal ao passar o 10: 3x − 2x = 40 + 10. Ao mudar de lado, +10 vira −10: x = 40 − 10 = 30."
+    },
+    {
+     "letter": "E",
+     "text": "100",
+     "value": 100,
+     "correct": false,
+     "why": "Achou a medida do ângulo (100°), mas a pergunta é o valor de x."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Ângulos alternos internos em retas paralelas têm a mesma medida.",
+    "3x + 10 = 2x + 40.",
+    "3x − 2x = 40 − 10, então x = 30."
+   ],
+   "check": "3 · 30 + 10 = 100 e 2 · 30 + 40 = 100: os dois ângulos medem 100°, como deve ser."
+  },
+  {
+   "n": 7,
+   "code": "D14",
+   "role": "Retomada",
+   "level": "N2",
+   "short": "Quadrado da diferença",
+   "descriptor": "Reconhecer a representação algébrica dos produtos notáveis.",
+   "stem": [
+    "Para resolver um problema, Renata precisa desenvolver a expressão (3x − 2)²."
+   ],
+   "table": null,
+   "ask": "Qual é o desenvolvimento correto?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "9x² − 4",
+     "value": null,
+     "correct": false,
+     "why": "Elevou cada termo ao quadrado e manteve o sinal de menos. Faltou o termo do meio: −2 · 3x · 2 = −12x, e (+2)² é +4."
+    },
+    {
+     "letter": "B",
+     "text": "9x² + 4",
+     "value": null,
+     "correct": false,
+     "why": "Elevou cada termo ao quadrado e esqueceu o termo do meio, o dobro do produto dos dois termos."
+    },
+    {
+     "letter": "C",
+     "text": "9x² − 6x + 4",
+     "value": null,
+     "correct": false,
+     "why": "Esqueceu de dobrar o termo do meio: 3x · 2 = 6x, mas o certo é 2 · 3x · 2 = 12x."
+    },
+    {
+     "letter": "D",
+     "text": "9x² + 12x + 4",
+     "value": null,
+     "correct": false,
+     "why": "Errou o sinal do termo do meio. No quadrado da diferença, o termo do meio é negativo."
+    },
+    {
+     "letter": "E",
+     "text": "9x² − 12x + 4",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. (a − b)² = a² − 2ab + b²: (3x)² − 2 · 3x · 2 + 2² = 9x² − 12x + 4."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Use (a − b)² = a² − 2ab + b², com a = 3x e b = 2.",
+    "a² = 9x²; 2ab = 2 · 3x · 2 = 12x; b² = 4.",
+    "(3x − 2)² = 9x² − 12x + 4."
+   ],
+   "check": "Com x = 1: (3 − 2)² = 1 e 9 − 12 + 4 = 1."
+  },
+  {
+   "n": 8,
+   "code": "D05",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Volume do cilindro",
+   "descriptor": "Calcular o volume de cilindros em situações contextualizadas.",
+   "stem": [
+    "Um reservatório de água tem a forma de um cilindro com 3 m de diâmetro e 2 m de altura. Use π = 3,14."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q8.png",
+    "alt": "Cilindro em pé. Na tampa, o diâmetro está marcado com 3 m; ao lado, a altura está marcada com 2 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.5
+   },
+   "ask": "Qual é o volume desse reservatório, em metros cúbicos?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4,5",
+     "value": 4.5,
+     "correct": false,
+     "why": "Esqueceu o π: fez 1,5² · 2 = 4,5."
+    },
+    {
+     "letter": "B",
+     "text": "7,065",
+     "value": 7.065,
+     "correct": false,
+     "why": "Calculou só a área da base (3,14 · 1,5² = 7,065) e não multiplicou pela altura."
+    },
+    {
+     "letter": "C",
+     "text": "9,42",
+     "value": 9.42,
+     "correct": false,
+     "why": "Não elevou o raio ao quadrado: 3,14 · 1,5 · 2 = 9,42."
+    },
+    {
+     "letter": "D",
+     "text": "14,13",
+     "value": 14.13,
+     "correct": true,
+     "why": "Acerto. Raio = 3 ÷ 2 = 1,5 m. V = 3,14 · 1,5² · 2 = 3,14 · 2,25 · 2 = 14,13 m³."
+    },
+    {
+     "letter": "E",
+     "text": "56,52",
+     "value": 56.52,
+     "correct": false,
+     "why": "Usou o diâmetro como raio: 3,14 · 3² · 2 = 56,52. O raio é a metade do diâmetro."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "O raio é a metade do diâmetro: 3 ÷ 2 = 1,5 m.",
+    "Área da base: π · r² = 3,14 · 1,5² = 3,14 · 2,25 = 7,065 m².",
+    "Volume: área da base · altura = 7,065 · 2 = 14,13 m³."
+   ],
+   "check": "O cilindro cabe numa caixa de 3 m por 3 m por 2 m, que tem 18 m³. O volume do cilindro tem de ser um pouco menor que 18 m³: 14,13 m³."
+  },
+  {
+   "n": 9,
+   "code": "C09",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Termo distante de uma sequência",
+   "descriptor": "Determinar termos de uma sequência a partir de sua lei de formação ou padrão.",
+   "stem": [
+    "Lucas monta figuras com palitos. A figura 1 tem 3 palitos, a figura 2 tem 7 palitos e a figura 3 tem 11 palitos. Cada figura nova tem 4 palitos a mais que a anterior."
+   ],
+   "table": null,
+   "ask": "Quantos palitos terá a figura 20?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "60",
+     "value": 60,
+     "correct": false,
+     "why": "Pensou em proporção: 20 · 3 = 60. A figura 2 não tem o dobro de palitos da figura 1 (7 não é 6)."
+    },
+    {
+     "letter": "B",
+     "text": "75",
+     "value": 75,
+     "correct": false,
+     "why": "Somou o 4 uma vez a menos: 3 + 18 · 4 = 75. Da figura 1 até a figura 20 são 19 passos."
+    },
+    {
+     "letter": "C",
+     "text": "76",
+     "value": 76,
+     "correct": false,
+     "why": "Fez 19 · 4 = 76 e esqueceu os 3 palitos da figura 1."
+    },
+    {
+     "letter": "D",
+     "text": "79",
+     "value": 79,
+     "correct": true,
+     "why": "Acerto. Da figura 1 à 20 são 19 passos de 4 palitos: 3 + 19 · 4 = 79 (ou 4 · 20 − 1)."
+    },
+    {
+     "letter": "E",
+     "text": "80",
+     "value": 80,
+     "correct": false,
+     "why": "Fez 20 · 4 = 80. A figura 1 tem 3 palitos, não 4: a lei é 4n − 1."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "A sequência começa em 3 e aumenta 4 a cada figura.",
+    "Da figura 1 até a figura 20 há 19 aumentos: 19 · 4 = 76.",
+    "3 + 76 = 79 palitos."
+   ],
+   "check": "A lei 4n − 1 dá 3, 7 e 11 para n = 1, 2 e 3, como no enunciado, e 4 · 20 − 1 = 79."
+  },
+  {
+   "n": 10,
+   "code": "D31",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Aumento e desconto sucessivos",
+   "descriptor": "Resolver problemas que envolvam o cálculo de porcentagens, taxas e percentuais sucessivos em contextos de educação financeira.",
+   "stem": [
+    "Um tênis custava R$ 250,00. A loja aumentou o preço em 20%. Um mês depois, deu um desconto de 20% sobre o novo preço."
+   ],
+   "table": null,
+   "ask": "Qual passou a ser o preço do tênis?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 200,00",
+     "value": 200,
+     "correct": false,
+     "why": "Aplicou só o desconto, sobre o preço antigo: R$ 250,00 · 0,8 = R$ 200,00. Antes do desconto, o preço tinha subido para R$ 300,00."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 240,00",
+     "value": 240,
+     "correct": true,
+     "why": "Acerto. Com o aumento: 250 · 1,2 = 300. Com o desconto: 300 · 0,8 = 240."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 250,00",
+     "value": 250,
+     "correct": false,
+     "why": "Achou que +20% e −20% se anulam. O desconto é sobre R$ 300,00, que é maior: tira R$ 60,00, e não R$ 50,00."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 260,00",
+     "value": 260,
+     "correct": false,
+     "why": "Percebeu que o preço muda 4%, mas somou: 250 · 1,04. O preço final é 96% do inicial (1,2 · 0,8 = 0,96)."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 300,00",
+     "value": 300,
+     "correct": false,
+     "why": "Aplicou só o aumento e esqueceu o desconto."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Aumento de 20%: 250 · 1,2 = R$ 300,00.",
+    "Desconto de 20% sobre R$ 300,00: 300 · 0,8 = R$ 240,00.",
+    "Direto: 250 · 1,2 · 0,8 = 250 · 0,96 = 240."
+   ],
+   "check": "O desconto de 20% foi calculado sobre R$ 300,00 (R$ 60,00), mais que os R$ 50,00 do aumento; por isso o preço final fica abaixo de R$ 250,00."
+  },
+  {
+   "n": 11,
+   "code": "D17",
+   "role": "Retomada",
+   "level": "N2",
+   "short": "Semelhança pelos ângulos",
+   "descriptor": "Reconhecer as condições para que dois triângulos sejam semelhantes.",
+   "stem": [
+    "Observe os triângulos ABC e DEF. No triângulo ABC, os ângulos A e B medem 50° e 70°. No triângulo DEF, os ângulos D e E medem 60° e 70°."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q11.png",
+    "alt": "Dois triângulos lado a lado. O triângulo ABC, menor, tem o ângulo A de 50° e o ângulo B de 70°. O triângulo DEF, maior, tem o ângulo D de 60° e o ângulo E de 70°.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.85
+   },
+   "ask": "Os triângulos ABC e DEF são semelhantes?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Não, porque os ângulos marcados não são os mesmos nos dois triângulos.",
+     "value": null,
+     "correct": false,
+     "why": "Comparou só os ângulos marcados. Calcule o terceiro: em ABC, C = 60°; em DEF, F = 50°. Os dois têm 50°, 60° e 70°."
+    },
+    {
+     "letter": "B",
+     "text": "Não, porque os lados de DEF são maiores que os de ABC.",
+     "value": null,
+     "correct": false,
+     "why": "Semelhança não exige lados iguais. Lados iguais e ângulos iguais é congruência; na semelhança, os lados são proporcionais."
+    },
+    {
+     "letter": "C",
+     "text": "Não é possível saber, porque as medidas dos lados não foram dadas.",
+     "value": null,
+     "correct": false,
+     "why": "Para garantir a semelhança, basta que dois ângulos de um triângulo sejam iguais a dois ângulos do outro. Não é preciso saber os lados."
+    },
+    {
+     "letter": "D",
+     "text": "Sim, porque os dois têm um ângulo de 70°.",
+     "value": null,
+     "correct": false,
+     "why": "Um ângulo igual só não basta: há triângulos com um ângulo de 70° que não são semelhantes. A resposta é sim, mas pelo motivo errado."
+    },
+    {
+     "letter": "E",
+     "text": "Sim, porque os três ângulos de ABC são iguais aos três ângulos de DEF.",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. A soma dos ângulos é 180°: em ABC, C = 180° − 50° − 70° = 60°; em DEF, F = 180° − 60° − 70° = 50°. Os dois têm 50°, 60° e 70°."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Em ABC: C = 180° − 50° − 70° = 60°.",
+    "Em DEF: F = 180° − 60° − 70° = 50°.",
+    "Os dois têm ângulos de 50°, 60° e 70°: são semelhantes (caso ângulo, ângulo)."
+   ],
+   "check": "Em ABC, 50° + 70° + 60° = 180°; em DEF, 60° + 70° + 50° = 180°. Os conjuntos de ângulos são iguais, só em outra ordem."
+  },
+  {
+   "n": 12,
+   "code": "C33",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Voltas de uma roda",
+   "descriptor": "Utilizar o π (pi) no cálculo do comprimento da circunferência.",
+   "stem": [
+    "A roda de uma bicicleta tem 70 cm de diâmetro. Em um passeio, a bicicleta percorreu 2,198 km. Use π = 3,14."
+   ],
+   "table": null,
+   "ask": "Quantas voltas completas a roda deu nesse passeio?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10",
+     "value": 10,
+     "correct": false,
+     "why": "Errou a conversão: dividiu 2 198 (metros) por 219,8 (centímetros). Passe tudo para centímetros: 2,198 km = 219 800 cm."
+    },
+    {
+     "letter": "B",
+     "text": "500",
+     "value": 500,
+     "correct": false,
+     "why": "Usou o diâmetro como raio: 2 · 3,14 · 70 = 439,6 cm por volta. Com o diâmetro, uma volta é π · d."
+    },
+    {
+     "letter": "C",
+     "text": "1 000",
+     "value": 1000,
+     "correct": true,
+     "why": "Acerto. Uma volta: 3,14 · 70 = 219,8 cm. Distância: 2,198 km = 219 800 cm. Voltas: 219 800 ÷ 219,8 = 1 000."
+    },
+    {
+     "letter": "D",
+     "text": "2 000",
+     "value": 2000,
+     "correct": false,
+     "why": "Usou π · r = 3,14 · 35 = 109,9 cm, que é só meia volta. A volta inteira é 2 · π · r = π · d."
+    },
+    {
+     "letter": "E",
+     "text": "3 140",
+     "value": 3140,
+     "correct": false,
+     "why": "Dividiu pelo diâmetro, sem o π. Em uma volta, a roda anda o comprimento do contorno, π · d, e não o diâmetro."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Em uma volta, a roda anda o comprimento da circunferência: C = π · d = 3,14 · 70 = 219,8 cm.",
+    "Passe a distância para centímetros: 2,198 km = 2 198 m = 219 800 cm.",
+    "Número de voltas: 219 800 ÷ 219,8 = 1 000."
+   ],
+   "check": "1 000 voltas de 219,8 cm dão 219 800 cm = 2 198 m = 2,198 km."
+  },
+  {
+   "n": 13,
+   "code": "D15",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Área do quadrado dividido em partes",
+   "descriptor": "Reconhecer a representação geométrica dos produtos notáveis.",
+   "stem": [
+    "Uma horta quadrada tem lado de medida x + 3, em metros. Ela foi dividida em quatro canteiros, como mostra a figura."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q13.png",
+    "alt": "Quadrado dividido em quatro partes por uma linha vertical e uma horizontal. Em cima, o lado está dividido em x e 3; à esquerda, também em x e 3. As partes são um quadrado grande, dois retângulos e um quadrado pequeno.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.5
+   },
+   "ask": "Qual expressão representa a área total da horta, em metros quadrados?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "x² + 9",
+     "value": null,
+     "correct": false,
+     "why": "Somou só os dois quadrados (x² e 9) e esqueceu os dois retângulos, cada um com área 3x."
+    },
+    {
+     "letter": "B",
+     "text": "x² + 3x + 9",
+     "value": null,
+     "correct": false,
+     "why": "Contou só um dos retângulos. Há dois retângulos de área 3 · x."
+    },
+    {
+     "letter": "C",
+     "text": "4x + 12",
+     "value": null,
+     "correct": false,
+     "why": "Calculou o perímetro: 4 · (x + 3). A pergunta é a área."
+    },
+    {
+     "letter": "D",
+     "text": "2x + 6",
+     "value": null,
+     "correct": false,
+     "why": "Somou dois lados: (x + 3) + (x + 3). A área é lado vezes lado."
+    },
+    {
+     "letter": "E",
+     "text": "x² + 6x + 9",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. As quatro partes somam x² + 3x + 3x + 9 = x² + 6x + 9, que é (x + 3)²."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "O quadrado grande tem área x · x = x²; o pequeno, 3 · 3 = 9.",
+    "Cada retângulo tem lados x e 3: área 3x. São dois: 6x.",
+    "Total: x² + 6x + 9, que é o mesmo que (x + 3)²."
+   ],
+   "check": "Com x = 2, o lado é 5 e a área é 25; x² + 6x + 9 = 4 + 12 + 9 = 25."
+  },
+  {
+   "n": 14,
+   "code": "D24",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Velocidade média",
+   "descriptor": "Resolver problemas que envolvam a razão entre grandezas de espécies diferentes.",
+   "stem": [
+    "Um ciclista percorreu 45 km em 2 h 30 min, sempre no mesmo ritmo."
+   ],
+   "table": null,
+   "ask": "Qual foi a velocidade média do ciclista, em quilômetros por hora?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,3",
+     "value": 0.3,
+     "correct": false,
+     "why": "Dividiu os 45 km pelos 150 minutos: 0,3 é a distância por minuto. A pergunta pede quilômetros por hora: use 2,5 h."
+    },
+    {
+     "letter": "B",
+     "text": "18",
+     "value": 18,
+     "correct": true,
+     "why": "Acerto. 2 h 30 min = 2,5 h. Velocidade = 45 ÷ 2,5 = 18 km/h."
+    },
+    {
+     "letter": "C",
+     "text": "19,6",
+     "value": 19.6,
+     "correct": false,
+     "why": "Escreveu 2 h 30 min como 2,3 h e fez 45 ÷ 2,3 ≈ 19,6. Meia hora é 0,5 h, então o tempo é 2,5 h."
+    },
+    {
+     "letter": "D",
+     "text": "22,5",
+     "value": 22.5,
+     "correct": false,
+     "why": "Ignorou os 30 minutos: 45 ÷ 2 = 22,5."
+    },
+    {
+     "letter": "E",
+     "text": "112,5",
+     "value": 112.5,
+     "correct": false,
+     "why": "Multiplicou em vez de dividir: 45 · 2,5 = 112,5. Velocidade é distância dividida pelo tempo."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Passe o tempo para horas: 30 min = 0,5 h, então 2 h 30 min = 2,5 h.",
+    "Velocidade média = distância ÷ tempo = 45 ÷ 2,5 = 18 km/h."
+   ],
+   "check": "Andando 18 km por hora, em 2 h ele faz 36 km e em mais meia hora faz 9 km: 36 + 9 = 45 km."
+  },
+  {
+   "n": 15,
+   "code": "D04",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Ângulo inscrito e ângulo central",
+   "descriptor": "Calcular medidas de ângulos centrais e inscritos a partir das medidas dos arcos correspondentes, e vice-versa.",
+   "stem": [
+    "Uma praça circular tem centro O. Os postes A e B ficam na borda da praça, e o ângulo central AÔB mede 80°. Uma pessoa está no ponto P, também na borda, e olha para os dois postes, como mostra a figura."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q15.png",
+    "alt": "Circunferência de centro O. Os pontos A e B estão na parte de baixo da circunferência e P está na parte de cima. Os segmentos OA e OB formam o ângulo central de 80°. Os segmentos PA e PB formam o ângulo APB, marcado com ponto de interrogação.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.5
+   },
+   "ask": "Qual é a medida do ângulo APB?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "40°",
+     "value": 40,
+     "correct": true,
+     "why": "Acerto. O ângulo inscrito vale a metade do ângulo central que olha para o mesmo arco: 80° ÷ 2 = 40°."
+    },
+    {
+     "letter": "B",
+     "text": "80°",
+     "value": 80,
+     "correct": false,
+     "why": "Igualou o inscrito ao central. O ângulo com vértice na circunferência vale a metade do central."
+    },
+    {
+     "letter": "C",
+     "text": "100°",
+     "value": 100,
+     "correct": false,
+     "why": "Fez 180° − 80°. Os ângulos não são suplementares: o inscrito é a metade do central."
+    },
+    {
+     "letter": "D",
+     "text": "140°",
+     "value": 140,
+     "correct": false,
+     "why": "Usou o outro arco: (360° − 80°) ÷ 2 = 140°. O ângulo APB olha para o arco AB que fica do lado oposto a P, o de 80°."
+    },
+    {
+     "letter": "E",
+     "text": "160°",
+     "value": 160,
+     "correct": false,
+     "why": "Dobrou o ângulo central. É o contrário: o central é o dobro do inscrito."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "O ângulo APB tem vértice na circunferência: é um ângulo inscrito.",
+    "Ele olha para o mesmo arco AB que o ângulo central AÔB.",
+    "O inscrito é a metade do central: 80° ÷ 2 = 40°."
+   ],
+   "check": "O ângulo central (80°) é o dobro do inscrito (40°), e P fica do lado oposto ao arco AB."
+  },
+  {
+   "n": 16,
+   "code": "C21",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Escrever em notação científica",
+   "descriptor": "Resolver problemas com números reais que sejam expressos no formato de notação científica.",
+   "stem": [
+    "A área do oceano Atlântico é de cerca de 106 400 000 km²."
+   ],
+   "table": null,
+   "ask": "Como esse número é escrito em notação científica?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1,064 × 10⁻⁸",
+     "value": 1.0640000000000001e-08,
+     "correct": false,
+     "why": "Errou o sinal do expoente. Expoente negativo é para números menores que 1; a área é um número muito grande."
+    },
+    {
+     "letter": "B",
+     "text": "1,064 × 10⁵",
+     "value": 106400.0,
+     "correct": false,
+     "why": "Contou só os zeros do fim do número (5). O expoente é quantas casas a vírgula anda: de 106 400 000 para 1,064 são 8 casas."
+    },
+    {
+     "letter": "C",
+     "text": "1,064 × 10⁶",
+     "value": 1064000.0,
+     "correct": false,
+     "why": "Contou todos os zeros do número (6). O que vale é quantas casas a vírgula anda até ficar logo depois do 1: 8 casas."
+    },
+    {
+     "letter": "D",
+     "text": "1,064 × 10⁸",
+     "value": 106400000.0,
+     "correct": true,
+     "why": "Acerto. A vírgula anda 8 casas para a esquerda: 106 400 000 = 1,064 × 10⁸."
+    },
+    {
+     "letter": "E",
+     "text": "1,064 × 10⁹",
+     "value": 1064000000.0,
+     "correct": false,
+     "why": "Contou todos os algarismos do número (9). A vírgula fica depois do primeiro algarismo, então anda 9 − 1 = 8 casas."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Em notação científica, o número fica com um só algarismo antes da vírgula: 1,064.",
+    "De 106 400 000 até 1,064 a vírgula anda 8 casas para a esquerda.",
+    "106 400 000 = 1,064 × 10⁸."
+   ],
+   "check": "1,064 × 10⁸ = 1,064 × 100 000 000 = 106 400 000."
+  },
+  {
+   "n": 17,
+   "code": "D23",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Potência de um monômio",
+   "descriptor": "Resolver problemas que envolvam a potenciação de expressões algébricas.",
+   "stem": [
+    "Uma caixa tem a forma de um cubo cuja aresta mede 3x²y."
+   ],
+   "table": null,
+   "ask": "Qual expressão representa o volume dessa caixa?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "27x⁶y³",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. V = (3x²y)³ = 3³ · (x²)³ · y³ = 27x⁶y³."
+    },
+    {
+     "letter": "B",
+     "text": "9x⁶y³",
+     "value": null,
+     "correct": false,
+     "why": "Calculou 3 · 3 = 9. O 3 também é elevado ao cubo: 3³ = 27."
+    },
+    {
+     "letter": "C",
+     "text": "27x⁵y³",
+     "value": null,
+     "correct": false,
+     "why": "Somou os expoentes (2 + 3). Na potência de potência, os expoentes se multiplicam: (x²)³ = x⁶."
+    },
+    {
+     "letter": "D",
+     "text": "27x⁶y",
+     "value": null,
+     "correct": false,
+     "why": "Não elevou o y ao cubo. Todos os fatores da base são elevados: y³."
+    },
+    {
+     "letter": "E",
+     "text": "3x⁶y³",
+     "value": null,
+     "correct": false,
+     "why": "Elevou só a parte com letras. O número 3 também é elevado ao cubo: 3³ = 27."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "O volume do cubo é a aresta elevada ao cubo: (3x²y)³.",
+    "Eleve cada fator: 3³ = 27; (x²)³ = x²·³ = x⁶; y³.",
+    "V = 27x⁶y³."
+   ],
+   "check": "Com x = 1 e y = 1, a aresta mede 3 e o volume é 27; a expressão também dá 27."
+  },
+  {
+   "n": 18,
+   "code": "D35",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Altura de um prédio por semelhança",
+   "descriptor": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+   "stem": [
+    "Um fotógrafo, deitado no chão, vê o topo de um muro e o topo de um prédio alinhados, como mostra a figura. O muro tem 2 m de altura e está a 4 m do fotógrafo. O prédio está a 16 m do muro. Considere que os olhos do fotógrafo estão no nível do chão."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q18.png",
+    "alt": "Vista de lado. À esquerda, o olho do fotógrafo no chão. A 4 m dele, um muro de 2 m de altura. 16 m depois do muro, um prédio de altura desconhecida. Uma linha tracejada sai do olho, passa pelo topo do muro e chega ao topo do prédio.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.9
+   },
+   "ask": "Qual é a altura do prédio, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "2,5",
+     "value": 2.5,
+     "correct": false,
+     "why": "Trocou as bases: usou 16 m no triângulo pequeno (2 · 20 ÷ 16 = 2,5). Um prédio mais baixo que o muro não faz sentido."
+    },
+    {
+     "letter": "B",
+     "text": "8",
+     "value": 8,
+     "correct": false,
+     "why": "Usou só os 16 m como base do triângulo grande: 2 · 16 ÷ 4 = 8. A base do triângulo grande vai do fotógrafo até o prédio: 4 + 16 = 20 m."
+    },
+    {
+     "letter": "C",
+     "text": "10",
+     "value": 10,
+     "correct": true,
+     "why": "Acerto. Triângulo pequeno: base 4 m e altura 2 m. Triângulo grande: base 4 + 16 = 20 m e altura h. Então h ÷ 2 = 20 ÷ 4 = 5, e h = 10 m."
+    },
+    {
+     "letter": "D",
+     "text": "18",
+     "value": 18,
+     "correct": false,
+     "why": "Somou a altura do muro com a distância (2 + 16). Em triângulos semelhantes, as medidas se multiplicam pela mesma razão, não se somam."
+    },
+    {
+     "letter": "E",
+     "text": "40",
+     "value": 40,
+     "correct": false,
+     "why": "Inverteu a razão: fez 4 · 20 ÷ 2 = 40. Compare altura com altura e base com base: h ÷ 2 = 20 ÷ 4."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Os dois triângulos têm vértice no olho do fotógrafo e um ângulo reto no chão: são semelhantes.",
+    "Pequeno: base 4 m, altura 2 m. Grande: base 4 + 16 = 20 m, altura h.",
+    "h ÷ 2 = 20 ÷ 4 = 5, então h = 10 m."
+   ],
+   "check": "O prédio está 5 vezes mais longe do fotógrafo (20 m) que o muro (4 m), então é 5 vezes mais alto: 5 · 2 = 10 m."
+  },
+  {
+   "n": 19,
+   "code": "D09",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Fatorar uma diferença de quadrados",
+   "descriptor": "Fatorar expressões com diferenças de quadrados.",
+   "stem": [
+    "Uma moldura quadrada tem lado de medida 7x, em centímetros. No centro dela, há um espaço quadrado de lado 5 cm para a foto. A área da moldura, sem o espaço da foto, é dada por 49x² − 25."
+   ],
+   "table": null,
+   "ask": "Qual é a forma fatorada de 49x² − 25?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(7x − 5)²",
+     "value": null,
+     "correct": false,
+     "why": "Trocou a² − b² por (a − b)². Desenvolvendo, (7x − 5)² = 49x² − 70x + 25, que tem um termo a mais."
+    },
+    {
+     "letter": "B",
+     "text": "(7x − 5)(7x + 5)",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. 49x² = (7x)² e 25 = 5²; a² − b² = (a − b)(a + b), então 49x² − 25 = (7x − 5)(7x + 5)."
+    },
+    {
+     "letter": "C",
+     "text": "(7x + 5)²",
+     "value": null,
+     "correct": false,
+     "why": "Usou o quadrado da soma. (7x + 5)² = 49x² + 70x + 25, que não é a expressão dada."
+    },
+    {
+     "letter": "D",
+     "text": "(7x − 25)(7x + 25)",
+     "value": null,
+     "correct": false,
+     "why": "Não tirou a raiz do 25. Na diferença de quadrados, usam-se as raízes dos dois termos: √25 = 5."
+    },
+    {
+     "letter": "E",
+     "text": "(49x − 5)(49x + 5)",
+     "value": null,
+     "correct": false,
+     "why": "Não tirou a raiz do 49x². A raiz de 49x² é 7x."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Reconheça dois quadrados: 49x² = (7x)² e 25 = 5².",
+    "Use a² − b² = (a − b)(a + b), com a = 7x e b = 5.",
+    "49x² − 25 = (7x − 5)(7x + 5)."
+   ],
+   "check": "(7x − 5)(7x + 5) = 49x² + 35x − 35x − 25 = 49x² − 25."
+  },
+  {
+   "n": 20,
+   "code": "C29",
+   "role": "Conexão",
+   "level": "N4",
+   "short": "Preço antes de um desconto",
+   "descriptor": "Resolver problemas que envolvam porcentagem.",
+   "stem": [
+    "Na liquidação, uma geladeira está sendo vendida por R$ 1 020,00, já com desconto de 15%."
+   ],
+   "table": null,
+   "ask": "Qual era o preço da geladeira antes do desconto?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 867,00",
+     "value": 867,
+     "correct": false,
+     "why": "Deu mais 15% de desconto sobre o preço da liquidação: 1 020 · 0,85 = 867. O preço antigo tem de ser maior que o atual."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 1 035,00",
+     "value": 1035,
+     "correct": false,
+     "why": "Somou 15 reais. O desconto foi de 15%, não de 15 reais."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 1 173,00",
+     "value": 1173,
+     "correct": false,
+     "why": "Aplicou 15% sobre o preço com desconto: 1 020 · 1,15 = 1 173. Mas os 15% foram tirados do preço antigo, que é maior: 1 173 com 15% de desconto dá 997,05, e não 1 020."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 1 200,00",
+     "value": 1200,
+     "correct": true,
+     "why": "Acerto. Com 15% de desconto, paga-se 85% do preço: 0,85 · P = 1 020, então P = 1 020 ÷ 0,85 = 1 200."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 6 800,00",
+     "value": 6800,
+     "correct": false,
+     "why": "Dividiu por 0,15, que é o desconto. O preço da liquidação é 85% do antigo: divida por 0,85."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Com desconto de 15%, o cliente paga 100% − 15% = 85% do preço antigo.",
+    "0,85 · P = 1 020.",
+    "P = 1 020 ÷ 0,85 = R$ 1 200,00."
+   ],
+   "check": "15% de 1 200 é 180; 1 200 − 180 = 1 020."
+  },
+  {
+   "n": 21,
+   "code": "D21",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Produto em notação científica",
+   "descriptor": "Resolver problemas com números reais que sejam expressos no formato de notação científica.",
+   "stem": [
+    "Uma bactéria tem massa de cerca de 2,5 × 10⁻¹² grama. Uma amostra tem 4 × 10⁶ dessas bactérias."
+   ],
+   "table": null,
+   "ask": "Qual é a massa aproximada das bactérias dessa amostra, em gramas?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1 × 10⁻¹⁷",
+     "value": 1e-17,
+     "correct": false,
+     "why": "Subtraiu os expoentes: −12 − 6 = −18, e 10 × 10⁻¹⁸ = 10⁻¹⁷. Na multiplicação, os expoentes se somam: −12 + 6 = −6."
+    },
+    {
+     "letter": "B",
+     "text": "1 × 10⁻⁷",
+     "value": 1e-07,
+     "correct": false,
+     "why": "Ajustou a potência para o lado errado: 10 × 10⁻⁶ = 10¹ × 10⁻⁶ = 10⁻⁵, e não 10⁻⁷."
+    },
+    {
+     "letter": "C",
+     "text": "1 × 10⁻⁶",
+     "value": 1e-06,
+     "correct": false,
+     "why": "Trocou 10 por 1 e não mudou a potência: 10 × 10⁻⁶ = 1 × 10⁻⁵."
+    },
+    {
+     "letter": "D",
+     "text": "6,5 × 10⁻⁶",
+     "value": 6.5e-06,
+     "correct": false,
+     "why": "Somou as partes da frente (2,5 + 4). Em uma multiplicação, elas se multiplicam: 2,5 · 4 = 10."
+    },
+    {
+     "letter": "E",
+     "text": "1 × 10⁻⁵",
+     "value": 1e-05,
+     "correct": true,
+     "why": "Acerto. (2,5 · 4) × 10⁻¹²⁺⁶ = 10 × 10⁻⁶ = 1 × 10⁻⁵ grama."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Multiplique as partes da frente: 2,5 · 4 = 10.",
+    "Multiplique as potências de 10 somando os expoentes: 10⁻¹² · 10⁶ = 10⁻⁶.",
+    "10 × 10⁻⁶ = 1 × 10⁻⁵ grama."
+   ],
+   "check": "1 × 10⁻⁵ = 0,00001 grama: 4 milhões de bactérias ainda pesam bem menos que 1 grama, o que faz sentido para seres tão pequenos."
+  },
+  {
+   "n": 22,
+   "code": "D27",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Altura relativa à hipotenusa",
+   "descriptor": "Resolver problemas que envolvam as relações métricas dos triângulos retângulos.",
+   "stem": [
+    "Um terreno tem a forma de um triângulo retângulo. Uma cerca reta vai do canto do ângulo reto até o lado maior do terreno, formando um ângulo reto com ele. Ela divide esse lado em duas partes, de 9 m e 16 m, como mostra a figura."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q22.png",
+    "alt": "Triângulo retângulo com o lado maior embaixo, na horizontal, e o ângulo reto no vértice de cima. Do vértice de cima desce uma cerca perpendicular ao lado maior, marcada com h, que divide esse lado em 9 m e 16 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.75
+   },
+   "ask": "Qual é o comprimento da cerca, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "12",
+     "value": 12,
+     "correct": true,
+     "why": "Acerto. A altura relativa à hipotenusa satisfaz h² = 9 · 16 = 144, então h = 12 m."
+    },
+    {
+     "letter": "B",
+     "text": "15",
+     "value": 15,
+     "correct": false,
+     "why": "Calculou um cateto (√(9 · 25) = 15), não a altura. A cerca é a altura relativa à hipotenusa: h² = m · n."
+    },
+    {
+     "letter": "C",
+     "text": "20",
+     "value": 20,
+     "correct": false,
+     "why": "Calculou o outro cateto (√(16 · 25) = 20), não a altura."
+    },
+    {
+     "letter": "D",
+     "text": "25",
+     "value": 25,
+     "correct": false,
+     "why": "Somou as duas partes: 9 + 16 = 25 é a hipotenusa, o lado maior do terreno."
+    },
+    {
+     "letter": "E",
+     "text": "144",
+     "value": 144,
+     "correct": false,
+     "why": "Achou h² = 144 e esqueceu de tirar a raiz quadrada."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "A cerca é a altura relativa à hipotenusa; as partes de 9 m e 16 m são as projeções dos catetos.",
+    "Relação métrica: h² = m · n = 9 · 16 = 144.",
+    "h = √144 = 12 m."
+   ],
+   "check": "Os catetos medem √(9 · 25) = 15 m e √(16 · 25) = 20 m; a área dá 15 · 20 ÷ 2 = 150 e também 25 · 12 ÷ 2 = 150."
+  },
+  {
+   "n": 23,
+   "code": "C32",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Pontos à mesma distância de dois pontos",
+   "descriptor": "Utilizar o conceito de bissetriz e mediatriz para resolver problemas em diferentes contextos.",
+   "stem": [
+    "As casas de Ana (ponto A) e de Bruno (ponto B) ficam em um terreno plano. A prefeitura vai instalar um poste que fique à mesma distância das duas casas."
+   ],
+   "table": null,
+   "ask": "Em que lugar o poste pode ser instalado?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Só no ponto médio do segmento AB.",
+     "value": null,
+     "correct": false,
+     "why": "O ponto médio serve, mas não é o único. Qualquer ponto da mediatriz de AB fica à mesma distância de A e de B."
+    },
+    {
+     "letter": "B",
+     "text": "Em qualquer ponto da mediatriz do segmento AB.",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. A mediatriz é a reta perpendicular a AB que passa pelo ponto médio. Todos os pontos dela estão à mesma distância de A e de B."
+    },
+    {
+     "letter": "C",
+     "text": "Em qualquer ponto do segmento AB.",
+     "value": null,
+     "correct": false,
+     "why": "Num ponto do segmento mais perto de A, a distância até A é menor que até B. No segmento, só o ponto médio serve."
+    },
+    {
+     "letter": "D",
+     "text": "Em qualquer ponto da circunferência de centro A que passa por B.",
+     "value": null,
+     "correct": false,
+     "why": "Nessa circunferência, todos os pontos ficam à mesma distância de A, mas não de B."
+    },
+    {
+     "letter": "E",
+     "text": "Em qualquer ponto da reta que passa por A e por B.",
+     "value": null,
+     "correct": false,
+     "why": "Na reta AB, só o ponto médio fica à mesma distância das duas casas. A linha certa é perpendicular a AB."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Os pontos à mesma distância de A e de B formam a mediatriz do segmento AB.",
+    "Para traçá-la: marque o ponto médio de AB e trace a reta perpendicular a AB por esse ponto.",
+    "O poste pode ficar em qualquer ponto dessa reta."
+   ],
+   "check": "Escolha um ponto da mediatriz e ligue-o a A e a B: os dois triângulos formados com o ponto médio são congruentes, então as distâncias são iguais."
+  },
+  {
+   "n": 24,
+   "code": "D26",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Simplificar uma fração algébrica",
+   "descriptor": "Resolver problemas que envolvam a simplificação de expressões algébricas que envolvam produtos notáveis e fatoração.",
+   "stem": [
+    "Considere a expressão (x² − 9)/(x² + 6x + 9), com x ≠ −3."
+   ],
+   "table": null,
+   "ask": "Qual é a forma mais simples dessa expressão?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(x + 3)/(x − 3)",
+     "value": null,
+     "correct": false,
+     "why": "Fatorou certo, mas inverteu o resultado: o (x − 3) está no numerador."
+    },
+    {
+     "letter": "B",
+     "text": "−9/(6x + 9)",
+     "value": null,
+     "correct": false,
+     "why": "Cancelou o x² de cima com o x² de baixo. Só se cancelam fatores (o que está multiplicando), nunca termos de uma soma."
+    },
+    {
+     "letter": "C",
+     "text": "(x − 3)²/(x + 3)²",
+     "value": null,
+     "correct": false,
+     "why": "Trocou x² − 9 por (x − 3)². A diferença de quadrados é x² − 9 = (x − 3)(x + 3)."
+    },
+    {
+     "letter": "D",
+     "text": "(x − 3)/(x + 3)",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. x² − 9 = (x − 3)(x + 3) e x² + 6x + 9 = (x + 3)². Cancelando um (x + 3), sobra (x − 3)/(x + 3)."
+    },
+    {
+     "letter": "E",
+     "text": "x − 3",
+     "value": null,
+     "correct": false,
+     "why": "Cancelou o (x + 3) de cima com o denominador inteiro. Mas x² + 6x + 9 = (x + 3)(x + 3): sobra um (x + 3) embaixo."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Numerador: diferença de quadrados, x² − 9 = (x − 3)(x + 3).",
+    "Denominador: trinômio quadrado perfeito, x² + 6x + 9 = (x + 3)².",
+    "Cancele o fator comum (x + 3): (x − 3)/(x + 3)."
+   ],
+   "check": "Com x = 1: (1 − 9)/(1 + 6 + 9) = −8/16 = −1/2, e (1 − 3)/(1 + 3) = −2/4 = −1/2."
+  },
+  {
+   "n": 25,
+   "code": "D25",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Ler a lei no gráfico",
+   "descriptor": "Resolver problemas que envolvam a representação gráfica de funções polinomiais de 1º grau.",
+   "stem": [
+    "O gráfico mostra o valor cobrado pelo aluguel de uma bicicleta, de acordo com o número de horas de uso. O valor tem uma parte fixa e uma parte que aumenta sempre o mesmo tanto a cada hora."
+   ],
+   "table": null,
+   "figure": {
+    "file": "assets/figuras/avalia/e3-completo/q25.png",
+    "alt": "Gráfico de uma reta. No eixo horizontal, tempo em horas, de 0 a 6. No eixo vertical, valor em reais, de 0 a 30. A reta passa pelos pontos (0; 6) e (5; 26), que estão marcados.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.75
+   },
+   "ask": "Quanto custa alugar a bicicleta por 8 horas?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 32,00",
+     "value": 32,
+     "correct": false,
+     "why": "Esqueceu a parte fixa: fez só 4 · 8 = 32. O gráfico começa em 6, que é cobrado mesmo com 0 hora."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 38,00",
+     "value": 38,
+     "correct": true,
+     "why": "Acerto. A taxa por hora é (26 − 6) ÷ 5 = 4. A lei é V = 4h + 6, e V(8) = 32 + 6 = 38."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 41,60",
+     "value": 41.6,
+     "correct": false,
+     "why": "Usou proporção: 26 ÷ 5 · 8 = 41,60. O valor não é proporcional às horas, porque tem a parte fixa de 6 reais."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 44,00",
+     "value": 44,
+     "correct": false,
+     "why": "Usou o 6 como valor por hora a partir de 5 horas: 26 + 3 · 6 = 44. O 6 é a parte fixa; por hora são 4 reais."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 48,00",
+     "value": 48,
+     "correct": false,
+     "why": "Usou o 6 como valor por hora: 6 · 8 = 48. O 6 é onde a reta corta o eixo vertical, a parte fixa."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "A reta corta o eixo vertical em 6: é a parte fixa.",
+    "De 0 a 5 horas, o valor sobe de 6 para 26: 20 reais em 5 horas, 4 reais por hora.",
+    "Lei: V = 4h + 6. Para 8 horas: V = 4 · 8 + 6 = 38 reais."
+   ],
+   "check": "A lei confere com o gráfico: V(0) = 6 e V(5) = 20 + 6 = 26."
+  },
+  {
+   "n": 26,
+   "code": "D38",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Área que muda com os lados",
+   "descriptor": "Resolver problemas utilizando produtos notáveis em situações contextualizadas.",
+   "stem": [
+    "Um terreno quadrado tem x metros de lado, com x maior que 5. O dono vai mudar a cerca: o comprimento do terreno vai aumentar 5 m e a largura vai diminuir 5 m, e o terreno vai virar um retângulo."
+   ],
+   "table": null,
+   "ask": "O que acontece com a área do terreno?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Diminui 25 m².",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. A área nova é (x + 5)(x − 5) = x² − 25, então fica 25 m² menor, qualquer que seja x."
+    },
+    {
+     "letter": "B",
+     "text": "Fica igual.",
+     "value": null,
+     "correct": false,
+     "why": "Achou que o que aumenta de um lado compensa o que diminui do outro. Teste com x = 10: antes, 10 · 10 = 100 m²; depois, 15 · 5 = 75 m²."
+    },
+    {
+     "letter": "C",
+     "text": "Aumenta 25 m².",
+     "value": null,
+     "correct": false,
+     "why": "Errou o sinal: (x + 5)(x − 5) = x² − 25, e não x² + 25."
+    },
+    {
+     "letter": "D",
+     "text": "Diminui 10 m².",
+     "value": null,
+     "correct": false,
+     "why": "Somou as mudanças dos lados (5 + 5). A diferença de área é 5 · 5 = 25 m²."
+    },
+    {
+     "letter": "E",
+     "text": "Depende do valor de x.",
+     "value": null,
+     "correct": false,
+     "why": "A área nova é sempre x² − 25: a diferença é 25 m² para qualquer x maior que 5."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Antes: área x².",
+    "Depois: lados x + 5 e x − 5; área (x + 5)(x − 5).",
+    "Produto da soma pela diferença: (x + 5)(x − 5) = x² − 25. A área diminui 25 m²."
+   ],
+   "check": "Com x = 10: 100 m² antes e 15 · 5 = 75 m² depois, 25 a menos. Com x = 20: 400 e 25 · 15 = 375, 25 a menos de novo."
+  },
+  {
+   "n": 27,
+   "code": "C10",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Converter graus em radianos",
+   "descriptor": "Estabelecer relações entre graus e radianos, convertendo essas medidas entre si.",
+   "stem": [
+    "Entre o meio-dia e as 4 horas da tarde, o ponteiro das horas de um relógio gira 120°."
+   ],
+   "table": null,
+   "ask": "Quanto mede esse giro em radianos?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "π/120 rad",
+     "value": 0.026179916666666667,
+     "correct": false,
+     "why": "Dividiu π por 120. Use a regra de três com 180° = π rad: 120° = (120 ÷ 180) · π."
+    },
+    {
+     "letter": "B",
+     "text": "π/3 rad",
+     "value": 1.0471966666666666,
+     "correct": false,
+     "why": "Usou 360° = π rad. Meia volta (180°) é que vale π rad; a volta inteira vale 2π rad."
+    },
+    {
+     "letter": "C",
+     "text": "2π/3 rad",
+     "value": 2.094393333333333,
+     "correct": true,
+     "why": "Acerto. 180° = π rad, então 120° = (120 ÷ 180) · π = 2π/3 rad."
+    },
+    {
+     "letter": "D",
+     "text": "3π/2 rad",
+     "value": 4.712384999999999,
+     "correct": false,
+     "why": "Inverteu a fração: (180 ÷ 120) · π. Como 120° é menos que 180°, o resultado tem de ser menos que π."
+    },
+    {
+     "letter": "E",
+     "text": "120π rad",
+     "value": 376.9908,
+     "correct": false,
+     "why": "Só acrescentou o π ao número de graus. Para converter, multiplique por π e divida por 180."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Use a relação 180° = π rad.",
+    "120° = (120 ÷ 180) · π = (2/3) · π.",
+    "120° = 2π/3 rad."
+   ],
+   "check": "120° é 2/3 de 180°, então é 2/3 de π. E 2π/3 ≈ 2,09 rad, um pouco menos que π ≈ 3,14 rad."
+  },
+  {
+   "n": 28,
+   "code": "D08",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Equação do 2º grau pela fatoração",
+   "descriptor": "Fatorar expressões algébricas relacionando-as aos respectivos produtos notáveis e equações do 2º grau.",
+   "stem": [
+    "Para resolver a equação x² + 8x + 16 = 0, um aluno usou a fatoração."
+   ],
+   "table": null,
+   "ask": "Qual é a solução da equação?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "x = 4",
+     "value": null,
+     "correct": false,
+     "why": "Fatorou certo, (x + 4)² = 0, mas errou o sinal no fim: x + 4 = 0 dá x = −4."
+    },
+    {
+     "letter": "B",
+     "text": "x = −4 ou x = 4",
+     "value": null,
+     "correct": false,
+     "why": "Deu duas raízes. (x + 4)² = 0 só acontece quando x + 4 = 0: a raiz é uma só (x = −4, raiz dupla)."
+    },
+    {
+     "letter": "C",
+     "text": "x = 0 ou x = −8",
+     "value": null,
+     "correct": false,
+     "why": "Fatorou como x(x + 8) e esqueceu o 16. Com x = 0, a expressão vale 16, e não 0."
+    },
+    {
+     "letter": "D",
+     "text": "x = −2 ou x = −8",
+     "value": null,
+     "correct": false,
+     "why": "Buscou dois números com produto 16, mas 2 + 8 = 10, não 8. Os números certos são 4 e 4."
+    },
+    {
+     "letter": "E",
+     "text": "x = −4",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. x² + 8x + 16 = (x + 4)², um trinômio quadrado perfeito. (x + 4)² = 0 dá x + 4 = 0, então x = −4."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Reconheça o trinômio quadrado perfeito: x² + 8x + 16 = x² + 2 · 4 · x + 4² = (x + 4)².",
+    "(x + 4)² = 0 só quando x + 4 = 0.",
+    "x = −4."
+   ],
+   "check": "(−4)² + 8 · (−4) + 16 = 16 − 32 + 16 = 0."
+  }
+ ]
+}

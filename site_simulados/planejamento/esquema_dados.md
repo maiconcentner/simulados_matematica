@@ -59,16 +59,6 @@ Gerado por `tools/atualizar_catalogo.py`; não editar à mão. Tem:
 
 O painel monta tudo a partir dele e só abre o JSON completo quando o aluno entra no simulado.
 
-## Simulados gerados (só no aparelho do aluno)
-
-O gerador (`js/gerador/`) produz simulados no mesmo formato acima, guardados em `localStorage`, na lista `gerados`. Diferenças:
-- `id` começa com `G-` (por exemplo `G-1A2B3C`) e `area` é `"gerado"`;
-- campo `gerado`: `{"tipo": "versao", "base": "S07", "semente": 123, "criadoEm": "AAAA-MM-DD"}` ou `{"tipo": "misto", "codigos": ["D30", "D05"], ...}`;
-- cada questão tem `modelo` (o id do modelo que a gerou, como `"S07-3"`);
-- a figura vem em `figure.svg` (SVG desenhado pelo site) em vez de `figure.file`; `alt` continua obrigatório.
-
-Na versão nova de um simulado de prova, `pontuacao` e o `valor` de cada questão são os do original.
-
 ## `data/config.json`
 
 Faixas de nota (`escala`), regras de nota, temas, XP, títulos do jogador, medalhas e conquistas. Ver `planejamento/resultado_gamificado.md`.

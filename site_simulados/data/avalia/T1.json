@@ -1,0 +1,537 @@
+{
+ "id": "T1",
+ "area": "avalia",
+ "titulo": "Treino · Álgebra",
+ "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+ "semana": null,
+ "etapa": 3,
+ "data": "2026-11-11",
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Produtos notáveis, fatoração, funções e equação do 2º grau (questões das Semanas 1 a 7)",
+ "status": "publicado",
+ "modo": "treino",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "D10": "tire a raiz do primeiro e do último termo, confira se o termo do meio é o dobro do produto dessas raízes e use o sinal do termo do meio no binômio: a² − 2ab + b² = (a − b)².",
+  "D14": "para reconhecer o lado de um quadrado perfeito, tire a raiz quadrada dos termos das pontas e confira se o dobro do produto deles bate com o termo do meio.",
+  "D09": "para fatorar uma diferença de quadrados (a² − b²), extraia a raiz de cada termo e escreva (a − b)(a + b); não confunda com o quadrado da diferença, que tem um termo do meio.",
+  "D11": "leia cada eixo separadamente: o domínio são os valores de x (eixo horizontal) e a imagem são os valores de y (eixo vertical), com os extremos incluídos quando o gráfico tem bolinha cheia.",
+  "D25": "leia no gráfico o valor inicial (onde a reta corta o eixo vertical) e quanto o valor sobe por unidade, escreva a lei e só então calcule valores fora do trecho desenhado, sem tratar a função como proporcional.",
+  "D08": "confira se o trinômio é quadrado perfeito, a² − 2ab + b² = (a − b)², e lembre que (x − 5)² = 0 só acontece quando x − 5 = 0."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "D10",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Termo que completa o trinômio quadrado perfeito",
+   "descriptor": "Fatorar expressões com o trinômio do quadrado perfeito.",
+   "stem": [
+    "Um engenheiro projetou um deck quadrado para uma praça. A área desse deck, em metros quadrados, é dada pela expressão x² + 14x + k, em que k é um número positivo. O lado do deck mede (x + a) metros, para algum número a."
+   ],
+   "table": null,
+   "ask": "Qual é o valor de k, em metros quadrados?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "7",
+     "correct": false,
+     "why": "Calculou o valor de a (a metade de 14), mas esqueceu de elevar ao quadrado. O termo que falta é a², e não a."
+    },
+    {
+     "letter": "B",
+     "text": "14",
+     "correct": false,
+     "why": "Repetiu o coeficiente do termo do meio (14) como se ele fosse o termo independente."
+    },
+    {
+     "letter": "C",
+     "text": "28",
+     "correct": false,
+     "why": "Multiplicou 14 por 2 em vez de dividir por 2. O termo do meio de (x + a)² é 2ax, então a = 14 ÷ 2."
+    },
+    {
+     "letter": "D",
+     "text": "49",
+     "correct": true,
+     "why": "Acerto. 14x = 2 · x · a, logo a = 7, e k = a² = 49. A expressão x² + 14x + 49 é o quadrado de (x + 7)."
+    },
+    {
+     "letter": "E",
+     "text": "196",
+     "correct": false,
+     "why": "Elevou o 14 ao quadrado (14² = 196) em vez de elevar a metade dele. O termo do meio é o dobro de a, então a = 7 e a² = 49."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Um quadrado de lado (x + a) tem área (x + a)² = x² + 2ax + a².",
+    "Comparando com x² + 14x + k, o termo do meio dá 2a = 14, logo a = 7.",
+    "O termo independente é a² = 7² = 49. Então k = 49 e a expressão é x² + 14x + 49 = (x + 7)²."
+   ],
+   "check": "Testando x = 1: o lado seria 1 + 7 = 8 e a área 8² = 64. Pela expressão: 1 + 14 + 49 = 64. Confere.",
+   "origem": "S04 Q2"
+  },
+  {
+   "n": 2,
+   "code": "D14",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Produto notável (quadrado da soma)",
+   "descriptor": "Resolver e/ou interpretar produtos notáveis (quadrado da soma e da diferença de dois termos) na forma algébrica.",
+   "stem": [
+    "Uma praça terá um canteiro quadrado de lado (2p + 5q) metros, sendo p e q medidas em metros. A prefeitura precisa da expressão algébrica que representa a área desse canteiro, em função de p e q, para calcular a quantidade de grama necessária."
+   ],
+   "figure": {
+    "alt": "Quadrado com todos os quatro lados medindo (2p + 5q) metros.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s02/q2.png"
+   },
+   "table": null,
+   "ask": "Qual expressão representa corretamente a área do canteiro?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4p² + 20pq + 25q²",
+     "correct": true,
+     "why": "Acerto. (a+b)² = a² + 2ab + b², com a = 2p e b = 5q: (2p)² + 2(2p)(5q) + (5q)² = 4p² + 20pq + 25q²."
+    },
+    {
+     "letter": "B",
+     "text": "4p² + 25q²",
+     "correct": false,
+     "why": "Elevou cada termo ao quadrado mas esqueceu o dobro do produto dos termos (2ab). O quadrado da soma tem três termos, não dois."
+    },
+    {
+     "letter": "C",
+     "text": "4p² + 10pq + 25q²",
+     "correct": false,
+     "why": "Usou o produto dos termos, (2p)(5q) = 10pq, sem multiplicar por 2. O termo do meio de (a+b)² é 2ab, não ab."
+    },
+    {
+     "letter": "D",
+     "text": "p² + 20pq + 25q²",
+     "correct": false,
+     "why": "Elevou ao quadrado a variável do primeiro termo mas esqueceu de elevar também o coeficiente: (2p)² é 4p², não p²."
+    },
+    {
+     "letter": "E",
+     "text": "4p² − 20pq + 25q²",
+     "correct": false,
+     "why": "Aplicou a fórmula do quadrado da diferença, (a−b)² = a² − 2ab + b², em vez da soma. O lado do canteiro é (2p + 5q), uma soma, não uma diferença."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "A área do canteiro é o quadrado do lado: (2p + 5q)². Esse é o quadrado de uma soma de dois termos, a = 2p e b = 5q.",
+    "Aplicar (a + b)² = a² + 2ab + b²: a² = (2p)² = 4p²; 2ab = 2 × (2p) × (5q) = 20pq; b² = (5q)² = 25q².",
+    "Somando os três termos: 4p² + 20pq + 25q²."
+   ],
+   "check": "Substituindo p = 2 e q = 3: o lado vale 2(2) + 5(3) = 19 m, e a área deveria ser 19² = 361 m². Na expressão 4p² + 20pq + 25q², com p = 2 e q = 3: 16 + 120 + 225 = 361. Confere.",
+   "origem": "S02 Q2"
+  },
+  {
+   "n": 3,
+   "code": "D09",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Diferença de quadrados (fatoração)",
+   "descriptor": "Fatorar expressões com diferenças de quadrados.",
+   "stem": [
+    "Um pátio quadrado de uma fábrica tem lado medindo 12 metros e é todo pavimentado com concreto. No centro desse pátio, foi construído um canteiro quadrado de flores, de lado x metros (x menor que 12 metros)."
+   ],
+   "figure": {
+    "alt": "Quadrado maior representando o pátio, de lado 12 m, com um quadrado menor de lado x no centro representando o canteiro de flores.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s03/q2.png"
+   },
+   "table": null,
+   "ask": "Qual expressão fatorada representa, em metros quadrados, a área do pátio que continua pavimentada (ou seja, sem o canteiro)?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(12 − x)(12 + x)",
+     "correct": true,
+     "why": "Acerto. A área restante é a diferença entre os quadrados dos lados: 12² − x² = (12 − x)(12 + x)."
+    },
+    {
+     "letter": "B",
+     "text": "(12 + x)²",
+     "correct": false,
+     "why": "Aplicou o quadrado da soma, (a+b)² = a² + 2ab + b², no lugar da diferença de quadrados. O canteiro é subtraído da área do pátio, não somado a ela."
+    },
+    {
+     "letter": "C",
+     "text": "(12 − x)²",
+     "correct": false,
+     "why": "Confundiu a² − b² com (a − b)². Faltou o fator (a + b): a diferença de quadrados não é o quadrado da diferença."
+    },
+    {
+     "letter": "D",
+     "text": "144 − x",
+     "correct": false,
+     "why": "Subtraiu x da área do pátio sem elevar x ao quadrado. A área do canteiro quadrado de lado x é x², não x."
+    },
+    {
+     "letter": "E",
+     "text": "(x − 12)(x + 12)",
+     "correct": false,
+     "why": "Trocou a ordem dos termos na fatoração. Como x é menor que 12, essa expressão resulta em um valor negativo, o que não pode representar uma área."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "A área do pátio inteiro é 12² = 144 m². A área do canteiro quadrado é x².",
+    "A área restante é a diferença: 144 − x², uma diferença de quadrados.",
+    "Fatorando: 144 − x² = 12² − x² = (12 − x)(12 + x)."
+   ],
+   "check": "Testando x = 5: área restante = 144 − 25 = 119 m². Pela forma fatorada: (12 − 5)(12 + 5) = 7 × 17 = 119. Confere.",
+   "origem": "S03 Q2"
+  },
+  {
+   "n": 4,
+   "code": "D11",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Imagem de uma função em um gráfico",
+   "descriptor": "Identificar domínio ou imagem de uma função.",
+   "stem": [
+    "Um reservatório com 600 litros de água começou a ser esvaziado por um ralo, com vazão constante. O gráfico mostra o volume V de água no reservatório, em litros, em função do tempo t, em minutos, desde a abertura do ralo até o reservatório ficar vazio."
+   ],
+   "figure": {
+    "alt": "Gráfico de uma reta decrescente: volume V em litros no eixo vertical, de 0 a 600, e tempo t em minutos no eixo horizontal, de 0 a 30. A reta liga o ponto (0; 600) ao ponto (30; 0), ambos marcados com bolinha cheia.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s04/q5.png"
+   },
+   "table": null,
+   "ask": "Qual é o conjunto imagem dessa função?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0 ≤ t ≤ 30",
+     "correct": false,
+     "why": "Indicou o domínio (valores de t, no eixo horizontal) no lugar da imagem (valores de V, no eixo vertical)."
+    },
+    {
+     "letter": "B",
+     "text": "0 ≤ t ≤ 600",
+     "correct": false,
+     "why": "Misturou os eixos: usou a letra t com o maior valor de V. O tempo só vai até 30 minutos."
+    },
+    {
+     "letter": "C",
+     "text": "0 ≤ V ≤ 30",
+     "correct": false,
+     "why": "Misturou os eixos: usou a letra V com o maior valor de t. O volume vai até 600 litros."
+    },
+    {
+     "letter": "D",
+     "text": "0 < V < 600",
+     "correct": false,
+     "why": "Excluiu os extremos. Os pontos (0; 600) e (30; 0) fazem parte do gráfico (bolinhas cheias), então V = 600 e V = 0 também pertencem à imagem."
+    },
+    {
+     "letter": "E",
+     "text": "0 ≤ V ≤ 600",
+     "correct": true,
+     "why": "Acerto. A imagem é o conjunto dos valores de V (eixo vertical) que o gráfico atinge: de 0 (reservatório vazio) até 600 (cheio), incluindo os extremos."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "O domínio reúne os valores do eixo horizontal (t), e a imagem reúne os valores do eixo vertical (V) que o gráfico atinge.",
+    "O gráfico começa em V = 600 (quando t = 0) e termina em V = 0 (quando t = 30), passando por todos os valores intermediários.",
+    "Logo, a imagem é o conjunto dos valores de V entre 0 e 600, incluindo os extremos: 0 ≤ V ≤ 600."
+   ],
+   "check": "No mesmo gráfico, o domínio seria 0 ≤ t ≤ 30 (eixo horizontal). Quem responde com 0 ≤ t ≤ 30 leu o eixo errado.",
+   "origem": "S04 Q5"
+  },
+  {
+   "n": 5,
+   "code": "D25",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Gráfico de uma função afim",
+   "descriptor": "Resolver problemas que envolvam a representação gráfica de funções polinomiais de 1º grau.",
+   "stem": [
+    "Uma empresa de entregas cobra uma taxa fixa por entrega mais um valor por quilômetro percorrido. O gráfico mostra o valor cobrado, em reais, em função da distância, de 0 a 10 quilômetros."
+   ],
+   "figure": {
+    "alt": "Gráfico de uma reta crescente: valor em reais no eixo vertical e distância em quilômetros no eixo horizontal, de 0 a 10. A reta começa no ponto (0; 8) e termina no ponto (10; 38), ambos marcados.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s05/q3.png"
+   },
+   "table": null,
+   "ask": "Mantida a mesma forma de cobrança, qual é o valor, em reais, de uma entrega de 15 quilômetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "45,00",
+     "correct": false,
+     "why": "Multiplicou 15 km por 3 reais, mas esqueceu a taxa fixa de 8 reais, que o gráfico mostra no ponto em que a reta corta o eixo vertical."
+    },
+    {
+     "letter": "B",
+     "text": "53,00",
+     "correct": true,
+     "why": "Acerto. Pelo gráfico, a taxa fixa é 8 (valor em 0 km) e o valor sobe 38 − 8 = 30 em 10 km, ou seja, 3 por km: f(x) = 8 + 3x. Para 15 km, f(15) = 8 + 45 = 53."
+    },
+    {
+     "letter": "C",
+     "text": "57,00",
+     "correct": false,
+     "why": "Tratou a função como proporcional: se 10 km custam 38, então 15 km custariam 38 × 1,5 = 57. Isso só vale quando a reta passa pela origem; aqui existe uma taxa fixa."
+    },
+    {
+     "letter": "D",
+     "text": "61,00",
+     "correct": false,
+     "why": "Somou o valor de 10 km (38) ao valor de 5 km (23), como se 15 km fossem duas entregas. Assim a taxa fixa de 8 reais entra duas vezes."
+    },
+    {
+     "letter": "E",
+     "text": "65,00",
+     "correct": false,
+     "why": "Calculou o valor por quilômetro como 38 ÷ 10 = 3,8, sem descontar a taxa fixa, e fez 8 + 3,8 × 15 = 65. O valor por km é a variação: (38 − 8) ÷ 10 = 3."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "No gráfico, a reta corta o eixo vertical em 8: essa é a taxa fixa, cobrada mesmo com 0 km.",
+    "De 0 a 10 km, o valor sobe de 8 para 38, ou seja, 30 reais em 10 km: 3 reais por quilômetro. A lei é f(x) = 8 + 3x.",
+    "Para 15 km: f(15) = 8 + 3 · 15 = 8 + 45 = 53 reais."
+   ],
+   "check": "Conferindo com o gráfico: f(10) = 8 + 30 = 38, o ponto marcado. E 15 km custa 15 reais a mais que 10 km (5 km × 3 reais): 38 + 15 = 53.",
+   "origem": "S05 Q3"
+  },
+  {
+   "n": 6,
+   "code": "D14",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Produto notável (fatoração do quadrado perfeito)",
+   "descriptor": "Reconhecer a representação algébrica dos produtos notáveis.",
+   "stem": [
+    "Uma fábrica produz adesivos quadrados para revestir pisos. A área de cada adesivo, em centímetros quadrados, é dada pela expressão 9x² + 30x + 25."
+   ],
+   "figure": {
+    "alt": "Quadrado representando o adesivo, com a área 9x² + 30x + 25 indicada em seu interior.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s03/q6.png"
+   },
+   "table": null,
+   "ask": "Qual expressão representa a medida do lado desse adesivo, em centímetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3x − 5",
+     "correct": false,
+     "why": "Tira a raiz quadrada dos termos das pontas mas erra o sinal, tratando o trinômio como se fosse uma diferença de quadrados."
+    },
+    {
+     "letter": "B",
+     "text": "9x + 25",
+     "correct": false,
+     "why": "\"Divide\" os termos da área sem extrair raiz quadrada nenhuma: 9x² não é o dobro de 9x, e 25 já é o termo que deveria ter sua raiz quadrada calculada (5), não mantido."
+    },
+    {
+     "letter": "C",
+     "text": "3x + 5",
+     "correct": true,
+     "why": "Acerto. 9x² + 30x + 25 é um trinômio quadrado perfeito: 9x² = (3x)², 25 = 5² e 30x = 2 × (3x) × 5. Logo, a expressão é (3x + 5)², e o lado do adesivo é 3x + 5."
+    },
+    {
+     "letter": "D",
+     "text": "Não é possível indicar sem saber o valor de x",
+     "correct": false,
+     "why": "Não reconhece 9x² + 30x + 25 como um quadrado perfeito. Como os três termos conferem com (a + b)², a expressão pode ser fatorada sem precisar de um valor numérico de x."
+    },
+    {
+     "letter": "E",
+     "text": "3x² + 5",
+     "correct": false,
+     "why": "Erra o expoente ao tirar a raiz de 9x²: a raiz quadrada de 9x² é 3x, não 3x² (a raiz do quadrado de x é x, não x²)."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "A expressão 9x² + 30x + 25 é um trinômio quadrado perfeito: 9x² = (3x)², 25 = 5² e o termo do meio, 30x, é igual ao dobro do produto dos dois: 2 × (3x) × 5 = 30x.",
+    "Como os três termos conferem com (a + b)² = a² + 2ab + b², com a = 3x e b = 5, a expressão é o quadrado de (3x + 5).",
+    "O lado do adesivo é, portanto, 3x + 5 centímetros."
+   ],
+   "check": "Testando x = 2: lado = 3(2) + 5 = 11 cm, e a área seria 11² = 121 cm². Pela expressão original: 9(2)² + 30(2) + 25 = 36 + 60 + 25 = 121. Confere.",
+   "origem": "S03 Q6"
+  },
+  {
+   "n": 7,
+   "code": "D10",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Trinômio quadrado perfeito: lado do quadrado a partir da área",
+   "descriptor": "Fatorar expressões com o trinômio do quadrado perfeito.",
+   "stem": [
+    "Um tapete quadrado tem área, em metros quadrados, dada pela expressão 9x² − 24x + 16, em que x é um número maior que 2."
+   ],
+   "table": null,
+   "ask": "Qual expressão representa a medida do lado desse tapete, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3x − 12",
+     "correct": false,
+     "why": "Usou a metade do termo do meio (24 ÷ 2 = 12) como segundo termo. O segundo termo é a raiz de 16, que é 4; o termo do meio é 2 · 3x · 4 = 24x."
+    },
+    {
+     "letter": "B",
+     "text": "(3x − 4)²",
+     "correct": false,
+     "why": "Escreveu a área na forma fatorada, e não o lado. A área é (3x − 4)²; o lado é o que está elevado ao quadrado: 3x − 4."
+    },
+    {
+     "letter": "C",
+     "text": "9x − 4",
+     "correct": false,
+     "why": "Tirou a raiz só de 16 e copiou o 9x. A raiz de 9x² é 3x."
+    },
+    {
+     "letter": "D",
+     "text": "3x + 4",
+     "correct": false,
+     "why": "Acertou os termos e errou o sinal. Como o termo do meio é negativo (−24x), o lado é 3x − 4; (3x + 4)² dá 9x² + 24x + 16."
+    },
+    {
+     "letter": "E",
+     "text": "3x − 4",
+     "correct": true,
+     "why": "Acerto. 9x² = (3x)², 16 = 4² e o termo do meio confere: 2 · 3x · 4 = 24x, com sinal de menos. Logo, 9x² − 24x + 16 = (3x − 4)², e o lado mede 3x − 4."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "A área de um quadrado é o lado ao quadrado; então é preciso escrever 9x² − 24x + 16 como o quadrado de um binômio.",
+    "Raízes do primeiro e do último termo: √(9x²) = 3x e √16 = 4. Termo do meio: 2 · 3x · 4 = 24x, que aparece com sinal de menos.",
+    "Logo, 9x² − 24x + 16 = (3x − 4)², e o lado mede 3x − 4."
+   ],
+   "check": "Para x = 3, a área é 81 − 72 + 16 = 25 m² e o lado é 3 · 3 − 4 = 5 m; 5² = 25, confere. Com 3x + 4 o lado daria 13 m e a área, 169 m².",
+   "origem": "S06 Q6"
+  },
+  {
+   "n": 8,
+   "code": "D09",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Diferença de quadrados (área restante da chapa)",
+   "descriptor": "Fatorar expressões com diferenças de quadrados.",
+   "stem": [
+    "Uma chapa metálica quadrada tem lados de 5a centímetros. De um dos cantos da chapa foi cortado um pedaço quadrado de lado 3b centímetros, como mostra a figura (com 3b menor que 5a)."
+   ],
+   "figure": {
+    "alt": "Quadrado de lado 5a com um quadrado menor de lado 3b removido do canto superior direito, desenhado com linha tracejada. A parte que sobrou tem formato de L.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.05,
+    "file": "assets/figuras/avalia/s04/q6.png"
+   },
+   "table": null,
+   "ask": "Qual expressão fatorada representa a área, em centímetros quadrados, da parte que sobrou da chapa?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(5a − 3b)²",
+     "correct": false,
+     "why": "Confundiu a² − b² com (a − b)². Faltou o fator (a + b): a diferença de quadrados não é o quadrado da diferença."
+    },
+    {
+     "letter": "B",
+     "text": "(5a − 3b)(5a + 3b)",
+     "correct": true,
+     "why": "Acerto. A área restante é a diferença entre a chapa inteira e o pedaço cortado: (5a)² − (3b)² = 25a² − 9b² = (5a − 3b)(5a + 3b)."
+    },
+    {
+     "letter": "C",
+     "text": "(5a + 3b)²",
+     "correct": false,
+     "why": "Aplicou o quadrado da soma no lugar da diferença de quadrados. O pedaço cortado é subtraído da chapa, não somado a ela."
+    },
+    {
+     "letter": "D",
+     "text": "(25a − 9b)(25a + 9b)",
+     "correct": false,
+     "why": "Montou o produto da soma pela diferença, mas usou 25a e 9b, que são as áreas, em vez de extrair as raízes: a² − b² pede (a − b)(a + b), com a = 5a e b = 3b."
+    },
+    {
+     "letter": "E",
+     "text": "5a − 3b",
+     "correct": false,
+     "why": "Subtraiu os lados em vez de calcular a diferença das áreas. 5a − 3b é uma medida de comprimento, e a pergunta pede a área da parte que sobrou."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "A área da chapa inteira é (5a)² = 25a². A área do pedaço cortado é (3b)² = 9b².",
+    "A área que sobrou é a diferença: 25a² − 9b², uma diferença de quadrados, pois 25a² = (5a)² e 9b² = (3b)².",
+    "Fatorando: 25a² − 9b² = (5a − 3b)(5a + 3b)."
+   ],
+   "check": "Testando a = 2 e b = 1: área restante = 100 − 9 = 91 cm². Pela forma fatorada: (10 − 3)(10 + 3) = 7 × 13 = 91. Confere.",
+   "origem": "S04 Q6"
+  },
+  {
+   "n": 9,
+   "code": "D08",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Fatorar o trinômio e achar as raízes da equação",
+   "descriptor": "Fatorar expressões algébricas relacionando-as aos respectivos produtos notáveis e equações do 2º grau.",
+   "stem": [
+    "Para resolver a equação x² − 10x + 25 = 0, uma estudante fatorou o primeiro membro usando um produto notável."
+   ],
+   "table": null,
+   "ask": "Qual alternativa mostra a fatoração correta e a solução da equação?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "(x + 5)² = 0, então x = −5.",
+     "correct": false,
+     "why": "Errou o sinal do binômio. Como o termo do meio é −10x, o trinômio é (x − 5)²; (x + 5)² dá x² + 10x + 25."
+    },
+    {
+     "letter": "B",
+     "text": "(x − 5)(x + 5) = 0, então x = 5 ou x = −5.",
+     "correct": false,
+     "why": "Confundiu o trinômio quadrado perfeito com a diferença de quadrados. (x − 5)(x + 5) dá x² − 25, sem o termo −10x."
+    },
+    {
+     "letter": "C",
+     "text": "x(x − 10) + 25 = 0, então x = 0 ou x = 10.",
+     "correct": false,
+     "why": "Pôs x em evidência só nos dois primeiros termos e ignorou o 25. A forma x(x − 10) + 25 não é um produto igual a zero, então não dá para tirar as raízes dela."
+    },
+    {
+     "letter": "D",
+     "text": "(x − 5)² = 0, então x = 5.",
+     "correct": true,
+     "why": "Acerto. x² − 10x + 25 = (x − 5)², porque x² = (x)², 25 = 5² e 2 · x · 5 = 10x, com sinal de menos. (x − 5)² = 0 só quando x − 5 = 0, então x = 5."
+    },
+    {
+     "letter": "E",
+     "text": "(x − 5)² = 0, então x = 5 ou x = −5.",
+     "correct": false,
+     "why": "Fatorou certo, mas achou duas raízes. (x − 5)² = 0 só acontece quando x − 5 = 0; o ± aparece em x² = 25, não aqui. Para x = −5: 25 + 50 + 25 = 100, não dá zero."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "x² − 10x + 25 tem dois quadrados, x² = (x)² e 25 = 5², e o termo do meio é 2 · x · 5 = 10x, com sinal de menos.",
+    "Então é um trinômio quadrado perfeito: x² − 10x + 25 = (x − 5)².",
+    "(x − 5)² = 0 só quando x − 5 = 0. A solução é x = 5."
+   ],
+   "check": "Para x = 5: 25 − 50 + 25 = 0, confere. Para x = −5: 25 + 50 + 25 = 100, não serve.",
+   "origem": "S07 Q2"
+  }
+ ]
+}
