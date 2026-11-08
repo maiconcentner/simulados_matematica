@@ -11,12 +11,14 @@ Duas áreas:
 | Área | O que tem | Arquivos |
 |---|---|---|
 | **Simulados Avalia** | os simulados semanais por descritor (Semanas 1 a 7 prontas; as próximas entram com uma ferramenta) | `data/avalia/S01.json` a `S07.json` |
+| **Simulado Completo** | 28 questões como o Avalia+ (20 da etapa e 8 de conexão), para casa entre 13 e 17/11; cartão em destaque dentro de Simulados Avalia | `data/avalia/E3-COMPLETO.json` (o professor publica até 12/11; ver `planejamento/simulado_completo_etapa3.md`) |
 | **Simulados de prova** | treino no formato da avaliação somativa de cada etapa, organizado por etapa | `data/prova/E3-AV2.json` (Etapa 3, funções) |
 
 ## 2. Regras que não mudam
 
 1. **Sem nome institucional.** Nada do nome da rede de ensino, da escola ou da cidade em textos, imagens, nomes de arquivo, título da página ou metadados. A palavra "Avalia" pode aparecer (decisão do professor). `tools/validar_dados.py` procura esses nomes e falha se achar.
 2. **Sem dado de aluno no repositório nem na internet.** O site não envia nada a servidor nenhum. Apelido, respostas, notas, XP e conquistas ficam só no navegador do aluno (`localStorage`). Nenhum nome de aluno entra em arquivo do repositório.
+   - **Exceção (08/11/2026): as páginas de aula** `simulado.html` e `completo.html`, usadas nos notebooks da escola. Elas enviam turma, nome e respostas para a planilha do professor, pelo Apps Script, e recebem dela a lista de alunos. Nenhum nome de aluno nem e-mail entra no repositório; o código da aula fica nas Propriedades do script. Especificação em `planejamento/pagina_simulado_completo.md`.
 3. **A prova oficial nunca entra no site.** O repositório é público, e o gabarito fica dentro dos JSON. Os simulados de prova usam questões paralelas: mesmas habilidades, níveis e pesos, com contextos e números novos.
 4. **Português do Brasil, linguagem para 14 e 15 anos**, vírgula decimal, unidade junto do número. Não usar travessão em nenhum texto do site.
 5. **Celular primeiro.** Tudo funciona em 360 px de largura, sem rolagem lateral, com botões de pelo menos 44 px de altura.
@@ -51,6 +53,11 @@ assets/icones/          ícones do site (SVG próprios)
 tools/                  (já pronto) importar semana, gerar catálogo, validar
 planejamento/           este plano detalhado, especificações e referência
 tests/                  testes de ponta a ponta
+simulado.html           página de aula genérica (?id=<ID>&parte=N), com identificação e envio à planilha
+completo.html           entrada do Simulado Completo, em 4 partes
+js/aula/                código das páginas de aula (config.js tem a URL da planilha)
+css/aula.css            estilo extra das páginas de aula
+planejamento/apps_script/Code.gs  Apps Script da planilha do professor
 .nojekyll
 ```
 
@@ -67,6 +74,8 @@ tests/                  testes de ponta a ponta
 - Lista em cartões, da semana mais recente para a mais antiga: "Semana 7", temas (de `temas`), número de questões, as habilidades em etiquetas com o nome curto de `habilidades.json`.
 - Em cada cartão, o estado do aluno: novo, feito (com a melhor nota e a medalha) ou "dá para melhorar" (nota abaixo de 7).
 - Filtro por tema (Números, Álgebra e funções, Geometria, Grandezas e medidas, Estatística e probabilidade).
+
+- No topo, o **Simulado Completo** em destaque (`"destaque": true` no catálogo), com o tempo sugerido e, enquanto estiver `em_breve`, o selo "Libera em 12/11". As regras extras dele (cronômetro com pausa, grade 1 a 28, notas da etapa e de conexão, plano até a prova) estão em `planejamento/simulado_completo_etapa3.md`.
 
 ### 4.3 Simulados de prova (`#/prova`)
 - Agrupados por etapa, com um cabeçalho por etapa ("Etapa 3"). Hoje há um: **Simulado da Avaliação Somativa · Etapa 3** (funções, 10 questões, valendo 10).

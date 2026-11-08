@@ -1,0 +1,619 @@
+{
+ "id": "S08",
+ "area": "avalia",
+ "titulo": "Simulado Avalia · Semana 8",
+ "subtitulo": "10 questões com correção na hora",
+ "semana": 8,
+ "etapa": 3,
+ "data": "2026-11-11",
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Cap. 9 (volumes e unidades), conexão com o 8º ano (sequências, inequação, sistemas) e retomadas de E1 e E2",
+ "status": "em_breve",
+ "modo": "treino",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C12": "veja quanto a sequência aumenta de um termo para o outro (esse número multiplica o n) e ajuste o começo com o primeiro termo; teste a expressão em duas colunas.",
+  "D21": "multiplique as partes da frente e some os expoentes das potências de 10; confira as unidades antes (1 hora = 3 600 segundos).",
+  "D29": "use a altura da água, não a do recipiente, multiplique comprimento, largura e altura e só no fim passe para litros (1 L = 1 000 cm³).",
+  "D34": "some as partes (as idades), divida o total por essa soma para achar o valor de cada parte e multiplique pela parte de quem a pergunta pede.",
+  "D36": "lembre que 1 m³ = 1 000 L e 1 L = 1 000 mL; passe tudo para a mesma unidade antes de dividir.",
+  "C08": "escreva o gasto com x, monte a inequação com ≤ (no máximo) e resolva como equação; o \"igual\" também vale.",
+  "C15": "transforme cada compra numa equação: quantidade vezes preço de cada item, somados, igual ao total daquela compra.",
+  "D24": "divida a grandeza pedida primeiro pela outra (habitantes por km² = habitantes ÷ km²) e confira multiplicando de volta.",
+  "D33": "conte o total de resultados (com dois dados, 6 · 6 = 36), liste os favoráveis com a ordem e divida favoráveis pelo total.",
+  "D16": "divida cada lado de um triângulo pelo lado correspondente do outro, do menor para o maior; se as três razões forem iguais, são semelhantes."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C12",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Expressão de uma sequência",
+   "descriptor": "Identificar a expressão algébrica que expressa a regularidade em sequências numéricas ou de figuras.",
+   "stem": [
+    "Num restaurante, mesas quadradas são juntadas em fila para grupos grandes. A tabela mostra quantas cadeiras cabem em volta das mesas, de acordo com o número de mesas juntadas."
+   ],
+   "table": {
+    "header": [
+     "Mesas (n)",
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "rows": [
+     [
+      "Cadeiras",
+      "4",
+      "6",
+      "8",
+      "10"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual expressão dá o número de cadeiras para n mesas juntadas?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "2n + 2",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. A cada mesa a mais entram 2 cadeiras (2n), e sobram sempre 2 nas pontas: 2 · 1 + 2 = 4, 2 · 2 + 2 = 6."
+    },
+    {
+     "letter": "B",
+     "text": "2n",
+     "value": null,
+     "correct": false,
+     "why": "Usou só o aumento de 2 por mesa e esqueceu de ajustar o começo: com 1 mesa daria 2 cadeiras, e não 4."
+    },
+    {
+     "letter": "C",
+     "text": "4n",
+     "value": null,
+     "correct": false,
+     "why": "Pensou em proporção a partir da primeira mesa: 4 cadeiras por mesa. Com 2 mesas daria 8, mas a tabela mostra 6."
+    },
+    {
+     "letter": "D",
+     "text": "n + 3",
+     "value": null,
+     "correct": false,
+     "why": "Conferiu só a primeira coluna (1 + 3 = 4). Com 2 mesas daria 5, mas são 6."
+    },
+    {
+     "letter": "E",
+     "text": "2n + 4",
+     "value": null,
+     "correct": false,
+     "why": "Usou o primeiro valor da tabela (4) como número fixo. Com 1 mesa daria 6, mas são 4."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "De uma coluna para a outra, as cadeiras aumentam 2: a expressão tem 2n.",
+    "Com n = 1, 2n = 2, mas são 4 cadeiras: faltam 2.",
+    "Expressão: 2n + 2."
+   ],
+   "check": "Teste com n = 4: 2 · 4 + 2 = 10, como na tabela."
+  },
+  {
+   "n": 2,
+   "code": "D21",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Produto em notação científica",
+   "descriptor": "Resolver problemas com números reais que sejam expressos no formato de notação científica.",
+   "stem": [
+    "Um computador faz cerca de 2,5 × 10⁹ operações por segundo. Uma hora tem 3,6 × 10³ segundos."
+   ],
+   "table": null,
+   "ask": "Quantas operações esse computador faz em uma hora?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "9 × 10⁶",
+     "value": 9000000.0,
+     "correct": false,
+     "why": "Subtraiu os expoentes (9 − 3 = 6). Na multiplicação, os expoentes se somam: 9 + 3 = 12."
+    },
+    {
+     "letter": "B",
+     "text": "1,5 × 10¹¹",
+     "value": 150000000000.0,
+     "correct": false,
+     "why": "Usou 60 segundos para uma hora: 2,5 × 10⁹ · 60 = 1,5 × 10¹¹. Uma hora tem 60 · 60 = 3 600 segundos."
+    },
+    {
+     "letter": "C",
+     "text": "6,1 × 10¹²",
+     "value": 6100000000000.0,
+     "correct": false,
+     "why": "Somou as partes da frente (2,5 + 3,6). Numa multiplicação, elas se multiplicam: 2,5 · 3,6 = 9."
+    },
+    {
+     "letter": "D",
+     "text": "9 × 10¹²",
+     "value": 9000000000000.0,
+     "correct": true,
+     "why": "Acerto. (2,5 · 3,6) × 10⁹⁺³ = 9 × 10¹² operações."
+    },
+    {
+     "letter": "E",
+     "text": "9 × 10²⁷",
+     "value": 9e+27,
+     "correct": false,
+     "why": "Multiplicou os expoentes (9 · 3 = 27). Na multiplicação de potências de mesma base, os expoentes se somam."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Operações em 1 hora = operações por segundo · segundos: (2,5 × 10⁹) · (3,6 × 10³).",
+    "Multiplique as partes da frente: 2,5 · 3,6 = 9.",
+    "Some os expoentes: 10⁹ · 10³ = 10¹². Resultado: 9 × 10¹²."
+   ],
+   "check": "9 × 10¹² é 9 trilhões. Em 1 segundo são 2,5 bilhões; em 3 600 segundos tem de dar milhares de vezes mais."
+  },
+  {
+   "n": 3,
+   "code": "D29",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Volume de um aquário em litros",
+   "descriptor": "Resolver problemas que envolvam noção de volume de cilindros ou prismas.",
+   "stem": [
+    "Um aquário tem a forma de um bloco retangular com 60 cm de comprimento, 30 cm de largura e 40 cm de altura. Ele vai ser enchido até 5 cm abaixo da borda. Lembre que 1 litro = 1 000 cm³."
+   ],
+   "table": null,
+   "ask": "Quantos litros de água vão no aquário?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6,3",
+     "value": 6.3,
+     "correct": false,
+     "why": "Dividiu por 10 000. Para passar de cm³ para litros, divida por 1 000: 63 000 ÷ 1 000 = 63."
+    },
+    {
+     "letter": "B",
+     "text": "63",
+     "value": 63,
+     "correct": true,
+     "why": "Acerto. A água tem 40 − 5 = 35 cm de altura: 60 · 30 · 35 = 63 000 cm³ = 63 litros."
+    },
+    {
+     "letter": "C",
+     "text": "72",
+     "value": 72,
+     "correct": false,
+     "why": "Usou a altura toda do aquário (40 cm). A água fica 5 cm abaixo da borda: a altura da água é 35 cm."
+    },
+    {
+     "letter": "D",
+     "text": "630",
+     "value": 630,
+     "correct": false,
+     "why": "Dividiu por 100. Um litro tem 1 000 cm³, então divida por 1 000."
+    },
+    {
+     "letter": "E",
+     "text": "63 000",
+     "value": 63000,
+     "correct": false,
+     "why": "Calculou o volume em cm³ (63 000) e não passou para litros."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Altura da água: 40 − 5 = 35 cm.",
+    "Volume da água: 60 · 30 · 35 = 63 000 cm³.",
+    "Em litros: 63 000 ÷ 1 000 = 63 L."
+   ],
+   "check": "Um aquário cheio até a borda teria 60 · 30 · 40 = 72 000 cm³ = 72 L. Com 5 cm a menos, tem de dar um pouco menos: 63 L."
+  },
+  {
+   "n": 4,
+   "code": "D34",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Divisão em partes proporcionais",
+   "descriptor": "Resolver problemas que envolvam relações de proporcionalidade direta e inversa e divisão em partes proporcionais.",
+   "stem": [
+    "Três irmãos, de 4, 6 e 10 anos, ganharam R$ 600,00 da avó. Ela pediu que o dinheiro fosse dividido em partes proporcionais às idades."
+   ],
+   "table": null,
+   "ask": "Quanto recebe o irmão mais velho?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 30,00",
+     "value": 30,
+     "correct": false,
+     "why": "Achou o valor por ano de idade (600 ÷ 20 = 30) e parou. O mais velho tem 10 anos: 10 · 30 = 300."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 120,00",
+     "value": 120,
+     "correct": false,
+     "why": "Calculou a parte do irmão mais novo (4 · 30 = 120). A pergunta é a do mais velho, de 10 anos."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 180,00",
+     "value": 180,
+     "correct": false,
+     "why": "Calculou a parte do irmão do meio (6 · 30 = 180). A pergunta é a do mais velho, de 10 anos."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 200,00",
+     "value": 200,
+     "correct": false,
+     "why": "Dividiu em partes iguais (600 ÷ 3). Em partes proporcionais, quem é mais velho recebe mais."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 300,00",
+     "value": 300,
+     "correct": true,
+     "why": "Acerto. A soma das idades é 4 + 6 + 10 = 20; cada ano vale 600 ÷ 20 = 30 reais; o mais velho recebe 10 · 30 = 300."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Some as idades: 4 + 6 + 10 = 20 partes.",
+    "Cada parte vale 600 ÷ 20 = 30 reais.",
+    "O mais velho tem 10 partes: 10 · 30 = 300 reais."
+   ],
+   "check": "As três partes são 120, 180 e 300, que somam 600. E 300 ÷ 10 = 180 ÷ 6 = 120 ÷ 4 = 30."
+  },
+  {
+   "n": 5,
+   "code": "D36",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Metro cúbico, litro e mililitro",
+   "descriptor": "Resolver problemas que utilizem a relação entre cm³, dm³ (L) e m³.",
+   "stem": [
+    "Uma caixa-d'água tem 1,5 m³ de capacidade. Lembre que 1 m³ = 1 000 litros e que 1 litro = 1 000 mL."
+   ],
+   "table": null,
+   "ask": "Quantas garrafas de 500 mL dá para encher com a água dessa caixa cheia?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "30",
+     "value": 30,
+     "correct": false,
+     "why": "Usou 1 m³ = 10 litros: 1,5 m³ = 15 L e 15 ÷ 0,5 = 30. O fator certo é 1 000."
+    },
+    {
+     "letter": "B",
+     "text": "300",
+     "value": 300,
+     "correct": false,
+     "why": "Usou 1 m³ = 100 litros: 1,5 m³ = 150 L e 150 ÷ 0,5 = 300. O fator certo é 1 000."
+    },
+    {
+     "letter": "C",
+     "text": "750",
+     "value": 750,
+     "correct": false,
+     "why": "Multiplicou por 0,5 em vez de dividir: 1 500 · 0,5 = 750. Cada garrafa tem meio litro, então cabem 2 garrafas por litro."
+    },
+    {
+     "letter": "D",
+     "text": "3 000",
+     "value": 3000,
+     "correct": true,
+     "why": "Acerto. 1,5 m³ = 1 500 L. Cada garrafa tem 500 mL = 0,5 L: 1 500 ÷ 0,5 = 3 000 garrafas."
+    },
+    {
+     "letter": "E",
+     "text": "30 000",
+     "value": 30000,
+     "correct": false,
+     "why": "Converteu demais: 1,5 m³ = 15 000 L. Com 1 m³ = 1 000 L, 1,5 m³ = 1 500 L."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "1,5 m³ = 1,5 · 1 000 = 1 500 litros.",
+    "500 mL = 0,5 litro, então cabem 2 garrafas em cada litro.",
+    "1 500 · 2 = 3 000 garrafas."
+   ],
+   "check": "3 000 garrafas de meio litro dão 1 500 litros, que é 1,5 m³."
+  },
+  {
+   "n": 6,
+   "code": "C08",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Inequação do 1º grau",
+   "descriptor": "Determinar o conjunto solução de uma inequação do 1º grau em situações contextualizadas.",
+   "stem": [
+    "Para alugar um salão de festas, paga-se R$ 150,00 de taxa fixa e mais R$ 12,00 por convidado. Júlio pode gastar, no máximo, R$ 450,00."
+   ],
+   "table": null,
+   "ask": "Qual é o maior número de convidados que Júlio pode ter?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "24",
+     "value": 24,
+     "correct": false,
+     "why": "Usou \"menor que\" em vez de \"menor ou igual\". Com 25 convidados o gasto é 150 + 12 · 25 = R$ 450,00, que ainda cabe no limite."
+    },
+    {
+     "letter": "B",
+     "text": "25",
+     "value": 25,
+     "correct": true,
+     "why": "Acerto. 150 + 12x ≤ 450, então 12x ≤ 300 e x ≤ 25."
+    },
+    {
+     "letter": "C",
+     "text": "37",
+     "value": 37,
+     "correct": false,
+     "why": "Esqueceu a taxa fixa: 450 ÷ 12 = 37,5. Primeiro desconte os R$ 150,00 da taxa."
+    },
+    {
+     "letter": "D",
+     "text": "50",
+     "value": 50,
+     "correct": false,
+     "why": "Errou o sinal ao passar a taxa: 12x ≤ 450 + 150. Ao mudar de lado, +150 vira −150."
+    },
+    {
+     "letter": "E",
+     "text": "300",
+     "value": 300,
+     "correct": false,
+     "why": "Parou em 12x ≤ 300 e não dividiu por 12. O 300 é o valor que sobra para os convidados, em reais."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Gasto com x convidados: 150 + 12x.",
+    "150 + 12x ≤ 450, então 12x ≤ 300.",
+    "x ≤ 25: no máximo 25 convidados."
+   ],
+   "check": "Com 25 convidados: 150 + 300 = R$ 450,00. Com 26: 150 + 312 = R$ 462,00, que passa do limite."
+  },
+  {
+   "n": 7,
+   "code": "C15",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Sistema que representa a situação",
+   "descriptor": "Identificar o sistema de equações polinomiais do 1º grau que expressa uma situação problema.",
+   "stem": [
+    "Numa lanchonete, 2 sucos e 3 pastéis custam R$ 27,00. Já 1 suco e 2 pastéis custam R$ 16,00. Considere s o preço de um suco e p o preço de um pastel, em reais."
+   ],
+   "table": null,
+   "ask": "Qual sistema representa essa situação?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3s + 2p = 27 e 2s + p = 16",
+     "value": null,
+     "correct": false,
+     "why": "Trocou as quantidades de suco e de pastel. São 2 sucos e 3 pastéis: 2s + 3p."
+    },
+    {
+     "letter": "B",
+     "text": "2s + 3p = 16 e s + 2p = 27",
+     "value": null,
+     "correct": false,
+     "why": "Trocou os totais: 2 sucos e 3 pastéis custam 27, e não 16."
+    },
+    {
+     "letter": "C",
+     "text": "s + p = 27 e s + p = 16",
+     "value": null,
+     "correct": false,
+     "why": "Esqueceu as quantidades. Cada preço deve ser multiplicado pelo número de itens comprados."
+    },
+    {
+     "letter": "D",
+     "text": "5(s + p) = 27 e 3(s + p) = 16",
+     "value": null,
+     "correct": false,
+     "why": "Somou as quantidades (2 + 3 = 5) como se suco e pastel tivessem o mesmo preço."
+    },
+    {
+     "letter": "E",
+     "text": "2s + 3p = 27 e s + 2p = 16",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. Cada compra vira uma equação: quantidade vezes preço, somados, igual ao total."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "1ª compra: 2 sucos (2s) e 3 pastéis (3p) custam 27: 2s + 3p = 27.",
+    "2ª compra: 1 suco (s) e 2 pastéis (2p) custam 16: s + 2p = 16.",
+    "O sistema é formado pelas duas equações."
+   ],
+   "check": "Resolvendo, s = 6 e p = 5: 2 · 6 + 3 · 5 = 27 e 6 + 2 · 5 = 16."
+  },
+  {
+   "n": 8,
+   "code": "D24",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Densidade demográfica",
+   "descriptor": "Resolver problemas que envolvam a razão entre grandezas de espécies diferentes.",
+   "stem": [
+    "Uma cidade tem 48 000 habitantes e área de 120 km²."
+   ],
+   "table": null,
+   "ask": "Qual é a densidade demográfica dessa cidade, em habitantes por km²?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,0025",
+     "value": 0.0025,
+     "correct": false,
+     "why": "Inverteu a razão: 120 ÷ 48 000. Densidade é habitantes divididos pela área."
+    },
+    {
+     "letter": "B",
+     "text": "40",
+     "value": 40,
+     "correct": false,
+     "why": "Errou os zeros na divisão: 48 000 ÷ 120 = 400, e não 40."
+    },
+    {
+     "letter": "C",
+     "text": "400",
+     "value": 400,
+     "correct": true,
+     "why": "Acerto. 48 000 ÷ 120 = 400 habitantes por km²."
+    },
+    {
+     "letter": "D",
+     "text": "4 000",
+     "value": 4000,
+     "correct": false,
+     "why": "Errou os zeros na divisão: 48 000 ÷ 120 = 400, e não 4 000."
+    },
+    {
+     "letter": "E",
+     "text": "5 760 000",
+     "value": 5760000,
+     "correct": false,
+     "why": "Multiplicou habitantes por área. Densidade é uma divisão: quantos habitantes cabem em cada km²."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Densidade demográfica = habitantes ÷ área.",
+    "48 000 ÷ 120 = 400.",
+    "400 habitantes por km²."
+   ],
+   "check": "Se cada km² tem 400 habitantes, 120 km² têm 400 · 120 = 48 000 habitantes."
+  },
+  {
+   "n": 9,
+   "code": "D33",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Probabilidade com dois dados",
+   "descriptor": "Resolver problemas que envolvam probabilidade em situações contextualizadas.",
+   "stem": [
+    "Num jogo de tabuleiro, o jogador lança dois dados comuns, de 6 faces, e só sai da prisão se a soma dos dois for 7."
+   ],
+   "table": null,
+   "ask": "Qual é a probabilidade de o jogador sair da prisão numa jogada?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1/12",
+     "value": 0.08333333333333333,
+     "correct": false,
+     "why": "Contou só 3 pares, sem a ordem: 1 e 6, 2 e 5, 3 e 4. Com dois dados há 6 casos: (1, 6) e (6, 1) são diferentes, e assim por diante."
+    },
+    {
+     "letter": "B",
+     "text": "1/11",
+     "value": 0.09090909090909091,
+     "correct": false,
+     "why": "Tratou as somas de 2 a 12 como se tivessem a mesma chance (11 somas). Elas não têm: a soma 7 aparece em 6 dos 36 resultados."
+    },
+    {
+     "letter": "C",
+     "text": "1/6",
+     "value": 0.16666666666666666,
+     "correct": true,
+     "why": "Acerto. São 36 resultados possíveis (6 · 6). Somam 7: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1). Probabilidade: 6/36 = 1/6."
+    },
+    {
+     "letter": "D",
+     "text": "7/36",
+     "value": 0.19444444444444445,
+     "correct": false,
+     "why": "Usou o próprio 7 como número de casos favoráveis. São 6 pares que somam 7."
+    },
+    {
+     "letter": "E",
+     "text": "1/5",
+     "value": 0.2,
+     "correct": false,
+     "why": "Dividiu os casos favoráveis (6) pelos desfavoráveis (30). Divida pelo total de resultados: 36."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Total de resultados com dois dados: 6 · 6 = 36.",
+    "Pares com soma 7: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), que são 6.",
+    "Probabilidade: 6/36 = 1/6."
+   ],
+   "check": "Para cada valor do primeiro dado, só um valor do segundo completa 7. Então a chance é 1 em 6."
+  },
+  {
+   "n": 10,
+   "code": "D16",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Semelhança pelos lados proporcionais",
+   "descriptor": "Reconhecer a semelhança entre triângulos, a partir da congruência das medidas angulares e da proporcionalidade entre as medidas lineares correspondentes.",
+   "stem": [
+    "Um triângulo tem lados de 4 cm, 6 cm e 8 cm."
+   ],
+   "table": null,
+   "ask": "Qual destes triângulos é semelhante a ele?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "Lados de 6 cm, 9 cm e 12 cm",
+     "value": null,
+     "correct": true,
+     "why": "Acerto. Todos os lados foram multiplicados por 1,5: 6 ÷ 4 = 9 ÷ 6 = 12 ÷ 8 = 1,5. Lados proporcionais: os triângulos são semelhantes."
+    },
+    {
+     "letter": "B",
+     "text": "Lados de 5 cm, 7 cm e 9 cm",
+     "value": null,
+     "correct": false,
+     "why": "Somou 1 a cada lado. Na semelhança os lados são multiplicados pelo mesmo número, não somados."
+    },
+    {
+     "letter": "C",
+     "text": "Lados de 6 cm, 8 cm e 10 cm",
+     "value": null,
+     "correct": false,
+     "why": "Somou 2 a cada lado. A diferença igual não garante semelhança: 6 ÷ 4 = 1,5, mas 10 ÷ 8 = 1,25."
+    },
+    {
+     "letter": "D",
+     "text": "Lados de 8 cm, 12 cm e 14 cm",
+     "value": null,
+     "correct": false,
+     "why": "Conferiu só dois lados (4 → 8 e 6 → 12, vezes 2). O terceiro teria de ser 16 cm."
+    },
+    {
+     "letter": "E",
+     "text": "Lados de 12 cm, 18 cm e 20 cm",
+     "value": null,
+     "correct": false,
+     "why": "Conferiu só dois lados (vezes 3). O terceiro teria de ser 24 cm."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Em triângulos semelhantes, os lados correspondentes são proporcionais: a razão é a mesma para os três pares.",
+    "Compare do menor para o maior: 6 ÷ 4 = 1,5; 9 ÷ 6 = 1,5; 12 ÷ 8 = 1,5.",
+    "A razão é igual nos três pares, então o triângulo de 6, 9 e 12 cm é semelhante."
+   ],
+   "check": "Com lados proporcionais, os ângulos também são iguais. Teste os outros: no de 6, 8 e 10 cm, 6 ÷ 4 = 1,5 e 10 ÷ 8 = 1,25, razões diferentes."
+  }
+ ]
+}

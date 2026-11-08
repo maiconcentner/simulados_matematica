@@ -1,0 +1,29 @@
+/* Páginas de aula (simulado.html e completo.html). Usa os tokens e peças de estilo.css. */
+.aula-tela { max-width: 760px; margin: 0 auto; }
+@media (max-width: 760px) { body { padding-bottom: 0; } }
+.barra-aluno {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px;
+  margin-bottom: 14px; padding: 10px 14px; border-radius: var(--raio-p);
+  background: var(--cartao); border: 1px solid var(--linha);
+}
+.barra-aluno p { margin: 0; line-height: 1.3; }
+.identificacao fieldset { margin-top: 0; }
+.identificacao .campo span { font-weight: 800; }
+.aviso-aula { padding: 12px 14px; border-radius: var(--raio-p); margin: 12px 0; border-left: 6px solid; }
+.aviso-aula p { margin: 0 0 8px; }
+.aviso-aula p:last-child { margin-bottom: 0; }
+.aviso-aula.ok { background: var(--ok-suave); border-color: var(--ok); }
+.aviso-aula.erro { background: var(--alerta-suave); border-color: var(--alerta); }
+.partes { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 12px; }
+@media (min-width: 700px) { .partes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.parte { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.parte h2 { margin: 0 0 6px; font-size: 1.3rem; }
+.parte p { margin: 6px 0 0; }
+.parte.enviada { border-color: var(--ok); }
+.bolinhas button.bolinha { cursor: pointer; font: inherit; font-weight: 800; }
+.notas-extra { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 8px; }
+.notas-extra p { margin: 0; text-align: center; }
+.notas-extra b { font-family: var(--fonte-titulo); font-size: 1.6rem; }
+.revisao-bloqueada p { margin: 0; }
+.revisao-bloqueada svg { color: var(--primaria); margin-right: 4px; }
+.aula-tela .placar { min-height: 0; }

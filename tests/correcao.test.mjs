@@ -8,7 +8,8 @@ const ler = (p) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), 
 const config = ler("data/config.json");
 const habilidades = ler("data/habilidades.json");
 const catalogo = ler("data/catalogo.json");
-const catalogoSims = catalogo.areas.flatMap((a) => a.simulados);
+// só as semanas (S01, S02...), para o teste não depender dos simulados extras do catálogo
+const catalogoSims = catalogo.areas.flatMap((a) => a.simulados).filter((s) => /^S\d+$/.test(s.id));
 const S07 = ler("data/avalia/S07.json"), S01 = ler("data/avalia/S01.json"), E3 = ler("data/prova/E3-AV2.json");
 
 /** Respostas acertando só as questões da lista (as outras com uma letra errada). */

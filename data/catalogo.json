@@ -11,6 +11,118 @@
    "descricao": "Um simulado por semana, com 5 ou 6 questões dos descritores da etapa.",
    "simulados": [
     {
+     "id": "E3-COMPLETO",
+     "titulo": "Simulado Completo · Etapa 3",
+     "subtitulo": "28 questões no formato do Avalia+: 20 da etapa e 8 de conexão com o 8º ano",
+     "etapa": 3,
+     "semana": null,
+     "data": "2026-11-10",
+     "n_questoes": 28,
+     "habilidades": [
+      "D28",
+      "C20",
+      "D30",
+      "D32",
+      "C17",
+      "D07",
+      "D14",
+      "D05",
+      "C09",
+      "D31",
+      "D17",
+      "C33",
+      "D15",
+      "D24",
+      "D04",
+      "C21",
+      "D23",
+      "D35",
+      "D09",
+      "C29",
+      "D21",
+      "D27",
+      "C32",
+      "D26",
+      "D25",
+      "D38",
+      "C10",
+      "D08"
+     ],
+     "status": "em_breve",
+     "destaque": true,
+     "tempo_sugerido_min": 90,
+     "data_prova": "2026-11-18",
+     "arquivo": "data/avalia/E3-COMPLETO.json"
+    },
+    {
+     "id": "T1",
+     "titulo": "Treino · Álgebra",
+     "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+     "etapa": 3,
+     "semana": null,
+     "data": "2026-11-11",
+     "n_questoes": 9,
+     "habilidades": [
+      "D10",
+      "D14",
+      "D09",
+      "D11",
+      "D25",
+      "D08"
+     ],
+     "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
+     "arquivo": "data/avalia/T1.json"
+    },
+    {
+     "id": "T2",
+     "titulo": "Treino · Geometria e medidas",
+     "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+     "etapa": 3,
+     "semana": null,
+     "data": "2026-11-11",
+     "n_questoes": 9,
+     "habilidades": [
+      "D30",
+      "D27",
+      "D35",
+      "D05",
+      "D37",
+      "D06"
+     ],
+     "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
+     "arquivo": "data/avalia/T2.json"
+    },
+    {
+     "id": "T3",
+     "titulo": "Treino · Números, porcentagem e estatística",
+     "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+     "etapa": 3,
+     "semana": null,
+     "data": "2026-11-11",
+     "n_questoes": 9,
+     "habilidades": [
+      "C05",
+      "D31",
+      "D03",
+      "C01",
+      "D01",
+      "C27",
+      "C31",
+      "D33"
+     ],
+     "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
+     "arquivo": "data/avalia/T3.json"
+    },
+    {
      "id": "S01",
      "titulo": "Simulado Avalia · Semana 1",
      "subtitulo": "Cap. 7 (estatística e probabilidade) e retomadas de E1 e E2",
@@ -26,6 +138,9 @@
       "D20"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S01.json"
     },
     {
@@ -43,6 +158,9 @@
       "D27"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S02.json"
     },
     {
@@ -62,6 +180,9 @@
       "D14"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S03.json"
     },
     {
@@ -81,6 +202,9 @@
       "D09"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S04.json"
     },
     {
@@ -100,6 +224,9 @@
       "D27"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S05.json"
     },
     {
@@ -119,6 +246,9 @@
       "D10"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S06.json"
     },
     {
@@ -138,7 +268,36 @@
       "D35"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/avalia/S07.json"
+    },
+    {
+     "id": "S08",
+     "titulo": "Simulado Avalia · Semana 8",
+     "subtitulo": "10 questões com correção na hora",
+     "etapa": 3,
+     "semana": 8,
+     "data": "2026-11-11",
+     "n_questoes": 10,
+     "habilidades": [
+      "C12",
+      "D21",
+      "D29",
+      "D34",
+      "D36",
+      "C08",
+      "C15",
+      "D24",
+      "D33",
+      "D16"
+     ],
+     "status": "em_breve",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
+     "arquivo": "data/avalia/S08.json"
     }
    ]
   },
@@ -161,6 +320,9 @@
       "EF.09.MAT.2.89"
      ],
      "status": "publicado",
+     "destaque": false,
+     "tempo_sugerido_min": null,
+     "data_prova": null,
      "arquivo": "data/prova/E3-AV2.json",
      "disponivel_ate": "2026-11-08T23:59:59-03:00"
     }

@@ -1,1 +1,4 @@
 node_modules/
+# lista de alunos do professor: nunca no repositório
+Alunos_para_planilha*
+*.csv

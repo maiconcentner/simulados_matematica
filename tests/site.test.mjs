@@ -14,6 +14,12 @@ let chromium;
 try { ({ chromium } = require("playwright")); } catch { ({ chromium } = await import("playwright")); }
 
 const RAIZ = fileURLToPath(new URL("../", import.meta.url));
+// números que vêm dos dados (o professor acrescenta simulados e conquistas)
+const CATALOGO = JSON.parse(await readFile(join(RAIZ, "data/catalogo.json"), "utf-8"));
+const CONFIG = JSON.parse(await readFile(join(RAIZ, "data/config.json"), "utf-8"));
+const HABILIDADES = JSON.parse(await readFile(join(RAIZ, "data/habilidades.json"), "utf-8"));
+const AVALIA = CATALOGO.areas.find((a) => a.id === "avalia").simulados.filter((s) => s.status !== "oculto");
+const N_CONQUISTAS = CONFIG.conquistas.reduce((n, c) => n + (c.id === "especialista_tema" ? CONFIG.temas.length : 1), 0);
 const TIPOS = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".png": "image/png" };
 let servidor, URL_BASE, navegador;
 
@@ -83,7 +89,11 @@ test("as duas áreas mostram os 7 Avalia e o simulado da Etapa 3", async () => {
   const { pagina, erros } = await abrir();
   await ir(pagina, "avalia");
   const semanas = await pagina.$$eval(".sim .sim-titulo", (els) => els.map((e) => e.textContent.trim()));
-  assert.deepEqual(semanas, ["Semana 7", "Semana 6", "Semana 5", "Semana 4", "Semana 3", "Semana 2", "Semana 1"]);
+  // as 7 semanas aparecem, da mais recente para a mais antiga, e os outros simulados do catálogo também
+  const so = semanas.filter((t) => /^Semana \d+$/.test(t));
+  for (let k = 1; k <= 7; k++) assert.ok(so.includes(`Semana ${k}`), `faltou a Semana ${k}`);
+  assert.deepEqual(so, [...so].sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1])));
+  assert.equal(semanas.length, AVALIA.length);
   await ir(pagina, "prova");
   assert.equal(await pagina.textContent(".etapa-titulo"), "Etapa 3");
   assert.match(await pagina.textContent(".sim h3"), /Etapa 3/);
@@ -97,10 +107,12 @@ test("o painel leva às áreas e o filtro por tema funciona", async () => {
   assert.match(await pagina.textContent(".jogador"), /Iniciante/);
   await pagina.click(".area >> text=Simulados Avalia");
   await pagina.waitForSelector(".sim");
-  assert.equal(await pagina.$$eval(".sim", (e) => e.length), 7);
+  assert.equal(await pagina.$$eval(".sim", (e) => e.length), AVALIA.length);
   await pagina.click('button.chip[data-tema="Grandezas e medidas"]');
   const n = await pagina.$$eval(".sim", (e) => e.length);
-  assert.equal(n, 2, `filtro Grandezas e medidas mostrou ${n}`); // Semanas 6 e 7
+  const esperado = AVALIA.filter((x) => x.habilidades.some((c) => HABILIDADES[c]?.tema === "Grandezas e medidas")).length;
+  assert.ok(esperado > 0 && esperado < AVALIA.length);
+  assert.equal(n, esperado, `filtro Grandezas e medidas mostrou ${n}`);
   assert.equal(await pagina.getAttribute('button.chip[data-tema="Grandezas e medidas"]', "aria-pressed"), "true");
   await pagina.close();
 });
@@ -307,7 +319,7 @@ test("gamificação: XP, nível e conquistas aparecem e continuam depois de reca
   await ir(pagina, "");
   assert.match(await pagina.textContent(".jogador"), /280 XP/);
   assert.equal(await pagina.textContent(".nivel-selo b"), "2");
-  assert.match(await pagina.textContent(".jogador"), /3 de 13 conquistas/);
+  assert.match(await pagina.textContent(".jogador"), new RegExp(`3 de ${N_CONQUISTAS} conquistas`));
   assert.match(await pagina.textContent(".jogador"), /1 dia seguido/);
   // refazer igual não dá XP de novo
   await fazerSimulado(pagina, "S07", "todas");
@@ -359,7 +371,7 @@ test("perfil mostra conquistas, histórico e mapa; Apagar meus dados zera tudo",
   await fazerSimulado(pagina, "S01", [1, 2, 3]);
   await ir(pagina, "perfil");
   assert.equal(await larguraDaPagina(pagina), 390);
-  assert.equal(await pagina.$$eval(".conquista", (e) => e.length), 13);
+  assert.equal(await pagina.$$eval(".conquista", (e) => e.length), N_CONQUISTAS);
   assert.equal(await pagina.$$eval(".conquista.ganha", (e) => e.length), 1);
   assert.equal(await pagina.$$eval(".historico li", (e) => e.length), 1);
   assert.match(await pagina.textContent(".barras-tema"), /%/);
@@ -375,7 +387,7 @@ test("perfil mostra conquistas, histórico e mapa; Apagar meus dados zera tudo",
   await pagina.reload();
   await ir(pagina, "");
   assert.match(await pagina.textContent(".jogador"), /0 XP/);
-  assert.match(await pagina.textContent(".jogador"), /0 de 13 conquistas/);
+  assert.match(await pagina.textContent(".jogador"), new RegExp(`0 de ${N_CONQUISTAS} conquistas`));
   await ir(pagina, "avalia");
   assert.match(await pagina.textContent('.sim[data-sim="S01"] .estado'), /Novo/);
   assert.deepEqual(erros, []);
@@ -547,7 +559,7 @@ test("sem localStorage o site funciona e avisa", async () => {
   await ir(pagina, "");
   assert.equal(await pagina.isVisible("#aviso-armazenamento"), true);
   await ir(pagina, "avalia");
-  assert.equal(await pagina.$$eval(".sim", (e) => e.length), 7);
+  assert.equal(await pagina.$$eval(".sim", (e) => e.length), AVALIA.length);
   assert.deepEqual(erros, []);
   await pagina.close();
 });

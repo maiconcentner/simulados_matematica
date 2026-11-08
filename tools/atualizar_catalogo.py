@@ -17,6 +17,9 @@ def resumo(p):
         "etapa": d.get("etapa"), "semana": d.get("semana"), "data": d.get("data"),
         "n_questoes": len(d["items"]), "habilidades": codes,
         "status": d.get("status", "publicado"),
+        "destaque": bool(d.get("destaque", False)),
+        "tempo_sugerido_min": d.get("tempo_sugerido_min"),
+        "data_prova": d.get("data_prova"),
         "arquivo": os.path.relpath(p, RAIZ).replace(os.sep, "/"),
     }
     if d.get("disponivel_ate"):  # prazo opcional: depois dele o site não abre o simulado
@@ -25,7 +28,7 @@ def resumo(p):
 
 
 def main():
-    avalia = sorted((resumo(p) for p in glob.glob(os.path.join(RAIZ, "data", "avalia", "*.json"))), key=lambda s: s["semana"] or 0)
+    avalia = sorted((resumo(p) for p in glob.glob(os.path.join(RAIZ, "data", "avalia", "*.json"))), key=lambda s: (not s["destaque"], s["semana"] or 0))
     prova = sorted((resumo(p) for p in glob.glob(os.path.join(RAIZ, "data", "prova", "*.json"))), key=lambda s: (s["etapa"] or 0, s["id"]))
     cat = {
         "site": {"titulo": "Simulados de Matemática", "autor": "Prof. Maicon Centner Germano", "serie": "9º ano"},

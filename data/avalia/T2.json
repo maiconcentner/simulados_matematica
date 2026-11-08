@@ -1,0 +1,556 @@
+{
+ "id": "T2",
+ "area": "avalia",
+ "titulo": "Treino · Geometria e medidas",
+ "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+ "semana": null,
+ "etapa": 3,
+ "data": "2026-11-11",
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Pitágoras, relações métricas, semelhança, Tales e volumes (questões das Semanas 1 a 7)",
+ "status": "publicado",
+ "modo": "treino",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "D30": "use o Teorema de Pitágoras uma vez para cada posição da escada (o comprimento dela não muda) e só no fim faça a diferença entre as alturas.",
+  "D27": "com a altura relativa à hipotenusa, use cateto² = hipotenusa × projeção desse cateto e não confunda a altura (o segmento que cai no ângulo reto da base) com os lados do triângulo.",
+  "D35": "desenhe os dois triângulos com o vértice na lanterna e use como base do triângulo grande a distância toda, da lanterna até a parede (50 + 100), e não só a do boneco até a parede.",
+  "D05": "divida o diâmetro por 2 para achar o raio, eleve o raio ao quadrado e multiplique por π e pela altura: V = π · r² · h.",
+  "D37": "ligue cada trecho de uma transversal ao trecho correspondente da outra (entre as mesmas paralelas), monte a proporção com eles e confira se os trechos encontrados somam o total.",
+  "D06": "identifique a base do prisma (aqui, o trapézio da lateral), calcule a área dela e multiplique pela distância entre as duas bases (a largura)."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "D30",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Teorema de Pitágoras",
+   "descriptor": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+   "stem": [
+    "Um técnico, em pé no solo, usa um sensor a laser para acompanhar um drone que sobe na vertical. O sensor indica que a distância em linha reta entre o técnico e o drone é de 20 m. Nesse instante, a distância horizontal entre o técnico e o ponto do solo abaixo do drone é de 12 m, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Triângulo retângulo: o técnico no vértice esquerdo da base, o ponto do solo abaixo do drone no vértice direito (ângulo reto) e o drone no topo. Base de 12 m, hipotenusa de 20 m e altura h desconhecida.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s01/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a altura h em que o drone se encontra?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "8 m",
+     "correct": false,
+     "why": "Diferença das medidas dadas (20 − 12 = 8). Subtrai comprimentos, mas o Teorema de Pitágoras relaciona os quadrados dos lados."
+    },
+    {
+     "letter": "B",
+     "text": "16 m",
+     "correct": true,
+     "why": "Acerto. h² + 12² = 20², logo h² = 400 − 144 = 256 e h = 16."
+    },
+    {
+     "letter": "C",
+     "text": "23,3 m",
+     "correct": false,
+     "why": "√(20² + 12²) ≈ 23,3. Trata 20 m e 12 m como catetos e calcula uma hipotenusa. Mas 20 m já é a hipotenusa, o lado oposto ao ângulo reto."
+    },
+    {
+     "letter": "D",
+     "text": "32 m",
+     "correct": false,
+     "why": "Soma das medidas dadas (20 + 12 = 32). Não há relação aditiva entre os lados de um triângulo retângulo."
+    },
+    {
+     "letter": "E",
+     "text": "256 m",
+     "correct": false,
+     "why": "Parou em h² = 256 e não extraiu a raiz quadrada. h² é uma área, não o comprimento pedido."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "O ângulo reto está no ponto do solo abaixo do drone. Então 20 m é a hipotenusa, e 12 m e h são os catetos.",
+    "Teorema de Pitágoras: 20² = 12² + h², isto é, 400 = 144 + h².",
+    "h² = 400 − 144 = 256. Portanto h = √256 = 16 m."
+   ],
+   "check": "12, 16 e 20 formam a terna pitagórica 3-4-5 multiplicada por 4.",
+   "origem": "S01 Q4"
+  },
+  {
+   "n": 2,
+   "code": "D27",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Relações métricas no triângulo retângulo",
+   "descriptor": "Resolver problemas envolvendo relações métricas no triângulo retângulo (catetos, hipotenusa, altura e suas projeções).",
+   "stem": [
+    "A imagem a seguir mostra o desenho da frente de uma casa, com o telhado em destaque. O telhado foi projetado de forma que o encontro dos seus dois lados inclinados forma um ângulo de 90°. A base do telhado, no nível do forro, mede 15 m e é dividida em dois trechos pelo pé dessa altura: 5,4 m do lado esquerdo e 9,6 m do lado direito."
+   ],
+   "figure": {
+    "alt": "Triângulo representando o telhado, com ângulo reto no vértice superior (encontro dos dois lados inclinados). A base horizontal mede 15 m, dividida em 5,4 m à esquerda e 9,6 m à direita pelo pé da altura.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "file": "assets/figuras/avalia/s02/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é o comprimento do menor lado inclinado desse telhado?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4,2 m",
+     "correct": false,
+     "why": "Diferença entre os dois segmentos da base (9,6 − 5,4 = 4,2). Essa diferença não corresponde a nenhum lado do telhado."
+    },
+    {
+     "letter": "B",
+     "text": "5,4 m",
+     "correct": false,
+     "why": "Usou diretamente a medida do menor segmento da base (a projeção do lado sobre a base), sem calcular o lado inclinado."
+    },
+    {
+     "letter": "C",
+     "text": "7,2 m",
+     "correct": false,
+     "why": "Calculou a altura do telhado, que é a média geométrica dos dois segmentos da base (√(5,4 × 9,6) = 7,2), no lugar do lado inclinado pedido."
+    },
+    {
+     "letter": "D",
+     "text": "9 m",
+     "correct": true,
+     "why": "Acerto. Cada lado inclinado é a média geométrica entre a base (hipotenusa) e a projeção desse lado sobre ela: lado² = base × projeção. Para o menor lado, a projeção é 5,4 m: lado² = 15 × 5,4 = 81, logo lado = 9 m."
+    },
+    {
+     "letter": "E",
+     "text": "15 m",
+     "correct": false,
+     "why": "Usou diretamente a medida total da base do telhado, sem calcular o lado inclinado."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "O ângulo reto está no encontro dos dois lados inclinados (o vértice superior do telhado). Por isso, a base do telhado (15 m) é a hipotenusa do triângulo, e os dois lados inclinados são os catetos.",
+    "Relação métrica: cada cateto ao quadrado é igual ao produto da hipotenusa pela projeção desse cateto sobre ela. Para o menor lado, a projeção é 5,4 m: lado² = 15 × 5,4 = 81.",
+    "lado = √81 = 9 m."
+   ],
+   "check": "O outro lado inclinado: √(15 × 9,6) = √144 = 12 m. Conferindo com o Teorema de Pitágoras: 9² + 12² = 81 + 144 = 225 = 15². Está correto.",
+   "origem": "S02 Q4"
+  },
+  {
+   "n": 3,
+   "code": "D35",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Semelhança de triângulos com fonte de luz",
+   "descriptor": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+   "stem": [
+    "Um poste de 4,8 m de altura ilumina uma calçada plana. Uma pessoa de 1,6 m de altura está em pé a 3 m da base do poste. A luz da lâmpada, no topo do poste, projeta a sombra dessa pessoa na calçada, do lado oposto ao poste, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Na calçada, à esquerda, um poste vertical de 4,8 m com a lâmpada no topo; a 3 m dele, uma pessoa em pé, de 1,6 m. Um raio de luz tracejado sai da lâmpada, passa pelo alto da cabeça da pessoa e chega ao chão, à direita da pessoa, na ponta da sombra, que está destacada no chão.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.9,
+    "file": "assets/figuras/avalia/s05/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a distância, em metros, da base do poste até a ponta da sombra da pessoa?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "1,5",
+     "correct": false,
+     "why": "Calculou corretamente o comprimento da sombra (1,5 m), mas a pergunta pede a distância desde a base do poste, que soma também os 3 m até a pessoa."
+    },
+    {
+     "letter": "B",
+     "text": "3,2",
+     "correct": false,
+     "why": "Calculou a diferença entre as alturas (4,8 − 1,6 = 3,2) e parou. Essa diferença aparece num caminho de resolução, mas não é uma distância no chão."
+    },
+    {
+     "letter": "C",
+     "text": "4,0",
+     "correct": false,
+     "why": "Usou os 3 m como base do triângulo do poste. Esse triângulo vai da base do poste até a ponta da sombra, então a base dele é 3 m mais a sombra."
+    },
+    {
+     "letter": "D",
+     "text": "4,5",
+     "correct": true,
+     "why": "Acerto. O poste e a pessoa formam, com a ponta da sombra, dois triângulos semelhantes: (3 + s) ÷ 4,8 = s ÷ 1,6. Daí 4,8 + 1,6s = 4,8s, s = 1,5 m, e a distância pedida é 3 + 1,5 = 4,5 m."
+    },
+    {
+     "letter": "E",
+     "text": "4,8",
+     "correct": false,
+     "why": "Supôs que a distância até a ponta da sombra é igual à altura do poste, como se o raio de luz fizesse 45° com o chão. A inclinação do raio depende das medidas do problema."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "O raio de luz forma dois triângulos retângulos com o chão: o do poste (altura 4,8 m, base da base do poste até a ponta da sombra, 3 + s) e o da pessoa (altura 1,6 m, base s, a sombra). Eles são semelhantes, porque têm o mesmo ângulo na ponta da sombra.",
+    "Lados correspondentes são proporcionais: (3 + s) ÷ 4,8 = s ÷ 1,6. Multiplicando em cruz: 1,6 · (3 + s) = 4,8s, então 4,8 + 1,6s = 4,8s e 3,2s = 4,8, logo s = 1,5 m.",
+    "A distância da base do poste até a ponta da sombra é 3 + 1,5 = 4,5 m."
+   ],
+   "check": "A pessoa tem 1/3 da altura do poste (1,6 ÷ 4,8), então a sombra deve ser 1/3 da distância total: 4,5 ÷ 3 = 1,5 m, que é exatamente a sombra encontrada.",
+   "origem": "S05 Q4"
+  },
+  {
+   "n": 4,
+   "code": "D05",
+   "role": "Novo",
+   "level": "N3",
+   "short": "Volume de uma lata cilíndrica (diâmetro dado)",
+   "descriptor": "Calcular o volume de cilindros em situações contextualizadas.",
+   "stem": [
+    "Uma fábrica embala molho de tomate em latas cilíndricas com 8 cm de diâmetro e 12 cm de altura, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Lata em forma de cilindro, em pé. Na tampa, um segmento passa pelo centro, de um lado ao outro, com a medida 8 cm (o diâmetro). Ao lado, uma seta vertical marca a altura de 12 cm.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.8,
+    "file": "assets/figuras/avalia/s07/q3.png"
+   },
+   "table": null,
+   "ask": "Qual é o volume de uma lata, em cm³? Use π = 3.",
+   "options": [
+    {
+     "letter": "A",
+     "text": "144",
+     "correct": false,
+     "why": "Não elevou o raio ao quadrado: fez 3 · 4 · 12 = 144. A área da base é π · r² = 3 · 4² = 48 cm²."
+    },
+    {
+     "letter": "B",
+     "text": "576",
+     "correct": true,
+     "why": "Acerto. O raio é a metade do diâmetro: 8 ÷ 2 = 4 cm. Área da base: 3 · 4² = 48 cm². Volume: 48 · 12 = 576 cm³."
+    },
+    {
+     "letter": "C",
+     "text": "768",
+     "correct": false,
+     "why": "Usou o diâmetro ao quadrado e esqueceu o π: 8² · 12 = 768."
+    },
+    {
+     "letter": "D",
+     "text": "1 152",
+     "correct": false,
+     "why": "Elevou o diâmetro ao quadrado e só depois dividiu por 2 (64 ÷ 2 = 32, em vez de 4² = 16): 3 · 32 · 12 = 1 152. Primeiro se acha o raio, depois se eleva ao quadrado."
+    },
+    {
+     "letter": "E",
+     "text": "2 304",
+     "correct": false,
+     "why": "Usou o diâmetro como se fosse o raio: 3 · 8² · 12 = 2 304. O raio é a metade do diâmetro."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "O raio é a metade do diâmetro: r = 8 ÷ 2 = 4 cm.",
+    "Área da base: π · r² = 3 · 4² = 3 · 16 = 48 cm².",
+    "Volume: área da base · altura = 48 · 12 = 576 cm³."
+   ],
+   "check": "Uma caixa de 8 cm por 8 cm por 12 cm, que envolve a lata, tem 768 cm³; a lata tem de ter menos que isso, e 576 cm³ é 3/4 desse valor, como π ÷ 4 ≈ 3/4.",
+   "origem": "S07 Q3"
+  },
+  {
+   "n": 5,
+   "code": "D37",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Teorema de Tales (ruas paralelas e avenidas)",
+   "descriptor": "Resolver problemas utilizando o Teorema de Tales.",
+   "stem": [
+    "Na planta de um bairro, as ruas 1, 2 e 3 são paralelas e cortam as avenidas A e B, como mostra a figura. Pela Avenida A, a distância da Rua 1 à Rua 2 é de 20 m, e da Rua 2 à Rua 3 é de 30 m. Pela Avenida B, a distância da Rua 1 à Rua 3 é de 60 m."
+   ],
+   "figure": {
+    "alt": "Três ruas paralelas e horizontais, Rua 1 em cima, Rua 2 no meio e Rua 3 embaixo, cortadas por duas avenidas: a Avenida A, vertical, à esquerda, e a Avenida B, inclinada, à direita. Na Avenida A, o trecho da Rua 1 à Rua 2 mede 20 m e o trecho da Rua 2 à Rua 3 mede 30 m. Os trechos da Avenida B não têm medida escrita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.95,
+    "file": "assets/figuras/avalia/s06/q4.png"
+   },
+   "table": null,
+   "ask": "Qual é a distância, em metros, da Rua 2 à Rua 3 pela Avenida B?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "24",
+     "correct": false,
+     "why": "Calculou o trecho da Rua 1 à Rua 2 pela Avenida B (20/50 = x/60, x = 24), e não o trecho pedido, da Rua 2 à Rua 3."
+    },
+    {
+     "letter": "B",
+     "text": "30",
+     "correct": false,
+     "why": "Copiou a medida do trecho correspondente da Avenida A, como se as duas avenidas tivessem trechos iguais. Pelo Teorema de Tales, os trechos são proporcionais, e não iguais."
+    },
+    {
+     "letter": "C",
+     "text": "35",
+     "correct": false,
+     "why": "Viu que a Avenida B tem 10 m a mais que a A e dividiu essa diferença igualmente entre os dois trechos (30 + 5). A diferença se reparte na proporção dos trechos, e não em partes iguais."
+    },
+    {
+     "letter": "D",
+     "text": "36",
+     "correct": true,
+     "why": "Acerto. Os trechos entre as mesmas ruas são proporcionais: 30/50 = x/60, então x = 36. O outro trecho fica 60 − 36 = 24, e 20/24 = 30/36."
+    },
+    {
+     "letter": "E",
+     "text": "40",
+     "correct": false,
+     "why": "Montou a proporção com trechos que não se correspondem (20/30 = x/60, x = 40), ou pôs os 10 m a mais todos nesse trecho (30 + 10)."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Pelo Teorema de Tales, os trechos que ficam entre as mesmas ruas são proporcionais. Da Rua 2 à Rua 3, a Avenida A tem 30 m de um total de 20 + 30 = 50 m.",
+    "Na Avenida B, o trecho correspondente x é a mesma fração do total de 60 m: 30/50 = x/60.",
+    "x = 60 · 30 ÷ 50 = 36. A distância é de 36 m."
+   ],
+   "check": "O outro trecho da Avenida B mede 60 − 36 = 24 m, e a razão é a mesma nos dois trechos: 24/20 = 36/30 = 1,2.",
+   "origem": "S06 Q4"
+  },
+  {
+   "n": 6,
+   "code": "D27",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Relações métricas no triângulo retângulo (lado da barraca)",
+   "descriptor": "Resolver problemas que envolvam as relações métricas dos triângulos retângulos.",
+   "stem": [
+    "A frente de uma barraca de acampamento tem a forma de um triângulo retângulo, com o ângulo reto no topo. Um mastro vertical liga o topo ao chão e divide a base da barraca em dois trechos, de 0,9 m e 1,6 m, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Triângulo com a base apoiada no chão e o ângulo reto no vértice de cima. Um segmento vertical tracejado, o mastro, vai do vértice de cima até a base, formando ângulo reto com ela e dividindo-a em dois trechos: 0,9 m à esquerda e 1,6 m à direita.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 1.0,
+    "file": "assets/figuras/avalia/s05/q6.png"
+   },
+   "table": null,
+   "ask": "Qual é o comprimento, em metros, do lado inclinado maior dessa barraca?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,9",
+     "correct": false,
+     "why": "Respondeu o trecho menor da base (0,9 m), que é a projeção do lado inclinado menor sobre o chão, e não um lado da barraca."
+    },
+    {
+     "letter": "B",
+     "text": "1,2",
+     "correct": false,
+     "why": "Calculou a altura do mastro (h² = 0,9 × 1,6 = 1,44, h = 1,2 m) e parou. O mastro é a altura do triângulo, e não um lado inclinado."
+    },
+    {
+     "letter": "C",
+     "text": "1,5",
+     "correct": false,
+     "why": "Calculou o lado inclinado menor (2,5 × 0,9 = 2,25, e √2,25 = 1,5). A pergunta pede o maior, que fica do lado do trecho de 1,6 m."
+    },
+    {
+     "letter": "D",
+     "text": "1,6",
+     "correct": false,
+     "why": "Respondeu a projeção do lado maior sobre o chão (1,6 m), que é só um trecho da base, e não o lado inclinado."
+    },
+    {
+     "letter": "E",
+     "text": "2,0",
+     "correct": true,
+     "why": "Acerto. A base toda mede 0,9 + 1,6 = 2,5 m e é a hipotenusa. O lado maior é o cateto cuja projeção mede 1,6 m: c² = 2,5 × 1,6 = 4, logo c = 2,0 m."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "A base da barraca é a hipotenusa do triângulo retângulo: 0,9 + 1,6 = 2,5 m. Os trechos 0,9 m e 1,6 m são as projeções dos lados inclinados sobre a base.",
+    "Cada cateto ao quadrado é igual à hipotenusa vezes a sua projeção. O lado maior fica do lado do trecho de 1,6 m: c² = 2,5 × 1,6 = 4.",
+    "Logo, c = 2,0 m."
+   ],
+   "check": "O outro lado mede √(2,5 × 0,9) = √2,25 = 1,5 m, e 1,5² + 2,0² = 2,25 + 4 = 6,25 = 2,5², como manda o Teorema de Pitágoras. O mastro mede √(0,9 × 1,6) = 1,2 m, menor que os dois lados, como na figura.",
+   "origem": "S05 Q6"
+  },
+  {
+   "n": 7,
+   "code": "D30",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Pitágoras em dois passos (escada que escorrega)",
+   "descriptor": "Resolver problemas que envolvam o Teorema de Pitágoras em situações cotidianas.",
+   "stem": [
+    "Uma escada de 2,5 m de comprimento está apoiada em uma parede vertical, com o pé a 0,7 m da parede. O pé da escada escorregou e ficou a 1,5 m da parede, com o topo ainda encostado nela, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Parede vertical à esquerda e chão horizontal, com ângulo reto entre eles. Uma escada tracejada, marcada antes, vai do chão, a 0,7 m da parede, até um ponto alto da parede. Uma escada contínua, marcada depois, vai do chão, a 1,5 m da parede, até um ponto mais baixo da parede. A escada tem 2,5 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.9,
+    "file": "assets/figuras/avalia/s07/q4.png"
+   },
+   "table": null,
+   "ask": "Quantos metros o topo da escada desceu?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "0,4",
+     "correct": true,
+     "why": "Acerto. Antes: altura² = 2,5² − 0,7² = 6,25 − 0,49 = 5,76, altura = 2,4 m. Depois: altura² = 2,5² − 1,5² = 6,25 − 2,25 = 4, altura = 2,0 m. O topo desceu 2,4 − 2,0 = 0,4 m."
+    },
+    {
+     "letter": "B",
+     "text": "0,8",
+     "correct": false,
+     "why": "Achou que o topo desce o mesmo tanto que o pé se afasta (1,5 − 0,7 = 0,8). Não é assim: cada posição da escada forma um triângulo retângulo diferente."
+    },
+    {
+     "letter": "C",
+     "text": "1,76",
+     "correct": false,
+     "why": "Fez as contas sem tirar a raiz: 5,76 − 4 = 1,76. Esses são os quadrados das alturas; as alturas são √5,76 = 2,4 e √4 = 2."
+    },
+    {
+     "letter": "D",
+     "text": "2,0",
+     "correct": false,
+     "why": "Calculou a altura depois do escorregão (2,0 m), mas não fez a diferença com a altura de antes."
+    },
+    {
+     "letter": "E",
+     "text": "2,4",
+     "correct": false,
+     "why": "Calculou só a altura de antes (2,4 m) e parou no primeiro passo."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Antes: a escada é a hipotenusa. altura² + 0,7² = 2,5², então altura² = 6,25 − 0,49 = 5,76 e a altura é √5,76 = 2,4 m.",
+    "Depois: altura² + 1,5² = 2,5², então altura² = 6,25 − 2,25 = 4 e a altura é √4 = 2,0 m.",
+    "O topo desceu 2,4 − 2,0 = 0,4 m."
+   ],
+   "check": "0,7² + 2,4² = 0,49 + 5,76 = 6,25 = 2,5² e 1,5² + 2,0² = 2,25 + 4 = 6,25 = 2,5²: nas duas posições a escada tem 2,5 m.",
+   "origem": "S07 Q4"
+  },
+  {
+   "n": 8,
+   "code": "D35",
+   "role": "Retomada",
+   "level": "N4",
+   "short": "Semelhança de triângulos: sombra na parede",
+   "descriptor": "Resolver problemas que envolvam triângulos semelhantes em diferentes contextos.",
+   "stem": [
+    "Em uma brincadeira de sombras, uma lanterna foi colocada no chão, a 50 cm de um boneco de 30 cm de altura. A parede fica 100 cm atrás do boneco. A luz da lanterna projeta na parede a sombra do boneco, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Vista de lado. No chão, à esquerda, uma lanterna. A 50 cm dela, um boneco em pé de 30 cm de altura. 100 cm depois do boneco, uma parede vertical. Uma linha tracejada sai da lanterna, passa pelo topo do boneco e chega à parede; o trecho da parede abaixo dessa linha é a sombra.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.8,
+    "file": "assets/figuras/avalia/s07/q6.png"
+   },
+   "table": null,
+   "ask": "Qual é a altura da sombra do boneco na parede, em centímetros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10",
+     "correct": false,
+     "why": "Inverteu a razão: fez 30 · 50 ÷ 150 = 10. A sombra fica mais longe da lanterna que o boneco, então tem de ser maior que 30 cm."
+    },
+    {
+     "letter": "B",
+     "text": "15",
+     "correct": false,
+     "why": "Inverteu a razão e não somou as distâncias: 30 · 50 ÷ 100 = 15. A sombra tem de ser maior que o boneco."
+    },
+    {
+     "letter": "C",
+     "text": "45",
+     "correct": false,
+     "why": "Pôs a distância do boneco até a parede (100 cm) no triângulo pequeno: 30 · 150 ÷ 100 = 45. O triângulo pequeno vai da lanterna até o boneco (50 cm)."
+    },
+    {
+     "letter": "D",
+     "text": "60",
+     "correct": false,
+     "why": "Usou só a distância do boneco até a parede como base do triângulo grande: 30 · 100 ÷ 50 = 60. A base do triângulo grande vai da lanterna até a parede: 50 + 100 = 150 cm."
+    },
+    {
+     "letter": "E",
+     "text": "90",
+     "correct": true,
+     "why": "Acerto. Os dois triângulos têm vértice na lanterna. Pequeno: base 50 cm e altura 30 cm. Grande: base 50 + 100 = 150 cm e altura x. Então x ÷ 30 = 150 ÷ 50 = 3, e x = 90 cm."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "Os dois triângulos têm um vértice na lanterna. O pequeno vai da lanterna até o boneco: base 50 cm e altura 30 cm.",
+    "O grande vai da lanterna até a parede: base 50 + 100 = 150 cm e altura igual à da sombra.",
+    "Os triângulos são semelhantes: sombra ÷ 30 = 150 ÷ 50 = 3. A sombra tem 30 · 3 = 90 cm."
+   ],
+   "check": "A parede está 3 vezes mais longe da lanterna (150 cm) que o boneco (50 cm), então a sombra é 3 vezes mais alta que o boneco: 3 · 30 = 90 cm. A razão vale para as duas medidas: 90 ÷ 150 = 30 ÷ 50 = 0,6.",
+   "origem": "S07 Q6"
+  },
+  {
+   "n": 9,
+   "code": "D06",
+   "role": "Novo",
+   "level": "N4",
+   "short": "Volume de prisma de base trapezoidal (piscina)",
+   "descriptor": "Calcular o volume de prismas em diferentes contextos.",
+   "stem": [
+    "Uma piscina tem 10 m de comprimento e 4 m de largura. O fundo é inclinado: a profundidade vai de 1 m, na parte rasa, até 2 m, na parte funda, como mostra a figura."
+   ],
+   "figure": {
+    "alt": "Piscina em forma de prisma, desenhada em perspectiva. A face da frente é um trapézio: a borda de cima mede 10 m, o lado esquerdo tem 1 m de profundidade e o direito, 2 m; o fundo é inclinado. A largura da piscina, para trás, é de 4 m.",
+    "caption": "Elaboração própria para fins educacionais.",
+    "scale": 0.85,
+    "file": "assets/figuras/avalia/s07/q5.png"
+   },
+   "table": null,
+   "ask": "Quantos metros cúbicos de água cabem na piscina cheia?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "15",
+     "correct": false,
+     "why": "Calculou só a área do trapézio da lateral (15 m²) e não multiplicou pela largura da piscina. Área é medida em m², volume em m³."
+    },
+    {
+     "letter": "B",
+     "text": "40",
+     "correct": false,
+     "why": "Usou só a profundidade da parte rasa, como se a piscina inteira tivesse 1 m: 1 · 10 · 4 = 40."
+    },
+    {
+     "letter": "C",
+     "text": "60",
+     "correct": true,
+     "why": "Acerto. A piscina é um prisma cuja base é o trapézio da lateral: (1 + 2) · 10 ÷ 2 = 15 m². Volume = área da base · largura = 15 · 4 = 60 m³."
+    },
+    {
+     "letter": "D",
+     "text": "80",
+     "correct": false,
+     "why": "Usou só a profundidade da parte funda, como se a piscina inteira tivesse 2 m: 2 · 10 · 4 = 80."
+    },
+    {
+     "letter": "E",
+     "text": "120",
+     "correct": false,
+     "why": "Somou as duas profundidades e esqueceu de dividir por 2 na área do trapézio: (1 + 2) · 10 · 4 = 120."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "A piscina é um prisma. As duas faces iguais e paralelas são os trapézios das laterais; elas são a base.",
+    "Área do trapézio: (1 + 2) · 10 ÷ 2 = 15 m².",
+    "Volume: área da base · distância entre as bases = 15 · 4 = 60 m³."
+   ],
+   "check": "O volume tem de ficar entre o de uma piscina toda com 1 m de fundo (40 m³) e o de uma toda com 2 m (80 m³). 60 m³ é exatamente o meio, porque a profundidade média é 1,5 m: 1,5 · 10 · 4 = 60.",
+   "origem": "S07 Q5"
+  }
+ ]
+}

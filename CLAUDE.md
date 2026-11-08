@@ -6,12 +6,16 @@ Você vai implementar o site descrito em `PLANO.md`. Os dados, as figuras e as f
 1. `PLANO.md`: o que é o site, telas, tecnologia e fases.
 2. `planejamento/resultado_gamificado.md`: cálculo da nota, faixas, plano, XP, conquistas e a tela de resultado. É a parte mais importante.
 3. `planejamento/esquema_dados.md`: formato dos JSON.
+3b. `planejamento/simulado_completo_etapa3.md`: o simulado de 28 questões, com as telas e os testes próprios dele.
 4. `data/config.json`, `data/catalogo.json`, `data/habilidades.json` e um simulado (`data/avalia/S07.json`, `data/prova/E3-AV2.json`).
 5. `planejamento/referencia/template_simulado_antigo.html`: o simulado digital que os alunos já usaram, arquivo único com o painel de resultado antigo. Serve só de referência do que eles conhecem. Não copie o visual; o novo é mais jogo e mais claro.
 
 ## Regras
 - **Sem build e sem framework.** HTML, CSS e JavaScript puros com módulos ES. Nenhum `package.json` é necessário para o site funcionar (pode existir só para os testes).
 - **Nada sai do aparelho do aluno.** Sem servidor, sem formulário que envia dados, sem analytics, sem rastreador. A única requisição externa permitida é a do Google Fonts. Progresso só em `localStorage`, como em `resultado_gamificado.md`, item 6.
+  - **Exceção: as páginas de aula** (`simulado.html` e `completo.html`, ver `planejamento/pagina_simulado_completo.md`). Elas enviam turma, nome e respostas para a planilha do professor, pelo Apps Script (`planejamento/apps_script/Code.gs`), e recebem dela a lista de alunos.
+  - Mesmo nelas: **nenhum nome de aluno nem e-mail entra no repositório** (a lista fica na aba "Alunos" da planilha e chega à página só com o código da aula), e o código da aula fica nas Propriedades do script, nunca no código. Nos testes, só nomes de mentira.
+  - O site principal (`index.html`) continua sem enviar nada.
 - **Sem nome institucional.** Não escreva o nome da rede de ensino, da escola ou da cidade em lugar nenhum. A palavra "Avalia" é permitida. `python3 tools/validar_dados.py` confere isso.
 - **Não edite à mão** `data/avalia/*.json` nem `data/catalogo.json`. Eles saem de `tools/`. Mudança de conteúdo é com o professor.
 - **Caminhos relativos** (sem `/` no começo), porque o site roda em `https://<usuario>.github.io/<repositorio>/`.

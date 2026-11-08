@@ -35,6 +35,8 @@ e abrir `http://localhost:8000`.
 - **Perfil**: apelido, conquistas, evolução da nota, mapa das habilidades, histórico, tema claro ou escuro e "Apagar meus dados deste aparelho".
 
 ## Testes
+`tests/aula.test.mjs` e `tests/apps_script.test.mjs` cobrem as páginas de aula, com o Apps Script simulado (dois alunos no mesmo computador, recarregar no meio da parte, ordem por aluno, JSON enviado, questões em branco, código errado, planilha fora do ar, revisão só depois de 11/11 e modo treino).
+
 Cobrem o gerador, as telas no celular e no computador (sem rolagem lateral, sem erro no console), o simulado com resposta salva a cada toque e a continuação depois de recarregar.
 
 Precisa de Node 18 ou mais novo.
@@ -52,6 +54,24 @@ Para conferir o que o gerador produz, abra `tools/ver_gerador.html` (com o site 
 Os treinos gerados ficam guardados só no aparelho do aluno (os 12 últimos).
 
 **Semana nova sem modelo:** o site funciona normalmente; só não mostra o botão "Versão nova" para ela. Para incluir a semana no gerador, crie um modelo por questão com o id `S08-1`, `S08-2`... (mesmo código e nível da questão), seguindo os que já existem, e rode `npm test`.
+
+## Páginas de aula: planilha do professor
+Para as aulas nos notebooks da escola há duas páginas que **enviam as respostas para a planilha do professor** (é a única parte do site que envia dados):
+- `completo.html`: o Simulado Completo em 4 partes de 7 questões. Cada parte começa e é enviada separadamente, em qualquer ordem e em aulas diferentes.
+- `simulado.html?id=<ID>`: qualquer simulado de `data/avalia` ou `data/prova` (por exemplo `simulado.html?id=S08` ou `simulado.html?id=T1`). O campo `modo` do JSON decide: `"prova"` corrige só no fim; `"treino"` corrige a cada questão. Com `&parte=N`, abre direto a parte N.
+
+O aluno escolhe a turma, digita o **código da aula** (que o professor escreve na lousa) e escolhe o nome na lista que vem da planilha. As questões de cada parte saem numa ordem diferente para cada aluno (sempre a mesma para o mesmo aluno). O progresso fica salvo no computador a cada resposta; o botão "Não sou eu / trocar de aluno" (ou "Sair") libera o computador para o próximo. Antes de `LIBERAR_REVISAO_EM` (em `js/aula/config.js`), o resultado não mostra as alternativas corretas.
+
+### Montar a planilha (uma vez)
+1. Crie uma planilha no Google Sheets e uma aba chamada **Alunos**, com as colunas `Turma`, `Numero`, `Nome`. Cole ali o conteúdo do `Alunos_para_planilha_9EF_2026.csv`, que está na sua pasta particular. **Esse arquivo não vai para o repositório.**
+2. Abra **Extensões > Apps Script**, apague o que estiver lá e cole todo o conteúdo de `planejamento/apps_script/Code.gs`. Salve.
+3. No Apps Script, abra **Configurações do projeto** (engrenagem) > **Propriedades do script** e crie a propriedade `CODIGO_AULA` com o código que você vai escrever na lousa (por exemplo `PI314`). Para trocar o código numa aula, é só mudar o valor aqui.
+4. Clique em **Implantar > Nova implantação**, tipo **App da Web**, "Executar como": **Eu**, "Quem pode acessar": **Qualquer pessoa**. Autorize e copie a URL (termina em `/exec`).
+5. Cole essa URL em `URL_DA_PLANILHA`, no arquivo `js/aula/config.js`, faça o commit e envie.
+
+As outras abas (**Respostas**, **Resumo**, **Por questão** e **Códigos**) a planilha cria sozinha no primeiro envio. Cada parte enviada vira uma linha em Respostas na hora; o Resumo junta as partes de cada aluno (nota, etapa e conexão); Por questão mostra o acerto de cada questão por turma e a alternativa mais marcada. Se o Apps Script estiver fora do ar, o aluno digita o nome (o envio chega com "Nome digitado: sim") e a página guarda o envio que falhou para tentar de novo.
+
+**Gabarito:** o JSON de cada simulado é público. Publique o simulado só perto da aula.
 
 ## Publicar no GitHub Pages
 1. Subir esta pasta inteira como raiz do repositório.

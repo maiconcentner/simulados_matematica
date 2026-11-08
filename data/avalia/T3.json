@@ -1,0 +1,531 @@
+{
+ "id": "T3",
+ "area": "avalia",
+ "titulo": "Treino · Números, porcentagem e estatística",
+ "subtitulo": "Correção na hora, com a explicação de cada alternativa",
+ "semana": null,
+ "etapa": 3,
+ "data": "2026-11-11",
+ "serie": "9º ano",
+ "professor": "Prof. Maicon Centner Germano",
+ "temas": "Porcentagens, juros, radicais, fatores primos, média, contagem e probabilidade (questões das Semanas 1 a 7)",
+ "status": "publicado",
+ "modo": "treino",
+ "pontuacao": {
+  "tipo": "acertos"
+ },
+ "dicas": {
+  "C05": "divida o número sempre pelo menor primo possível (2, 3, 5, 7...) até o quociente chegar a 1, e confira multiplicando os fatores; lembre que o 1 não é primo e que fatores como 6 ou 9 ainda se decompõem.",
+  "D31": "use fatores em vez de somar percentuais. Aumento de 20% é × 1,20 e desconto de 20% é × 0,80. Os percentuais não se somam porque incidem sobre valores diferentes.",
+  "D03": "transforme cada porcentagem em fator (aumento de 20% é × 1,20; desconto de 20% é × 0,80) e multiplique os fatores na ordem em que acontecem; somar os percentuais não funciona.",
+  "C01": "aplique a taxa sobre o valor já atualizado a cada período (multiplique por 1 + taxa uma vez por mês) e lembre que, em juros simples, a taxa incide sempre sobre o valor inicial e o resultado fica menor.",
+  "D01": "simplifique cada raiz (√50 = 5√2), use √a · √b = √(a · b) e só some ou subtraia raízes com o mesmo radicando; número inteiro e raiz não se juntam.",
+  "C27": "multiplique cada nota pelo seu peso, some tudo e divida pela soma dos pesos (não pelo número de notas). A média sempre fica entre a menor e a maior nota.",
+  "C31": "para contar combinações formadas por escolhas independentes (um item de cada grupo), multiplique o número de opções de cada grupo; não some.",
+  "D33": "para 'ou', some as probabilidades dos casos favoráveis sobre o total. Para o evento complementar ('não'), calcule 100% menos a probabilidade do evento."
+ },
+ "items": [
+  {
+   "n": 1,
+   "code": "C05",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Decomposição em fatores primos",
+   "descriptor": "Decompor números naturais em fatores primos.",
+   "stem": [
+    "Uma professora organizou 180 cartas de um jogo e decidiu decompor o número 180 em fatores primos para planejar a divisão das cartas em grupos iguais."
+   ],
+   "table": null,
+   "ask": "Qual das alternativas apresenta a decomposição de 180 em fatores primos?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "2 × 2 × 5 × 9",
+     "correct": false,
+     "why": "Parou a decomposição no 9, que ainda é composto (9 = 3 × 3). Em uma decomposição em fatores primos, todos os fatores precisam ser primos."
+    },
+    {
+     "letter": "B",
+     "text": "2² × 3² × 5",
+     "correct": true,
+     "why": "Acerto. Dividindo 180 sempre pelo menor primo possível, obtém-se 2, 2, 3, 3 e 5, todos primos: 180 = 2² × 3² × 5."
+    },
+    {
+     "letter": "C",
+     "text": "2 × 3 × 5 × 6",
+     "correct": false,
+     "why": "Usou o 6 como fator, mas 6 é composto (2 × 3). A decomposição só termina quando todos os fatores são primos."
+    },
+    {
+     "letter": "D",
+     "text": "2² × 3 × 5",
+     "correct": false,
+     "why": "Perdeu um dos fatores 3: 2² × 3 × 5 = 60, e não 180. Conferir o produto mostra o erro."
+    },
+    {
+     "letter": "E",
+     "text": "1 × 2² × 3² × 5",
+     "correct": false,
+     "why": "Incluiu o 1 como fator. O 1 não é primo (e multiplicar por 1 não muda o resultado), então não faz parte da decomposição."
+    }
+   ],
+   "key": "B",
+   "resolution": [
+    "Divide-se 180 sempre pelo menor número primo possível: 180 ÷ 2 = 90, 90 ÷ 2 = 45, 45 ÷ 3 = 15, 15 ÷ 3 = 5 e 5 ÷ 5 = 1.",
+    "Os divisores usados foram 2, 2, 3, 3 e 5, todos primos. A decomposição termina quando o quociente chega a 1.",
+    "Logo, 180 = 2 × 2 × 3 × 3 × 5 = 2² × 3² × 5."
+   ],
+   "check": "Multiplicando os fatores: 4 × 9 × 5 = 180. Além disso, nenhum fator da lista pode ser dividido por outro número além de 1 e dele mesmo.",
+   "origem": "S04 Q1"
+  },
+  {
+   "n": 2,
+   "code": "D31",
+   "role": "Retomada",
+   "level": "N2",
+   "short": "Porcentagens sucessivas",
+   "descriptor": "Resolver problemas que envolvam o cálculo de porcentagens, taxas e percentuais sucessivos em contextos.",
+   "stem": [
+    "Uma plataforma de streaming aumentou em 20% o valor da assinatura mensal, que era de R$ 40,00. Depois de reclamações dos clientes, a empresa concedeu um desconto de 20% sobre o novo valor."
+   ],
+   "table": null,
+   "ask": "Qual é o valor da assinatura depois do desconto?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 30,40",
+     "correct": false,
+     "why": "Desconto calculado sobre o novo valor (20% de 48,00 = 9,60), mas subtraído do valor original: 40 − 9,60 = 30,40. O desconto deve ser subtraído do valor já aumentado, R$ 48,00."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 32,00",
+     "correct": false,
+     "why": "Desconto de 20% aplicado ao valor original (40 × 0,80 = 32,00), sem considerar o aumento."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 38,40",
+     "correct": true,
+     "why": "Acerto. Após o aumento: 40 × 1,20 = 48,00. Após o desconto: 48 × 0,80 = 38,40."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 40,00",
+     "correct": false,
+     "why": "Soma dos percentuais (+20% − 20% = 0%), o que deixa o valor igual ao original. O desconto incide sobre o valor já aumentado, então não cancela o aumento."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 48,00",
+     "correct": false,
+     "why": "Só o aumento foi considerado (40 × 1,20 = 48,00). Faltou aplicar o desconto."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Aumento de 20%: o valor passa a ser 100% + 20% = 120% do original, isto é, 40 × 1,20 = R$ 48,00.",
+    "Desconto de 20% sobre R$ 48,00: o valor passa a ser 80% de 48, isto é, 48 × 0,80 = R$ 38,40.",
+    "Os percentuais não se somam, porque cada um incide sobre um valor diferente. O fator final é 1,20 × 0,80 = 0,96, uma queda de 4% em relação ao original."
+   ],
+   "check": "40 × 0,96 = 38,40.",
+   "origem": "S01 Q2"
+  },
+  {
+   "n": 3,
+   "code": "D03",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Percentuais sucessivos (aumento e desconto)",
+   "descriptor": "Calcular aplicação de percentuais sucessivos em situações contextualizadas.",
+   "stem": [
+    "Em novembro, uma loja aumentou em 20% o preço de um par de tênis que custava R$ 250,00. Em janeiro, na liquidação, a loja deu 20% de desconto sobre o preço de novembro."
+   ],
+   "table": null,
+   "ask": "Qual é o preço desse par de tênis em janeiro?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 60,00",
+     "correct": false,
+     "why": "Calculou o valor do desconto de janeiro (20% de R$ 300,00 = R$ 60,00) e respondeu com ele. A pergunta pede o preço do tênis depois do desconto, e não quanto foi descontado."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 200,00",
+     "correct": false,
+     "why": "Aplicou o desconto de 20% direto sobre os R$ 250,00 e ignorou o aumento de novembro."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 240,00",
+     "correct": true,
+     "why": "Acerto. Em novembro: 250 × 1,20 = 300. Em janeiro: 300 × 0,80 = 240."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 250,00",
+     "correct": false,
+     "why": "Somou os percentuais (+20% − 20% = 0) e concluiu que o preço voltou ao original. Os 20% de desconto incidem sobre R$ 300,00, um valor maior, então o desconto (R$ 60,00) é maior que o aumento (R$ 50,00)."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 300,00",
+     "correct": false,
+     "why": "Aplicou só o aumento de novembro e esqueceu o desconto de janeiro."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Aumento de 20%: o preço é multiplicado por 1,20. Em novembro: 250 × 1,20 = 300.",
+    "Desconto de 20%: o preço de novembro é multiplicado por 0,80. Em janeiro: 300 × 0,80 = 240.",
+    "O preço em janeiro é R$ 240,00."
+   ],
+   "check": "O fator total é 1,20 × 0,80 = 0,96: o preço final é 96% do original, 4% menor. O aumento foi de R$ 50,00 e o desconto, calculado sobre um valor maior, foi de R$ 60,00.",
+   "origem": "S05 Q2"
+  },
+  {
+   "n": 4,
+   "code": "C01",
+   "role": "Conexão",
+   "level": "N3",
+   "short": "Juros compostos",
+   "descriptor": "Calcular juros compostos em situações contextualizadas.",
+   "stem": [
+    "Para comprar um notebook, uma estudante aplicou R$ 5 000,00 em um investimento que rende juros compostos de 2% ao mês. Ela não fez novos depósitos nem retiradas."
+   ],
+   "table": null,
+   "ask": "Qual será o valor acumulado nesse investimento ao final de 3 meses?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "R$ 306,04",
+     "correct": false,
+     "why": "Calculou só os juros acumulados nos 3 meses (R$ 306,04). A pergunta pede o valor acumulado, que inclui os R$ 5 000,00 aplicados."
+    },
+    {
+     "letter": "B",
+     "text": "R$ 5 100,00",
+     "correct": false,
+     "why": "Aplicou a taxa de 2% uma vez só, como se tivesse passado apenas 1 mês."
+    },
+    {
+     "letter": "C",
+     "text": "R$ 5 300,00",
+     "correct": false,
+     "why": "Usou juros simples: 2% de R$ 5 000,00 é R$ 100,00 por mês, sempre sobre o valor inicial. Em juros compostos, a taxa de cada mês incide sobre o valor já atualizado."
+    },
+    {
+     "letter": "D",
+     "text": "R$ 5 306,04",
+     "correct": true,
+     "why": "Acerto. Mês a mês: 5 000 × 1,02 = 5 100; 5 100 × 1,02 = 5 202; 5 202 × 1,02 = 5 306,04. Ou, direto, 5 000 × 1,02³ = 5 306,04."
+    },
+    {
+     "letter": "E",
+     "text": "R$ 8 640,00",
+     "correct": false,
+     "why": "Escreveu 2% como 0,2 (que é 20%) e calculou 5 000 × 1,2³. Como 2% = 0,02, o fator de cada mês é 1,02."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Em juros compostos, a cada mês os 2% incidem sobre o valor já atualizado, ou seja, o valor é multiplicado por 1,02.",
+    "1º mês: 5 000 × 1,02 = 5 100. 2º mês: 5 100 × 1,02 = 5 202. 3º mês: 5 202 × 1,02 = 5 306,04.",
+    "O valor acumulado é R$ 5 306,04 (o mesmo que 5 000 × 1,02³)."
+   ],
+   "check": "Em juros simples o valor seria R$ 5 300,00 (R$ 100,00 por mês). Em juros compostos o resultado tem de ser um pouco maior, por causa dos juros sobre os juros: R$ 6,04 a mais.",
+   "origem": "S05 Q1"
+  },
+  {
+   "n": 5,
+   "code": "D01",
+   "role": "Retomada",
+   "level": "N3",
+   "short": "Expressão numérica com radicais",
+   "descriptor": "Aplicar as propriedades da radiciação para resolver expressões numéricas.",
+   "stem": [
+    "O comprimento, em metros, de uma barra de ferro usada em uma obra é dado pela expressão numérica:",
+    "√50 + √8 · √2 − √18"
+   ],
+   "table": null,
+   "ask": "Qual é o comprimento dessa barra, em metros?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "4 + 2√2",
+     "correct": true,
+     "why": "Acerto. √50 = 5√2, √8 · √2 = √16 = 4 e √18 = 3√2. Então 5√2 + 4 − 3√2 = 4 + 2√2."
+    },
+    {
+     "letter": "B",
+     "text": "4√3",
+     "correct": false,
+     "why": "Juntou tudo numa raiz só: √(50 + 16 − 18) = √48 = 4√3. A raiz de uma soma não é a soma das raízes, e somar raízes não é somar os radicandos."
+    },
+    {
+     "letter": "C",
+     "text": "6√2",
+     "correct": false,
+     "why": "Fez as contas certas até 4 + 2√2 e depois somou o 4 com o 2√2, como se fossem termos semelhantes. Um número inteiro e uma raiz não se juntam."
+    },
+    {
+     "letter": "D",
+     "text": "4 + 4√2",
+     "correct": false,
+     "why": "Subtraiu os radicandos: √50 − √18 = √32 = 4√2. Raízes só se somam ou subtraem depois de simplificadas e com o mesmo radicando: 5√2 − 3√2 = 2√2."
+    },
+    {
+     "letter": "E",
+     "text": "16 + 2√2",
+     "correct": false,
+     "why": "Fez √8 · √2 = 8 · 2 = 16 e esqueceu de tirar a raiz. O certo é √8 · √2 = √16 = 4."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Simplifique as raízes: √50 = √(25 · 2) = 5√2 e √18 = √(9 · 2) = 3√2.",
+    "Use a propriedade do produto: √8 · √2 = √(8 · 2) = √16 = 4.",
+    "Junte só as raízes semelhantes: 5√2 + 4 − 3√2 = 4 + 2√2."
+   ],
+   "check": "Com valores aproximados: √50 ≈ 7,07; √18 ≈ 4,24; 7,07 + 4 − 4,24 ≈ 6,83. E 4 + 2√2 ≈ 4 + 2,83 = 6,83, confere.",
+   "origem": "S06 Q2"
+  },
+  {
+   "n": 6,
+   "code": "C27",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Média ponderada",
+   "descriptor": "Resolver problemas que envolvam o cálculo de média aritmética e ponderada em situações contextualizadas.",
+   "stem": [
+    "Em uma escola, a nota final de Matemática de cada estudante é a média ponderada das notas de três avaliações, com os pesos indicados na tabela a seguir. A tabela mostra as notas de Bruno."
+   ],
+   "table": {
+    "header": [
+     "Avaliação",
+     "Nota de Bruno",
+     "Peso"
+    ],
+    "rows": [
+     [
+      "Atividades em sala",
+      "9,0",
+      "2"
+     ],
+     [
+      "Projeto",
+      "5,0",
+      "3"
+     ],
+     [
+      "Prova",
+      "7,0",
+      "5"
+     ]
+    ],
+    "caption": "Elaboração própria para fins educacionais."
+   },
+   "ask": "Qual foi a nota final de Bruno em Matemática?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "6,8",
+     "correct": true,
+     "why": "Acerto. Soma dos produtos nota × peso (18 + 15 + 35 = 68) dividida pela soma dos pesos (2 + 3 + 5 = 10): 68 ÷ 10 = 6,8."
+    },
+    {
+     "letter": "B",
+     "text": "7,0",
+     "correct": false,
+     "why": "Média aritmética simples: (9 + 5 + 7) ÷ 3 = 7,0. Ignora os pesos, que dão mais valor à prova."
+    },
+    {
+     "letter": "C",
+     "text": "7,4",
+     "correct": false,
+     "why": "Pesos aplicados na ordem invertida (5, 3 e 2): (45 + 15 + 14) ÷ 10 = 7,4. Erro de leitura da coluna dos pesos."
+    },
+    {
+     "letter": "D",
+     "text": "22,7",
+     "correct": false,
+     "why": "Soma dos produtos (68) dividida por 3, o número de avaliações, e não pela soma dos pesos. Uma nota final de 22,7 passa do máximo possível, 10."
+    },
+    {
+     "letter": "E",
+     "text": "68",
+     "correct": false,
+     "why": "Soma dos produtos nota × peso sem dividir por nada. Falta o passo final da média ponderada."
+    }
+   ],
+   "key": "A",
+   "resolution": [
+    "Multiplicar cada nota pelo respectivo peso: 9,0 × 2 = 18; 5,0 × 3 = 15; 7,0 × 5 = 35.",
+    "Somar os produtos: 18 + 15 + 35 = 68.",
+    "Dividir pela soma dos pesos: 2 + 3 + 5 = 10. Então 68 ÷ 10 = 6,8."
+   ],
+   "check": "Toda média fica entre a menor e a maior nota (5,0 e 9,0). Por isso 22,7 e 68 não servem.",
+   "origem": "S01 Q1"
+  },
+  {
+   "n": 7,
+   "code": "C31",
+   "role": "Conexão",
+   "level": "N2",
+   "short": "Princípio multiplicativo",
+   "descriptor": "Resolver problemas de contagem utilizando o princípio multiplicativo (número de combinações formadas por escolhas independentes).",
+   "stem": [
+    "Uma lanchonete monta sanduíches combinando 1 tipo de pão, escolhido entre 4 disponíveis (branco, integral, australiano e brioche), com 1 tipo de recheio, escolhido entre 3 disponíveis (frango, atum e vegetariano). Cada sanduíche tem exatamente um pão e um recheio."
+   ],
+   "table": null,
+   "ask": "Quantos sanduíches diferentes é possível montar dessa forma?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "3",
+     "correct": false,
+     "why": "Contou só os recheios (3), sem multiplicar pelos pães."
+    },
+    {
+     "letter": "B",
+     "text": "4",
+     "correct": false,
+     "why": "Contou só os pães (4), sem multiplicar pelos recheios."
+    },
+    {
+     "letter": "C",
+     "text": "7",
+     "correct": false,
+     "why": "Somou as duas quantidades (4 pães + 3 recheios = 7) em vez de multiplicar. A soma não representa todas as combinações possíveis."
+    },
+    {
+     "letter": "D",
+     "text": "12",
+     "correct": true,
+     "why": "Acerto. Para cada um dos 4 pães há 3 recheios possíveis: 4 × 3 = 12 sanduíches diferentes."
+    },
+    {
+     "letter": "E",
+     "text": "24",
+     "correct": false,
+     "why": "Contou cada combinação de pão e recheio duas vezes, como se 'pão e depois recheio' fosse diferente de 'recheio e depois pão'. Em um sanduíche de 1 pão + 1 recheio, a ordem não importa: são 4 × 3 = 12 combinações, não 4 × 3 × 2."
+    }
+   ],
+   "key": "D",
+   "resolution": [
+    "Para montar um sanduíche, é preciso escolher 1 pão entre 4 opções e 1 recheio entre 3 opções.",
+    "Pelo princípio multiplicativo, o total de combinações é o produto do número de opções de cada escolha: 4 × 3.",
+    "4 × 3 = 12 sanduíches diferentes."
+   ],
+   "check": "12 está entre o maior valor isolado (4) e o total de opções somadas (7), e é bem menor que o dobro (24), o que é coerente com uma combinação simples de 1 pão + 1 recheio.",
+   "origem": "S02 Q1"
+  },
+  {
+   "n": 8,
+   "code": "D33",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Probabilidade (evento 'ou')",
+   "descriptor": "Resolver problemas envolvendo o cálculo da probabilidade de um evento em espaços amostrais equiprováveis.",
+   "stem": [
+    "Uma urna contém 5 bolas vermelhas, 3 bolas azuis e 2 bolas verdes, todas do mesmo tamanho e do mesmo material. Uma bola é retirada dessa urna ao acaso."
+   ],
+   "table": null,
+   "ask": "Qual é a probabilidade de a bola retirada ser vermelha ou verde?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "10%",
+     "correct": false,
+     "why": "Multiplicou as probabilidades das cores em vez de somar (5/10 × 2/10 = 10%). Como o evento é 'vermelha ou verde', as probabilidades se somam, não se multiplicam."
+    },
+    {
+     "letter": "B",
+     "text": "20%",
+     "correct": false,
+     "why": "Considerou só as bolas verdes (2 em 10), esquecendo as vermelhas."
+    },
+    {
+     "letter": "C",
+     "text": "30%",
+     "correct": false,
+     "why": "Considerou só as bolas azuis (3 em 10), que não fazem parte do evento perguntado."
+    },
+    {
+     "letter": "D",
+     "text": "50%",
+     "correct": false,
+     "why": "Considerou só as bolas vermelhas (5 em 10), esquecendo as verdes."
+    },
+    {
+     "letter": "E",
+     "text": "70%",
+     "correct": true,
+     "why": "Acerto. Vermelha ou verde: 5 + 2 = 7 bolas favoráveis em 10. P = 7/10 = 0,70 = 70%."
+    }
+   ],
+   "key": "E",
+   "resolution": [
+    "O total de bolas na urna é 5 + 3 + 2 = 10.",
+    "O evento 'vermelha ou verde' é favorecido por 5 + 2 = 7 bolas.",
+    "A probabilidade é o número de casos favoráveis dividido pelo total: 7/10 = 0,70 = 70%."
+   ],
+   "check": "As probabilidades de todas as cores somam 100%: vermelha 50% + azul 30% + verde 20% = 100%. Vermelha ou verde: 50% + 20% = 70%.",
+   "origem": "S02 Q3"
+  },
+  {
+   "n": 9,
+   "code": "D33",
+   "role": "Novo",
+   "level": "N2",
+   "short": "Probabilidade (evento complementar)",
+   "descriptor": "Resolver problemas envolvendo o cálculo da probabilidade de um evento em espaços amostrais equiprováveis.",
+   "stem": [
+    "Em uma caixa há 20 cartões numerados de 1 a 20, sem repetição. Um cartão é retirado dessa caixa ao acaso."
+   ],
+   "table": null,
+   "ask": "Qual é a probabilidade de o número desse cartão não ser múltiplo de 4?",
+   "options": [
+    {
+     "letter": "A",
+     "text": "25%",
+     "correct": false,
+     "why": "Calculou a probabilidade de o número SER múltiplo de 4 (5/20 = 25%), o evento contrário ao que foi perguntado."
+    },
+    {
+     "letter": "B",
+     "text": "30%",
+     "correct": false,
+     "why": "Contou 6 múltiplos de 4 entre 1 e 20, incluindo o 0 (que não está entre os cartões, pois o intervalo começa em 1): 6/20 = 30%. Só há 5 múltiplos de 4 nesse intervalo (4, 8, 12, 16 e 20)."
+    },
+    {
+     "letter": "C",
+     "text": "75%",
+     "correct": true,
+     "why": "Acerto. Múltiplos de 4 entre 1 e 20: 4, 8, 12, 16 e 20 (5 cartões). Não múltiplos de 4: 20 − 5 = 15. P = 15/20 = 0,75 = 75%."
+    },
+    {
+     "letter": "D",
+     "text": "80%",
+     "correct": false,
+     "why": "Contou só 4 múltiplos de 4 (esqueceu um deles, como o 4 ou o 20): 20 − 4 = 16 não múltiplos; 16/20 = 80%."
+    },
+    {
+     "letter": "E",
+     "text": "400%",
+     "correct": false,
+     "why": "Inverteu a fração (dividiu o total pelo número de casos favoráveis: 20/5) em vez de casos favoráveis pelo total. Uma probabilidade nunca passa de 100%."
+    }
+   ],
+   "key": "C",
+   "resolution": [
+    "Múltiplos de 4 entre 1 e 20: 4, 8, 12, 16 e 20. São 5 cartões.",
+    "Cartões que NÃO são múltiplos de 4: 20 − 5 = 15.",
+    "P = casos favoráveis / total = 15/20 = 0,75 = 75%."
+   ],
+   "check": "P(múltiplo de 4) + P(não múltiplo de 4) = 25% + 75% = 100%.",
+   "origem": "S02 Q5"
+  }
+ ]
+}
