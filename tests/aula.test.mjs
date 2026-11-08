@@ -509,6 +509,94 @@ test("telas em 1280 px sem rolagem lateral", async () => {
   await pc.ctx.close();
 });
 
+test("professor apaga o envio na planilha: a parte volta a ficar disponível, do zero", async () => {
+  const planilha = novaPlanilha();
+  const pc = await computador(planilha);
+  const p = pc.pagina;
+  await p.goto(URL_BASE + "completo.html");
+  await identificar(pc, { nome: "Ana Teste" });
+  await tela(pc, COMPLETO.titulo);
+  await fazerParte(pc, COMPLETO, 1, certa);
+  await tela(pc, COMPLETO.titulo);
+  assert.match(await p.textContent(".parte:nth-child(1)"), /Enviada/);
+  const primeiroEnvio = planilha.recebidos[0].id_envio;
+  // o professor apaga a linha da Ana na planilha
+  planilha.recebidos.length = 0;
+  await p.reload();
+  await tela(pc, COMPLETO.titulo);
+  assert.match(await p.textContent(".parte:nth-child(1)"), /Não começada/);
+  await p.click('[data-acao="abrir-parte"][data-parte="1"]');
+  await tela(pc, "Questão 1");
+  assert.equal(await p.$('.opcao[aria-checked="true"]'), null, "a parte tem que recomeçar sem respostas");
+  // refaz e envia de novo, com outro id_envio
+  await fazerParte(pc, COMPLETO, 1, errada);
+  await tela(pc, COMPLETO.titulo);
+  assert.equal(planilha.recebidos.length, 1);
+  assert.notEqual(planilha.recebidos[0].id_envio, primeiroEnvio);
+  assert.equal(planilha.recebidos[0].acertos_parte, 0);
+  assert.deepEqual(pc.erros, []);
+  await pc.ctx.close();
+});
+
+test("professor apaga tudo depois das 4 partes: em vez do resultado, as partes voltam", async () => {
+  const planilha = novaPlanilha();
+  const pc = await computador(planilha);
+  const p = pc.pagina;
+  await p.goto(URL_BASE + "completo.html");
+  await identificar(pc, { nome: "Bruno Teste" });
+  await tela(pc, COMPLETO.titulo);
+  for (const parte of [1, 2, 3, 4]) {
+    await fazerParte(pc, COMPLETO, parte, certa);
+    if (parte < 4) await tela(pc, COMPLETO.titulo);
+  }
+  await tela(pc, "Resultado");
+  planilha.recebidos.length = 0;
+  // outro aluno usa o computador e o Bruno volta
+  await p.click('[data-acao="trocar"]');
+  await identificar(pc, { nome: "Bruno Teste" });
+  await tela(pc, COMPLETO.titulo);
+  assert.equal(await p.$$eval(".parte", (e) => e.length), 4);
+  assert.equal(await p.$$eval('.parte.nova', (e) => e.length), 4);
+  await new Promise((r) => setTimeout(r, 300));
+  assert.equal(await p.evaluate(() => document.body.dataset.tela), COMPLETO.titulo, "não pode voltar para o resultado");
+  assert.deepEqual(pc.erros, []);
+  await pc.ctx.close();
+});
+
+test("simulado de uma parte (T1) apagado na planilha: volta para a questão 1", async () => {
+  const planilha = novaPlanilha();
+  const pc = await computador(planilha);
+  const p = pc.pagina;
+  await p.goto(URL_BASE + "simulado.html?id=T1");
+  await identificar(pc, { nome: "Caio Exemplo" });
+  await tela(pc, "Questão 1");
+  await fazerParte(pc, T1, 1, certa);
+  await tela(pc, "Resultado");
+  planilha.recebidos.length = 0;
+  await p.reload();
+  await tela(pc, "Questão 1");
+  assert.equal(await p.$(".feedback"), null);
+  assert.deepEqual(pc.erros, []);
+  await pc.ctx.close();
+});
+
+test("planilha fora do ar: o que este computador enviou continua como enviado", async () => {
+  const planilha = novaPlanilha();
+  const pc = await computador(planilha);
+  const p = pc.pagina;
+  await p.goto(URL_BASE + "completo.html");
+  await identificar(pc, { nome: "Ana Teste" });
+  await tela(pc, COMPLETO.titulo);
+  await fazerParte(pc, COMPLETO, 2, certa);
+  await tela(pc, COMPLETO.titulo);
+  planilha.foraGet = true;
+  await p.reload();
+  await tela(pc, COMPLETO.titulo);
+  assert.match(await p.textContent(".parte:nth-child(2)"), /Enviada/);
+  assert.deepEqual(pc.erros, []);
+  await pc.ctx.close();
+});
+
 test("validação dos dados: python3 tools/validar_dados.py sem erro", () => {
   const saida = execFileSync("python3", [join(RAIZ, "tools/validar_dados.py")], { encoding: "utf-8" });
   assert.match(saida, /0 erro\(s\)/);

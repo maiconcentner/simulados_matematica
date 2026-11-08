@@ -26,7 +26,7 @@ class Aba {
   clearContents() { this.v = []; }
 }
 
-function ambiente({ codigoAula = "PI314", alunos = [] } = {}) {
+function ambiente({ codigoAula = "PI314", porTurma = {}, alunos = [] } = {}) {
   const abas = {};
   const ss = {
     getSheetByName: (n) => abas[n] || null,
@@ -34,7 +34,7 @@ function ambiente({ codigoAula = "PI314", alunos = [] } = {}) {
   };
   const ctx = {
     SpreadsheetApp: { getActiveSpreadsheet: () => ss },
-    PropertiesService: { getScriptProperties: () => ({ getProperty: (k) => (k === "CODIGO_AULA" ? codigoAula : null) }) },
+    PropertiesService: { getScriptProperties: () => ({ getProperty: (k) => (k === "CODIGO_AULA" ? codigoAula : porTurma[k] ?? null) }) },
     LockService: { getScriptLock: () => ({ waitLock() {}, releaseLock() {} }) },
     ContentService: {
       MimeType: { JSON: "json" },
@@ -73,8 +73,22 @@ test("alunos: confere o código e a turma e devolve os nomes em ordem alfabétic
   assert.deepEqual(a.get({ acao: "alunos", turma: "9A", codigo: "pi314" }), { ok: true, alunos: ["Ana Teste", "Bruno Teste"] });
   assert.deepEqual(a.get({ acao: "alunos", turma: "9A", codigo: "ERRADO" }), { ok: false, erro: "codigo" });
   assert.deepEqual(a.get({ acao: "alunos", turma: "8A", codigo: "PI314" }), { ok: false, erro: "turma" });
+  assert.deepEqual(a.get({ acao: "alunos", turma: "9B", codigo: "PI314" }), { ok: true, alunos: ["Caio Exemplo"] });
   const sem = ambiente({ codigoAula: null });
   assert.deepEqual(sem.get({ acao: "alunos", turma: "9A", codigo: "" }), { ok: false, erro: "codigo" });
+});
+
+test("um código por turma: o de uma turma não vale para outra; turma sem código próprio usa o CODIGO_AULA", () => {
+  const a = ambiente({ codigoAula: "GERAL1", porTurma: { CODIGO_9A: "ALFA1", CODIGO_9B: "BETA2" }, alunos: [["9A", 1, "Ana Teste"], ["9B", 1, "Caio Exemplo"], ["9C", 1, "Eva Exemplo"]] });
+  assert.equal(a.get({ acao: "alunos", turma: "9A", codigo: "alfa1" }).ok, true);
+  assert.equal(a.get({ acao: "alunos", turma: "9B", codigo: "ALFA1" }).erro, "codigo");
+  assert.equal(a.get({ acao: "alunos", turma: "9A", codigo: "BETA2" }).erro, "codigo");
+  assert.equal(a.get({ acao: "alunos", turma: "9A", codigo: "GERAL1" }).erro, "codigo"); // 9A tem o seu
+  assert.equal(a.get({ acao: "alunos", turma: "9C", codigo: "GERAL1" }).ok, true); // 9C usa o geral
+  assert.equal(a.post({ ...envio(1, { 1: "B", 2: "A" }, { 1: 1, 2: 0 }), codigo: "BETA2" }).erro, "codigo");
+  assert.deepEqual(a.post({ ...envio(1, { 1: "B", 2: "A" }, { 1: 1, 2: 0 }), codigo: "ALFA1" }), { ok: true });
+  const sem = ambiente({ codigoAula: null, porTurma: { CODIGO_9A: "ALFA1" } });
+  assert.equal(sem.get({ acao: "alunos", turma: "9B", codigo: "" }).erro, "codigo"); // ninguém configurou a 9B
 });
 
 test("envio grava em Respostas, ignora id_envio repetido e código errado; status e resultado juntam as partes", () => {

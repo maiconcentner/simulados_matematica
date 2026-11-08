@@ -65,11 +65,13 @@ O aluno escolhe a turma, digita o **código da aula** (que o professor escreve n
 ### Montar a planilha (uma vez)
 1. Crie uma planilha no Google Sheets e uma aba chamada **Alunos**, com as colunas `Turma`, `Numero`, `Nome`. Cole ali o conteúdo do `Alunos_para_planilha_9EF_2026.csv`, que está na sua pasta particular. **Esse arquivo não vai para o repositório.**
 2. Abra **Extensões > Apps Script**, apague o que estiver lá e cole todo o conteúdo de `planejamento/apps_script/Code.gs`. Salve.
-3. No Apps Script, abra **Configurações do projeto** (engrenagem) > **Propriedades do script** e crie a propriedade `CODIGO_AULA` com o código que você vai escrever na lousa (por exemplo `PI314`). Para trocar o código numa aula, é só mudar o valor aqui.
+3. No Apps Script, abra **Configurações do projeto** (engrenagem) > **Propriedades do script** e crie **um código por turma**: `CODIGO_9A`, `CODIGO_9B` e `CODIGO_9C`, cada um com o código que você vai escrever na lousa daquela turma. O código de uma turma não funciona na outra. Uma turma sem código próprio usa a propriedade `CODIGO_AULA`, se ela existir. Para trocar o código numa aula, é só mudar o valor aqui.
 4. Clique em **Implantar > Nova implantação**, tipo **App da Web**, "Executar como": **Eu**, "Quem pode acessar": **Qualquer pessoa**. Autorize e copie a URL (termina em `/exec`).
 5. Cole essa URL em `URL_DA_PLANILHA`, no arquivo `js/aula/config.js`, faça o commit e envie.
 
-As outras abas (**Respostas**, **Resumo**, **Por questão** e **Códigos**) a planilha cria sozinha no primeiro envio. Cada parte enviada vira uma linha em Respostas na hora; o Resumo junta as partes de cada aluno (nota, etapa e conexão); Por questão mostra o acerto de cada questão por turma e a alternativa mais marcada. Se o Apps Script estiver fora do ar, o aluno digita o nome (o envio chega com "Nome digitado: sim") e a página guarda o envio que falhou para tentar de novo.
+Depois de mudar o `Code.gs`, faça **Implantar > Gerenciar implantações**, lápis, **Nova versão**, **Implantar**: a URL continua a mesma.
+
+As outras abas (**Respostas**, **Resumo**, **Por questão** e **Códigos**) a planilha cria sozinha no primeiro envio. **A planilha manda:** se você apagar a linha de uma parte na aba Respostas, ela volta a ficar disponível para o aluno, do zero, na próxima vez que ele abrir a página (se a planilha estiver fora do ar, vale o que o computador sabe). Cada parte enviada vira uma linha em Respostas na hora; o Resumo junta as partes de cada aluno (nota, etapa e conexão); Por questão mostra o acerto de cada questão por turma e a alternativa mais marcada. Se o Apps Script estiver fora do ar, o aluno digita o nome (o envio chega com "Nome digitado: sim") e a página guarda o envio que falhou para tentar de novo.
 
 **Gabarito:** o JSON de cada simulado é público. Publique o simulado só perto da aula.
 

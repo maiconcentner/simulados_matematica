@@ -6,7 +6,9 @@
  * "Resumo" (uma linha por aluno e simulado), "Por questão" (acerto de cada questão por turma)
  * e "Códigos" (código de cada questão de cada simulado, usado nas notas da etapa e da conexão).
  *
- * Propriedade do script: CODIGO_AULA (Projeto > Configurações > Propriedades do script).
+ * Propriedades do script (Projeto > Configurações > Propriedades do script):
+ *   CODIGO_9A, CODIGO_9B, CODIGO_9C: o código da aula de cada turma (um código não vale para outra turma);
+ *   CODIGO_AULA: código usado pela turma que não tiver o seu próprio (opcional).
  * Nenhum nome de aluno fica no código: a lista está só na aba "Alunos".
  */
 
@@ -38,16 +40,18 @@ function linhas_(sh) {
   return v.length > 1 ? v.slice(1) : [];
 }
 function norm_(t) { return String(t == null ? '' : t).replace(/\s+/g, ' ').trim().toLowerCase(); }
-function codigoCerto_(codigo) {
-  var certo = PropertiesService.getScriptProperties().getProperty('CODIGO_AULA');
+/** O código da turma (CODIGO_9A...) ou, se ela não tiver, o CODIGO_AULA. */
+function codigoCerto_(codigo, turma) {
+  var props = PropertiesService.getScriptProperties();
+  var certo = props.getProperty('CODIGO_' + turma) || props.getProperty('CODIGO_AULA');
   return !!certo && String(codigo || '').trim().toUpperCase() === String(certo).trim().toUpperCase();
 }
 function uma_casa_(v) { return Math.round(v * 10) / 10; }
 
 /** Confere código e turma. Devolve null se estiver tudo certo, ou o erro. */
 function conferir_(codigo, turma) {
-  if (!codigoCerto_(codigo)) return 'codigo';
   if (TURMAS.indexOf(String(turma)) < 0) return 'turma';
+  if (!codigoCerto_(codigo, turma)) return 'codigo';
   return null;
 }
 

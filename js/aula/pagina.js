@@ -43,7 +43,9 @@ const partes = () => sim.partes?.length ? sim.partes : [{ n: 1, titulo: sim.titu
 const temPartes = () => !!sim.partes?.length;
 const item = (n) => sim.items.find((i) => i.n === n);
 
+let seqTela = 0;
 function desenhar(html, titulo) {
+  seqTela++;
   raiz.innerHTML = String(html);
   document.title = `${titulo} · Simulados de Matemática`;
   const h1 = raiz.querySelector("h1");
@@ -89,17 +91,32 @@ function situacaoDaParte(aluno, n) {
 }
 const faltam = (aluno) => partes().filter((p) => situacaoDaParte(aluno, p.n) !== "enviada").length;
 
+/**
+ * Pergunta à planilha quais partes ela já recebeu deste aluno. Quando ela responde, ela manda:
+ * uma parte que este computador marcou como enviada, mas que não está mais na planilha
+ * (o professor apagou a linha), volta a ficar disponível, do zero.
+ * Se a planilha não responder, vale o que este computador sabe.
+ * Devolve true se alguma coisa mudou na situação das partes.
+ */
 async function atualizarStatusRemoto(aluno) {
+  let r;
   try {
-    const r = await consultar({ acao: "status", id: sim.id, turma: aluno.turma, nome: aluno.nome, codigo: aluno.codigo });
-    if (r?.ok && Array.isArray(r.partes)) {
-      const novo = new Set(r.partes.map(Number));
-      const mudou = novo.size !== statusRemoto.size || [...novo].some((x) => !statusRemoto.has(x));
-      statusRemoto = novo;
-      return mudou;
+    r = await consultar({ acao: "status", id: sim.id, turma: aluno.turma, nome: aluno.nome, codigo: aluno.codigo });
+  } catch {
+    return false; // planilha fora do ar
+  }
+  if (!r?.ok || !Array.isArray(r.partes)) return false;
+  const novo = new Set(r.partes.map(Number));
+  let mudou = novo.size !== statusRemoto.size || [...novo].some((x) => !statusRemoto.has(x));
+  statusRemoto = novo;
+  for (const p of partes()) {
+    const local = lerParte(aluno, sim.id, p.n);
+    if (local?.enviada && !novo.has(p.n)) {
+      gravarParte(aluno, sim.id, p.n, { respostas: {}, atual: 0, tempo_ms: 0, inicio: agoraISO(), liberadaDeNovoEm: agoraISO() });
+      mudou = true;
     }
-  } catch { /* planilha fora do ar: fica com o que este computador sabe */ }
-  return false;
+  }
+  return mudou;
 }
 
 /** Marca como enviadas as partes que saíram da fila de pendentes. */
@@ -216,9 +233,15 @@ async function irParaInicio() {
     await atualizarStatusRemoto(aluno);
     return situacaoDaParte(aluno, 1) === "enviada" ? telaResultado() : abrirParte(1);
   }
+  const algumaEnviadaAqui = partes().some((p) => lerParte(aluno, sim.id, p.n)?.enviada);
+  if (algumaEnviadaAqui) {
+    // pode ter sido apagada na planilha: confere antes de mostrar
+    desenhar(h`<div class="aula-tela">${barraAluno(aluno)}<h1>${sim.titulo}</h1><p class="carregando">Conferindo na planilha do professor...</p></div>`, "Conferindo");
+    await atualizarStatusRemoto(aluno);
+  }
   if (pedida && partes().some((p) => p.n === pedida) && situacaoDaParte(aluno, pedida) !== "enviada") return abrirParte(pedida);
   telaEntrada();
-  if (await atualizarStatusRemoto(aluno)) telaEntrada();
+  if (!algumaEnviadaAqui && (await atualizarStatusRemoto(aluno))) telaEntrada();
 }
 
 function telaEntrada() {
@@ -496,7 +519,9 @@ async function telaResultado() {
   parteAberta = null;
   urlParte(null);
   desenhar(h`<div class="aula-tela">${barraAluno(aluno)}<h1>${sim.titulo}</h1><p class="carregando">Calculando o seu resultado...</p></div>`, "Calculando");
+  const minhaTela = seqTela;
   const { todas, faltando } = await respostasDeTodas(aluno);
+  if (seqTela !== minhaTela) return; // outra tela entrou enquanto calculava
   if (faltando.length) {
     desenhar(h`<div class="aula-tela">${barraAluno(aluno)}<h1>${sim.titulo}</h1>
       ${aviso ? h`<p class="aviso-aula ${aviso.tipo}" role="status">${aviso.texto}</p>` : ""}
