@@ -1,11 +1,11 @@
 // Peças de tela usadas em mais de uma página: cartão do simulado, estado, etiquetas.
-import { h, cru } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
-import { nota1, plural, dataCurta } from "./util.js?v=42dba01b94";
-import { situacao } from "./progresso.js?v=42dba01b94";
-import { encerrado } from "./dados.js?v=42dba01b94";
-import { reloginho } from "./prazo.js?v=42dba01b94";
-import { temVersaoNova } from "./gerador/index.js?v=42dba01b94";
+import { h, cru } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
+import { nota1, plural, dataCurta } from "./util.js?v=57517fb455";
+import { situacao } from "./progresso.js?v=57517fb455";
+import { encerrado, aindaVaiAbrir } from "./dados.js?v=57517fb455";
+import { reloginho } from "./prazo.js?v=57517fb455";
+import { temVersaoNova } from "./gerador/index.js?v=57517fb455";
 
 export function etiquetasHabilidades(codigos, habilidades) {
   const vistos = [...new Set(codigos)];
@@ -40,12 +40,13 @@ export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2
   const treino = s.modo === "treino";
   const info = [plural(s.n_questoes, "questão", "questões"), tempoSugerido(s.tempo_sugerido_min), s.area === "prova" ? "vale 10" : null, s.semana && s.data ? `semana de ${dataCurta(s.data)}` : null].filter(Boolean).join(" · ");
   const selos = h`${treino ? h`<span class="etiqueta treino">${icone.check}Correção na hora</span>` : ""}`;
-  if (fechado || s.status === "em_breve") {
+  const vaiAbrir = !fechado && s.status === "publicado" && aindaVaiAbrir(s);
+  if (fechado || vaiAbrir || s.status === "em_breve") {
     return h`<article class="cartao sim em-breve ${destaque ? "destaque" : ""}" data-sim="${s.id}">
       <div class="sim-topo">${cru(H[0])}${titulo}${cru(H[1])}<span class="estado breve">${fechado ? "Encerrado" : "Em breve"}</span></div>
       ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
       <p class="sim-info">${info}</p>
-      <p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado. Avisamos quando abrir."}</p>
+      ${vaiAbrir ? reloginho(s.libera_em, { abre: true }) : h`<p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado. Avisamos quando abrir."}</p>`}
     </article>`;
   }
   const sit = situacao(estado, s.id, config);

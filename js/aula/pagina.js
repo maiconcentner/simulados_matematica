@@ -2,15 +2,15 @@
 // Identificação pela planilha do professor, ordem embaralhada por aluno, progresso no
 // computador a cada resposta, envio por parte e resultado depois de todas as partes.
 // Especificação: planejamento/pagina_simulado_completo.md.
-import { h, plural, nota1, maiuscula } from "../util.js?v=42dba01b94";
-import { icone } from "../icones.js?v=42dba01b94";
-import { enunciadoHTML } from "../questao.js?v=42dba01b94";
-import { faixaDaNota } from "../correcao.js?v=42dba01b94";
-import { anelNota, reguaFaixas, barrasTema } from "../graficos.js?v=42dba01b94";
-import { TURMAS, LIBERAR_REVISAO_EM } from "./config.js?v=42dba01b94";
-import { consultar, enviar, reenviarPendentes, pendentes, PlanilhaForaDoAr } from "./planilha.js?v=42dba01b94";
-import { ordemDaParte, lerParte, gravarParte, alunoAtual, guardarAluno, esquecerAluno } from "./progresso.js?v=42dba01b94";
-import { conferirVersao } from "../atualizacao.js?v=42dba01b94";
+import { h, plural, nota1, maiuscula } from "../util.js?v=57517fb455";
+import { icone } from "../icones.js?v=57517fb455";
+import { enunciadoHTML } from "../questao.js?v=57517fb455";
+import { faixaDaNota } from "../correcao.js?v=57517fb455";
+import { anelNota, reguaFaixas, barrasTema } from "../graficos.js?v=57517fb455";
+import { TURMAS, LIBERAR_REVISAO_EM } from "./config.js?v=57517fb455";
+import { consultar, enviar, reenviarPendentes, pendentes, PlanilhaForaDoAr } from "./planilha.js?v=57517fb455";
+import { ordemDaParte, lerParte, gravarParte, alunoAtual, guardarAluno, esquecerAluno } from "./progresso.js?v=57517fb455";
+import { conferirVersao } from "../atualizacao.js?v=57517fb455";
 
 const raiz = document.getElementById("app");
 const params = new URLSearchParams(location.search);

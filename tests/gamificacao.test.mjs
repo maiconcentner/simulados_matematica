@@ -70,6 +70,41 @@ test("conquistas: primeira, gabaritou, embalado, volta por cima, maratona, persi
   estado.conquistas.primeira_missao = "2026-11-01";
   assert.ok(!conquistasNovas(estado, { ...ctx, tentativa: estado.tentativas[3] }).includes("primeira_missao"));
 });
+test("conquistas do simulado completo: terminar as 28 e 70% ou mais", { todo: "em construção" }, () => {
+  const ctx = { config, habilidades, ehCompleto: (id) => id === "E3-COMPLETO", hoje: "2026-11-15" };
+  const resp = (n, branco = 0) => Object.fromEntries(Array.from({ length: n }, (_, i) => [i + 1, i < n - branco ? "A" : ""]));
+  const t = (percentual, branco) => ({ simId: "E3-COMPLETO", modo: "simulado", nota: percentual / 10, percentual, acertos: Math.round(percentual * 0.28), total: 28, respostas: resp(28, branco), fim: "2026-11-15T10:00:00Z", porHabilidade: {} });
+  const est = (tt) => ({ conquistas: {}, diasDeUso: ["2026-11-15"], tentativas: [tt] });
+  let a = t(71.43, 0);
+  let n = conquistasNovas(est(a), { ...ctx, tentativa: a });
+  assert.ok(n.includes("simulado_completo"));
+  assert.ok(n.includes("pronto_para_prova"));
+  a = t(60, 2); // 2 em branco e abaixo de 70%
+  n = conquistasNovas(est(a), { ...ctx, tentativa: a });
+  assert.ok(!n.includes("simulado_completo"));
+  assert.ok(!n.includes("pronto_para_prova"));
+  // outro simulado não conta
+  a = { ...t(100, 0), simId: "S07" };
+  n = conquistasNovas(est(a), { ...ctx, tentativa: a });
+  assert.ok(!n.includes("simulado_completo"));
+});
+
+test("plano até a prova: dias de hoje até a véspera, no máximo 5", async () => {
+  const { diasAteAProva, planoAteAProva } = await import("../js/plano_prova.js");
+  assert.equal(diasAteAProva("2026-11-18", "2026-11-15"), 3);
+  assert.equal(diasAteAProva("2026-11-18", "2026-11-10"), 5);
+  assert.equal(diasAteAProva("2026-11-18", "2026-11-18"), 0);
+  assert.equal(diasAteAProva("2026-11-18", "2026-11-20"), 0);
+  const fracos = ["A", "B", "C", "D", "E", "F", "G"].map((c) => ({ code: c }));
+  const p = planoAteAProva({ dataProva: "2026-11-18", hoje: "2026-11-15", fracos });
+  assert.equal(p.length, 3);
+  assert.deepEqual(p.map((d) => d.habilidades.map((x) => x.code)), [["A", "B", "C"], ["D", "E", "F"], ["G"]]);
+  assert.equal(p[0].rotulo, "Hoje");
+  assert.equal(p[1].rotulo, "Amanhã");
+  assert.equal(p[2].rotulo, "Terça"); // 17/11/2026
+  assert.deepEqual(planoAteAProva({ dataProva: "2026-11-18", hoje: "2026-11-19", fracos }), []);
+});
+
 test("maior sequência de acertos", () => {
   assert.equal(maiorSequencia([{ acertou: true }, { acertou: true }, { acertou: false }, { acertou: true }]), 2);
 });

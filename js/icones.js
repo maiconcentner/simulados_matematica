@@ -1,5 +1,5 @@
 // Ícones próprios do site, em SVG (traço de 2 px, herdam a cor do texto).
-import { cru } from "./util.js?v=42dba01b94";
+import { cru } from "./util.js?v=57517fb455";
 
 const base = (corpo, extra = "") =>
   cru(`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"${extra}>${corpo}</svg>`);

@@ -1,6 +1,6 @@
 // Leitura dos dados do site: catálogo, configuração, habilidades e cada simulado.
 // Caminhos relativos, para funcionar dentro da subpasta do GitHub Pages.
-import { buscarGerado } from "./armazenamento.js?v=42dba01b94";
+import { buscarGerado } from "./armazenamento.js?v=57517fb455";
 
 const cache = new Map();
 
@@ -61,9 +61,14 @@ export function encerrado(s, agora = Date.now()) {
   return !!s?.disponivel_ate && agora > Date.parse(s.disponivel_ate);
 }
 
-/** Dá para fazer agora: publicado e dentro do prazo, se houver. */
+/** true quando o simulado tem hora de liberação (libera_em) e ela ainda não chegou. */
+export function aindaVaiAbrir(s, agora = Date.now()) {
+  return !!s?.libera_em && agora < Date.parse(s.libera_em);
+}
+
+/** Dá para fazer agora: publicado, já liberado (se tiver libera_em) e dentro do prazo (se tiver). */
 export function disponivelAgora(s, agora = Date.now()) {
-  return !!s && (s.status || "publicado") === "publicado" && !encerrado(s, agora);
+  return !!s && (s.status || "publicado") === "publicado" && !aindaVaiAbrir(s, agora) && !encerrado(s, agora);
 }
 
 /** Ids dos simulados do catálogo que não estão abertos agora (em breve ou encerrados). */

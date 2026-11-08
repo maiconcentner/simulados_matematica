@@ -55,7 +55,7 @@ async function abrir(largura = 390, altura = 844, { prazo = false } = {}) {
   const pagina = await navegador.newPage({ viewport: { width: largura, height: altura }, timezoneId: "America/Sao_Paulo" });
   await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   if (!prazo) {
-    const abrirTudo = (s) => { delete s.disponivel_ate; s.status = "publicado"; return s; };
+    const abrirTudo = (s) => { delete s.disponivel_ate; delete s.libera_em; s.status = "publicado"; return s; };
     await pagina.route(/\/data\/(catalogo|prova\/[^/]+)\.json/, async (rota) => {
       const resp = await rota.fetch();
       const d = await resp.json();
@@ -102,7 +102,7 @@ test("Avalia mostra o simulado completo em destaque e as semanas; treinos ficam 
   assert.deepEqual(so, [...so].sort((a, b) => Number(b.split(" ")[1]) - Number(a.split(" ")[1])));
   assert.equal(so.length, SEMANAS.length);
   // os treinos não aparecem no Avalia
-  for (const t of TREINOS) assert.equal(await pagina.$(`.sim[data-sim="${t.id}"]`), null, `${t.id} não devia estar no Avalia`);
+  for (const t of TREINOS) assert.equal(!!(await pagina.$(`.sim[data-sim="${t.id}"]`)), false, `${t.id} não devia estar no Avalia`);
   await ir(pagina, "treinar");
   assert.equal(await pagina.$$eval("#lista-treinos .sim", (e) => e.length), TREINOS.length);
   assert.match(await pagina.textContent("#lista-treinos"), /Correção na hora/);
@@ -215,7 +215,7 @@ test("figura amplia com um toque e fecha com Esc", async () => {
   await pagina.click(".questao figure");
   await pagina.waitForSelector(".zoom");
   await pagina.keyboard.press("Escape");
-  assert.equal(await pagina.$(".zoom"), null);
+  assert.equal(!!(await pagina.$(".zoom")), false);
   await pagina.close();
 });
 
@@ -321,13 +321,13 @@ test("gamificação: XP, nível e conquistas aparecem e continuam depois de reca
   assert.match(await pagina.textContent(".conquista-capa"), /Primeira missão/);
   assert.match(await pagina.textContent(".conquista-capa"), /Gabaritou/);
   await pagina.click(".conquista-capa .botao");
-  assert.equal(await pagina.$(".conquista-capa"), null);
+  assert.equal(!!(await pagina.$(".conquista-capa")), false);
   assert.equal(await pagina.getAttribute(".xp-ganho .contar", "data-ate"), "280");
   assert.match(await pagina.textContent(".placar-xp"), /Subiu para o nível 2/);
   // recarregando: XP e conquistas continuam, o aviso não volta
   await pagina.reload();
   await esperarRota(pagina, "resultado/S07");
-  assert.equal(await pagina.$(".conquista-capa"), null);
+  assert.equal(!!(await pagina.$(".conquista-capa")), false);
   await ir(pagina, "");
   assert.match(await pagina.textContent(".jogador"), /280 XP/);
   assert.equal(await pagina.textContent(".nivel-selo b"), "2");
@@ -390,7 +390,7 @@ test("perfil mostra conquistas, histórico e mapa; Apagar meus dados zera tudo",
   await pagina.click('[data-acao="apagar"]');
   assert.match(await pagina.textContent("#apagar-area"), /Tem certeza/);
   await pagina.click('[data-acao="apagar-nao"]');
-  assert.equal(await pagina.$('[data-acao="apagar-sim"]'), null);
+  assert.equal(!!(await pagina.$('[data-acao="apagar-sim"]')), false);
   await pagina.click('[data-acao="apagar"]');
   await pagina.click('[data-acao="apagar-sim"]');
   await pagina.waitForSelector("text=foram apagados");
@@ -441,7 +441,7 @@ test("com movimento reduzido: sem confete e a nota já aparece pronta", async ()
   const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
   await fazerSimulado(pagina, "S07", "todas");
-  assert.equal(await pagina.$(".confete"), null);
+  assert.equal(!!(await pagina.$(".confete")), false);
   assert.equal((await pagina.textContent(".anel-texto b")).trim(), "10,0");
   await pagina.close();
 });
@@ -472,7 +472,7 @@ test("prazo: antes das 23h59 o simulado de prova abre normalmente", async () => 
   assert.match(relogio, /faltam 00:01:59/);
   assert.match(await pagina.getAttribute('.sim[data-sim="E3-AV2"] .reloginho', "class"), /urgente/);
   await ir(pagina, "");
-  assert.match(await pagina.textContent(".prazo-aviso"), /Fecha hoje às 23h59/);
+  assert.match(await pagina.textContent(".prazo-aviso:not(.vai-abrir)"), /Fecha hoje às 23h59/);
   await ir(pagina, "simulado/E3-AV2");
   assert.match(await pagina.textContent("main h1"), /Etapa 3/);
   assert.match(await pagina.textContent(".abertura .reloginho"), /faltam/);
@@ -481,7 +481,7 @@ test("prazo: antes das 23h59 o simulado de prova abre normalmente", async () => 
   assert.match(await pagina.textContent(".questao-topo .reloginho"), /faltam/);
   // os Avalia não têm prazo, então não têm reloginho
   await ir(pagina, "simulado/S07");
-  assert.equal(await pagina.$(".reloginho"), null);
+  assert.equal(!!(await pagina.$(".reloginho")), false);
   assert.deepEqual(erros, []);
   await pagina.close();
 });
@@ -527,24 +527,24 @@ test("prazo: depois das 23h59 o simulado, as versões novas e o treino ficam fec
   // cartão, abertura, questão, revisão, treino e versão gerada fechados
   await ir(pagina, "prova");
   assert.match(await pagina.textContent('.sim[data-sim="E3-AV2"]'), /Encerrado/);
-  assert.equal(await pagina.$('.sim[data-sim="E3-AV2"] a, .sim[data-sim="E3-AV2"] button'), null);
+  assert.equal(!!(await pagina.$('.sim[data-sim="E3-AV2"] a, .sim[data-sim="E3-AV2"] button')), false);
   for (const rota of ["simulado/E3-AV2", "simulado/E3-AV2/3", "simulado/E3-AV2/revisao", "treino/E3-AV2", "treino/E3-AV2/2", `simulado/${idGerado}`]) {
     await ir(pagina, rota);
     assert.match(await pagina.textContent("main h1"), /Simulado encerrado/, `#/${rota} deveria estar fechado`);
   }
   // o painel não oferece continuar, e o gerador não usa os modelos da prova
   await ir(pagina, "");
-  assert.equal(await pagina.$(".continuar"), null);
+  assert.equal(!!(await pagina.$(".continuar")), false);
   await ir(pagina, "treinar");
-  assert.equal(await pagina.$('#sel-base option[value="E3-AV2"]'), null);
-  assert.equal(await pagina.$('input[data-acao="hab"][value^="EF.09"]'), null);
+  assert.equal(!!(await pagina.$('#sel-base option[value="E3-AV2"]')), false);
+  assert.equal(!!(await pagina.$('input[data-acao="hab"][value^="EF.09"]')), false);
   assert.match(await pagina.textContent(".gerados"), /Encerrado/);
   // o resultado continua visível, sem refazer nem treinar
   await ir(pagina, "resultado/E3-AV2");
   assert.match(await pagina.textContent("main"), /3 de 10/);
   assert.match(await pagina.textContent("main"), /está encerrado/);
-  assert.equal(await pagina.$('a[href^="#/treino/"]'), null);
-  assert.equal(await pagina.$('[data-acao="treinar-hab"]'), null);
+  assert.equal(!!(await pagina.$('a[href^="#/treino/"]')), false);
+  assert.equal(!!(await pagina.$('[data-acao="treinar-hab"]')), false);
   // os Simulados Avalia continuam abertos
   await ir(pagina, "simulado/S07");
   assert.ok(await pagina.$('[data-acao="comecar"]'));
@@ -629,6 +629,100 @@ test("versão publicada mais nova: o site recarrega sozinho uma vez; com a pági
 test("carimbos de versão em dia (python3 tools/carimbar_versao.py --conferir)", () => {
   const saida = execFileSync("python3", [join(RAIZ, "tools/carimbar_versao.py"), "--conferir"], { encoding: "utf-8" });
   assert.match(saida, /carimbos em dia/);
+});
+
+test("liberação marcada (libera_em): antes das 7h o Simulado Completo mostra quando abre; às 7h abre sozinho", async () => {
+  const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, timezoneId: "America/Sao_Paulo" });
+  await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  const erros = [];
+  pagina.on("pageerror", (e) => erros.push(e.message));
+  // a liberação de teste é fixa, para o teste valer em qualquer dia
+  await pagina.route(/\/data\/(catalogo|avalia\/E3-COMPLETO)\.json/, async (rota) => {
+    const resp = await rota.fetch();
+    const d = await resp.json();
+    const marcar = (x) => { if (x.id === "E3-COMPLETO") { x.status = "publicado"; x.libera_em = "2026-11-10T07:00:00-03:00"; } };
+    if (d.areas) d.areas.forEach((a) => a.simulados.forEach(marcar)); else marcar(d);
+    await rota.fulfill({ response: resp, json: d });
+  });
+  await pagina.clock.setFixedTime(new Date("2026-11-08T18:00:00-03:00"));
+  await ir(pagina, "avalia");
+  const cartao = '.sim[data-sim="E3-COMPLETO"]';
+  assert.match(await pagina.textContent(cartao), /Em breve/);
+  assert.match(await pagina.textContent(`${cartao} .reloginho`), /Abre na terça \(10\/11\) às 07h00/);
+  assert.equal(!!(await pagina.$(`${cartao} a`)), false);
+  await ir(pagina, "");
+  assert.match(await pagina.textContent(".vai-abrir"), /Abre na terça/);
+  // pelo link direto, não abre antes da hora
+  await ir(pagina, "simulado/E3-COMPLETO");
+  assert.match(await pagina.textContent("main"), /Ainda não liberado/);
+  assert.match(await pagina.textContent("main"), /Abre na terça \(10\/11\) às 07h00/);
+  // com a página aberta, às 07h00 ela abre sozinha
+  await pagina.clock.setFixedTime(new Date("2026-11-10T06:59:58-03:00"));
+  await pagina.clock.setFixedTime(new Date("2026-11-10T07:00:01-03:00"));
+  await pagina.waitForSelector('[data-acao="comecar"]');
+  assert.match(await pagina.textContent("main h1"), /Simulado Completo/);
+  await ir(pagina, "avalia");
+  assert.ok(await pagina.$(`${cartao} a[href="#/simulado/E3-COMPLETO"]`));
+  assert.equal(await larguraDaPagina(pagina), 390);
+  assert.deepEqual(erros, []);
+  await pagina.close();
+});
+
+test("Simulado Completo no site: 20 da etapa certas e 8 de conexão erradas dão 7,1, etapa 10,0 e conexão 0,0; plano de 3 dias em 15/11; conquistas", { todo: "em construção" }, async () => {
+  const pagina = await navegador.newPage({ viewport: { width: 390, height: 844 }, timezoneId: "America/Sao_Paulo" });
+  await pagina.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+  await pagina.route(/\/data\/(catalogo|avalia\/E3-COMPLETO)\.json/, async (rota) => {
+    const resp = await rota.fetch();
+    const d = await resp.json();
+    const abrir = (x) => { if (x.id === "E3-COMPLETO") { x.status = "publicado"; delete x.libera_em; delete x.disponivel_ate; } };
+    if (d.areas) d.areas.forEach((a) => a.simulados.forEach(abrir)); else abrir(d);
+    await rota.fulfill({ response: resp, json: d });
+  });
+  const erros = [];
+  pagina.on("pageerror", (e) => erros.push(e.message));
+  await pagina.clock.setFixedTime(new Date("2026-11-15T10:00:00-03:00"));
+  const sim = JSON.parse(await readFile(join(RAIZ, "data/avalia/E3-COMPLETO.json"), "utf-8"));
+  await ir(pagina, "simulado/E3-COMPLETO");
+  await pagina.click('[data-acao="comecar"]');
+  await esperarRota(pagina, "simulado/E3-COMPLETO/1");
+  // cronômetro visível, com pausa
+  assert.match(await pagina.textContent(".cronometro"), /de 1:30:00/);
+  await pagina.click('[data-acao="pausar"]');
+  await pagina.waitForSelector(".pausa-aviso");
+  assert.equal(await pagina.isVisible(".questao"), false, "a questão some durante a pausa");
+  await pagina.click('[data-acao="continuar-cronometro"]');
+  await pagina.waitForSelector(".questao");
+  // grade de 1 a 28
+  assert.equal(await pagina.$$eval(".bolinha", (e) => e.length), 28);
+  for (const it of sim.items) {
+    await esperarRota(pagina, `simulado/E3-COMPLETO/${it.n}`);
+    const letra = it.code.startsWith("D") ? it.key : it.options.find((o) => !o.correct).letter;
+    await pagina.click(`.opcao[data-letra="${letra}"]`);
+    await pagina.click("#proxima");
+  }
+  await esperarRota(pagina, "simulado/E3-COMPLETO/revisao");
+  await pagina.click('[data-acao="entregar"]');
+  await esperarRota(pagina, "resultado/E3-COMPLETO");
+  assert.match(await pagina.textContent(".conquista-capa"), /Simulado completo/);
+  assert.match(await pagina.textContent(".conquista-capa"), /Pronto para o Avalia\+/);
+  await pagina.click(".conquista-capa .botao");
+  assert.equal(await pagina.getAttribute(".anel-texto b", "data-ate"), "7.1");
+  assert.equal((await pagina.textContent(".nota-etapa")).trim(), "10,0");
+  assert.equal((await pagina.textContent(".nota-conexao")).trim(), "0,0");
+  assert.match(await pagina.textContent("#t-temas"), /Por eixo/);
+  assert.match(await pagina.textContent(".barras-tema"), /9 de 9|de 9/);
+  // plano até a prova (18/11): de 15/11 são 3 dias
+  assert.equal(await pagina.$$eval(".plano-prova > li", (e) => e.length), 3);
+  assert.match(await pagina.textContent(".plano-prova"), /Hoje/);
+  assert.ok(await pagina.$('.plano-prova a.botao'), "cada dia tem o botão Treinar");
+  assert.equal(await larguraDaPagina(pagina), 390);
+  // depois da prova, o plano some
+  await pagina.clock.setFixedTime(new Date("2026-11-19T10:00:00-03:00"));
+  await pagina.reload();
+  await esperarRota(pagina, "resultado/E3-COMPLETO");
+  assert.equal(!!(await pagina.$(".plano-prova")), false);
+  assert.deepEqual(erros, []);
+  await pagina.close();
 });
 
 test("o apelido fica guardado e aparece no painel", async () => {

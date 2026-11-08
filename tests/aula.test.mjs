@@ -381,7 +381,7 @@ test("código da aula errado: mensagem na própria página", async () => {
   await p.fill("#codigo", "ERRADO");
   await p.click('#form-ident button[type="submit"]');
   await p.waitForSelector("#msg-ident:has-text('Código da aula errado')");
-  assert.equal(await p.$("#nome-lista"), null);
+  assert.equal(!!(await p.$("#nome-lista")), false);
   await conferirLargura(pc);
   assert.deepEqual(pc.erros, []);
   await pc.ctx.close();
@@ -442,8 +442,8 @@ test("revisão das questões só a partir de 11/11; antes disso, nada de alterna
       assert.ok(await p.$(".alternativa.correta"));
     } else {
       assert.match(await p.textContent(".revisao-bloqueada"), /abre em 11\/11\/2026/);
-      assert.equal(await p.$(".item-revisao"), null);
-      assert.equal(await p.$(".alternativa.correta"), null);
+      assert.equal(!!(await p.$(".item-revisao")), false);
+      assert.equal(!!(await p.$(".alternativa.correta")), false);
       assert.doesNotMatch(await p.textContent("main"), /Correta:/);
     }
     assert.deepEqual(pc.erros, []);
@@ -527,7 +527,7 @@ test("professor apaga o envio na planilha: a parte volta a ficar disponível, do
   assert.match(await p.textContent(".parte:nth-child(1)"), /Não começada/);
   await p.click('[data-acao="abrir-parte"][data-parte="1"]');
   await tela(pc, "Questão 1");
-  assert.equal(await p.$('.opcao[aria-checked="true"]'), null, "a parte tem que recomeçar sem respostas");
+  assert.equal(!!(await p.$('.opcao[aria-checked="true"]')), false, "a parte tem que recomeçar sem respostas");
   // refaz e envia de novo, com outro id_envio
   await fazerParte(pc, COMPLETO, 1, errada);
   await tela(pc, COMPLETO.titulo);
@@ -575,7 +575,7 @@ test("simulado de uma parte (T1) apagado na planilha: volta para a questão 1", 
   planilha.recebidos.length = 0;
   await p.reload();
   await tela(pc, "Questão 1");
-  assert.equal(await p.$(".feedback"), null);
+  assert.equal(!!(await p.$(".feedback")), false);
   assert.deepEqual(pc.erros, []);
   await pc.ctx.close();
 });
@@ -593,6 +593,37 @@ test("planilha fora do ar: o que este computador enviou continua como enviado", 
   await p.reload();
   await tela(pc, COMPLETO.titulo);
   assert.match(await p.textContent(".parte:nth-child(2)"), /Enviada/);
+  assert.deepEqual(pc.erros, []);
+  await pc.ctx.close();
+});
+
+test("planilha fora do ar na entrada e código digitado errado: a página avisa e reenvia com o código certo", { todo: "em construção" }, async () => {
+  const planilha = novaPlanilha();
+  planilha.foraGet = true; // fora do ar só na identificação
+  const pc = await computador(planilha);
+  const p = pc.pagina;
+  await p.goto(URL_BASE + "completo.html");
+  await identificar(pc, { nome: "Ana Teste", codigo: "ERRADO", digitado: true });
+  await tela(pc, COMPLETO.titulo);
+  await fazerParte(pc, COMPLETO, 1, certa);
+  await tela(pc, COMPLETO.titulo);
+  // a planilha recusou (código errado), mas o envio "saiu"
+  assert.equal(planilha.recebidos.length, 0);
+  // a planilha volta: ao recarregar, a página descobre que o código está errado e avisa
+  planilha.foraGet = false;
+  await p.reload();
+  await tela(pc, COMPLETO.titulo);
+  await p.waitForSelector(".aviso-codigo");
+  assert.match(await p.textContent(".aviso-codigo"), /código da aula/);
+  // entra de novo com o código certo: a parte é reenviada sozinha, sem perder as respostas
+  await p.click('[data-acao="trocar"]');
+  await identificar(pc, { nome: "Ana Teste" });
+  await tela(pc, COMPLETO.titulo);
+  for (let i = 0; i < 50 && planilha.recebidos.length < 1; i++) await new Promise((r) => setTimeout(r, 100));
+  assert.equal(planilha.recebidos.length, 1);
+  assert.equal(planilha.recebidos[0].codigo, CODIGO);
+  assert.equal(planilha.recebidos[0].acertos_parte, 7);
+  assert.match(await p.textContent(".parte:nth-child(1)"), /Enviada/);
   assert.deepEqual(pc.erros, []);
   await pc.ctx.close();
 });

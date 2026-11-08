@@ -264,8 +264,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 .area.prova .trilho > span { background: var(--alerta); }
 .progresso-area p { font-size: 0.88rem; font-weight: 700; margin-top: 6px; }
 
-.continuar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; border-left: 6px solid var(--primaria); }
-.continuar p { margin: 0; }
+.continuar, .prazo-aviso { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; border-left: 6px solid var(--primaria); }
+.continuar p, .prazo-aviso p { margin: 0; }
 
 .missao ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .missao label { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; cursor: pointer; padding: 6px 0; }
@@ -571,3 +571,6 @@ a.chip { text-decoration: none; }
 }
 @media (min-width: 761px) { .aviso-versao { bottom: 24px; } }
 @media print { .aviso-versao { display: none !important; } }
+.reloginho.abre { background: var(--ok-suave); }
+.reloginho.abre svg, .reloginho.abre .prazo-falta { color: var(--ok); }
+.prazo-aviso.vai-abrir { border-left-color: var(--ok); }

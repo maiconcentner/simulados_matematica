@@ -1,16 +1,16 @@
 // Resultado (#/resultado/<id>): placar, faixa, fortes e a melhorar, plano, temas,
 // revisão comentada e ações. Mostra a última entrega do simulado.
-import { h, cru, nota1, plural } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
-import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora } from "./dados.js?v=42dba01b94";
-import { corrigir, temasAcumulados } from "./correcao.js?v=42dba01b94";
-import { contextoCorrecao } from "./entrega.js?v=42dba01b94";
-import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=42dba01b94";
-import { enunciadoHTML } from "./questao.js?v=42dba01b94";
-import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=42dba01b94";
-import { guardarGerado } from "./armazenamento.js?v=42dba01b94";
-import { melhorTentativa } from "./progresso.js?v=42dba01b94";
-import { nivelDoJogador, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=42dba01b94";
+import { h, cru, nota1, plural } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
+import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora } from "./dados.js?v=57517fb455";
+import { corrigir, temasAcumulados } from "./correcao.js?v=57517fb455";
+import { contextoCorrecao } from "./entrega.js?v=57517fb455";
+import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=57517fb455";
+import { enunciadoHTML } from "./questao.js?v=57517fb455";
+import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=57517fb455";
+import { guardarGerado } from "./armazenamento.js?v=57517fb455";
+import { melhorTentativa } from "./progresso.js?v=57517fb455";
+import { nivelDoJogador, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=57517fb455";
 
 // a animação de subir de nível, o confete e o aviso de conquista só aparecem logo depois de entregar
 let entregaRecente = null;

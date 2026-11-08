@@ -1,20 +1,20 @@
 // Inicialização e rotas do site (navegação por hash, que funciona no GitHub Pages).
-import { h, esc } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
-import { carregarBase, carregarSimulado, bloqueio } from "./dados.js?v=42dba01b94";
-import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js?v=42dba01b94";
-import { aplicarTema, temaEfetivo } from "./tema.js?v=42dba01b94";
-import { iniciarRelogios } from "./prazo.js?v=42dba01b94";
-import { conferirVersao } from "./atualizacao.js?v=42dba01b94";
-import { gerarVersao } from "./gerador/index.js?v=42dba01b94";
-import { telaPainel } from "./painel.js?v=42dba01b94";
-import { telaAvalia, telaProva } from "./listas.js?v=42dba01b94";
-import { telaTreinar } from "./treinar.js?v=42dba01b94";
-import { telaSimulado } from "./simulado.js?v=42dba01b94";
-import { telaPerfil } from "./perfil.js?v=42dba01b94";
-import { telaResultado, marcarEntregaRecente } from "./resultado.js?v=42dba01b94";
-import { entregarSimulado } from "./entrega.js?v=42dba01b94";
-import { telaTreino } from "./treino.js?v=42dba01b94";
+import { h, esc } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
+import { carregarBase, carregarSimulado, bloqueio } from "./dados.js?v=57517fb455";
+import { ler, atualizar, armazenamentoDisponivel, guardarGerado } from "./armazenamento.js?v=57517fb455";
+import { aplicarTema, temaEfetivo } from "./tema.js?v=57517fb455";
+import { iniciarRelogios, quandoAbre } from "./prazo.js?v=57517fb455";
+import { conferirVersao } from "./atualizacao.js?v=57517fb455";
+import { gerarVersao } from "./gerador/index.js?v=57517fb455";
+import { telaPainel } from "./painel.js?v=57517fb455";
+import { telaAvalia, telaProva } from "./listas.js?v=57517fb455";
+import { telaTreinar } from "./treinar.js?v=57517fb455";
+import { telaSimulado } from "./simulado.js?v=57517fb455";
+import { telaPerfil } from "./perfil.js?v=57517fb455";
+import { telaResultado, marcarEntregaRecente } from "./resultado.js?v=57517fb455";
+import { entregarSimulado } from "./entrega.js?v=57517fb455";
+import { telaTreino } from "./treino.js?v=57517fb455";
 
 const raiz = document.getElementById("app");
 const menu = document.getElementById("menu");
@@ -62,12 +62,14 @@ function erroHTML(msg) {
 function telaFechado(s) {
   const titulo = s.semana ? `Semana ${s.semana}` : s.titulo;
   const acabou = !!s.disponivel_ate && Date.now() > Date.parse(s.disponivel_ate);
+  const vaiAbrir = !acabou && s.status === "publicado" && !!s.libera_em && Date.now() < Date.parse(s.libera_em);
   return {
     titulo: acabou ? "Simulado encerrado" : "Simulado fechado",
     html: h`<div class="cartao vazio abertura">${icone.relogio}
       <h1>${acabou ? "Simulado encerrado" : "Ainda não liberado"}</h1>
       <p><strong>${titulo}</strong></p>
-      <p>${acabou ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Este simulado ainda não foi liberado pelo professor."}</p>
+      <p>${acabou ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : vaiAbrir ? `${quandoAbre(s.libera_em)}. Volte nessa hora: a página abre sozinha.` : "Este simulado ainda não foi liberado pelo professor."}</p>
+      ${vaiAbrir ? h`<div data-prazo="${s.libera_em}" data-abre="1" hidden></div>` : ""}
       <p><a class="botao" href="#/">Voltar ao painel</a></p>
     </div>`.html,
   };

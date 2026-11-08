@@ -1,13 +1,13 @@
 // Simulado: abertura (#/simulado/<id>), uma questão por tela (#/simulado/<id>/<n>)
 // e revisão antes de entregar (#/simulado/<id>/revisao).
 // As respostas são salvas a cada toque em emAndamento, para continuar depois.
-import { h, cru, plural, nota1 } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
-import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=42dba01b94";
-import { reloginho } from "./prazo.js?v=42dba01b94";
-import { gerarMisto } from "./gerador/index.js?v=42dba01b94";
-import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=42dba01b94";
-import { enunciadoHTML } from "./questao.js?v=42dba01b94";
+import { h, cru, plural, nota1 } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
+import { carregarSimulado, idsIndisponiveis, prazoDe } from "./dados.js?v=57517fb455";
+import { reloginho } from "./prazo.js?v=57517fb455";
+import { gerarMisto } from "./gerador/index.js?v=57517fb455";
+import { guardarGerado, atualizar, ler } from "./armazenamento.js?v=57517fb455";
+import { enunciadoHTML } from "./questao.js?v=57517fb455";
 
 export const papelParaAluno = (role) => {
   if (!role) return "";

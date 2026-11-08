@@ -1,11 +1,11 @@
 // Painel (#/): cartão do jogador, áreas, continuar, missão e conquistas.
-import { h } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
-import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=42dba01b94";
-import { simuladosDoCatalogo, bloqueio, disponivelAgora, tipoDoSimulado } from "./dados.js?v=42dba01b94";
-import { reloginho } from "./prazo.js?v=42dba01b94";
-import { melhorTentativa } from "./progresso.js?v=42dba01b94";
-import { plural } from "./util.js?v=42dba01b94";
+import { h } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
+import { nivelDoJogador, sequenciaDeDias, nomeDaConquista, listaDeConquistas } from "./gamificacao.js?v=57517fb455";
+import { simuladosDoCatalogo, bloqueio, disponivelAgora, tipoDoSimulado, aindaVaiAbrir } from "./dados.js?v=57517fb455";
+import { reloginho } from "./prazo.js?v=57517fb455";
+import { melhorTentativa } from "./progresso.js?v=57517fb455";
+import { plural } from "./util.js?v=57517fb455";
 
 const totalDeConquistas = (config) => listaDeConquistas(config).length;
 
@@ -70,9 +70,15 @@ export function telaPainel({ base, estado }) {
       </div>
     </section>
 
+    ${simuladosDoCatalogo(catalogo).filter((s) => s.status === "publicado" && aindaVaiAbrir(s)).map((s) => h`
+    <section class="secao" aria-label="Vai abrir">
+      <div class="cartao prazo-aviso vai-abrir">
+        <div><p><strong>${s.semana ? `Semana ${s.semana}` : s.titulo}</strong></p>${reloginho(s.libera_em, { abre: true })}</div>
+      </div>
+    </section>`)}
     ${simuladosDoCatalogo(catalogo).filter((s) => s.disponivel_ate && disponivelAgora(s)).map((s) => h`
     <section class="secao" aria-label="Prazo">
-      <div class="cartao continuar prazo-aviso">
+      <div class="cartao prazo-aviso">
         <div><p><strong>${s.semana ? `Semana ${s.semana}` : s.titulo}</strong></p>${reloginho(s.disponivel_ate)}</div>
         <a class="botao" href="#/simulado/${s.id}">${estado.emAndamento[s.id] ? "Continuar" : "Fazer"}${icone.seta}</a>
       </div>

@@ -1,21 +1,27 @@
-// Reloginho do prazo: "Fecha hoje às 23h59 · faltam 07:52:10".
+// Reloginho do prazo: "Fecha hoje às 23h59 · faltam 07:52:10" ou "Abre na terça (10/11) às 07h00 · faltam ...".
 // O texto é atualizado a cada segundo por iniciarRelogios(); quando o prazo passa, a tela é redesenhada
 // (e o simulado aparece como encerrado).
-import { h } from "./util.js?v=42dba01b94";
-import { icone } from "./icones.js?v=42dba01b94";
+import { h } from "./util.js?v=57517fb455";
+import { icone } from "./icones.js?v=57517fb455";
 
 const dois = (n) => String(n).padStart(2, "0");
 
-/** "Fecha hoje às 23h59", "Fecha amanhã às 18h00" ou "Fecha em 12/11 às 23h59", no horário do aparelho. */
-export function quandoFecha(ate, agora = Date.now()) {
-  const d = new Date(ate), hoje = new Date(agora);
+const DIAS = ["no domingo", "na segunda", "na terça", "na quarta", "na quinta", "na sexta", "no sábado"];
+
+/** "hoje às 23h59", "amanhã às 18h00", "na terça (10/11) às 07h00" ou "em 25/11 às 23h59", no horário do aparelho. */
+export function quando(data, agora = Date.now()) {
+  const d = new Date(data), hoje = new Date(agora);
   const dia = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
   const dif = Math.round((dia(d) - dia(hoje)) / 86400000);
   const hora = `${dois(d.getHours())}h${dois(d.getMinutes())}`;
-  if (dif === 0) return `Fecha hoje às ${hora}`;
-  if (dif === 1) return `Fecha amanhã às ${hora}`;
-  return `Fecha em ${dois(d.getDate())}/${dois(d.getMonth() + 1)} às ${hora}`;
+  const dm = `${dois(d.getDate())}/${dois(d.getMonth() + 1)}`;
+  if (dif === 0) return `hoje às ${hora}`;
+  if (dif === 1) return `amanhã às ${hora}`;
+  if (dif > 1 && dif < 7) return `${DIAS[d.getDay()]} (${dm}) às ${hora}`;
+  return `em ${dm} às ${hora}`;
 }
+export const quandoFecha = (ate, agora) => `Fecha ${quando(ate, agora)}`;
+export const quandoAbre = (em, agora) => `Abre ${quando(em, agora)}`;
 
 /** Tempo que falta: "07:52:10" ou "2 dias e 05:12:09". */
 export function tempoQueFalta(ms) {
@@ -27,14 +33,14 @@ export function tempoQueFalta(ms) {
 
 const urgencia = (ms) => (ms <= 10 * 60000 ? "muito-urgente" : ms <= 60 * 60000 ? "urgente" : "");
 
-/** O reloginho. Só aparece se o prazo ainda não passou. */
-export function reloginho(ate, { compacto = false } = {}) {
+/** O reloginho. Só aparece se o momento ainda não chegou. abre: conta até a liberação. */
+export function reloginho(ate, { compacto = false, abre = false } = {}) {
   if (!ate) return "";
   const falta = Date.parse(ate) - Date.now();
   if (falta <= 0) return "";
-  const quando = quandoFecha(ate);
-  return h`<div class="reloginho ${compacto ? "compacto" : ""} ${urgencia(falta)}" data-prazo="${ate}" role="timer" aria-label="${quando}">
-    ${icone.relogio}<span class="prazo-quando">${quando}</span><span class="prazo-falta" aria-hidden="true">faltam ${tempoQueFalta(falta)}</span>
+  const texto = abre ? quandoAbre(ate) : quandoFecha(ate);
+  return h`<div class="reloginho ${compacto ? "compacto" : ""} ${abre ? "abre" : urgencia(falta)}" data-prazo="${ate}" ${abre ? h`data-abre="1"` : ""} role="timer" aria-label="${texto}">
+    ${icone.relogio}<span class="prazo-quando">${texto}</span><span class="prazo-falta" aria-hidden="true">faltam ${tempoQueFalta(falta)}</span>
   </div>`;
 }
 
@@ -52,8 +58,10 @@ export function iniciarRelogios(aoEncerrar) {
       }
       const t = el.querySelector(".prazo-falta");
       if (t) t.textContent = `faltam ${tempoQueFalta(falta)}`;
-      el.classList.toggle("urgente", urgencia(falta) === "urgente");
-      el.classList.toggle("muito-urgente", urgencia(falta) === "muito-urgente");
+      if (!el.dataset.abre) {
+        el.classList.toggle("urgente", urgencia(falta) === "urgente");
+        el.classList.toggle("muito-urgente", urgencia(falta) === "muito-urgente");
+      }
     });
     if (passou) aoEncerrar();
   }, 1000);

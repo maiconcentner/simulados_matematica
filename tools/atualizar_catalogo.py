@@ -25,6 +25,8 @@ def resumo(p):
     }
     if d.get("disponivel_ate"):  # prazo opcional: depois dele o site não abre o simulado
         r["disponivel_ate"] = d["disponivel_ate"]
+    if d.get("libera_em"):  # liberação opcional: antes dela o site mostra "Abre ..." e não abre
+        r["libera_em"] = d["libera_em"]
     return r
 
 

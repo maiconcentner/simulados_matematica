@@ -1,5 +1,5 @@
 // Gráficos em SVG feitos à mão: anel da nota e barras por tema.
-import { h, cru, nota1 } from "./util.js?v=42dba01b94";
+import { h, cru, nota1 } from "./util.js?v=57517fb455";
 
 const R = 54, C = 2 * Math.PI * R;
 

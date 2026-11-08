@@ -48,12 +48,13 @@
       "C10",
       "D08"
      ],
-     "status": "em_breve",
+     "status": "publicado",
      "destaque": true,
      "tempo_sugerido_min": 90,
      "data_prova": "2026-11-18",
      "modo": "prova",
-     "arquivo": "data/avalia/E3-COMPLETO.json"
+     "arquivo": "data/avalia/E3-COMPLETO.json",
+     "libera_em": "2026-11-10T07:00:00-03:00"
     },
     {
      "id": "T1",

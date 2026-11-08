@@ -1,6 +1,6 @@
 // Modelos das 10 questões do simulado de prova da Etapa 3 (funções).
-import { n, rs, par, lin, M, exigir, numericas, textuais, ehInteiro, arred, mdc } from "./base.js?v=42dba01b94";
-import * as F from "./figuras.js?v=42dba01b94";
+import { n, rs, par, lin, M, exigir, numericas, textuais, ehInteiro, arred, mdc } from "./base.js?v=57517fb455";
+import * as F from "./figuras.js?v=57517fb455";
 
 const H7 = "EF.09.MAT.2.87", H8 = "EF.09.MAT.2.88", H9 = "EF.09.MAT.2.89";
 const CAP = "Figura gerada para treino.";
