@@ -1,5 +1,5 @@
 // Modelos das questões da Semana 8 do Avalia, com números e contextos sorteados.
-import { n, nAte, rs, M, NB, exigir, numericas, textuais, ehInteiro, arred, mdc, expr, lin } from "./base.js?v=e27fa3b239";
+import { n, nAte, rs, M, NB, exigir, numericas, textuais, ehInteiro, arred, mdc, expr, lin } from "./base.js?v=f5446e8815";
 
 const tab = (header, rows) => ({ header, rows, caption: "Tabela gerada para treino." });
 const NOMES = ["Ana", "Bruno", "Carla", "Davi", "Elisa", "Felipe", "Gabi", "Heitor", "Isa", "João", "Lara", "Marcos", "Nina", "Otávio", "Paula", "Rafa", "Sofia", "Téo", "Vitória", "Yuri"];

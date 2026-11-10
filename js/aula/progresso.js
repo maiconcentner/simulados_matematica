@@ -1,6 +1,6 @@
 // Progresso de cada aluno em cada parte, no localStorage, com chave por turma, nome, id e parte.
 // E a ordem embaralhada das questões, com semente fixa (a mesma em qualquer computador).
-import { criarSorteio } from "../gerador/base.js?v=e27fa3b239";
+import { criarSorteio } from "../gerador/base.js?v=f5446e8815";
 
 const PREFIXO = "simulados-aula:v1:";
 const ALUNO = "simulados-aula:aluno";

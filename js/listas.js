@@ -1,8 +1,8 @@
 // Listas de simulados: Avalia (#/avalia: simulado completo e semanas) e de prova (#/prova).
-import { h, plural } from "./util.js?v=e27fa3b239";
-import { icone } from "./icones.js?v=e27fa3b239";
-import { cartaoSimulado } from "./componentes.js?v=e27fa3b239";
-import { simuladosDoCatalogo, tipoDoSimulado } from "./dados.js?v=e27fa3b239";
+import { h, plural } from "./util.js?v=f5446e8815";
+import { icone } from "./icones.js?v=f5446e8815";
+import { cartaoSimulado } from "./componentes.js?v=f5446e8815";
+import { simuladosDoCatalogo, tipoDoSimulado } from "./dados.js?v=f5446e8815";
 
 let temaEscolhido = "Todos";
 

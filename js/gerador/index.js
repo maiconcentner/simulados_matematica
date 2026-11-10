@@ -1,10 +1,10 @@
 // Gerador de simulados de treino: monta simulados novos, no mesmo formato dos JSON,
 // sorteando números e contextos a partir dos modelos de cada questão.
-import { criarSorteio, novaSemente, Repetir, chave, problemasDoItem } from "./base.js?v=e27fa3b239";
-import { modelos as m1 } from "./modelos_avalia_1.js?v=e27fa3b239";
-import { modelos as m2 } from "./modelos_avalia_2.js?v=e27fa3b239";
-import { modelos as m3 } from "./modelos_prova.js?v=e27fa3b239";
-import { modelos as m4 } from "./modelos_avalia_3.js?v=e27fa3b239";
+import { criarSorteio, novaSemente, Repetir, chave, problemasDoItem } from "./base.js?v=f5446e8815";
+import { modelos as m1 } from "./modelos_avalia_1.js?v=f5446e8815";
+import { modelos as m2 } from "./modelos_avalia_2.js?v=f5446e8815";
+import { modelos as m3 } from "./modelos_prova.js?v=f5446e8815";
+import { modelos as m4 } from "./modelos_avalia_3.js?v=f5446e8815";
 
 export const MODELOS = [...m1, ...m2, ...m3, ...m4];
 const PORID = new Map(MODELOS.map((m) => [m.id, m]));

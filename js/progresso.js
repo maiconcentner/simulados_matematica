@@ -1,5 +1,5 @@
 // Situação do aluno em cada simulado, a partir das tentativas guardadas.
-import { medalhaDoPercentual } from "./correcao.js?v=e27fa3b239";
+import { medalhaDoPercentual } from "./correcao.js?v=f5446e8815";
 
 export const tentativasDe = (estado, simId, modo = "simulado") =>
   estado.tentativas.filter((t) => t.simId === simId && t.modo === modo);

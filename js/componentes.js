@@ -1,11 +1,11 @@
 // Peças de tela usadas em mais de uma página: cartão do simulado, estado, etiquetas.
-import { h, cru } from "./util.js?v=e27fa3b239";
-import { icone } from "./icones.js?v=e27fa3b239";
-import { nota1, plural, dataCurta } from "./util.js?v=e27fa3b239";
-import { situacao } from "./progresso.js?v=e27fa3b239";
-import { encerrado, aindaVaiAbrir } from "./dados.js?v=e27fa3b239";
-import { reloginho } from "./prazo.js?v=e27fa3b239";
-import { temVersaoNova } from "./gerador/index.js?v=e27fa3b239";
+import { h, cru } from "./util.js?v=f5446e8815";
+import { icone } from "./icones.js?v=f5446e8815";
+import { nota1, plural, dataCurta } from "./util.js?v=f5446e8815";
+import { situacao } from "./progresso.js?v=f5446e8815";
+import { encerrado, aindaVaiAbrir, tipoDoSimulado } from "./dados.js?v=f5446e8815";
+import { reloginho } from "./prazo.js?v=f5446e8815";
+import { temVersaoNova } from "./gerador/index.js?v=f5446e8815";
 
 export function etiquetasHabilidades(codigos, habilidades) {
   const vistos = [...new Set(codigos)];
@@ -47,6 +47,20 @@ export function cartaoSimulado(s, { estado, config, habilidades, nivelTitulo = 2
       ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
       <p class="sim-info">${info}</p>
       ${vaiAbrir ? reloginho(s.libera_em, { abre: true }) : h`<p class="sim-info">${fechado ? "O prazo para fazer este simulado acabou. Ele volta quando o professor liberar." : "Ainda não está liberado. Avisamos quando abrir."}</p>`}
+    </article>`;
+  }
+  // simulado completo: é feito na aula, pela página que pede o código e envia para a planilha do professor
+  if (tipoDoSimulado(s) === "completo") {
+    return h`<article class="cartao sim ${destaque ? "destaque" : ""}" data-sim="${s.id}">
+      <div class="sim-topo">${cru(H[0])}<a href="completo.html">${titulo}</a>${cru(H[1])}<span class="estado novo">Vale para o professor</span></div>
+      ${s.subtitulo ? h`<p class="sim-info">${s.subtitulo}</p>` : ""}
+      <p class="sim-info">${info}</p>
+      <p class="sim-info">Em 4 partes. Você escolhe a turma, digita o código da aula (está na lousa) e as respostas vão para o professor.</p>
+      ${reloginho(s.disponivel_ate)}
+      <div class="botoes acoes">
+        <a class="botao pequeno" href="completo.html">Fazer o simulado${icone.seta}</a>
+        <a class="botao fantasma pequeno" href="#/simulado/${s.id}">Só treinar aqui (não envia)</a>
+      </div>
     </article>`;
   }
   const sit = situacao(estado, s.id, config);

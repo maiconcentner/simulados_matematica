@@ -1,17 +1,17 @@
 // Resultado (#/resultado/<id>): placar, faixa, fortes e a melhorar, plano, temas,
 // revisão comentada e ações. Mostra a última entrega do simulado.
-import { h, cru, nota1, plural } from "./util.js?v=e27fa3b239";
-import { icone } from "./icones.js?v=e27fa3b239";
-import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora, tipoDoSimulado } from "./dados.js?v=e27fa3b239";
-import { corrigir, temasAcumulados, fortesEFracos } from "./correcao.js?v=e27fa3b239";
-import { planoAteAProva } from "./plano_prova.js?v=e27fa3b239";
-import { contextoCorrecao } from "./entrega.js?v=e27fa3b239";
-import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=e27fa3b239";
-import { enunciadoHTML } from "./questao.js?v=e27fa3b239";
-import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=e27fa3b239";
-import { guardarGerado } from "./armazenamento.js?v=e27fa3b239";
-import { melhorTentativa } from "./progresso.js?v=e27fa3b239";
-import { nivelDoJogador, nomeDaConquista, listaDeConquistas, hojeISO } from "./gamificacao.js?v=e27fa3b239";
+import { h, cru, nota1, plural } from "./util.js?v=f5446e8815";
+import { icone } from "./icones.js?v=f5446e8815";
+import { carregarSimulado, simuladosDoCatalogo, bloqueio, idsIndisponiveis, disponivelAgora, tipoDoSimulado } from "./dados.js?v=f5446e8815";
+import { corrigir, temasAcumulados, fortesEFracos } from "./correcao.js?v=f5446e8815";
+import { planoAteAProva } from "./plano_prova.js?v=f5446e8815";
+import { contextoCorrecao } from "./entrega.js?v=f5446e8815";
+import { anelNota, reguaFaixas, barrasTema, animarContadores, corDoTexto } from "./graficos.js?v=f5446e8815";
+import { enunciadoHTML } from "./questao.js?v=f5446e8815";
+import { codigosComModelo, gerarMisto } from "./gerador/index.js?v=f5446e8815";
+import { guardarGerado } from "./armazenamento.js?v=f5446e8815";
+import { melhorTentativa } from "./progresso.js?v=f5446e8815";
+import { nivelDoJogador, nomeDaConquista, listaDeConquistas, hojeISO } from "./gamificacao.js?v=f5446e8815";
 
 // a animação de subir de nível, o confete e o aviso de conquista só aparecem logo depois de entregar
 let entregaRecente = null;

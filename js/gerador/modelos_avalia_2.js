@@ -1,7 +1,7 @@
 // Modelos das questões das Semanas 5 a 7 do Avalia.
-import { n, rs, M, exigir, numericas, textuais, ehInteiro, arred, expr } from "./base.js?v=e27fa3b239";
-import * as F from "./figuras.js?v=e27fa3b239";
-import { percentuaisComDesconto, relacoesMetricasMaior, ladoDoQuadradoNegativo } from "./modelos_avalia_1.js?v=e27fa3b239";
+import { n, rs, M, exigir, numericas, textuais, ehInteiro, arred, expr } from "./base.js?v=f5446e8815";
+import * as F from "./figuras.js?v=f5446e8815";
+import { percentuaisComDesconto, relacoesMetricasMaior, ladoDoQuadradoNegativo } from "./modelos_avalia_1.js?v=f5446e8815";
 
 const CAP = "Figura gerada para treino.";
 const fig = (svg, alt) => ({ svg, alt, caption: CAP });

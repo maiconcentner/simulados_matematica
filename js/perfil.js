@@ -1,12 +1,12 @@
 // Perfil (#/perfil): apelido, nível, conquistas, histórico, evolução da nota,
 // mapa das habilidades, tema e "Apagar meus dados deste aparelho".
-import { h, nota1, dataCurta, plural } from "./util.js?v=e27fa3b239";
-import { icone } from "./icones.js?v=e27fa3b239";
-import { atualizar, apagarTudo } from "./armazenamento.js?v=e27fa3b239";
-import { aplicarTema } from "./tema.js?v=e27fa3b239";
-import { nivelDoJogador, listaDeConquistas, sequenciaDeDias } from "./gamificacao.js?v=e27fa3b239";
-import { simuladosDoCatalogo } from "./dados.js?v=e27fa3b239";
-import { faixaDaNota, medalhaDoPercentual } from "./correcao.js?v=e27fa3b239";
+import { h, nota1, dataCurta, plural } from "./util.js?v=f5446e8815";
+import { icone } from "./icones.js?v=f5446e8815";
+import { atualizar, apagarTudo } from "./armazenamento.js?v=f5446e8815";
+import { aplicarTema } from "./tema.js?v=f5446e8815";
+import { nivelDoJogador, listaDeConquistas, sequenciaDeDias } from "./gamificacao.js?v=f5446e8815";
+import { simuladosDoCatalogo } from "./dados.js?v=f5446e8815";
+import { faixaDaNota, medalhaDoPercentual } from "./correcao.js?v=f5446e8815";
 
 const TEMAS = [["light", "Claro"], ["dark", "Escuro"], ["auto", "Automático (segue o aparelho)"]];
 
